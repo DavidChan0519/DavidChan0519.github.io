@@ -427,18 +427,20 @@
       
         
           
-            <p>查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。</p>
-<p>这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。</p>
-<h5 id="编译企业私有节点动态库"><a href="#编译企业私有节点动态库" class="headerlink" title="编译企业私有节点动态库"></a>编译企业私有节点动态库</h5><p>在使用mib2c工具自动生成相应代码后，还需要在代码中添加一个启动函数，<strong>该启动函数是snmpd守护进程调用企业私有库的入口</strong>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void init_bmserv(void)｛</span><br><span class="line">	xxx</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-<p>该函数bmserv的命名同生成的动态库名称libbmserv.so要保持一致</p>
-<p>交叉编译动态库，makefile如下(根据实际环境进行修改适配)：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 通用 Makefile</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">CC					= aarch64-linux-gnu-gcc</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 编译选项</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 宏定义选项</span></span><br><span class="line">MACRO_FLAGS			:=  </span><br><span class="line"><span class="comment"># 使用到的库，只要写lib后的名称，不用加.so或.a</span></span><br><span class="line">LIB_FLAGS			:= curl crypto cjson</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译.c到.o文件的选项</span></span><br><span class="line">CC_FLAGS			:= -Wall -fPIC</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接.o文件用到的选项</span></span><br><span class="line">LINK_FLAGS			:= -Wall -fPIC -lpthread -shared</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 源代码目录</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">ROOT				:= <span class="variable">$(<span class="built_in">shell</span> pwd)</span></span><br><span class="line">SRCDIRS				:= <span class="variable">$(ROOT)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 头文件目录</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">INCLUDE_DIRS		:= <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/curl-7.60.0/<span class="keyword">include</span>/</span><br><span class="line">INCLUDE_DIRS        += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/net-snmp/<span class="keyword">include</span>/</span><br><span class="line">INCLUDE_DIRS        += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/cJSON/<span class="keyword">include</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 动态库、静态库目录</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">LIB_DIRS			:= <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/curl-7.60.0/lib/arm64/</span><br><span class="line">LIB_DIRS            += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/net-snmp/lib/arm64/</span><br><span class="line">LIB_DIRS            += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/cJSON/lib/arm64/</span><br><span class="line">LIB_DIRS            += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/openssl/lib/arm64/</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 最终生成的程序名称</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">TARGET				:= libbmserv.so</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 被编译的.c文件</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">SRC_C					:= <span class="variable">$(<span class="built_in">foreach</span> <span class="built_in">dir</span>, <span class="variable">$(SRCDIRS)</span>, $(<span class="built_in">wildcard</span> <span class="variable">$(dir)</span>/*.c)</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 所有的.o文件</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">OBJ_C					:= <span class="variable">$(<span class="built_in">notdir</span> $(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(SRC_C)</span>)</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 编译规则</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: all cmd_init cmd_last clean</span></span><br><span class="line"><span class="section">all:cmd_init <span class="variable">$(TARGET)</span> cmd_last</span></span><br><span class="line"><span class="comment"># 编译前命令</span></span><br><span class="line"><span class="section">cmd_init:</span></span><br><span class="line">	@echo <span class="string">"SRC DIR:"</span> <span class="variable">$(SRCDIRS)</span></span><br><span class="line">	@echo cmd_init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译后命令</span></span><br><span class="line"><span class="section">cmd_last:</span></span><br><span class="line">	@echo cmd_last</span><br><span class="line"></span><br><span class="line">VPATH					= <span class="variable">$(SRCDIRS)</span></span><br><span class="line"><span class="variable">$(TARGET)</span>:<span class="variable">$(OBJ_C)</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(LINK_FLAGS)</span> $(MACRO_FLAGS:%=-D%) $(INCLUDE_DIRS:%=-I%) $(LIB_DIRS:%=-L%) $(LIB_FLAGS:%=-l%) -o <span class="variable">$@</span> <span class="variable">$^</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$(OBJ_C)</span>:%.o:%.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CC_FLAGS)</span> $(MACRO_FLAGS:%=-D%) $(INCLUDE_DIRS:%=-I%) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f *.o</span><br><span class="line">	rm -f <span class="variable">$(TARGET)</span></span><br></pre></td></tr></table></figure>
-<p>编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make</span><br></pre></td></tr></table></figure>
-<p>即可生成企业私有节点动态库libbmserv.so</p>
-
+            <p>
+              查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。
+这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/29/enterprise-priv/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -579,31 +581,23 @@
       
         
           
-            <h5 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h5><ol>
-<li>net-snmp交叉编译，生成snmpd</li>
-<li>交叉编译企业私有节点动态库 libbmserv.so</li>
-</ol>
-<h5 id="修改配置文件snmpd-conf"><a href="#修改配置文件snmpd-conf" class="headerlink" title="修改配置文件snmpd.conf"></a>修改配置文件snmpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">###########################################################################</span><br><span class="line"># snmpd.conf</span><br><span class="line">###########################################################################</span><br><span class="line">dlmod bmserv /usr/lib/libbmserv.so</span><br><span class="line"></span><br><span class="line">#v1/v2c</span><br><span class="line">rocommunity rrrrr</span><br><span class="line">rwcommunity wwww</span><br><span class="line"></span><br><span class="line">#v1 trap</span><br><span class="line">trapsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c trap</span><br><span class="line">trap2sink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c inform</span><br><span class="line">informsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v3</span><br><span class="line">engineIDType 3</span><br><span class="line"></span><br><span class="line">rouser rouser priv</span><br><span class="line">createUser rouser MD5 11111111 DES 22222222</span><br><span class="line"></span><br><span class="line">rwuser rwuser priv</span><br><span class="line">createUser rwuser MD5 33333333 DES 44444444</span><br><span class="line"></span><br><span class="line"># v3 trap</span><br><span class="line">trapsess -v 3 -u rouser -a MD5 -A 11111111 -x DES -X 22222222 -l priv 192.168.1.111</span><br></pre></td></tr></table></figure>
-<h5 id="ARM部署"><a href="#ARM部署" class="headerlink" title="ARM部署"></a>ARM部署</h5><p>将snmpd，libbmserv.so，snmpd.conf及相关的net-snmp库文件打包，然后放到arm开发环境。</p>
-<p>snmpd一般放在/bin目录下，snmpd.conf一般放在/etc/snmp/config目录下(没有的话，可自己建立相应的目录)</p>
-<p>libbmserv.so及net-snmp的动态库文件都可以放在/usr/local/lib下，私有mib文件及公共mib文件都放在/usr/share/mibs下，通过MIBS环境变量指定路径</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/Bitmain.mib</span><br></pre></td></tr></table></figure>
-<h6 id="手动启动"><a href="#手动启动" class="headerlink" title="手动启动"></a>手动启动</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>snmpd -f -c /etc/snmp/config/snmpd.conf</span><br></pre></td></tr></table></figure>
-<h6 id="自启动："><a href="#自启动：" class="headerlink" title="自启动："></a>自启动：</h6><p>利用systemd机制，编写snmpd.service文件(xxx.service是snmp依赖的服务,根据实际情况修改)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Simple Network Management Protocol (SNMP) Daemon</span><br><span class="line">After=syslog.target network.target xxx.service</span><br><span class="line">Requires=xxx.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=LD_LIBRARY_PATH=/usr/lib</span><br><span class="line">Environment=MIBDIRS=/usr/share/snmp/mibs</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/var/run/snmpd.pid</span><br><span class="line">ExecStart=/bin/snmpd -f -c /etc/snmp/config/snmpd.conf -p /var/run/snmpd.pid</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=3</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>执行enable命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl enable snmpd</span><br></pre></td></tr></table></figure>
-<p>系统下电重启，则SNMP服务会自动启动</p>
-<h6 id="其他控制操作"><a href="#其他控制操作" class="headerlink" title="其他控制操作"></a>其他控制操作</h6><p>1.启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl start snmpd</span><br></pre></td></tr></table></figure>
-<p>2.停止</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl stop snmpd</span><br></pre></td></tr></table></figure>
-<p>3.重启</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl restart snmpd</span><br></pre></td></tr></table></figure>
-<p>4.查询</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl status snmpd</span><br></pre></td></tr></table></figure>
+            <p>
+              交叉编译
+net-snmp交叉编译，生成snmpd
+交叉编译企业私有节点动态库 libbmserv.so
 
+修改配置文件snmpd.conf############################################################################ snm
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/29/net-snmp-deployment/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -744,24 +738,24 @@
       
         
           
-            <p>要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。</p>
-<h5 id="mib2c环境部署"><a href="#mib2c环境部署" class="headerlink" title="mib2c环境部署"></a>mib2c环境部署</h5><p>1.配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./configure</span><br></pre></td></tr></table></figure>
-<p>2.编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make</span><br></pre></td></tr></table></figure>
-<p>3.安装（如果没有在configure指定安装目录，则会安装到系统默认目录/usr/local/net-snmp）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
-<h5 id="mib2c生成代码"><a href="#mib2c生成代码" class="headerlink" title="mib2c生成代码"></a>mib2c生成代码</h5><p>1.设置环境变量，将需要生成代码的企业私有mib(xxx.mib)路径导出到环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/demo.mib</span><br></pre></td></tr></table></figure>
-<p>2.为leaf节点生成代码(<strong>xxx为demo.mib文件中modIdent节点名称</strong>)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.scalar.conf  xxx</span><br></pre></td></tr></table></figure>
-<p>3.为table节点生成代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.iterate.conf  xxx</span><br></pre></td></tr></table></figure>
-<p>4.为notification节点生成代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.notify.conf  xxx</span><br></pre></td></tr></table></figure>
-<p>在生成的代码中，添加自己的实现即可</p>
-
+            <p>
+              要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。
+mib2c环境部署1.配置
+$./configure
+2.编译
+$make
+3.安装（如果没有在configure指定
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/29/mib2c/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -902,26 +896,21 @@
       
         
           
-            <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p>去官网（<a href="https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作" target="_blank" rel="noopener">https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</a></p>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release</span><br></pre></td></tr></table></figure>
-<p>其中参数的含义为：<br>no-asm：在交叉编译过程中不使用汇编代码代码加速编译过程；<br>shared：生成动态链接库；<br>–prefix：指定生成lib、include、bin三个核心目录的路径，不修改此项则默认为OPENSSLDIR目录。</p>
-<p>2) 修改生成的Makefile，去掉-m64选项，否则会编译报错<br>3) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make -j4</span><br></pre></td></tr></table></figure>
-<p>4) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<h5 id="2-交叉编译net-snmp"><a href="#2-交叉编译net-snmp" class="headerlink" title="2.交叉编译net-snmp"></a>2.交叉编译net-snmp</h5><p>在官网(<a href="http://www.net-snmp.org/download.html)下载net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作" target="_blank" rel="noopener">http://www.net-snmp.org/download.html)下载net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作</a></p>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./configure --host=arm-linux --target=arm-linux --build=i686-linux --with-cc=aarch64-linux-gnu-gcc  --with-ar=aarch64-linux-gnu-ar  --prefix=/home/lwang/work/chengw/github/net-snmp-5.7.3/release  --with-endianness=little --disable-manuals --disable-embedded-perl  --disable-perl-cc-checks --without-perl-modules --disable-scripts  --disable-applications  --with-openssl=/home/lwang/work/chengw/github/openssl-1.0.2q/release</span><br></pre></td></tr></table></figure>
-<p>2) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make -j4</span><br></pre></td></tr></table></figure>
-<p>3) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<p>注意：实际测试发现，net-snmp 5.7.3只能搭配openssl-1.0.2q版本使用，更新的版本会编译报错.</p>
-
+            <p>
+              1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作
+1) 配置编译选项
+$./con
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/29/net-snmp/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
