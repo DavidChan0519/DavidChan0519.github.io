@@ -462,7 +462,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/29/net-snmp-deployment/" class="post-title-link" itemprop="url">net-snmp-deployment</a>
+                <a href="/2019/03/29/net-snmp-deployment/" class="post-title-link" itemprop="url">Net-SNMP ARM部署</a>
               
             
           </h1>
@@ -487,9 +487,13 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 16:40:03 / Modified: 18:27:04" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -524,7 +528,30 @@
       
         
           
-            
+            <h5 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h5><ol>
+<li>net-snmp交叉编译，生成snmpd</li>
+<li>交叉编译企业私有节点动态库 libbmserv.so</li>
+</ol>
+<h5 id="修改配置文件snmpd-conf"><a href="#修改配置文件snmpd-conf" class="headerlink" title="修改配置文件snmpd.conf"></a>修改配置文件snmpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">###########################################################################</span><br><span class="line"># snmpd.conf</span><br><span class="line">###########################################################################</span><br><span class="line">dlmod bmserv /usr/lib/libbmserv.so</span><br><span class="line"></span><br><span class="line">#v1/v2c</span><br><span class="line">rocommunity rrrrr</span><br><span class="line">rwcommunity wwww</span><br><span class="line"></span><br><span class="line">#v1 trap</span><br><span class="line">trapsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c trap</span><br><span class="line">trap2sink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c inform</span><br><span class="line">informsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v3</span><br><span class="line">engineIDType 3</span><br><span class="line"></span><br><span class="line">rouser rouser priv</span><br><span class="line">createUser rouser MD5 11111111 DES 22222222</span><br><span class="line"></span><br><span class="line">rwuser rwuser priv</span><br><span class="line">createUser rwuser MD5 33333333 DES 44444444</span><br><span class="line"></span><br><span class="line"># v3 trap</span><br><span class="line">trapsess -v 3 -u rouser -a MD5 -A 11111111 -x DES -X 22222222 -l priv 192.168.1.111</span><br></pre></td></tr></table></figure>
+<h5 id="ARM部署"><a href="#ARM部署" class="headerlink" title="ARM部署"></a>ARM部署</h5><p>将snmpd，libbmserv.so，snmpd.conf及相关的net-snmp库文件打包，然后放到arm开发环境。</p>
+<p>snmpd一般放在/bin目录下，snmpd.conf一般放在/etc/snmp/config目录下(没有的话，可自己建立相应的目录)</p>
+<p>libbmserv.so及net-snmp的动态库文件都可以放在/usr/local/lib下，私有mib文件及公共mib文件都放在/usr/share/mibs下，通过MIBS环境变量指定路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/Bitmain.mib</span><br></pre></td></tr></table></figure>
+<h6 id="手动启动"><a href="#手动启动" class="headerlink" title="手动启动"></a>手动启动</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>snmpd -f -c /etc/snmp/config/snmpd.conf</span><br></pre></td></tr></table></figure>
+<h6 id="自启动："><a href="#自启动：" class="headerlink" title="自启动："></a>自启动：</h6><p>利用systemd机制，编写snmpd.service文件(xxx.service是snmp依赖的服务,根据实际情况修改)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Simple Network Management Protocol (SNMP) Daemon</span><br><span class="line">After=syslog.target network.target xxx.service</span><br><span class="line">Requires=xxx.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=LD_LIBRARY_PATH=/usr/lib</span><br><span class="line">Environment=MIBDIRS=/usr/share/snmp/mibs</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/var/run/snmpd.pid</span><br><span class="line">ExecStart=/bin/snmpd -f -c /etc/snmp/config/snmpd.conf -p /var/run/snmpd.pid</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=3</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>执行enable命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl enable snmpd</span><br></pre></td></tr></table></figure>
+<p>系统下电重启，则SNMP服务会自动启动</p>
+<h6 id="其他控制操作"><a href="#其他控制操作" class="headerlink" title="其他控制操作"></a>其他控制操作</h6><p>1.启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl start snmpd</span><br></pre></td></tr></table></figure>
+<p>2.停止</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl stop snmpd</span><br></pre></td></tr></table></figure>
+<p>3.重启</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl restart snmpd</span><br></pre></td></tr></table></figure>
+<p>4.查询</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>systemctl status snmpd</span><br></pre></td></tr></table></figure>
+
           
         
       
