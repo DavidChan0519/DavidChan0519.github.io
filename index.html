@@ -290,6 +290,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/mib2c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/29/mib2c/" class="post-title-link" itemprop="url">mib2c</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-29 16:17:14 / Modified: 16:38:30" itemprop="dateCreated datePublished" datetime="2019-03-29T16:17:14+08:00">2019-03-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。</p>
+<h5 id="mib2c环境部署"><a href="#mib2c环境部署" class="headerlink" title="mib2c环境部署"></a>mib2c环境部署</h5><p>1.配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./configure</span><br></pre></td></tr></table></figure>
+<p>2.编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make</span><br></pre></td></tr></table></figure>
+<p>3.安装（如果没有在configure指定安装目录，则会安装到系统默认目录/usr/local/net-snmp）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
+<h5 id="mib2c生成代码"><a href="#mib2c生成代码" class="headerlink" title="mib2c生成代码"></a>mib2c生成代码</h5><p>1.设置环境变量，将需要生成代码的企业私有mib(xxx.mib)路径导出到环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/demo.mib</span><br></pre></td></tr></table></figure>
+<p>2.为leaf节点生成代码(<strong>xxx为demo.mib文件中modIdent节点名称</strong>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.scalar.conf  xxx</span><br></pre></td></tr></table></figure>
+<p>3.为table节点生成代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.iterate.conf  xxx</span><br></pre></td></tr></table></figure>
+<p>4.为notification节点生成代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.notify.conf  xxx</span><br></pre></td></tr></table></figure>
+<p>在生成的代码中，添加自己的实现即可</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -477,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
