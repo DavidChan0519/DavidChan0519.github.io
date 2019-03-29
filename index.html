@@ -386,7 +386,7 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03 / Modified: 17:15:57" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 16:40:03 / Modified: 19:05:43" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
             
 
             
@@ -426,17 +426,8 @@
 
       
         
-          
-            <p>
-              查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。
-这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。
-编译企业私有节点动态库在使用mib2c工具自动生成相应代码后，还需要在代码中添加一个启动函数，该启动函数是snmpd守护进程调用企业私有库的入口：
-void init_bmserv(void)｛	xxx｝
-该函数bmserv的命名同生成的动态库名称libbmserv.so要保持一致
-交叉编译动态库，makefile如下(根据实际环境进行修改适配)：
-# ************************************************************# 通用 Makefile# ****************************
-              ...
-            </p>
+          <p>查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。</p>
+<p>这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -545,7 +536,7 @@ void init_bmserv(void)｛	xxx｝
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03 / Modified: 18:27:04" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 16:40:03 / Modified: 19:07:06" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
             
 
             
@@ -585,15 +576,10 @@ void init_bmserv(void)｛	xxx｝
 
       
         
-          
-            <p>
-              交叉编译
-net-snmp交叉编译，生成snmpd
-交叉编译企业私有节点动态库 libbmserv.so
-
-修改配置文件snmpd.conf############################################################################ snmpd.conf###########################################################################dlmod bmserv /usr/lib/libbmserv.so#v1/v2crocommunity rrrrrrwcommunity wwww#v1 traptrapsink  10.30.33.2 rrrrr#v2c traptrap2sink  10.30.33.2 rrrrr#v2c informinformsink  10.30.33.2 rrrrr#v3engineIDType 3rouser rouser priv
-              ...
-            </p>
+          <h5 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h5><ol>
+<li>net-snmp交叉编译，生成snmpd</li>
+<li>交叉编译企业私有节点动态库 libbmserv.so</li>
+</ol>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -702,7 +688,7 @@ net-snmp交叉编译，生成snmpd
                 
               
 
-              <time title="Created: 2019-03-29 16:17:14 / Modified: 18:28:43" itemprop="dateCreated datePublished" datetime="2019-03-29T16:17:14+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 16:17:14 / Modified: 19:06:48" itemprop="dateCreated datePublished" datetime="2019-03-29T16:17:14+08:00">2019-03-29</time>
             
 
             
@@ -742,23 +728,7 @@ net-snmp交叉编译，生成snmpd
 
       
         
-          
-            <p>
-              要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。
-mib2c环境部署1.配置
-$./configure
-2.编译
-$make
-3.安装（如果没有在configure指定安装目录，则会安装到系统默认目录/usr/local/net-snmp）
-$make install
-mib2c生成代码1.设置环境变量，将需要生成代码的企业私有mib(xxx.mib)路径导出到环境变量
-$export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/demo.mib
-2.为leaf节点生成代码(xxx为demo.mib文件中modIdent节点名称)
-$/usr/local/net-snmp/bin/mib2c -c mib2c.scalar.conf  xxx
-3.为table节点生成代码
-$/usr/local/
-              ...
-            </p>
+          <p>要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -867,7 +837,7 @@ $/usr/local/
                 
               
 
-              <time title="Created: 2019-03-29 14:38:17 / Modified: 16:12:23" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 14:38:17 / Modified: 19:06:58" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
             
 
             
@@ -907,18 +877,7 @@ $/usr/local/
 
       
         
-          
-            <p>
-              1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作
-1) 配置编译选项
-$./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release
-其中参数的含义为：no-asm：在交叉编译过程中不使用汇编代码代码加速编译过程；shared：生成动态链接库；–prefix：指定生成lib、include、bin三个核心目录的路径，不修改此项则默认为OPENSSLDIR目录。
-2) 修改生成的Makefile，去掉-m64选项，否则会编译报错3) 编译
-$make -j4
-4) 安装
-$make 
-              ...
-            </p>
+          <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p>去官网（<a href="https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作" target="_blank" rel="noopener">https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</a></p>
           <!--noindex-->
           
             <div class="post-button text-center">

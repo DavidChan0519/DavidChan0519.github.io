@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so  修改配置文件snmpd.conf1234567891011121314151617181920212223242526272829############################################################################ snmp">
+  <meta name="description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Net-SNMP ARM部署">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/net-snmp-deployment/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so  修改配置文件snmpd.conf1234567891011121314151617181920212223242526272829############################################################################ snmp">
+<meta property="og:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-29T10:27:04.000Z">
+<meta property="og:updated_time" content="2019-03-29T11:07:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Net-SNMP ARM部署">
-<meta name="twitter:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so  修改配置文件snmpd.conf1234567891011121314151617181920212223242526272829############################################################################ snmp">
+<meta name="twitter:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
 
 
 
@@ -384,7 +384,7 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03 / Modified: 18:27:04" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 16:40:03 / Modified: 19:07:06" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
             
 
             
@@ -427,6 +427,7 @@
 <li>net-snmp交叉编译，生成snmpd</li>
 <li>交叉编译企业私有节点动态库 libbmserv.so</li>
 </ol>
+<a id="more"></a>
 <h5 id="修改配置文件snmpd-conf"><a href="#修改配置文件snmpd-conf" class="headerlink" title="修改配置文件snmpd.conf"></a>修改配置文件snmpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">###########################################################################</span><br><span class="line"># snmpd.conf</span><br><span class="line">###########################################################################</span><br><span class="line">dlmod bmserv /usr/lib/libbmserv.so</span><br><span class="line"></span><br><span class="line">#v1/v2c</span><br><span class="line">rocommunity rrrrr</span><br><span class="line">rwcommunity wwww</span><br><span class="line"></span><br><span class="line">#v1 trap</span><br><span class="line">trapsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c trap</span><br><span class="line">trap2sink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c inform</span><br><span class="line">informsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v3</span><br><span class="line">engineIDType 3</span><br><span class="line"></span><br><span class="line">rouser rouser priv</span><br><span class="line">createUser rouser MD5 11111111 DES 22222222</span><br><span class="line"></span><br><span class="line">rwuser rwuser priv</span><br><span class="line">createUser rwuser MD5 33333333 DES 44444444</span><br><span class="line"></span><br><span class="line"># v3 trap</span><br><span class="line">trapsess -v 3 -u rouser -a MD5 -A 11111111 -x DES -X 22222222 -l priv 192.168.1.111</span><br></pre></td></tr></table></figure>
 <h5 id="ARM部署"><a href="#ARM部署" class="headerlink" title="ARM部署"></a>ARM部署</h5><p>将snmpd，libbmserv.so，snmpd.conf及相关的net-snmp库文件打包，然后放到arm开发环境。</p>
 <p>snmpd一般放在/bin目录下，snmpd.conf一般放在/etc/snmp/config目录下(没有的话，可自己建立相应的目录)</p>

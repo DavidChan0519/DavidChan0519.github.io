@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作 1) 配置编译选项 1$./config no-asm shared --cross-compile-prefix=aarch64-">
+  <meta name="description" content="1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Net-SNMP的交叉编译 for ARM64">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/net-snmp/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作 1) 配置编译选项 1$./config no-asm shared --cross-compile-prefix=aarch64-">
+<meta property="og:description" content="1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-29T08:12:23.000Z">
+<meta property="og:updated_time" content="2019-03-29T11:06:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Net-SNMP的交叉编译 for ARM64">
-<meta name="twitter:description" content="1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作 1) 配置编译选项 1$./config no-asm shared --cross-compile-prefix=aarch64-">
+<meta name="twitter:description" content="1.交叉编译openssl去官网（https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
 
 
 
@@ -384,7 +384,7 @@
                 
               
 
-              <time title="Created: 2019-03-29 14:38:17 / Modified: 16:12:23" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 14:38:17 / Modified: 19:06:58" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
             
 
             
@@ -424,6 +424,7 @@
 
       
         <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p>去官网（<a href="https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作" target="_blank" rel="noopener">https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</a></p>
+<a id="more"></a>
 <p>1) 配置编译选项</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release</span><br></pre></td></tr></table></figure>
 <p>其中参数的含义为：<br>no-asm：在交叉编译过程中不使用汇编代码代码加速编译过程；<br>shared：生成动态链接库；<br>–prefix：指定生成lib、include、bin三个核心目录的路径，不修改此项则默认为OPENSSLDIR目录。</p>
