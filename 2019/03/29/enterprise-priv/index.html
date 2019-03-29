@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。 这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。 编译企业私有节点动态库在使用mib2c工具自动生成相应代码后，">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程伟的技术笔记">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Net-SNMP 企业私有节点动态库">
+<meta property="og:url" content="http://yoursite.com/2019/03/29/enterprise-priv/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。 这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。 编译企业私有节点动态库在使用mib2c工具自动生成相应代码后，">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T08:54:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程伟的技术笔记">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="Net-SNMP 企业私有节点动态库">
+<meta name="twitter:description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。 这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。 编译企业私有节点动态库在使用mib2c工具自动生成相应代码后，">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/29/enterprise-priv/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>程伟的技术笔记</title>
+  <title>Net-SNMP 企业私有节点动态库 | 程伟的技术笔记</title>
   
 
 
@@ -172,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -211,7 +211,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -273,9 +273,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -307,10 +307,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/enterprise-priv/" class="post-title-link" itemprop="url">Net-SNMP 企业私有节点动态库</a>
+          <h1 class="post-title" itemprop="name headline">Net-SNMP 企业私有节点动态库
+
               
             
           </h1>
@@ -374,9 +372,7 @@
       
 
       
-        
-          
-            <p>查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。</p>
+        <p>查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。这里只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。</p>
 <p>这种使用方式的优点在与，不修改net-snmp源码；第一次交叉编译后，后面修复企业私有库的bug不需要再重新编译net-snmp源码，仅仅只需要把动态库重新编译一遍就可以了。</p>
 <h5 id="编译企业私有节点动态库"><a href="#编译企业私有节点动态库" class="headerlink" title="编译企业私有节点动态库"></a>编译企业私有节点动态库</h5><p>在使用mib2c工具自动生成相应代码后，还需要在代码中添加一个启动函数，<strong>该启动函数是snmpd守护进程调用企业私有库的入口</strong>：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void init_bmserv(void)｛</span><br><span class="line">	xxx</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
@@ -387,8 +383,6 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make</span><br></pre></td></tr></table></figure>
 <p>即可生成企业私有节点动态库libbmserv.so</p>
 
-          
-        
       
     </div>
 
@@ -411,150 +405,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp-deployment/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/net-snmp-deployment/" class="post-title-link" itemprop="url">net-snmp-deployment</a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
+              <a href="/2019/03/29/net-snmp-deployment/" rel="next" title="net-snmp-deployment">
+                <i class="fa fa-chevron-left"></i> net-snmp-deployment
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-29 16:40:03" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -564,332 +436,15 @@
   </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/mib2c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/mib2c/" class="post-title-link" itemprop="url">mib2c</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-29 16:17:14 / Modified: 16:38:30" itemprop="dateCreated datePublished" datetime="2019-03-29T16:17:14+08:00">2019-03-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。</p>
-<h5 id="mib2c环境部署"><a href="#mib2c环境部署" class="headerlink" title="mib2c环境部署"></a>mib2c环境部署</h5><p>1.配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./configure</span><br></pre></td></tr></table></figure>
-<p>2.编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make</span><br></pre></td></tr></table></figure>
-<p>3.安装（如果没有在configure指定安装目录，则会安装到系统默认目录/usr/local/net-snmp）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
-<h5 id="mib2c生成代码"><a href="#mib2c生成代码" class="headerlink" title="mib2c生成代码"></a>mib2c生成代码</h5><p>1.设置环境变量，将需要生成代码的企业私有mib(xxx.mib)路径导出到环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/demo.mib</span><br></pre></td></tr></table></figure>
-<p>2.为leaf节点生成代码(<strong>xxx为demo.mib文件中modIdent节点名称</strong>)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.scalar.conf  xxx</span><br></pre></td></tr></table></figure>
-<p>3.为table节点生成代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.iterate.conf  xxx</span><br></pre></td></tr></table></figure>
-<p>4.为notification节点生成代码</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>/usr/local/net-snmp/bin/mib2c -c mib2c.notify.conf  xxx</span><br></pre></td></tr></table></figure>
-<p>在生成的代码中，添加自己的实现即可</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/net-snmp/" class="post-title-link" itemprop="url">Net-SNMP的交叉编译 for ARM64</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-29 14:38:17 / Modified: 16:12:23" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p>去官网（<a href="https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作" target="_blank" rel="noopener">https://www.openssl.org/source/）下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</a></p>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release</span><br></pre></td></tr></table></figure>
-<p>其中参数的含义为：<br>no-asm：在交叉编译过程中不使用汇编代码代码加速编译过程；<br>shared：生成动态链接库；<br>–prefix：指定生成lib、include、bin三个核心目录的路径，不修改此项则默认为OPENSSLDIR目录。</p>
-<p>2) 修改生成的Makefile，去掉-m64选项，否则会编译报错<br>3) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make -j4</span><br></pre></td></tr></table></figure>
-<p>4) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<h5 id="2-交叉编译net-snmp"><a href="#2-交叉编译net-snmp" class="headerlink" title="2.交叉编译net-snmp"></a>2.交叉编译net-snmp</h5><p>在官网(<a href="http://www.net-snmp.org/download.html)下载net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作" target="_blank" rel="noopener">http://www.net-snmp.org/download.html)下载net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作</a></p>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./configure --host=arm-linux --target=arm-linux --build=i686-linux --with-cc=aarch64-linux-gnu-gcc  --with-ar=aarch64-linux-gnu-ar  --prefix=/home/lwang/work/chengw/github/net-snmp-5.7.3/release  --with-endianness=little --disable-manuals --disable-embedded-perl  --disable-perl-cc-checks --without-perl-modules --disable-scripts  --disable-applications  --with-openssl=/home/lwang/work/chengw/github/openssl-1.0.2q/release</span><br></pre></td></tr></table></figure>
-<p>2) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make -j4</span><br></pre></td></tr></table></figure>
-<p>3) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<p>注意：实际测试发现，net-snmp 5.7.3只能搭配openssl-1.0.2q版本使用，更新的版本会编译报错.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -909,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -956,6 +520,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#编译企业私有节点动态库"><span class="nav-number">1.</span> <span class="nav-text">编译企业私有节点动态库</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1084,6 +665,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -1099,6 +684,8 @@
 
   
 
+
+  
 
 
   
