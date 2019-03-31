@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T13:52:54.856Z">
+<meta property="og:updated_time" content="2019-03-31T14:04:26.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Net-SNMP ARM部署">
 <meta name="twitter:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-31 21:52:54" itemprop="dateModified" datetime="2019-03-31T21:52:54+08:00">2019-03-31</time>
+                <time title="Modified: 2019-03-31 22:04:26" itemprop="dateModified" datetime="2019-03-31T22:04:26+08:00">2019-03-31</time>
               
             
           </span>
@@ -489,92 +489,92 @@
 <li>交叉编译企业私有节点动态库 libbmserv.so</li>
 </ol>
 <a id="more"></a>
-<h5 id="修改配置文件snmpd-conf"><a href="#修改配置文件snmpd-conf" class="headerlink" title="修改配置文件snmpd.conf"></a>修改配置文件snmpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">###########################################################################</span><br><span class="line"># snmpd.conf</span><br><span class="line">###########################################################################</span><br><span class="line">dlmod bmserv /usr/lib/libbmserv.so</span><br><span class="line"></span><br><span class="line">#v1/v2c</span><br><span class="line">rocommunity rrrrr</span><br><span class="line">rwcommunity wwww</span><br><span class="line"></span><br><span class="line">#v1 trap</span><br><span class="line">trapsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c trap</span><br><span class="line">trap2sink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c inform</span><br><span class="line">informsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v3</span><br><span class="line">engineIDType 3</span><br><span class="line"></span><br><span class="line">rouser rouser priv</span><br><span class="line">createUser rouser MD5 11111111 DES 22222222</span><br><span class="line"></span><br><span class="line">rwuser rwuser priv</span><br><span class="line">createUser rwuser MD5 33333333 DES 44444444</span><br><span class="line"></span><br><span class="line"># v3 trap</span><br><span class="line">trapsess -v 3 -u rouser -a MD5 -A 11111111 -x DES -X 22222222 -l priv 192.168.1.111</span><br></pre></td></tr></table></figure>
-<p>engineType.  1|2|3 :  SNMP v3的安全配置，engine id的产生依赖于此选项自动生成，而不需要手动指定</p>
+<h5 id="简单版配置文件snmpd-conf"><a href="#简单版配置文件snmpd-conf" class="headerlink" title="简单版配置文件snmpd.conf"></a>简单版配置文件snmpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">###########################################################################</span><br><span class="line"># snmpd.conf</span><br><span class="line">###########################################################################</span><br><span class="line">dlmod bmserv /usr/lib/libbmserv.so</span><br><span class="line"></span><br><span class="line">#v1/v2c</span><br><span class="line">rocommunity rrrrr</span><br><span class="line">rwcommunity wwww</span><br><span class="line"></span><br><span class="line">#v1 trap</span><br><span class="line">trapsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c trap</span><br><span class="line">trap2sink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c inform</span><br><span class="line">informsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v3</span><br><span class="line">engineIDType 3</span><br><span class="line"></span><br><span class="line">rouser rouser priv</span><br><span class="line">createUser rouser MD5 11111111 DES 22222222</span><br><span class="line"></span><br><span class="line">rwuser rwuser priv</span><br><span class="line">createUser rwuser MD5 33333333 DES 44444444</span><br><span class="line"></span><br><span class="line"># v3 trap</span><br><span class="line">trapsess -v 3 -u rouser -a MD5 -A 11111111 -x DES -X 22222222 -l priv 192.168.1.111</span><br></pre></td></tr></table></figure>
+<p>engineType.  1|2|3 :  SNMP v3的安全配置，engine id的产生依赖于此选项自动生成；</p>
+<p>配置了该选项，就不需要在trapsess选项中通过-e参数来手动指定engine id，否则就需要.</p>
 <p>specifies that the engineID should be built from the <strong>IPv4 address (1),</strong> <strong>IPv6 address (2)</strong> or <strong>MAC address (3)</strong>. <u>Note that changing the IP address (or switching the network interface card) may cause problems.</u></p>
 <h5 id="ARM部署"><a href="#ARM部署" class="headerlink" title="ARM部署"></a>ARM部署</h5><p>将snmpd，libbmserv.so，snmpd.conf及相关的net-snmp库文件打包，然后放到arm开发环境。</p>
 <p>snmpd一般放在/bin目录下，snmpd.conf一般放在/etc/snmp/config目录下(没有的话，可自己建立相应的目录)</p>
 <p>libbmserv.so及net-snmp的动态库文件都可以放在/usr/local/lib下，私有mib文件及公共mib文件都放在/usr/share/mibs下，通过MIBS环境变量指定路径</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/Bitmain.mib</span><br></pre></td></tr></table></figure>
 <h6 id="手动启动"><a href="#手动启动" class="headerlink" title="手动启动"></a>手动启动</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>snmpd -f -c /etc/snmp/config/snmpd.conf</span><br></pre></td></tr></table></figure>
-<p>-f: 不从当前进程中fock子进程</p>
-<p>-c: 读取指定路径的配置文件</p>
-<p>可选参数如下：</p>
+<p>全部可选参数如下：</p>
 <p>OPTIONS</p>
 <ul>
-<li><p><strong>-a</strong></p>
+<li><p>-a</p>
 <p>Log the source addresses of incoming requests.</p>
 </li>
-<li><p><strong>-A</strong></p>
+<li><p>-A</p>
 <p>Append to the log file rather than truncating it.</p>
+<p>默认每次重新启动snmpd，snmpd.log会被清理掉以便重新记录日志，之前旧的日志会被丢弃; 添加-A选项后，旧日志被保留，新的日志追加在旧的日志尾部</p>
 </li>
-<li><p><strong>-c</strong> <em>FILE</em></p>
+<li><p>-c <em>FILE</em></p>
 <p>Read <em>FILE</em> as a configuration file (or a comma-separated list of configuration files). Note that the loaded file will only understand snmpd.conf tokens, unless the configuration type is specified in the file as described in the snmp_config man page under SWITCHING CONFIGURATION TYPES IN MID-FILE.</p>
 </li>
-<li><p><strong>-C</strong></p>
-<p>Do not read any configuration files except the ones optionally specified by the <strong>-c</strong> option. Note that this behaviour also covers the persistent configuration files. This may result in dynamically-assigned values being reset following an agent restart, unless the relevant persistent config files are explicitly loaded using the <strong>-c</strong> option.</p>
+<li><p>-C</p>
+<p>Do not read any configuration files except the ones optionally specified by the -c option. Note that this behaviour also covers the persistent configuration files. This may result in dynamically-assigned values being reset following an agent restart, unless the relevant persistent config files are explicitly loaded using the -c option.</p>
 </li>
-<li><p><strong>-d</strong></p>
+<li><p>-d</p>
 <p>Dump (in hexadecimal) the sent and received SNMP packets.</p>
 </li>
-<li><p><strong>-D*</strong>[TOKEN[,…]]*</p>
+<li><p>-D<em>[TOKEN[,…]]</em></p>
 <p>Turn on debugging output for the given <em>TOKEN</em>(s). Without any tokens specified, it defaults to printing all the tokens (which is equivalent to the keyword “ALL”). You might want to try<em>ALL</em> for extremely verbose output. Note: You can not put a space between the -D flag and the listed TOKENs.</p>
 </li>
-<li><p><strong>-f</strong></p>
+<li><p>-f</p>
 <p>Do not fork() from the calling shell.</p>
 </li>
-<li><p><strong>-g</strong> <em>GID</em></p>
+<li><p>-g <em>GID</em></p>
 <p>Change to the numerical group ID <em>GID</em> after opening listening sockets.</p>
 </li>
-<li><p><strong>-h, –help</strong></p>
+<li><p>-h, –help</p>
 <p>Display a brief usage message and then exit.</p>
 </li>
-<li><p><strong>-H</strong></p>
+<li><p>-H</p>
 <p>Display a list of configuration file directives understood by the agent and then exit.</p>
 </li>
-<li><p><strong>-I</strong> <em>[-]INITLIST</em></p>
+<li><p>-I <em>[-]INITLIST</em></p>
 <p>Specifies which modules should (or should not) be initialized when the agent starts up. If the comma-separated <em>INITLIST</em> is preceded with a ‘-‘, it is the list of modules that should <em>not</em>be started. Otherwise this is the list of the <em>only</em> modules that should be started.To get a list of compiled modules, run the agent with the arguments <em>-Dmib_init -H</em> (assuming debugging support has been compiled in).</p>
 </li>
-<li><p><strong>-L[efos]</strong></p>
+<li><p>-L[efos]</p>
 <p>Specify where logging output should be directed (standard error or output, to a file or via syslog). See LOGGING OPTIONS in <a href="http://www.net-snmp.org/docs/man/snmpcmd.html" target="_blank" rel="noopener">snmpcmd</a>(5) for details.</p>
 </li>
-<li><p><strong>-m</strong> <em>MIBLIST</em></p>
+<li><p>-m <em>MIBLIST</em></p>
 <p>Specifies a colon separated list of MIB modules to load for this application. This overrides the environment variable MIBS. See <em>snmpcmd(1)</em> for details.</p>
 </li>
-<li><p><strong>-M</strong> <em>DIRLIST</em></p>
+<li><p>-M <em>DIRLIST</em></p>
 <p>Specifies a colon separated list of directories to search for MIBs. This overrides the environment variable MIBDIRS. See <em>snmpcmd(1)</em> for details.</p>
 </li>
-<li><p><strong>-n</strong> <em>NAME</em></p>
+<li><p>-n <em>NAME</em></p>
 <p>Set an alternative application name (which will affect the configuration files loaded). By default this will be <em>snmpd</em>, regardless of the name of the actual binary.</p>
 </li>
-<li><p><strong>-p</strong> <em>FILE</em></p>
+<li><p>-p <em>FILE</em></p>
 <p>Save the process ID of the daemon in <em>FILE</em>.</p>
 </li>
-<li><p><strong>-q</strong></p>
+<li><p>-q</p>
 <p>Print simpler output for easier automated parsing.</p>
 </li>
-<li><p><strong>-r</strong></p>
+<li><p>-r</p>
 <p>Do not require root access to run the daemon. Specifically, do not exit if files only accessible to root (such as /dev/kmem etc.) cannot be opened.</p>
 </li>
-<li><p><strong>-u</strong> <em>UID</em></p>
+<li><p>-u <em>UID</em></p>
 <p>Change to the user ID <em>UID</em> (which can be given in numerical or textual form) after opening listening sockets.</p>
 </li>
-<li><p><strong>-U</strong></p>
+<li><p>-U</p>
 <p>Instructs the agent to not remove its pid file (see the -p option) on shutdown. Overrides the leave_pidfile token in the snmpd.conf file, see snmpd.conf(5).</p>
 </li>
-<li><p><strong>-v, –version</strong></p>
+<li><p>-v, –version</p>
 <p>Print version information for the agent and then exit.</p>
 </li>
-<li><p><strong>-V</strong></p>
+<li><p>-V</p>
 <p>Symbolically dump SNMP transactions.</p>
 </li>
-<li><p><strong>-x</strong> <em>ADDRESS</em></p>
+<li><p>-x <em>ADDRESS</em></p>
 <p>Listens for AgentX connections on the specified address rather than the default “/var/agentx/master”. The address can either be a Unix domain socket path, or the address of a network interface. The format is the same as the format of listening addresses described below.</p>
 </li>
-<li><p><strong>-X</strong></p>
+<li><p>-X</p>
 <p>Run as an AgentX subagent rather than as an SNMP master agent.</p>
 </li>
-<li><p><strong>–*</strong>name=value*</p>
+<li><p>–<em>name=value</em></p>
 <p>Allows to specify any token (“name”) supported in the snmpd.conf file and sets its value to “value”. Overrides the corresponding token in the snmpd.conf file. See snmpd.conf(5) for the full list of tokens.</p>
 </li>
 </ul>
@@ -784,7 +784,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#交叉编译"><span class="nav-number">1.</span> <span class="nav-text">交叉编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#修改配置文件snmpd-conf"><span class="nav-number">2.</span> <span class="nav-text">修改配置文件snmpd.conf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARM部署"><span class="nav-number">3.</span> <span class="nav-text">ARM部署</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#手动启动"><span class="nav-number">3.1.</span> <span class="nav-text">手动启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SNMP服务自启动"><span class="nav-number">3.2.</span> <span class="nav-text">SNMP服务自启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他控制操作"><span class="nav-number">3.3.</span> <span class="nav-text">其他控制操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#交叉编译"><span class="nav-number">1.</span> <span class="nav-text">交叉编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简单版配置文件snmpd-conf"><span class="nav-number">2.</span> <span class="nav-text">简单版配置文件snmpd.conf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARM部署"><span class="nav-number">3.</span> <span class="nav-text">ARM部署</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#手动启动"><span class="nav-number">3.1.</span> <span class="nav-text">手动启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SNMP服务自启动"><span class="nav-number">3.2.</span> <span class="nav-text">SNMP服务自启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他控制操作"><span class="nav-number">3.3.</span> <span class="nav-text">其他控制操作</span></a></li></ol></li></ol></div>
             
 
           </div>
