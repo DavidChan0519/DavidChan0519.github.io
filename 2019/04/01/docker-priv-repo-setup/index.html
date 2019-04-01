@@ -104,10 +104,12 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T07:50:03.000Z">
+<meta property="og:image" content="http://yoursite.com/images/docker_tag.png">
+<meta property="og:updated_time" content="2019-04-01T09:31:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传Docker镜像到私有镜像仓储">
 <meta name="twitter:description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
+<meta name="twitter:image" content="http://yoursite.com/images/docker_tag.png">
 
 
 
@@ -413,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-01 15:34:00 / Modified: 15:50:03" itemprop="dateCreated datePublished" datetime="2019-04-01T15:34:00+08:00">2019-04-01</time>
+              <time title="Created: 2019-04-01 15:34:00 / Modified: 17:31:44" itemprop="dateCreated datePublished" datetime="2019-04-01T15:34:00+08:00">2019-04-01</time>
             
 
             
@@ -478,14 +480,14 @@
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"insecure-registries"</span>:[</span><br><span class="line">        <span class="string">"10.30.37.149:6000"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>10.30.37.149为自己搭建的docker镜像仓储服务器IP，6000为服务器开放的端口</p>
 <p>然后执行以下命令重新启动docker</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo systemctl reload docker</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo systemctl reload docker</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><em>如果不做以上配置，push镜像的时候会报以下错误：http: server gave HTTP response to HTTPS client</em>  </p>
 </blockquote>
-<h6 id="2-给需要上传的镜像打tag"><a href="#2-给需要上传的镜像打tag" class="headerlink" title="2.给需要上传的镜像打tag"></a>2.给需要上传的镜像打tag</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo docker tag 3dbe0975429e  10.30.37.149:6000 /bm1682_debian:1.1.1</span></span><br></pre></td></tr></table></figure>
+<h6 id="2-给需要上传的镜像打tag"><a href="#2-给需要上传的镜像打tag" class="headerlink" title="2.给需要上传的镜像打tag"></a>2.给需要上传的镜像打tag</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo docker tag 3dbe0975429e  10.30.37.149:6000 /bm1682_debian:1.1.1</span><br></pre></td></tr></table></figure>
 <p>3dbe0975429e 为本地需要上传的镜像的IMAGE ID， tag格式：私有镜像仓储服务器IP:端口/镜像名称:版本号</p>
-<p>![/images/docker_tag.png]</p>
-<h6 id="3-上传镜像到私有仓储"><a href="#3-上传镜像到私有仓储" class="headerlink" title="3.上传镜像到私有仓储"></a>3.上传镜像到私有仓储</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo docker push 10.30.37.149:6000/bm1682_debian:1.1.1</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/docker_tag.png" alt></p>
+<h6 id="3-上传镜像到私有仓储"><a href="#3-上传镜像到私有仓储" class="headerlink" title="3.上传镜像到私有仓储"></a>3.上传镜像到私有仓储</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo docker push 10.30.37.149:6000/bm1682_debian:1.1.1</span><br></pre></td></tr></table></figure>
 <h6 id="4-下载私有仓储的镜像到本地"><a href="#4-下载私有仓储的镜像到本地" class="headerlink" title="4.下载私有仓储的镜像到本地"></a>4.下载私有仓储的镜像到本地</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull 10.30.37.149:6000/bm1682_debian:1.1.1</span><br></pre></td></tr></table></figure>
 
       
