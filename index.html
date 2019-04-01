@@ -390,7 +390,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/01/go-syntax/" class="post-title-link" itemprop="url">go_syntax</a>
+                <a href="/2019/04/01/go-syntax/" class="post-title-link" itemprop="url">Go编程语法注意事项</a>
               
             
           </h1>
@@ -415,9 +415,13 @@
                 
               
 
-              <time title="Created: 2019-04-01 16:28:46" itemprop="dateCreated datePublished" datetime="2019-04-01T16:28:46+08:00">2019-04-01</time>
+              <time title="Created: 2019-04-01 16:28:46 / Modified: 18:17:08" itemprop="dateCreated datePublished" datetime="2019-04-01T16:28:46+08:00">2019-04-01</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -454,7 +458,12 @@
           
             <p>
               
-              
+使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；
+
+全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；
+
+如果你想要交换两个变量的值，则可以简单地使用 a, 
+              ...
             </p>
           <!--noindex-->
           
