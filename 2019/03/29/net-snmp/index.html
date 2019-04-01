@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1.交叉编译openssl去官网(https://www.openssl.org/source/)下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+  <meta name="description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Net-SNMP的交叉编译 for ARM64">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/net-snmp/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="1.交叉编译openssl去官网(https://www.openssl.org/source/)下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+<meta property="og:description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T17:45:33.353Z">
+<meta property="og:updated_time" content="2019-04-01T17:50:16.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Net-SNMP的交叉编译 for ARM64">
-<meta name="twitter:description" content="1.交叉编译openssl去官网(https://www.openssl.org/source/)下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+<meta name="twitter:description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
 
 
 
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-02 01:45:33" itemprop="dateModified" datetime="2019-04-02T01:45:33+08:00">2019-04-02</time>
+                <time title="Modified: 2019-04-02 01:50:16" itemprop="dateModified" datetime="2019-04-02T01:50:16+08:00">2019-04-02</time>
               
             
           </span>
@@ -471,7 +471,7 @@
       
 
       
-        <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p>去官网<a href>(https://www.openssl.org/source/)</a>下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
+        <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">去官网下载</a>openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
 <a id="more"></a>
 <p>1) 配置编译选项</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release</span><br></pre></td></tr></table></figure>
@@ -481,7 +481,7 @@
 <p>4) 安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make install</span><br></pre></td></tr></table></figure>
 <p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<h5 id="2-交叉编译net-snmp"><a href="#2-交叉编译net-snmp" class="headerlink" title="2.交叉编译net-snmp"></a>2.交叉编译net-snmp</h5><p>在官网<a href>(http://www.net-snmp.org/download.html)</a>下载net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作</p>
+<h5 id="2-交叉编译net-snmp"><a href="#2-交叉编译net-snmp" class="headerlink" title="2.交叉编译net-snmp"></a>2.交叉编译net-snmp</h5><p><a href="http://www.net-snmp.org/download.html" target="_blank" rel="noopener">在官网下载</a>net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作</p>
 <p>1) 配置编译选项</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>./configure --host=arm-linux --target=arm-linux --build=i686-linux --with-cc=aarch64-linux-gnu-gcc  --with-ar=aarch64-linux-gnu-ar  --prefix=/home/lwang/work/chengw/github/net-snmp-5.7.3/release  --with-endianness=little --disable-manuals --disable-embedded-perl  --disable-perl-cc-checks --without-perl-modules --disable-scripts  --disable-applications  --with-openssl=/home/lwang/work/chengw/github/openssl-1.0.2q/release</span><br></pre></td></tr></table></figure>
 <p>2) 编译</p>
