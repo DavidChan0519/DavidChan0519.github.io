@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；  如果你想要交换两个变量的值，则可以简单地使用 a, b = b, a，但是两个变量的类型必须相同；  Go 语言程序中全局变量与局部变量名称可以相同，但">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T10:17:08.000Z">
+<meta property="og:updated_time" content="2019-04-01T10:18:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go编程语法注意事项">
 <meta name="twitter:description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；  如果你想要交换两个变量的值，则可以简单地使用 a, b = b, a，但是两个变量的类型必须相同；  Go 语言程序中全局变量与局部变量名称可以相同，但">
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-01 16:28:46 / Modified: 18:17:08" itemprop="dateCreated datePublished" datetime="2019-04-01T16:28:46+08:00">2019-04-01</time>
+              <time title="Created: 2019-04-01 16:28:46 / Modified: 18:18:52" itemprop="dateCreated datePublished" datetime="2019-04-01T16:28:46+08:00">2019-04-01</time>
             
 
             
@@ -482,6 +482,7 @@
 <li><p>Go 语言程序中全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑；</p>
 </li>
 <li><p>字符串是一种值类型，且值不可变，即创建某个文本后你无法再次修改这个文本的内容；更深入地讲，字符串是字节的定长数组；</p>
+<a id="more"></a>
 </li>
 <li><p>获取字符串中某个字节的地址的行为是<strong>非法</strong>的，例如：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str := <span class="string">"hello world"</span></span><br><span class="line">&amp;str[i]</span><br></pre></td></tr></table></figure>
