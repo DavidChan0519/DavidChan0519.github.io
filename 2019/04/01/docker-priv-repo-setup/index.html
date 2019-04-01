@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1.配置本地docker在 /etc/docker/daemon.json（如果没有该文件，则可创建一个） 填入如下字段: 12345&amp;#123;    &quot;insecure-registries&quot;:[        &quot;10.30.37.149:6000&quot;    ]&amp;#125; 10.30.37.149为自己搭建的docker镜像仓储服务器IP，6000为服务器开放的端口 然后执行以下命令重新启动d">
+  <meta name="description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="上传Docker镜像到私有镜像仓储">
 <meta property="og:url" content="http://yoursite.com/2019/04/01/docker-priv-repo-setup/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="1.配置本地docker在 /etc/docker/daemon.json（如果没有该文件，则可创建一个） 填入如下字段: 12345&amp;#123;    &quot;insecure-registries&quot;:[        &quot;10.30.37.149:6000&quot;    ]&amp;#125; 10.30.37.149为自己搭建的docker镜像仓储服务器IP，6000为服务器开放的端口 然后执行以下命令重新启动d">
+<meta property="og:description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T07:42:25.000Z">
+<meta property="og:updated_time" content="2019-04-01T07:50:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="上传Docker镜像到私有镜像仓储">
-<meta name="twitter:description" content="1.配置本地docker在 /etc/docker/daemon.json（如果没有该文件，则可创建一个） 填入如下字段: 12345&amp;#123;    &quot;insecure-registries&quot;:[        &quot;10.30.37.149:6000&quot;    ]&amp;#125; 10.30.37.149为自己搭建的docker镜像仓储服务器IP，6000为服务器开放的端口 然后执行以下命令重新启动d">
+<meta name="twitter:description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-01 15:34:00 / Modified: 15:42:25" itemprop="dateCreated datePublished" datetime="2019-04-01T15:34:00+08:00">2019-04-01</time>
+              <time title="Created: 2019-04-01 15:34:00 / Modified: 15:50:03" itemprop="dateCreated datePublished" datetime="2019-04-01T15:34:00+08:00">2019-04-01</time>
             
 
             
@@ -472,7 +472,9 @@
       
 
       
-        <h6 id="1-配置本地docker"><a href="#1-配置本地docker" class="headerlink" title="1.配置本地docker"></a>1.配置本地docker</h6><p>在 /etc/docker/daemon.json（如果没有该文件，则可创建一个） 填入如下字段:</p>
+        <p>出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储</p>
+<a id="more"></a>
+<h6 id="1-配置本地docker"><a href="#1-配置本地docker" class="headerlink" title="1.配置本地docker"></a>1.配置本地docker</h6><p>在 /etc/docker/daemon.json（如果没有该文件，则可创建一个） 填入如下字段:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"insecure-registries"</span>:[</span><br><span class="line">        <span class="string">"10.30.37.149:6000"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>10.30.37.149为自己搭建的docker镜像仓储服务器IP，6000为服务器开放的端口</p>
 <p>然后执行以下命令重新启动docker</p>
