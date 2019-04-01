@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T07:46:33.000Z">
+<meta property="og:updated_time" content="2019-04-01T16:44:33.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 容器端口映射方法">
 <meta name="twitter:description" content="docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。">
@@ -413,12 +413,24 @@
                 
               
 
-              <time title="Created: 2019-04-01 15:13:38 / Modified: 15:46:33" itemprop="dateCreated datePublished" datetime="2019-04-01T15:13:38+08:00">2019-04-01</time>
+              <time title="Created: 2019-04-01 15:13:38" itemprop="dateCreated datePublished" datetime="2019-04-01T15:13:38+08:00">2019-04-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-02 00:44:33" itemprop="dateModified" datetime="2019-04-02T00:44:33+08:00">2019-04-02</time>
               
             
           </span>
@@ -475,7 +487,7 @@
         <p>docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。</p>
 <a id="more"></a>
 <p>现在有如下两种方式导出端口：</p>
-<h6 id="1-启动容器的时候通过-P-，-p-或者–expose参数动态指定："><a href="#1-启动容器的时候通过-P-，-p-或者–expose参数动态指定：" class="headerlink" title="1.启动容器的时候通过-P ，-p 或者–expose参数动态指定："></a>1.启动容器的时候通过-P ，-p 或者–expose参数动态指定：</h6><blockquote>
+<h6 id="启动容器的时候通过-P，-p或者–expose参数动态指定："><a href="#启动容器的时候通过-P，-p或者–expose参数动态指定：" class="headerlink" title="启动容器的时候通过-P，-p或者–expose参数动态指定："></a>启动容器的时候通过-P，-p或者–expose参数动态指定：</h6><blockquote>
 <p>端口映射支持的格式</p>
 <p>ip : host port : container port     #指定宿主机ip、指定宿主机port、指定容器</p>
 <p>ip :: container port           #指定ip、指定容器port</p>
@@ -493,14 +505,14 @@
 <p>以上指令会将容器的1000-2000的所有端口，映射到宿主机端口1000-2000</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run --expose=1000-2000 -it ubuntu  /bin/bash</span></span><br></pre></td></tr></table></figure>
 <p>以上指令会将容器的1000-2000的所有端口，随机映射到宿主机端口上</p>
-<h6 id="2-在Dockerfile里面通过EXPOSE指令静态配置："><a href="#2-在Dockerfile里面通过EXPOSE指令静态配置：" class="headerlink" title="2.在Dockerfile里面通过EXPOSE指令静态配置："></a>2.在Dockerfile里面通过EXPOSE指令静态配置：</h6><p>EXPOSE指令只是指定暴露容器内部端口，映射规则还需要在运行容器时通过-P参数指定</p>
+<h6 id="在Dockerfile里面通过EXPOSE指令静态配置："><a href="#在Dockerfile里面通过EXPOSE指令静态配置：" class="headerlink" title="在Dockerfile里面通过EXPOSE指令静态配置："></a>在Dockerfile里面通过EXPOSE指令静态配置：</h6><p>EXPOSE指令只是指定暴露容器内部端口，映射规则还需要在运行容器时通过-P参数指定</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GET_IMAGE</span></span><br><span class="line"><span class="keyword">FROM</span>  centos</span><br><span class="line"></span><br><span class="line"><span class="comment"># MAINTAINER_INFO</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> hongxue hongxue@showjoy.com</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum -y install vim</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PORT</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">22</span></span><br></pre></td></tr></table></figure>
 <p>上述Dockerfile暴露了容器内的8080和22两个端口给宿主机。</p>
 <p>运行容器时，通过增加-P参数，Docker会自动为用户创建端口映射规则，并且帮助避免端口映射的冲突，这两个端口会被随机映射到宿主机上的两个端口上，</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run -d -it -P --name container_name image_name</span></span><br></pre></td></tr></table></figure>
 <p>EXPOSE指令也支持指定端口范围</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPOSE</span> <span class="number">7000</span>-<span class="number">8000</span></span><br></pre></td></tr></table></figure>
-<h6 id="3-查看指定容器端口映射配置"><a href="#3-查看指定容器端口映射配置" class="headerlink" title="3.查看指定容器端口映射配置:"></a>3.查看指定容器端口映射配置:</h6><p>示例：</p>
+<h6 id="查看指定容器端口映射配置"><a href="#查看指定容器端口映射配置" class="headerlink" title="查看指定容器端口映射配置:"></a>查看指定容器端口映射配置:</h6><p>示例：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker port container_ID ``<span class="comment">#容器ID</span></span></span><br><span class="line">80/tcp -&gt; 0.0.0.0:800</span><br></pre></td></tr></table></figure>
 
       
@@ -695,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-启动容器的时候通过-P-，-p-或者–expose参数动态指定："><span class="nav-number">1.</span> <span class="nav-text">1.启动容器的时候通过-P ，-p 或者–expose参数动态指定：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-在Dockerfile里面通过EXPOSE指令静态配置："><span class="nav-number">2.</span> <span class="nav-text">2.在Dockerfile里面通过EXPOSE指令静态配置：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-查看指定容器端口映射配置"><span class="nav-number">3.</span> <span class="nav-text">3.查看指定容器端口映射配置:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#启动容器的时候通过-P，-p或者–expose参数动态指定："><span class="nav-number">1.</span> <span class="nav-text">启动容器的时候通过-P，-p或者–expose参数动态指定：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在Dockerfile里面通过EXPOSE指令静态配置："><span class="nav-number">2.</span> <span class="nav-text">在Dockerfile里面通过EXPOSE指令静态配置：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看指定容器端口映射配置"><span class="nav-number">3.</span> <span class="nav-text">查看指定容器端口映射配置:</span></a></li></ol></div>
             
 
           </div>

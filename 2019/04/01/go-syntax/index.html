@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；  如果你想要交换两个变量的值，则可以简单地使用 a, b = b, a，但是两个变量的类型必须相同；  Go 语言程序中全局变量与局部变量名称可以相同，但">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T10:18:52.000Z">
+<meta property="og:updated_time" content="2019-04-01T16:45:53.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go编程语法注意事项">
 <meta name="twitter:description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；  如果你想要交换两个变量的值，则可以简单地使用 a, b = b, a，但是两个变量的类型必须相同；  Go 语言程序中全局变量与局部变量名称可以相同，但">
@@ -413,12 +413,24 @@
                 
               
 
-              <time title="Created: 2019-04-01 16:28:46 / Modified: 18:18:52" itemprop="dateCreated datePublished" datetime="2019-04-01T16:28:46+08:00">2019-04-01</time>
+              <time title="Created: 2019-04-01 16:28:46" itemprop="dateCreated datePublished" datetime="2019-04-01T16:28:46+08:00">2019-04-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-02 00:45:53" itemprop="dateModified" datetime="2019-04-02T00:45:53+08:00">2019-04-02</time>
               
             
           </span>
@@ -501,7 +513,9 @@
 </li>
 <li><p>内嵌将一个已存在类型的字段和方法注入到了另一个类型里：匿名字段上的方法“晋升”成为了外层类型的方法，比较类似于面向对象里面的继承;</p>
 </li>
-<li><p>空接口： type Any interface{ }，不实现任何方法，所以任何类型都实现了空接口. 可以给一个空接口类型的变量赋任何类型的值， 每个空接口类型变量占用2个字节：一个用来存储它包含的类型，另一个用来存储它包含的数据或者指向数据的指针,空接口类似于C语言的*void指针；</p>
+<li><p>空接口： </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Any <span class="keyword">interface</span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不实现任何方法，所以任何类型都实现了空接口. 可以给一个空接口类型的变量赋任何类型的值， 每个空接口类型变量占用2个字节：一个用来存储它包含的类型，另一个用来存储它包含的数据或者指向数据的指针,空接口类似于C语言的*void指针；</p>
 </li>
 <li><p>复制数据切片至空接口切片必须逐一赋值，因为内存布局不一样；</p>
 </li>
