@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。">
+  <meta name="description" content="docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。现在有如下两种方式导出端口： 1.启动容器的时候通过-P ，-p 或者–expose参数指定： 端口映射支持的格式 ip : host port : container port     #指定宿主机ip、指定宿主机port、指定容器 ip :: container port">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Net-SNMP企业节点动态库编辑">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/enterprise-priv/index.html">
+<meta property="og:title" content="Docker 容器端口映射方法">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/docker-port-expose/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。">
+<meta property="og:description" content="docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。现在有如下两种方式导出端口： 1.启动容器的时候通过-P ，-p 或者–expose参数指定： 端口映射支持的格式 ip : host port : container port     #指定宿主机ip、指定宿主机port、指定容器 ip :: container port">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T11:16:36.903Z">
+<meta property="og:updated_time" content="2019-04-01T07:24:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net-SNMP企业节点动态库编辑">
-<meta name="twitter:description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。">
+<meta name="twitter:title" content="Docker 容器端口映射方法">
+<meta name="twitter:description" content="docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。现在有如下两种方式导出端口： 1.启动容器的时候通过-P ，-p 或者–expose参数指定： 端口映射支持的格式 ip : host port : container port     #指定宿主机ip、指定宿主机port、指定容器 ip :: container port">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/03/29/enterprise-priv/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/docker-port-expose/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Net-SNMP企业节点动态库编辑 | 程伟的技术笔记</title>
+  <title>Docker 容器端口映射方法 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/enterprise-priv/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/docker-port-expose/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net-SNMP企业节点动态库编辑
+          <h1 class="post-title" itemprop="name headline">Docker 容器端口映射方法
 
               
             
@@ -413,24 +413,12 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-04-01 15:13:38 / Modified: 15:24:51" itemprop="dateCreated datePublished" datetime="2019-04-01T15:13:38+08:00">2019-04-01</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-30 19:16:36" itemprop="dateModified" datetime="2019-03-30T19:16:36+08:00">2019-03-30</time>
               
             
           </span>
@@ -448,8 +436,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/03/29/enterprise-priv/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/29/enterprise-priv/" itemprop="commentCount"></span>
+                <a href="/2019/04/01/docker-port-expose/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/01/docker-port-expose/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -484,16 +472,34 @@
       
 
       
-        <p>查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。</p>
-<a id="more"></a>
-<h5 id="企业节点动态库初始化函数"><a href="#企业节点动态库初始化函数" class="headerlink" title="企业节点动态库初始化函数"></a>企业节点动态库初始化函数</h5><p>在使用mib2c工具自动生成相应代码后，还需要在代码中添加一个启动函数，<strong>该启动函数是snmpd守护进程调用企业节点动态库的入口</strong>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void init_bmserv(void)｛</span><br><span class="line">    ...</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-<p>该函数bmserv的命名应同生成的动态库名称libbmserv.so要保持一致</p>
-<h5 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h5><p>交叉编译动态库，模版makefile如下(根据实际环境进行修改适配)：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 通用Makefile</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">CC = aarch64-linux-gnu-gcc</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 编译选项</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 宏定义选项</span></span><br><span class="line">MACRO_FLAGS	:=  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用到的库，只要写lib后的名称，不用加.so或.a</span></span><br><span class="line">LIB_FLAGS	:= curl crypto cjson</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译.c到.o文件的选项</span></span><br><span class="line">CC_FLAGS := -Wall -fPIC</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接.o文件用到的选项</span></span><br><span class="line">LINK_FLAGS := -Wall -fPIC -lpthread -shared</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 源代码目录</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">ROOT := <span class="variable">$(<span class="built_in">shell</span> pwd)</span></span><br><span class="line">SRCDIRS	:= <span class="variable">$(ROOT)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 头文件目录</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">INCLUDE_DIRS := <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/curl-7.60.0/<span class="keyword">include</span>/</span><br><span class="line">INCLUDE_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/net-snmp/<span class="keyword">include</span>/</span><br><span class="line">INCLUDE_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/cJSON/<span class="keyword">include</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 动态库、静态库目录</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">LIB_DIRS := <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/curl-7.60.0/lib/arm64/</span><br><span class="line">LIB_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/net-snmp/lib/arm64/</span><br><span class="line">LIB_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/cJSON/lib/arm64/</span><br><span class="line">LIB_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/openssl/lib/arm64/</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 最终生成的程序名称</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">TARGET := libbmserv.so</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 被编译的.c文件</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">SRC_C	:= <span class="variable">$(<span class="built_in">foreach</span> <span class="built_in">dir</span>, <span class="variable">$(SRCDIRS)</span>, $(<span class="built_in">wildcard</span> <span class="variable">$(dir)</span>/*.c)</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 所有的.o文件</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">OBJ_C	:= <span class="variable">$(<span class="built_in">notdir</span> $(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(SRC_C)</span>)</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 编译规则</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: all cmd_init cmd_last clean</span></span><br><span class="line"><span class="section">all:cmd_init <span class="variable">$(TARGET)</span> cmd_last</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译前命令</span></span><br><span class="line"><span class="section">cmd_init:</span></span><br><span class="line">	@echo <span class="string">"SRC DIR:"</span> <span class="variable">$(SRCDIRS)</span></span><br><span class="line">	@echo cmd_init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译后命令</span></span><br><span class="line"><span class="section">cmd_last:</span></span><br><span class="line">	@echo cmd_last</span><br><span class="line"></span><br><span class="line">VPATH	= <span class="variable">$(SRCDIRS)</span></span><br><span class="line"><span class="variable">$(TARGET)</span>:<span class="variable">$(OBJ_C)</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(LINK_FLAGS)</span> $(MACRO_FLAGS:%=-D%) $(INCLUDE_DIRS:%=-I%) $(LIB_DIRS:%=-L%) -o <span class="variable">$@</span> <span class="variable">$^</span> $(LIB_FLAGS:%=-l%) </span><br><span class="line"></span><br><span class="line"><span class="variable">$(OBJ_C)</span>:%.o:%.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CC_FLAGS)</span> $(MACRO_FLAGS:%=-D%) $(INCLUDE_DIRS:%=-I%) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f *.o</span><br><span class="line">	rm -f <span class="variable">$(TARGET)</span></span><br></pre></td></tr></table></figure>
-<p>编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make</span></span><br></pre></td></tr></table></figure>
-<p>即可在当前目录下生成企业私有节点动态库libbmserv.so</p>
+        <p>docker容器在启动的时候，如果不指定端口映射参数，在容器外部是无法通过网络来访问容器内的网络应用和服务的。现在有如下两种方式导出端口：</p>
+<h6 id="1-启动容器的时候通过-P-，-p-或者–expose参数指定："><a href="#1-启动容器的时候通过-P-，-p-或者–expose参数指定：" class="headerlink" title="1.启动容器的时候通过-P ，-p 或者–expose参数指定："></a>1.启动容器的时候通过-P ，-p 或者–expose参数指定：</h6><blockquote>
+<p>端口映射支持的格式</p>
+<p>ip : host port : container port     #指定宿主机ip、指定宿主机port、指定容器</p>
+<p>ip :: container port           #指定ip、指定容器port</p>
+<p>host port : container port  #指定宿主机port、指定容器port</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$docker</span> run -P -it ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>以上指令会将容器暴露的所有端口，都随机映射到宿主机上(<strong>不推荐</strong>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run -P 80 -it ubuntu  /bin/bash</span></span><br></pre></td></tr></table></figure>
+<p>以上指令会将容器的80端口随机映射到宿主机的一个端口上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run -p 8000:80 -it ubuntu /bin/bash</span></span><br></pre></td></tr></table></figure>
+<p>以上指令会将容器的80端口映射到宿主机的8000端口上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run -P 192.168.0.100::80 -it ubuntu  /bin/bash</span></span><br></pre></td></tr></table></figure>
+<p>以上指令会将容器的IP 192.168.0.100和80端口，映射到宿主机的8000端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 1000-2000:1000-2000 -it ubuntu  /bin/bash</span><br></pre></td></tr></table></figure>
+<p>以上指令会将容器的1000-2000的所有端口，映射到宿主机端口1000-2000</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run --expose=1000-2000 -it ubuntu  /bin/bash</span></span><br></pre></td></tr></table></figure>
+<p>以上指令会将容器的1000-2000的所有端口，随机映射到宿主机端口上</p>
+<h6 id="2-在Dockerfile里面通过EXPOSE指令配置："><a href="#2-在Dockerfile里面通过EXPOSE指令配置：" class="headerlink" title="2.在Dockerfile里面通过EXPOSE指令配置："></a>2.在Dockerfile里面通过EXPOSE指令配置：</h6><p>EXPOSE指令只是指定暴露容器内部端口，映射规则还需要在运行容器时通过-P参数指定</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GET_IMAGE</span></span><br><span class="line"><span class="keyword">FROM</span>  centos</span><br><span class="line"></span><br><span class="line"><span class="comment"># MAINTAINER_INFO</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> hongxue hongxue@showjoy.com</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum -y install vim</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PORT</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">22</span></span><br></pre></td></tr></table></figure>
+<p>上述Dockerfile暴露了容器内的8080和22两个端口给宿主机。</p>
+<p>运行容器时，通过增加-P参数，Docker会自动为用户创建端口映射规则，并且帮助避免端口映射的冲突，这两个端口会被随机映射到宿主机上的两个端口上，</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker run -d -it -P --name container_name image_name</span></span><br></pre></td></tr></table></figure>
+<p>EXPOSE指令也支持指定端口范围</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">EXPOSE</span> <span class="number">7000</span>-<span class="number">8000</span></span><br></pre></td></tr></table></figure>
+<h6 id="3-查看指定容器端口映射配置"><a href="#3-查看指定容器端口映射配置" class="headerlink" title="3.查看指定容器端口映射配置:"></a>3.查看指定容器端口映射配置:</h6><p>示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker port container_ID ``<span class="comment">#容器ID</span></span></span><br><span class="line">80/tcp -&gt; 0.0.0.0:800</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -557,8 +563,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/29/net-snmp-deployment/" rel="next" title="Net-SNMP ARM部署">
-                <i class="fa fa-chevron-left"></i> Net-SNMP ARM部署
+              <a href="/2019/03/29/enterprise-priv/" rel="next" title="Net-SNMP企业节点动态库编辑">
+                <i class="fa fa-chevron-left"></i> Net-SNMP企业节点动态库编辑
               </a>
             
           </div>
@@ -566,10 +572,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/docker-port-expose/" rel="prev" title="Docker 容器端口映射方法">
-                Docker 容器端口映射方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -687,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#企业节点动态库初始化函数"><span class="nav-number">1.</span> <span class="nav-text">企业节点动态库初始化函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Makefile"><span class="nav-number">2.</span> <span class="nav-text">Makefile</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-启动容器的时候通过-P-，-p-或者–expose参数指定："><span class="nav-number">1.</span> <span class="nav-text">1.启动容器的时候通过-P ，-p 或者–expose参数指定：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-在Dockerfile里面通过EXPOSE指令配置："><span class="nav-number">2.</span> <span class="nav-text">2.在Dockerfile里面通过EXPOSE指令配置：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-查看指定容器端口映射配置"><span class="nav-number">3.</span> <span class="nav-text">3.查看指定容器端口映射配置:</span></a></li></ol></div>
             
 
           </div>
@@ -872,9 +874,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2019/03/29/enterprise-priv/";
-    this.page.identifier = "2019/03/29/enterprise-priv/";
-    this.page.title = 'Net-SNMP企业节点动态库编辑';
+    this.page.url = "http://yoursite.com/2019/04/01/docker-port-expose/";
+    this.page.identifier = "2019/04/01/docker-port-expose/";
+    this.page.title = 'Docker 容器端口映射方法';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
