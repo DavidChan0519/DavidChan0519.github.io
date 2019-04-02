@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行： 进入源码目录1$cd opencv-4.0.1 创建编译目录build，使用cmake进行源码外编译 如果系统没有安装cmake工具，请先安装cmake  1$mkdir build 进入编译目录1$cd build 配置 指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口">
+  <meta name="description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行：">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV源码编译安装">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/opencv-src-compile/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行： 进入源码目录1$cd opencv-4.0.1 创建编译目录build，使用cmake进行源码外编译 如果系统没有安装cmake工具，请先安装cmake  1$mkdir build 进入编译目录1$cd build 配置 指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口">
+<meta property="og:description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-02T04:08:37.000Z">
+<meta property="og:updated_time" content="2019-04-02T04:09:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV源码编译安装">
-<meta name="twitter:description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行： 进入源码目录1$cd opencv-4.0.1 创建编译目录build，使用cmake进行源码外编译 如果系统没有安装cmake工具，请先安装cmake  1$mkdir build 进入编译目录1$cd build 配置 指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口">
+<meta name="twitter:description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行：">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 11:56:24 / Modified: 12:08:37" itemprop="dateCreated datePublished" datetime="2019-04-02T11:56:24+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-02 11:56:24 / Modified: 12:09:59" itemprop="dateCreated datePublished" datetime="2019-04-02T11:56:24+08:00">2019-04-02</time>
             
 
             
@@ -460,18 +460,19 @@
 
       
         <p>从<a href="https://opencv.org/releases.html" target="_blank" rel="noopener">官网</a>下载最新版4.0.1源码，解压缩，并按以下步骤执行：</p>
-<h6 id="进入源码目录"><a href="#进入源码目录" class="headerlink" title="进入源码目录"></a>进入源码目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> opencv-4.0.1</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h6 id="进入源码目录"><a href="#进入源码目录" class="headerlink" title="进入源码目录"></a>进入源码目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>cd opencv-4.0.1</span><br></pre></td></tr></table></figure>
 <h6 id="创建编译目录build，使用cmake进行源码外编译"><a href="#创建编译目录build，使用cmake进行源码外编译" class="headerlink" title="创建编译目录build，使用cmake进行源码外编译"></a>创建编译目录build，使用cmake进行源码外编译</h6><blockquote>
 <p>如果系统没有安装cmake工具，请先安装cmake</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">mkdir build</span></span><br></pre></td></tr></table></figure>
-<h6 id="进入编译目录"><a href="#进入编译目录" class="headerlink" title="进入编译目录"></a>进入编译目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> build</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>mkdir build</span><br></pre></td></tr></table></figure>
+<h6 id="进入编译目录"><a href="#进入编译目录" class="headerlink" title="进入编译目录"></a>进入编译目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>cd build</span><br></pre></td></tr></table></figure>
 <h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><blockquote>
 <p>指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> -D OPENCV_GENERATE_PKGCONFIG=ON  -D BUILD_opencv_python2=ON  ../</span></span><br></pre></td></tr></table></figure>
-<h6 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
-<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo make install</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=ON  -D BUILD_opencv_python2=ON  ../</span><br></pre></td></tr></table></figure>
+<h6 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make -j4</span><br></pre></td></tr></table></figure>
+<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo make install</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：如果cmake配置增加 -D BUILD_opencv_world=ON 选项编译，会将所有动态库融合为一个动态库opencv_world.so</p>
 </blockquote>
