@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；">
+  <meta name="description" content="看完《Go语言实战》和《Go核心编程》这两本教程，自己总结了一些使用Go编程的要领和注意事项">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go编程语法注意事项">
 <meta property="og:url" content="http://yoursite.com/2019/04/01/go-syntax/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；">
+<meta property="og:description" content="看完《Go语言实战》和《Go核心编程》这两本教程，自己总结了一些使用Go编程的要领和注意事项">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T17:39:56.036Z">
+<meta property="og:updated_time" content="2019-04-02T04:14:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go编程语法注意事项">
-<meta name="twitter:description" content="使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；  全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；">
+<meta name="twitter:description" content="看完《Go语言实战》和《Go核心编程》这两本教程，自己总结了一些使用Go编程的要领和注意事项">
 
 
 
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-02 01:39:56" itemprop="dateModified" datetime="2019-04-02T01:39:56+08:00">2019-04-02</time>
+                <time title="Modified: 2019-04-02 12:14:53" itemprop="dateModified" datetime="2019-04-02T12:14:53+08:00">2019-04-02</time>
               
             
           </span>
@@ -471,28 +471,26 @@
       
 
       
-        <ul>
+        <p>看完《Go语言实战》和《Go核心编程》这两本教程，自己总结了一些使用Go编程的要领和注意事项</p>
+<a id="more"></a>
+<ul>
 <li><p>使用 := 赋值操作符，这是使用变量的首选形式，但是它只能被用在函数体内，而不可以用于全局变量的声明与赋值。使用操作符 := 可以高效地创建一个新的变量，称之为初始化声明；</p>
 </li>
 <li><p>全局变量允许声明但不使用，但是局部变量声明后不使用，则编译会报错；</p>
-<a id="more"></a>
 </li>
-<li><p>如果你想要交换两个变量的值，则可以如下方式：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a, b = b, a <span class="comment">//但是两个变量的类型必须相同</span></span><br></pre></td></tr></table></figure>
+<li><p>如果你想要交换两个变量的值，则可以简单地使用 a, b = b, a，但是两个变量的类型必须相同；</p>
 </li>
 <li><p>Go 语言程序中全局变量与局部变量名称可以相同，但是函数内的局部变量会被优先考虑；</p>
 </li>
 <li><p>字符串是一种值类型，且值不可变，即创建某个文本后你无法再次修改这个文本的内容；更深入地讲，字符串是字节的定长数组；</p>
+<!-- more -->
 </li>
 <li><p>获取字符串中某个字节的地址的行为是<strong>非法</strong>的，例如：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str := <span class="string">"hello world"</span></span><br><span class="line">&amp;str[i]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>switch语句case中不需要break来结束;</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> xxx:&#123;</span><br><span class="line">  <span class="keyword">case</span> a:</span><br><span class="line">  <span class="keyword">case</span> b:</span><br><span class="line">  <span class="keyword">case</span> c:</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>未初始化的map的值是nil;</p>
-</li>
-<li><p>map默认是无序的,既不是按照key的顺序排列，也不是按照value排序的;</p>
+<li><p>未初始化的map的值是nil。map默认是无序的,既不是按照key的顺序排列，也不是按照value排序的;</p>
 </li>
 <li><p>无论是结构体还是结构体指针类型，都使用<strong>点号</strong>来获取结构体字段（不同于C/C++，指针使用-&gt;来获取成员变量）;</p>
 </li>
@@ -504,9 +502,7 @@
 </li>
 <li><p>内嵌将一个已存在类型的字段和方法注入到了另一个类型里：匿名字段上的方法“晋升”成为了外层类型的方法，比较类似于面向对象里面的继承;</p>
 </li>
-<li><p>空接口： </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Any <span class="keyword">interface</span>&#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不实现任何方法，所以任何类型都实现了空接口. 可以给一个空接口类型的变量赋任何类型的值， 每个空接口类型变量占用2个字节：一个用来存储它包含的类型，另一个用来存储它包含的数据或者指向数据的指针,空接口类似于C语言的*void指针；</p>
+<li><p>空接口： type Any interface{ }，不实现任何方法，所以任何类型都实现了空接口. 可以给一个空接口类型的变量赋任何类型的值， 每个空接口类型变量占用2个字节：一个用来存储它包含的类型，另一个用来存储它包含的数据或者指向数据的指针,空接口类似于C语言的*void指针；</p>
 </li>
 <li><p>复制数据切片至空接口切片必须逐一赋值，因为内存布局不一样；</p>
 </li>
