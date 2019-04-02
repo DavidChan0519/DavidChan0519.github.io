@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** &apos;wchar.h&apos; file not found**\#include_next &amp;lt;wchar.h&amp;gt;^~~~~">
+  <meta name="description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found”">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用clion编译c++程序报错">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/clion-compile-err/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** &apos;wchar.h&apos; file not found**\#include_next &amp;lt;wchar.h&amp;gt;^~~~~">
+<meta property="og:description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found”">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-02T14:18:02.034Z">
+<meta property="og:updated_time" content="2019-04-02T14:22:37.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用clion编译c++程序报错">
-<meta name="twitter:description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** &apos;wchar.h&apos; file not found**\#include_next &amp;lt;wchar.h&amp;gt;^~~~~">
+<meta name="twitter:description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found”">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 22:11:03 / Modified: 22:18:02" itemprop="dateCreated datePublished" datetime="2019-04-02T22:11:03+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-02 22:11:03 / Modified: 22:22:37" itemprop="dateCreated datePublished" datetime="2019-04-02T22:11:03+08:00">2019-04-02</time>
             
 
             
@@ -460,6 +460,7 @@
 
       
         <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>Clion编译c++程序，报错 “wchar.h not found”</p>
+<a id="more"></a>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:<span class="number">119</span>:<span class="number">15</span>:** **fatal error:** </span><br><span class="line">'wchar.h' file not found**</span><br><span class="line">\#include_next &lt;wchar.h&gt;</span><br><span class="line">^~~~~~~~~</span><br><span class="line"><span class="number">1</span> error generated.</span><br><span class="line">make[<span class="number">2</span>]: *** [CMakeFiles/test_virtual.bin.dir/test_virtual.cpp.o] Error <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [CMakeFiles/test_virtual.bin.dir/all] Error <span class="number">2</span></span><br><span class="line">make: *** [all] Error <span class="number">2</span></span><br></pre></td></tr></table></figure>
 <h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>click “Tools -&gt; CMake -&gt; ResetCache and Reload Project”</p>
 <p>重新编译即可</p>
