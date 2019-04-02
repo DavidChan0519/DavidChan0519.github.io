@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** &apos;wchar.h&apos; file not found**\#include_next &amp;lt;wchar.h&amp;gt;^~~~~">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="clion_compile_err">
+<meta property="og:title" content="使用clion编译c++程序报错">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/clion-compile-err/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** &apos;wchar.h&apos; file not found**\#include_next &amp;lt;wchar.h&amp;gt;^~~~~">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-02T14:11:03.592Z">
+<meta property="og:updated_time" content="2019-04-02T14:18:02.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="clion_compile_err">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="使用clion编译c++程序报错">
+<meta name="twitter:description" content="问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** &apos;wchar.h&apos; file not found**\#include_next &amp;lt;wchar.h&amp;gt;^~~~~">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>clion_compile_err | 程伟的技术笔记</title>
+  <title>使用clion编译c++程序报错 | 程伟的技术笔记</title>
   
 
 
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">clion_compile_err
+          <h1 class="post-title" itemprop="name headline">使用clion编译c++程序报错
 
               
             
@@ -413,9 +413,13 @@
                 
               
 
-              <time title="Created: 2019-04-02 22:11:03" itemprop="dateCreated datePublished" datetime="2019-04-02T22:11:03+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-02 22:11:03 / Modified: 22:18:02" itemprop="dateCreated datePublished" datetime="2019-04-02T22:11:03+08:00">2019-04-02</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -455,7 +459,11 @@
       
 
       
-        
+        <h5 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h5><p>Clion编译c++程序，报错 “wchar.h not found”</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:<span class="number">119</span>:<span class="number">15</span>:** **fatal error:** </span><br><span class="line">'wchar.h' file not found**</span><br><span class="line">\#include_next &lt;wchar.h&gt;</span><br><span class="line">^~~~~~~~~</span><br><span class="line"><span class="number">1</span> error generated.</span><br><span class="line">make[<span class="number">2</span>]: *** [CMakeFiles/test_virtual.bin.dir/test_virtual.cpp.o] Error <span class="number">1</span></span><br><span class="line">make[<span class="number">1</span>]: *** [CMakeFiles/test_virtual.bin.dir/all] Error <span class="number">2</span></span><br><span class="line">make: *** [all] Error <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>click “Tools -&gt; CMake -&gt; ResetCache and Reload Project”</p>
+<p>重新编译即可</p>
+
       
     </div>
 
@@ -574,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -621,6 +638,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#问题描述："><span class="nav-number">1.</span> <span class="nav-text">问题描述：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解决办法："><span class="nav-number">2.</span> <span class="nav-text">解决办法：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

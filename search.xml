@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[clion_compile_err]]></title>
+    <title><![CDATA[使用clion编译c++程序报错]]></title>
     <url>%2F2019%2F04%2F02%2Fclion-compile-err%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** 'wchar.h' file not found**\#include_next &lt;wchar.h&gt;^~~~~~~~~1 error generated.make[2]: *** [CMakeFiles/test_virtual.bin.dir/test_virtual.cpp.o] Error 1make[1]: *** [CMakeFiles/test_virtual.bin.dir/all] Error 2make: *** [all] Error 2 解决办法：click “Tools -&gt; CMake -&gt; ResetCache and Reload Project” 重新编译即可]]></content>
   </entry>
   <entry>
     <title><![CDATA[在Dockerfile中使用COPY指令]]></title>
