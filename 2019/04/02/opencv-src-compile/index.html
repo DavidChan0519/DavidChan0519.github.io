@@ -463,18 +463,18 @@
       
         <p>从<a href="https://opencv.org/releases.html" target="_blank" rel="noopener">官网</a>下载最新版4.0.1源码，解压缩，并按以下步骤执行：</p>
 <a id="more"></a>
-<h6 id="进入源码目录"><a href="#进入源码目录" class="headerlink" title="进入源码目录"></a>进入源码目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>cd opencv-4.0.1</span><br></pre></td></tr></table></figure>
+<h6 id="进入源码目录"><a href="#进入源码目录" class="headerlink" title="进入源码目录"></a>进入源码目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> opencv-4.0.1</span></span><br></pre></td></tr></table></figure>
 <h6 id="创建编译目录build，使用cmake进行源码外编译"><a href="#创建编译目录build，使用cmake进行源码外编译" class="headerlink" title="创建编译目录build，使用cmake进行源码外编译"></a>创建编译目录build，使用cmake进行源码外编译</h6><blockquote>
 <p>如果系统没有安装cmake工具，请先安装cmake</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>mkdir build</span><br></pre></td></tr></table></figure>
-<h6 id="进入编译目录"><a href="#进入编译目录" class="headerlink" title="进入编译目录"></a>进入编译目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>cd build</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">mkdir build</span></span><br></pre></td></tr></table></figure>
+<h6 id="进入编译目录"><a href="#进入编译目录" class="headerlink" title="进入编译目录"></a>进入编译目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> build</span></span><br></pre></td></tr></table></figure>
 <h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><blockquote>
 <p>指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=ON  -D BUILD_opencv_python2=ON  ../</span><br></pre></td></tr></table></figure>
-<h6 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>make -j4</span><br></pre></td></tr></table></figure>
-<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> -D OPENCV_GENERATE_PKGCONFIG=ON  -D BUILD_opencv_python2=ON  ../</span></span><br></pre></td></tr></table></figure>
+<h6 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
+<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo make install</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注：如果cmake配置增加 -D BUILD_opencv_world=ON 选项编译，会将所有动态库融合为一个动态库opencv_world.so</p>
 </blockquote>
@@ -553,6 +553,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/04/02/git-and-gerrit-guide/" rel="prev" title="Git for Gerrit 客户端配置指导">
+                Git for Gerrit 客户端配置指导 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -624,7 +628,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

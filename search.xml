@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git for Gerrit 客户端配置指导]]></title>
+    <url>%2F2019%2F04%2F02%2Fgit-and-gerrit-guide%2F</url>
+    <content type="text"><![CDATA[Install and config gitConfig git1$git config --global user.name "Your Name" 1$git config --global user.email "your.email@gmail.com" Note：”Your Name” must be same with your domain name, for example wei.cheng Check config information1$git config --list Generate and upload ssh keyOn Linux 1$ssh-keygen -t rsa -C "your.email@gmail.com" Don’t use any passphrase 1$vim ~/.ssh/config 123456----------------------------------------------------------------Host * KexAlgorithms +diffie-hellman-group1-sha1---------------------------------------------------------------- 1$cat ~/.ssh/id_rsa.pub Copy the whole file into clipboardOpen gerrit website , On website, goto “Settings -&gt; SSH Public Keys”, paste the key, press “Add” Clone projects12345678910111213141516$git clone &lt;ssh://your.name@gerrit.ai.bmfusion.net:29418/xxx.git&gt;$git submodule init$git submodule update --rebase --remote$git fetch origin$git rebase origin/master#Do merge if needed, after solving conflict, run$git rebase --continue#Amend the previous change if needed$git commit --amend#Push$git push origin HEAD:refs/for/master]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[OpenCV源码编译安装]]></title>
     <url>%2F2019%2F04%2F02%2Fopencv-src-compile%2F</url>
     <content type="text"><![CDATA[从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行： 进入源码目录1$cd opencv-4.0.1 创建编译目录build，使用cmake进行源码外编译 如果系统没有安装cmake工具，请先安装cmake 1$mkdir build 进入编译目录1$cd build 配置 指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口 1$cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=ON -D BUILD_opencv_python2=ON ../ 编译1$make -j4 安装1$sudo make install 注：如果cmake配置增加 -D BUILD_opencv_world=ON 选项编译，会将所有动态库融合为一个动态库opencv_world.so 结果：]]></content>
