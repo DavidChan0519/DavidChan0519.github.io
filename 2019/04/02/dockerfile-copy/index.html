@@ -105,7 +105,7 @@
 <meta property="og:description" content="COPY指令:1COPY &amp;lt;src&amp;gt;  &amp;lt;dest&amp;gt;">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/dockerfile_copy_error.png">
-<meta property="og:updated_time" content="2019-04-02T09:28:00.000Z">
+<meta property="og:updated_time" content="2019-04-02T09:41:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Dockerfile中使用COPY指令">
 <meta name="twitter:description" content="COPY指令:1COPY &amp;lt;src&amp;gt;  &amp;lt;dest&amp;gt;">
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 16:57:22 / Modified: 17:28:00" itemprop="dateCreated datePublished" datetime="2019-04-02T16:57:22+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-02 16:57:22 / Modified: 17:41:23" itemprop="dateCreated datePublished" datetime="2019-04-02T16:57:22+08:00">2019-04-02</time>
             
 
             
@@ -468,11 +468,11 @@
 <p>默认情况下 docker build -t custom  . 命令中的 . 表示build上下文为当前目录。</p>
 <p>当然我们可以指定一个目录作为上下文，比如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>docker build -t custom /home/linaro</span><br></pre></td></tr></table></figure>
-<p>在使用COPY指令时，本地的源文件要位于build上下文中。<strong>如果build上下文是当前目录，则源文件要位于dockerfile所在的当前目录</strong>。</p>
+<h6 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h6><p>在使用COPY指令时，本地的源文件要位于build上下文中。<strong>如果build上下文是当前目录，则源文件要位于dockerfile所在的当前目录</strong>。</p>
 <p>例如：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span> /work</span><br><span class="line"><span class="keyword">COPY</span> snmp  .</span><br></pre></td></tr></table></figure>
 <p>snmp目录要位于dockerfile所在的目录中</p>
-<p>否则build过程中会如下报错：</p>
+<p>否则build过程中会报错：</p>
 <p><img src="/images/dockerfile_copy_error.png" alt></p>
 
       
@@ -660,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#COPY指令"><span class="nav-number">1.</span> <span class="nav-text">COPY指令:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#COPY指令"><span class="nav-number">1.</span> <span class="nav-text">COPY指令:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注意事项："><span class="nav-number">2.</span> <span class="nav-text">注意事项：</span></a></li></ol></div>
             
 
           </div>
