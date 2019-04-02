@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="COPY指令我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PAT">
+  <meta name="description" content="COPY指令:**COPY   我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker bui">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Dockerfile中使用COPY指令">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/dockerfile-copy/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="COPY指令我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PAT">
+<meta property="og:description" content="COPY指令:**COPY   我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker bui">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/dockerfile_copy_err.png">
-<meta property="og:updated_time" content="2019-04-02T09:13:04.000Z">
+<meta property="og:image" content="http://yoursite.com/images/dockerfile_copy_error.png">
+<meta property="og:updated_time" content="2019-04-02T09:26:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Dockerfile中使用COPY指令">
-<meta name="twitter:description" content="COPY指令我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PAT">
-<meta name="twitter:image" content="http://yoursite.com/images/dockerfile_copy_err.png">
+<meta name="twitter:description" content="COPY指令:**COPY   我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker bui">
+<meta name="twitter:image" content="http://yoursite.com/images/dockerfile_copy_error.png">
 
 
 
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 16:57:22 / Modified: 17:13:04" itemprop="dateCreated datePublished" datetime="2019-04-02T16:57:22+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-02 16:57:22 / Modified: 17:26:34" itemprop="dateCreated datePublished" datetime="2019-04-02T16:57:22+08:00">2019-04-02</time>
             
 
             
@@ -461,13 +461,17 @@
       
 
       
-        <h6 id="COPY指令"><a href="#COPY指令" class="headerlink" title="COPY指令"></a>COPY指令</h6><p>我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文</p>
+        <h6 id="COPY指令"><a href="#COPY指令" class="headerlink" title="COPY指令:"></a>COPY指令:</h6><p>**COPY <src>  <dest>我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文</dest></src></p>
 <p>在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PATH 或 URL 指定的路径中的文件的集合。在镜像 build 过程中可以引用上下文中的任何文件，比如我们要介绍的 COPY 命令，就可以引用上下文中的文件。</p>
 <p>默认情况下 docker build -t custom  . 命令中的 . 表示build上下文为当前目录。</p>
 <p>当然我们可以指定一个目录作为上下文，比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker build -t custom /home/linaro</span></span><br></pre></td></tr></table></figure>
-<p>在使用COPY指令时，本地的源文件要位于build上下文中。<strong>如果build上下文时当前目录，则源文件要位于dockerfile所在的当前目录</strong>。否则build过程中会如下报错：</p>
-<p><img src="/images/dockerfile_copy_err.png" alt></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>docker build -t custom /home/linaro</span><br></pre></td></tr></table></figure>
+<p>在使用COPY指令时，本地的源文件要位于build上下文中。<strong>如果build上下文是当前目录，则源文件要位于dockerfile所在的当前目录</strong>。</p>
+<p>例如：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span> /work</span><br><span class="line"><span class="keyword">COPY</span> snmp  .</span><br></pre></td></tr></table></figure>
+<p>snmp目录要位于dockerfile所在的目录中</p>
+<p>否则build过程中会如下报错：</p>
+<p><img src="/images/dockerfile_copy_error.png" alt></p>
 
       
     </div>
@@ -654,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#COPY指令"><span class="nav-number">1.</span> <span class="nav-text">COPY指令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#COPY指令"><span class="nav-number">1.</span> <span class="nav-text">COPY指令:</span></a></li></ol></div>
             
 
           </div>
