@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程]]></title>
     <url>%2F2019%2F04%2F03%2Fgocv-introduction%2F</url>
-    <content type="text"><![CDATA[To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装 示例代码： This example opens a video capture device using device “0”, reads frames, and shows the video in a GUI window: 12345678910111213141516package mainimport ( "gocv.io/x/gocv")func main() &#123; webcam, _ := gocv.VideoCaptureDevice(0) window := gocv.NewWindow("Hello") img := gocv.NewMat() for &#123; webcam.Read(&amp;img) window.IMShow(img) if (window.WaitKey(1) &amp; 0xff == int('q') &#123; break &#125; &#125;&#125; 执行效果：]]></content>
+    <content type="text"><![CDATA[To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装 示例代码： This example opens a video capture device using device “0”, reads frames, and shows the video in a GUI window: 12345678910111213141516package mainimport ( "gocv.io/x/gocv")func main() &#123; webcam, _ := gocv.VideoCaptureDevice(0) window := gocv.NewWindow("Hello") img := gocv.NewMat() for &#123; webcam.Read(&amp;img) window.IMShow(img) if (window.WaitKey(1) &amp; 0xff == int('q') &#123; break &#125; &#125;&#125; 编译程序，并执行 12$go build -o test_cv gocv_example.go$./test_cv 如果执行过程出现如下错误： 1./test_cv: error while loading shared libraries: libopencv_calib3d.so.4.0: cannot open shared object file: No such file or directory 解决办法： 1$export LD_LIBRARY_PATH=/home/chengwei/work/github/opencv-4.0.1/release/lib:$LD_LIBRARY_PATH 执行效果：]]></content>
   </entry>
   <entry>
     <title><![CDATA[使用clion编译c++程序报错]]></title>

@@ -105,7 +105,7 @@
 <meta property="og:description" content="To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/gocv_example.png">
-<meta property="og:updated_time" content="2019-04-03T02:30:44.000Z">
+<meta property="og:updated_time" content="2019-04-03T02:38:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程">
 <meta name="twitter:description" content="To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装">
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-03 10:18:54 / Modified: 10:30:44" itemprop="dateCreated datePublished" datetime="2019-04-03T10:18:54+08:00">2019-04-03</time>
+              <time title="Created: 2019-04-03 10:18:54 / Modified: 10:38:51" itemprop="dateCreated datePublished" datetime="2019-04-03T10:18:54+08:00">2019-04-03</time>
             
 
             
@@ -468,6 +468,12 @@
 <p>示例代码：</p>
 <p>This example opens a video capture device using device “0”, reads frames, and shows the video in a GUI window:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"gocv.io/x/gocv"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    webcam, _ := gocv.VideoCaptureDevice(<span class="number">0</span>)</span><br><span class="line">    window := gocv.NewWindow(<span class="string">"Hello"</span>)</span><br><span class="line">    img := gocv.NewMat()</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        webcam.Read(&amp;img)</span><br><span class="line">        window.IMShow(img)</span><br><span class="line">        <span class="keyword">if</span> (window.WaitKey(<span class="number">1</span>) &amp; <span class="number">0xff</span> == <span class="keyword">int</span>(<span class="string">'q'</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译程序，并执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>go build -o test_cv gocv_example.go</span><br><span class="line"><span class="meta">$</span>./test_cv</span><br></pre></td></tr></table></figure>
+<p>如果执行过程出现如下错误：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test_cv: error while loading shared libraries: libopencv_calib3d.so.4.0: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export LD_LIBRARY_PATH=/home/chengwei/work/github/opencv-4.0.1/release/lib:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
 <p>执行效果：</p>
 <p><img src="/images/gocv_example.png" alt></p>
 
