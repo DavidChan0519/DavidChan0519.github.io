@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
+  <meta name="description" content="示例代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859package mainimport (        &quot;fmt&quot;        &quot;gocv.io/x/gocv&quot;        &quot;image&quot;        &quot;imag">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用GoCV进行人脸检测">
+<meta property="og:url" content="http://yoursite.com/2019/04/03/gocv-face-detection/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
+<meta property="og:description" content="示例代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859package mainimport (        &quot;fmt&quot;        &quot;gocv.io/x/gocv&quot;        &quot;image&quot;        &quot;imag">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/me.jpeg">
-<meta property="og:updated_time" content="2019-04-01T07:52:20.000Z">
+<meta property="og:image" content="http://yoursite.com/images/gocv_face_detection.png">
+<meta property="og:updated_time" content="2019-04-03T03:39:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
-<meta name="twitter:image" content="http://yoursite.com/images/me.jpeg">
+<meta name="twitter:title" content="使用GoCV进行人脸检测">
+<meta name="twitter:description" content="示例代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859package mainimport (        &quot;fmt&quot;        &quot;gocv.io/x/gocv&quot;        &quot;image&quot;        &quot;imag">
+<meta name="twitter:image" content="http://yoursite.com/images/gocv_face_detection.png">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/03/gocv-face-detection/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>关于我 | 程伟的技术笔记</title>
+  <title>使用GoCV进行人脸检测 | 程伟的技术笔记</title>
   
 
 
@@ -230,7 +230,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -311,28 +311,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -380,48 +358,203 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/gocv-face-detection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">关于我
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作.</p>
-<p>Email : <a href="mailto:chengwei0519@gmail.com" target="_blank" rel="noopener">chengwei0519@gmail.com</a></p>
-<p><img src="/images/me.jpeg" alt></p>
+          <h1 class="post-title" itemprop="name headline">使用GoCV进行人脸检测
 
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-03 11:37:47 / Modified: 11:39:58" itemprop="dateCreated datePublished" datetime="2019-04-03T11:37:47+08:00">2019-04-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">        <span class="string">"fmt"</span></span><br><span class="line">        <span class="string">"gocv.io/x/gocv"</span></span><br><span class="line">        <span class="string">"image"</span></span><br><span class="line">        <span class="string">"image/color"</span></span><br><span class="line">        <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    webCam , err := gocv.VideoCaptureDevice(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">defer</span> webCam.Close()</span><br><span class="line"></span><br><span class="line">    window := gocv.NewWindow(<span class="string">"face"</span>)</span><br><span class="line">    <span class="keyword">defer</span> window.Close()</span><br><span class="line"></span><br><span class="line">    img := gocv.NewMat()</span><br><span class="line">    <span class="keyword">defer</span> img.Close()</span><br><span class="line"></span><br><span class="line">    classifier := gocv.NewCascadeClassifier()</span><br><span class="line">    <span class="keyword">defer</span> classifier.Close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> !classifier.Load(<span class="string">"/data/haarcascade_frontalface_default.xml"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        log.Fatal(<span class="string">"load model failed\n"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> ok := webCam.Read(&amp;img); !ok &#123;</span><br><span class="line">                    log.Fatalln(<span class="string">"read img from webcam failed"</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> img.Empty() &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            rects := classifier.DetectMultiScale(img)</span><br><span class="line">            fmt.Printf(<span class="string">"found %d face\n"</span>,<span class="built_in">len</span>(rects))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> _ , ret := <span class="keyword">range</span> rects &#123;</span><br><span class="line">                   color := color.RGBA&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">225</span>,<span class="number">0</span>&#125;</span><br><span class="line">                    gocv.Rectangle(&amp;img, ret, color,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">                    size := gocv.GetTextSize(<span class="string">"human"</span>,gocv.FontHersheyPlain, <span class="number">1.2</span>, <span class="number">2</span>)</span><br><span class="line">                    pt := image.Pt(ret.Min.X+(ret.Min.X/<span class="number">2</span>)-(size.X/<span class="number">2</span>), ret.Min.Y<span class="number">-2</span>)</span><br><span class="line">                    gocv.PutText(&amp;img, <span class="string">"Human"</span>, pt, gocv.FontHersheyPlain, <span class="number">1.2</span>, color, <span class="number">2</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            window.IMShow(img)</span><br><span class="line">            <span class="keyword">if</span> window.WaitKey(<span class="number">1</span>) &amp; <span class="number">0xff</span> == <span class="keyword">int</span>(<span class="string">'q'</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build test_face_detection.go</span></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<p><img src="/images/gocv_face_detection.png" alt></p>
+<p>按q键，退出</p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/03/gocv-introduction/" rel="next" title="GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程">
+                <i class="fa fa-chevron-left"></i> GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
