@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[go_multi_assign]]></title>
+    <url>%2F2019%2F04%2F03%2Fgo-multi-assign%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[使用GoCV进行人脸检测]]></title>
     <url>%2F2019%2F04%2F03%2Fgocv-face-detection%2F</url>
     <content type="text"><![CDATA[示例代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859package mainimport ( "fmt" "gocv.io/x/gocv" "image" "image/color" "log")func main() &#123; webCam , err := gocv.VideoCaptureDevice(0) if err != nil &#123; log.Fatal(err) &#125; defer webCam.Close() window := gocv.NewWindow("face") defer window.Close() img := gocv.NewMat() defer img.Close() classifier := gocv.NewCascadeClassifier() defer classifier.Close() if !classifier.Load("/data/haarcascade_frontalface_default.xml") &#123; log.Fatal("load model failed\n") &#125; for &#123; if ok := webCam.Read(&amp;img); !ok &#123; log.Fatalln("read img from webcam failed") &#125; if img.Empty() &#123; continue &#125; rects := classifier.DetectMultiScale(img) fmt.Printf("found %d face\n",len(rects)) for _ , ret := range rects &#123; color := color.RGBA&#123;0,0,225,0&#125; gocv.Rectangle(&amp;img, ret, color,3) size := gocv.GetTextSize("human",gocv.FontHersheyPlain, 1.2, 2) pt := image.Pt(ret.Min.X+(ret.Min.X/2)-(size.X/2), ret.Min.Y-2) gocv.PutText(&amp;img, "Human", pt, gocv.FontHersheyPlain, 1.2, color, 2) &#125; window.IMShow(img) if window.WaitKey(1) &amp; 0xff == int('q') &#123; break &#125; &#125;&#125; 编译 1$go build test_face_detection.go 执行结果： 按q键，退出]]></content>
