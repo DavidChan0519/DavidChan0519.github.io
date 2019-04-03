@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程]]></title>
+    <url>%2F2019%2F04%2F03%2Fgocv-introduction%2F</url>
+    <content type="text"><![CDATA[To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装 示例代码： This example opens a video capture device using device “0”, reads frames, and shows the video in a GUI window: 12345678910111213141516package mainimport ( "gocv.io/x/gocv")func main() &#123; webcam, _ := gocv.VideoCaptureDevice(0) window := gocv.NewWindow("Hello") img := gocv.NewMat() for &#123; webcam.Read(&amp;img) window.IMShow(img) if (window.WaitKey(1) &amp; 0xff == int('q') &#123; break &#125; &#125;&#125; 执行效果：]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[使用clion编译c++程序报错]]></title>
     <url>%2F2019%2F04%2F02%2Fclion-compile-err%2F</url>
     <content type="text"><![CDATA[问题描述：Clion编译c++程序，报错 “wchar.h not found” 12345678/Library/Developer/CommandLineTools/usr/include/c++/v1/wchar.h:119:15:** **fatal error:** 'wchar.h' file not found**\#include_next &lt;wchar.h&gt;^~~~~~~~~1 error generated.make[2]: *** [CMakeFiles/test_virtual.bin.dir/test_virtual.cpp.o] Error 1make[1]: *** [CMakeFiles/test_virtual.bin.dir/all] Error 2make: *** [all] Error 2 解决办法：click “Tools -&gt; CMake -&gt; ResetCache and Reload Project” 重新编译即可]]></content>

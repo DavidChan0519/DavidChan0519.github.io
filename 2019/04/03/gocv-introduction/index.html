@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行：">
+  <meta name="description" content="To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV源码编译安装">
-<meta property="og:url" content="http://yoursite.com/2019/04/02/opencv-src-compile/index.html">
+<meta property="og:title" content="GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程">
+<meta property="og:url" content="http://yoursite.com/2019/04/03/gocv-introduction/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行：">
+<meta property="og:description" content="To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/opencv_src_compile.png">
-<meta property="og:updated_time" content="2019-04-02T04:22:56.000Z">
+<meta property="og:image" content="http://yoursite.com/images/gocv_example.png">
+<meta property="og:updated_time" content="2019-04-03T02:30:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV源码编译安装">
-<meta name="twitter:description" content="从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行：">
-<meta name="twitter:image" content="http://yoursite.com/images/opencv_src_compile.png">
+<meta name="twitter:title" content="GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程">
+<meta name="twitter:description" content="To use GoCV, you must install OpenCV 4.0.1 on your system. Linux环境安装 Mac 环境安装">
+<meta name="twitter:image" content="http://yoursite.com/images/gocv_example.png">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/02/opencv-src-compile/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/03/gocv-introduction/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>OpenCV源码编译安装 | 程伟的技术笔记</title>
+  <title>GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程 | 程伟的技术笔记</title>
   
 
 
@@ -372,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/opencv-src-compile/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/gocv-introduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -389,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenCV源码编译安装
+          <h1 class="post-title" itemprop="name headline">GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程
 
               
             
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 11:56:24 / Modified: 12:22:56" itemprop="dateCreated datePublished" datetime="2019-04-02T11:56:24+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-03 10:18:54 / Modified: 10:30:44" itemprop="dateCreated datePublished" datetime="2019-04-03T10:18:54+08:00">2019-04-03</time>
             
 
             
@@ -461,25 +461,15 @@
       
 
       
-        <p>从<a href="https://opencv.org/releases.html" target="_blank" rel="noopener">官网</a>下载最新版4.0.1源码，解压缩，并按以下步骤执行：</p>
+        <p>To use GoCV, you must install OpenCV 4.0.1 on your system.</p>
+<p><a href="https://gocv.io/getting-started/linux/" target="_blank" rel="noopener">Linux环境安装</a></p>
+<p><a href="https://gocv.io/getting-started/macos/" target="_blank" rel="noopener">Mac 环境安装</a></p>
 <a id="more"></a>
-<h6 id="进入源码目录"><a href="#进入源码目录" class="headerlink" title="进入源码目录"></a>进入源码目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> opencv-4.0.1</span></span><br></pre></td></tr></table></figure>
-<h6 id="创建编译目录build，使用cmake进行源码外编译"><a href="#创建编译目录build，使用cmake进行源码外编译" class="headerlink" title="创建编译目录build，使用cmake进行源码外编译"></a>创建编译目录build，使用cmake进行源码外编译</h6><blockquote>
-<p>如果系统没有安装cmake工具，请先安装cmake</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">mkdir build</span></span><br></pre></td></tr></table></figure>
-<h6 id="进入编译目录"><a href="#进入编译目录" class="headerlink" title="进入编译目录"></a>进入编译目录</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">cd</span> build</span></span><br></pre></td></tr></table></figure>
-<h6 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h6><blockquote>
-<p>指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CMAKE_INSTALL_PREFIX=/usr/<span class="built_in">local</span> -D OPENCV_GENERATE_PKGCONFIG=ON  -D BUILD_opencv_python2=ON  ../</span></span><br></pre></td></tr></table></figure>
-<h6 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
-<h6 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo make install</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注：如果cmake配置增加 -D BUILD_opencv_world=ON 选项编译，会将所有动态库融合为一个动态库opencv_world.so</p>
-</blockquote>
-<p>结果：</p>
-<p><img src="/images/opencv_src_compile.png" alt></p>
+<p>示例代码：</p>
+<p>This example opens a video capture device using device “0”, reads frames, and shows the video in a GUI window:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"gocv.io/x/gocv"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    webcam, _ := gocv.VideoCaptureDevice(<span class="number">0</span>)</span><br><span class="line">    window := gocv.NewWindow(<span class="string">"Hello"</span>)</span><br><span class="line">    img := gocv.NewMat()</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        webcam.Read(&amp;img)</span><br><span class="line">        window.IMShow(img)</span><br><span class="line">        <span class="keyword">if</span> (window.WaitKey(<span class="number">1</span>) &amp; <span class="number">0xff</span> == <span class="keyword">int</span>(<span class="string">'q'</span>) &#123;</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行效果：</p>
+<p><img src="/images/gocv_example.png" alt></p>
 
       
     </div>
@@ -543,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/01/go-syntax/" rel="next" title="Go编程语法注意事项">
-                <i class="fa fa-chevron-left"></i> Go编程语法注意事项
+              <a href="/2019/04/02/clion-compile-err/" rel="next" title="使用clion编译c++程序报错">
+                <i class="fa fa-chevron-left"></i> 使用clion编译c++程序报错
               </a>
             
           </div>
@@ -552,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/02/git-and-gerrit-guide/" rel="prev" title="Git for Gerrit 客户端配置指导">
-                Git for Gerrit 客户端配置指导 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,17 +589,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -659,23 +636,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#进入源码目录"><span class="nav-number">1.</span> <span class="nav-text">进入源码目录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#创建编译目录build，使用cmake进行源码外编译"><span class="nav-number">2.</span> <span class="nav-text">创建编译目录build，使用cmake进行源码外编译</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#进入编译目录"><span class="nav-number">3.</span> <span class="nav-text">进入编译目录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#编译"><span class="nav-number">5.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安装"><span class="nav-number">6.</span> <span class="nav-text">安装</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
