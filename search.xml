@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[go_multi_assign]]></title>
+    <title><![CDATA[Go多变量赋值]]></title>
     <url>%2F2019%2F04%2F03%2Fgo-multi-assign%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[Go语言支持一次定义多个变量，同时也支持多个变量赋值。 例如： 1var x , y = "abc", 100 但是多变量赋值时，要优先计算所有相关值，然后再从左到右依次赋值 123data , i := []int&#123;1,2,3&#125;, 1i , data[i] = 2, 100fmt.Println(i, data) 输出结果： 12 [1,100,3] i本身的值为1，在被赋值为2之前，data[i] -&gt; data[1] 优先，所以i=2， data[1] = 100]]></content>
   </entry>
   <entry>
     <title><![CDATA[使用GoCV进行人脸检测]]></title>
