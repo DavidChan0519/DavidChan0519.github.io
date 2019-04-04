@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[GO简短模式声明变量之部分退化赋值]]></title>
+    <url>%2F2019%2F04%2F04%2Fgo-short-assignment%2F</url>
+    <content type="text"><![CDATA[golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := "hello" 由于作用域的关系，该模式容易定义跟全局变量同名的函数局部新变量，使用的时候要特别小心。 12345678//全局变量xvar x = 100func main() &#123; //重新定义和初始化同名的局部变量x x := "abc" fmt.Println(x)&#125; 输出： 1abc 但是简短模式并不总是定义新变量，在重复使用的时候可能执行的是部分退化赋值操作 部分退化赋值的前提条件：最少有一个新变量被定义，且必须是在同一作用域 123456789101112package mainimport "fmt"func main() &#123; x := 100 fmt.Println("x:",x, " &amp;x:",&amp;x) fmt.Println("========== seperate ========") x , y := 200 , "abc" fmt.Println("x:",x, " &amp;x:",&amp;x) fmt.Println("y:",y, " &amp;y:",&amp;y)&#125; 输出： 1234x: 100 &amp;x: 0xc00006c080========== seperate ========x: 200 &amp;x: 0xc00006c080y: abc &amp;y: 0xc0000581c0 从输出结果可以看出，前后两次打印的x地址都是同一个，故可以说明前后两次x是同一个变量，仅仅是值发生了变化。 部分退化赋值这一特性可以用在处理函数错误返回值，允许重复使用err变量，非常方便 123456789101112131415161718package mainimport ( "gocv.io/x/gocv" "log")func main() &#123; val1, err := func1() if err != nil &#123; log.Fatal(err) &#125; ... val2, err := func2() if err != nil &#123; log.Fatal(err) &#125;&#125;]]></content>
+      <tags>
+        <tag>golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Go build模式]]></title>
+    <url>%2F2019%2F04%2F04%2Fgo-build-mode%2F</url>
+    <content type="text"><![CDATA[build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式： 1234567891011121314151617181920212223242526272829303132333435363738-buildmode=archive Build the listed non-main packages into .a files. Packages named main are ignored.-buildmode=c-archive Build the listed main package, plus all packages it imports, into a C archive file. The only callable(可调用的) symbols will be those functions exported using a cgo //export comment. Requires exactly one main package to be listed.-buildmode=c-shared Build the listed main package, plus all packages it imports, into a C shared library. The only callable symbols will be those functions exported using a cgo //export comment. Requires exactly one main package to be listed.-buildmode=default Listed main packages are built into executables and listed non-main packages are built into .a files (the default behavior).-buildmode=shared Combine all the listed non-main packages into a single shared library that will be used when building with the -linkshared option. Packages named main are ignored.-buildmode=exe Build the listed main packages and everything they import into executables. Packages not named main are ignored.-buildmode=pie Build the listed main packages and everything they import into position independent executables (PIE). Packages not named main are ignored.-buildmode=plugin Build the listed main packages, plus all packages that they import, into a Go plugin. Packages not named main are ignored. 解释： 12345678exe: 静态编译exe: 动态链接 libcexe: 动态链接 libc 和非 Go 代码pie: 地址无关的可执行文件(安全特性)c-archive: C 的静态链接库c-shared: C 的动态链接库shared: Go 的动态链接库plugin: Go 的插件]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go多变量赋值]]></title>
     <url>%2F2019%2F04%2F03%2Fgo-multi-assign%2F</url>
-    <content type="text"><![CDATA[Go语言支持一次定义多个变量，同时也支持多个变量赋值。 例如： 1var x , y = "abc", 100 但是多变量赋值时，要优先计算所有相关值，然后再从左到右依次赋值 123data , i := []int&#123;1,2,3&#125;, 1i , data[i] = 2, 100fmt.Println(i, data) 输出结果： 12 [1,100,3] i本身的值为1，在被赋值为2之前，data[i] -&gt; data[1] 优先，所以i=2， data[1] = 100]]></content>
+    <content type="text"><![CDATA[Go语言支持一次定义多个变量，同时也支持多个变量赋值。 例如： 1var x , y = "abc", 100 多变量赋值 原则1：要优先计算所有相关值，然后再从左到右依次赋值 123data , i := []int&#123;1,2,3&#125;, 1i , data[i] = 2, 100fmt.Println(i, data) 输出结果： 12 [1,100,3] i本身的值为1，在被赋值为2之前，data[i] -&gt; data[1] 优先，所以i=2， data[1] = 100 原则2：要优先计算出所有右值，然后再从左到右依次赋值 123x, y := 1, 2x, y = y+3, x+2println(x,y) 输出： 15,3]]></content>
   </entry>
   <entry>
     <title><![CDATA[使用GoCV进行人脸检测]]></title>

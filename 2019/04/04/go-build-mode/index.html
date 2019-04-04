@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+  <meta name="description" content="build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式：">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Net-SNMP的交叉编译 for ARM64">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/net-snmp/index.html">
+<meta property="og:title" content="Go build模式">
+<meta property="og:url" content="http://yoursite.com/2019/04/04/go-build-mode/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+<meta property="og:description" content="build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T17:50:16.799Z">
+<meta property="og:updated_time" content="2019-04-04T07:02:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net-SNMP的交叉编译 for ARM64">
-<meta name="twitter:description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+<meta name="twitter:title" content="Go build模式">
+<meta name="twitter:description" content="build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式：">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/03/29/net-snmp/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/04/go-build-mode/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Net-SNMP的交叉编译 for ARM64 | 程伟的技术笔记</title>
+  <title>Go build模式 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/go-build-mode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net-SNMP的交叉编译 for ARM64
+          <h1 class="post-title" itemprop="name headline">Go build模式
 
               
             
@@ -413,24 +413,12 @@
                 
               
 
-              <time title="Created: 2019-03-29 14:38:17" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
+              <time title="Created: 2019-04-04 12:13:20 / Modified: 15:02:30" itemprop="dateCreated datePublished" datetime="2019-04-04T12:13:20+08:00">2019-04-04</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-02 01:50:16" itemprop="dateModified" datetime="2019-04-02T01:50:16+08:00">2019-04-02</time>
               
             
           </span>
@@ -471,26 +459,13 @@
       
 
       
-        <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">去官网下载</a>openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
+        <p><code>build mode</code>: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build -buildmode=default goroutine_select.go</span></span><br></pre></td></tr></table></figure>
+<p>在编译go程序时，go编译器支持如下几种模式：</p>
 <a id="more"></a>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release</span></span><br></pre></td></tr></table></figure>
-<p>其中参数的含义为：<br>no-asm：在交叉编译过程中不使用汇编代码代码加速编译过程；<br>shared：生成动态链接库；<br>–prefix：指定生成lib、include、bin三个核心目录的路径，不修改此项则默认为OPENSSLDIR目录。</p>
-<p>2) 修改生成的Makefile，去掉-m64选项，否则会编译报错<br>3) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
-<p>4) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make install</span></span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<h5 id="2-交叉编译net-snmp"><a href="#2-交叉编译net-snmp" class="headerlink" title="2.交叉编译net-snmp"></a>2.交叉编译net-snmp</h5><p><a href="http://www.net-snmp.org/download.html" target="_blank" rel="noopener">在官网下载</a>net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作</p>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">./configure --host=arm-linux --target=arm-linux --build=i686-linux --with-cc=aarch64-linux-gnu-gcc  --with-ar=aarch64-linux-gnu-ar  --prefix=/home/lwang/work/chengw/github/net-snmp-5.7.3/release  --with-endianness=little --<span class="built_in">disable</span>-manuals --<span class="built_in">disable</span>-embedded-perl  --<span class="built_in">disable</span>-perl-cc-checks --without-perl-modules --<span class="built_in">disable</span>-scripts  --<span class="built_in">disable</span>-applications  --with-openssl=/home/lwang/work/chengw/github/openssl-1.0.2q/release</span></span><br></pre></td></tr></table></figure>
-<p>2) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
-<p>3) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make install</span></span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<p>注意：实际测试发现，net-snmp 5.7.3只能搭配openssl-1.0.2q版本使用，更新的版本会编译报错.</p>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">-buildmode=archive</span><br><span class="line">	Build the listed non-main packages into .a files. Packages named</span><br><span class="line">	main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=c-archive</span><br><span class="line">	Build the listed main package, plus all packages it imports,</span><br><span class="line">	into a C archive file. The only callable(可调用的) symbols will be those</span><br><span class="line">	<span class="built_in">functions</span> exported using a cgo //<span class="built_in">export</span> comment. Requires</span><br><span class="line">	exactly one main package to be listed.</span><br><span class="line"></span><br><span class="line">-buildmode=c-shared</span><br><span class="line">	Build the listed main package, plus all packages it imports,</span><br><span class="line">	into a C shared library. The only callable symbols will</span><br><span class="line">	be those <span class="built_in">functions</span> exported using a cgo //<span class="built_in">export</span> comment.</span><br><span class="line">	Requires exactly one main package to be listed.</span><br><span class="line"></span><br><span class="line">-buildmode=default</span><br><span class="line">	Listed main packages are built into executables and listed</span><br><span class="line">	non-main packages are built into .a files (the default</span><br><span class="line">	behavior).</span><br><span class="line"></span><br><span class="line">-buildmode=shared</span><br><span class="line">	Combine all the listed non-main packages into a single shared</span><br><span class="line">	library that will be used when building with the -linkshared</span><br><span class="line">	option. Packages named main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=exe</span><br><span class="line">	Build the listed main packages and everything they import into</span><br><span class="line">	executables. Packages not named main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=pie</span><br><span class="line">	Build the listed main packages and everything they import into</span><br><span class="line">	position independent executables (PIE). Packages not named</span><br><span class="line">	main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=plugin</span><br><span class="line">	Build the listed main packages, plus all packages that they</span><br><span class="line">	import, into a Go plugin. Packages not named main are ignored.</span><br></pre></td></tr></table></figure>
+<p>解释：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">exe:        静态编译</span><br><span class="line">exe:        动态链接 libc</span><br><span class="line">exe:        动态链接 libc 和非 Go 代码</span><br><span class="line">pie:        地址无关的可执行文件(安全特性)</span><br><span class="line">c-archive:  C 的静态链接库</span><br><span class="line">c-shared:   C 的动态链接库</span><br><span class="line">shared:     Go 的动态链接库</span><br><span class="line">plugin:     Go 的插件</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -553,14 +528,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/04/03/go-multi-assign/" rel="next" title="Go多变量赋值">
+                <i class="fa fa-chevron-left"></i> Go多变量赋值
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/29/mib2c/" rel="prev" title="mib2c代码自动生成">
-                mib2c代码自动生成 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/04/go-short-assignment/" rel="prev" title="GO简短模式声明变量之部分退化赋值">
+                GO简短模式声明变量之部分退化赋值 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,17 +588,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -678,23 +648,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉编译openssl"><span class="nav-number">1.</span> <span class="nav-text">1.交叉编译openssl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-交叉编译net-snmp"><span class="nav-number">2.</span> <span class="nav-text">2.交叉编译net-snmp</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

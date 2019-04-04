@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="Go语言支持一次定义多个变量，同时也支持多个变量赋值。 例如： 1var  x , y = &quot;abc&quot;, 100">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-03T15:33:40.995Z">
+<meta property="og:updated_time" content="2019-04-04T07:02:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go多变量赋值">
 <meta name="twitter:description" content="Go语言支持一次定义多个变量，同时也支持多个变量赋值。 例如： 1var  x , y = &quot;abc&quot;, 100">
@@ -413,12 +413,24 @@
                 
               
 
-              <time title="Created: 2019-04-03 23:15:44 / Modified: 23:33:40" itemprop="dateCreated datePublished" datetime="2019-04-03T23:15:44+08:00">2019-04-03</time>
+              <time title="Created: 2019-04-03 23:15:44" itemprop="dateCreated datePublished" datetime="2019-04-03T23:15:44+08:00">2019-04-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-04 15:02:12" itemprop="dateModified" datetime="2019-04-04T15:02:12+08:00">2019-04-04</time>
               
             
           </span>
@@ -463,11 +475,16 @@
 <p>例如：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  x , y = <span class="string">"abc"</span>, <span class="number">100</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><strong>但是多变量赋值时，要优先计算所有相关值，然后再从左到右依次赋值</strong></p>
+<p><strong>多变量赋值</strong></p>
+<p>原则1：<strong>要优先计算所有相关值，然后再从左到右依次赋值</strong></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data , i := []<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;, <span class="number">1</span></span><br><span class="line">i , data[i] = <span class="number">2</span>, <span class="number">100</span></span><br><span class="line">fmt.Println(i, data)</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 [1,100,3]</span><br></pre></td></tr></table></figure>
 <p>i本身的值为1，在被赋值为2之前，data[i] -&gt; data[1] 优先，所以i=2， data[1] = 100</p>
+<p>原则2：<strong>要优先计算出所有右值，然后再从左到右依次赋值</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x, y := <span class="number">1</span>, <span class="number">2</span></span><br><span class="line">x, y = y+<span class="number">3</span>, x+<span class="number">2</span></span><br><span class="line"><span class="built_in">println</span>(x,y)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5,3</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -541,6 +558,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/04/04/go-build-mode/" rel="prev" title="Go build模式">
+                Go build模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -603,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -611,6 +632,19 @@
 
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
               
             </nav>
           
