@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
+  <meta name="description" content="本文用实例介绍这3种模式的构建方法；">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go build模式之c-archive，c-shared，linkshared">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/go-buildmode-c/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
+<meta property="og:description" content="本文用实例介绍这3种模式的构建方法；">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/me.jpeg">
-<meta property="og:updated_time" content="2019-04-01T07:52:20.000Z">
+<meta property="og:image" content="http://yoursite.com/images/go_buildmode.png">
+<meta property="og:updated_time" content="2019-04-05T03:36:24.196Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
-<meta name="twitter:image" content="http://yoursite.com/images/me.jpeg">
+<meta name="twitter:title" content="Go build模式之c-archive，c-shared，linkshared">
+<meta name="twitter:description" content="本文用实例介绍这3种模式的构建方法；">
+<meta name="twitter:image" content="http://yoursite.com/images/go_buildmode.png">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/05/go-buildmode-c/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>关于我 | 程伟的技术笔记</title>
+  <title>Go build模式之c-archive，c-shared，linkshared | 程伟的技术笔记</title>
   
 
 
@@ -230,7 +230,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -311,28 +311,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -380,48 +358,233 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/05/go-buildmode-c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">关于我
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作.</p>
-<p>Email : <a href="mailto:chengwei0519@gmail.com" target="_blank" rel="noopener">chengwei0519@gmail.com</a></p>
-<p><img src="/images/me.jpeg" alt></p>
+          <h1 class="post-title" itemprop="name headline">Go build模式之c-archive，c-shared，linkshared
 
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-05 10:59:51 / Modified: 11:36:24" itemprop="dateCreated datePublished" datetime="2019-04-05T10:59:51+08:00">2019-04-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>本文用实例介绍这3种模式的构建方法；</p>
+<a id="more"></a>
+<p>go程序中需要被导出的方法Hello()：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hello.go</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"C"</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	Hello(<span class="string">"hello"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//export Hello</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Hello</span><span class="params">(name <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"output:"</span>,name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意事项：</p>
+<p>1.<code>//export Hello</code>，这是约定，所有需要导出给 <code>C</code> 调用的函数，必须通过注释添加这个构建信息，否则不会构建生成 C 所需的头文件;</p>
+<p>2.导出函数的命名的首字母是否大写，不受go规则的影响，大小写均可;</p>
+<p>3.头部必须添加import “C”;</p>
+</blockquote>
+<h5 id="c-archive模式："><a href="#c-archive模式：" class="headerlink" title="c-archive模式："></a>c-archive模式：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build --buildmode=c-archive  hello.go</span></span><br></pre></td></tr></table></figure>
+<p>编译生成hello.a和C头文件hello.h</p>
+<p>在所生成的 <code>hello.h</code> 的头文件中，我们可以看到 Go 的 <code>Hello()</code> 函数的定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">Hello</span><span class="params">(GoString p0)</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<p>在头文件中GoString的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> </span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *p; </span><br><span class="line">  <span class="keyword">ptrdiff_t</span>   n; </span><br><span class="line">&#125; _GoString_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> _GoString_ GoString;</span><br></pre></td></tr></table></figure>
+<p>然后我们可以在 <code>hello.c</code> 中引用该头文件，并链接Go编译的静态库：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"hello.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *type = argv[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">char</span> buf[] = <span class="string">"test for "</span>;</span><br><span class="line">    <span class="keyword">char</span> input[<span class="number">16</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">sprintf</span>(input, <span class="string">"%s %s"</span>, buf, type);</span><br><span class="line"></span><br><span class="line">    GoString str;</span><br><span class="line">    str.p = input;</span><br><span class="line">    str.n = <span class="built_in">strlen</span>(input);</span><br><span class="line"></span><br><span class="line">    Hello(str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，构建 C 程序：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">gcc  -o hello_static hello.c hello.a -lpthread</span></span><br></pre></td></tr></table></figure>
+<h5 id="c-shared模式："><a href="#c-shared模式：" class="headerlink" title="c-shared模式："></a>c-shared模式：</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build --buildmode=c-shared -o libhello.so  hello.go</span></span><br></pre></td></tr></table></figure>
+<p>编译生成libhello.so</p>
+<p>构建c程序，并链接动态库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">gcc  -o hello_dynamic hello.c  -L./   -lhello -lpthread</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>-L 指定链接库为当前目录</p>
+<p>-l 指定所需要连接的动态库名称，去掉lib前缀和.so后缀</p>
+</blockquote>
+<h5 id="linkshared模式："><a href="#linkshared模式：" class="headerlink" title="linkshared模式："></a>linkshared模式：</h5><blockquote>
+<p>该模式主要用于为go程序编译动态链接库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo /usr/<span class="built_in">local</span>/go/bin/go install -buildmode=shared std</span></span><br><span class="line"><span class="meta">$</span><span class="bash">sudo /usr/<span class="built_in">local</span>/go/bin/go build -linkshared -o hello_linkshared  hello.go</span></span><br></pre></td></tr></table></figure>
+<p>编译生成hello_linkshared可执行程序</p>
+<p>附上实例程序编译脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> static</span></span><br><span class="line">go build --buildmode=c-archive hello.go</span><br><span class="line">gcc  -o hello_static hello.c hello.a -lpthread</span><br><span class="line">echo "=== run static binary ==="</span><br><span class="line">./hello_static static</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> dynamic</span></span><br><span class="line">go build --buildmode=c-shared -o libhello.so hello.go</span><br><span class="line">gcc  -o hello_dynamic hello.c -L./ -lhello -lpthread</span><br><span class="line">echo "=== run dynamic binary ==="</span><br><span class="line">./hello_dynamic dynamic</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> linkshared <span class="keyword">for</span> go</span></span><br><span class="line">sudo /usr/local/go/bin/go install -buildmode=shared std</span><br><span class="line">sudo /usr/local/go/bin/go build -linkshared -o hello_linkshared hello.go</span><br><span class="line">echo "=== run linkshared binary ==="</span><br><span class="line">ls -lh ./hello_linkshared</span><br><span class="line">./hello_linkshared</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> default , static <span class="keyword">for</span> go</span></span><br><span class="line">go build -o hello_static_go hello.go</span><br><span class="line">ls -lh  ./hello_static_go</span><br><span class="line">./hello_static_go</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<p><img src="/images/go_buildmode.png" alt></p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/04/go-short-assignment/" rel="next" title="Go简短模式声明变量之部分退化赋值">
+                <i class="fa fa-chevron-left"></i> Go简短模式声明变量之部分退化赋值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -454,8 +617,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,6 +686,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#c-archive模式："><span class="nav-number">1.</span> <span class="nav-text">c-archive模式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c-shared模式："><span class="nav-number">2.</span> <span class="nav-text">c-shared模式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linkshared模式："><span class="nav-number">3.</span> <span class="nav-text">linkshared模式：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
