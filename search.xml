@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mac终端配色]]></title>
+    <url>%2F2019%2F04%2F06%2Fmac-terminal-color%2F</url>
+    <content type="text"><![CDATA[mac的terminal默认显示是灰白的，无法方便的区分普通文件，目录，可执行程序或者链接文件。本文介绍，借助于Coreutils工具模仿ubuntu的terminal默认配色，在mac terminal上还原ubuntu经典配色。 安装工具1$brew install coreutils 如果是因为无法翻墙的原因，可参考我上一篇文章中的方法-如果使terminal通过vpn联网 生成颜色定义文件1$gdircolors --print-database &gt; ~/.dir_colors 我们可以修改~/.dir_colors，添加自定义文件的颜色，此文件中的注释已经包含各种颜色取值的说明。 自定义文件颜色在~/.dir_colors尾部添加对各种源码文件及配置文件格式的支持 12345678910# code format.c 01;33.cpp 01;33.h 01;33.go 01;33.py 01;33.s 01;31.md 4;37.json 01;35.yml 01;35 添加启动配置在~/.bash_profile或者~/.bashrc配置文件中加入以下代码 12345if brew list | grep coreutils &gt; /dev/null ; then PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH" alias ls='ls -F --show-control-chars --color=auto' eval `gdircolors -b $HOME/.dir_colors`fi gdircolor的作用就是设置ls命令使用的环境变量LS_COLORS（BSD是LSCOLORS） 修改PS1，模拟ubuntu terminal prompt在~/.bash_profile或者~/.bashrc配置文件中加入以下代码，可以模拟Ubuntu terminal中prompt的配色 1export PS1='$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' 预览：]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Mac终端通过VPN联网]]></title>
     <url>%2F2019%2F04%2F06%2Fmac-terminal-proxy%2F</url>
     <content type="text"><![CDATA[通常情况，mac链接vpn后，浏览器可以直接通过vpn联网；然而终端默认是不通过vpn的，所以对于程序员来说，这却是一个极大的不便利: 无法通过各种命令行工具下载文件，例如wget，curl，git get，apt-get等。 下面介绍一种简单的方法，使得terminal通过vpn联网 1$export http_proxy=http://proxyAddress:port vpn工具联网成功后，在terminal上执行上述命令，则可使的terminal通过vpn联网 该方法临时有效，退出终端后失效。如果希望保持一直有效，可将上述命令添加到~/.bashrc等启动配置文件中]]></content>
