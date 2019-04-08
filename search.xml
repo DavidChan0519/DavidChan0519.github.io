@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python函数参数传递中的*号使用]]></title>
+    <url>%2F2019%2F04%2F08%2Fpython-func-decompress-arglist%2F</url>
+    <content type="text"><![CDATA[主要包含单引号和双引号的用法 单星号(*) 将所有参数以元组(tuple)的形式导入： 1234567&gt;&gt;&gt; def foo(param1, *param2): print param1 print param2&gt;&gt;&gt; foo('a',2,3,4,5)'a'(2, 3, 4, 5) 解压参数列表 123456&gt;&gt;&gt; def foo(param1, param2): print param1,param2&gt;&gt;&gt; input = [1,2]&gt;&gt;&gt; foo(*input)1,2 双引号(**) 将参数以字典(dict)的形式导入 1234567891011&gt;&gt;&gt; def foo(a, b=2, *args, **kwargs) print a print b print args print kwargs&gt;&gt;&gt; foo(1,23,3,4,e=5,f=6,g=7)123(3,4)&#123;'e':5,'f':6,'g':7&#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go类型转换]]></title>
     <url>%2F2019%2F04%2F08%2Fgo-type-cast%2F</url>
     <content type="text"><![CDATA[Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type INT intvar a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)]]></content>

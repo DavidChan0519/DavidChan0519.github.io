@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="介绍几个go语言编程中常用的环境变量，都可以通过export指令修改 $GOROOT  go编译器程序的安装目录  $GOPATH  go项目工程的根目录 该目录下必须包含src，pkg，bin3个子目录  $GOBIN  go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下  $GOOS $GOARCH  目标平台的操作系统类型和芯片架构">
+  <meta name="description" content="主要包含单引号和双引号的用法">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go环境变量">
-<meta property="og:url" content="http://yoursite.com/2019/04/06/go-env/index.html">
+<meta property="og:title" content="Python函数参数传递中的*号使用">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/python-func-decompress-arglist/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="介绍几个go语言编程中常用的环境变量，都可以通过export指令修改 $GOROOT  go编译器程序的安装目录  $GOPATH  go项目工程的根目录 该目录下必须包含src，pkg，bin3个子目录  $GOBIN  go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下  $GOOS $GOARCH  目标平台的操作系统类型和芯片架构">
+<meta property="og:description" content="主要包含单引号和双引号的用法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-06T06:09:01.764Z">
+<meta property="og:updated_time" content="2019-04-08T10:18:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go环境变量">
-<meta name="twitter:description" content="介绍几个go语言编程中常用的环境变量，都可以通过export指令修改 $GOROOT  go编译器程序的安装目录  $GOPATH  go项目工程的根目录 该目录下必须包含src，pkg，bin3个子目录  $GOBIN  go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下  $GOOS $GOARCH  目标平台的操作系统类型和芯片架构">
+<meta name="twitter:title" content="Python函数参数传递中的*号使用">
+<meta name="twitter:description" content="主要包含单引号和双引号的用法">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/06/go-env/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/08/python-func-decompress-arglist/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Go环境变量 | 程伟的技术笔记</title>
+  <title>Python函数参数传递中的*号使用 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/06/go-env/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/python-func-decompress-arglist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go环境变量
+          <h1 class="post-title" itemprop="name headline">Python函数参数传递中的*号使用
 
               
             
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-06 13:54:46 / Modified: 14:09:01" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:46+08:00">2019-04-06</time>
+              <time title="Created: 2019-04-08 16:36:45 / Modified: 18:18:35" itemprop="dateCreated datePublished" datetime="2019-04-08T16:36:45+08:00">2019-04-08</time>
             
 
             
@@ -459,31 +459,21 @@
       
 
       
-        <p>介绍几个go语言编程中常用的环境变量，都可以通过export指令修改</p>
-<p>$GOROOT</p>
-<blockquote>
-<p>go编译器程序的安装目录</p>
-</blockquote>
-<p>$GOPATH</p>
-<blockquote>
-<p>go项目工程的根目录</p>
-<p>该目录下必须包含src，pkg，bin3个子目录</p>
-</blockquote>
-<p>$GOBIN</p>
-<blockquote>
-<p>go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下</p>
-</blockquote>
-<p>$GOOS</p>
-<p>$GOARCH</p>
-<blockquote>
-<p>目标平台的操作系统类型和芯片架构类型，这两个参数主要用于交叉编译中</p>
-<p>go支持多种操作系统和芯片体系结构，故go对交叉编译也有很好的支持</p>
-</blockquote>
+        <p>主要包含单引号和双引号的用法</p>
 <a id="more"></a>
-<p>使用如下命令可以查看当前环境中go相关的环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go env</span></span><br></pre></td></tr></table></figure>
-<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">GOARCH="amd64"</span><br><span class="line">GOBIN=""</span><br><span class="line">GOCACHE="/home/lwang/.cache/go-build"</span><br><span class="line">GOEXE=""</span><br><span class="line">GOFLAGS=""</span><br><span class="line">GOHOSTARCH="amd64"</span><br><span class="line">GOHOSTOS="linux"</span><br><span class="line">GOOS="linux"</span><br><span class="line">GOPATH="/home/lwang/go"</span><br><span class="line">GOPROXY=""</span><br><span class="line">GORACE=""</span><br><span class="line">GOROOT="/usr/local/go"</span><br><span class="line">GOTMPDIR=""</span><br><span class="line">GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"</span><br><span class="line">GCCGO="gccgo"</span><br><span class="line">CC="gcc"</span><br><span class="line">CXX="g++"</span><br><span class="line">CGO_ENABLED="1"</span><br><span class="line">GOMOD=""</span><br><span class="line">CGO_CFLAGS="-g -O2"</span><br><span class="line">CGO_CPPFLAGS=""</span><br><span class="line">CGO_CXXFLAGS="-g -O2"</span><br><span class="line">CGO_FFLAGS="-g -O2"</span><br><span class="line">CGO_LDFLAGS="-g -O2"</span><br><span class="line">PKG_CONFIG="pkg-config"</span><br><span class="line">GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build193074853=/tmp/go-build -gno-record-gcc-switches"</span><br></pre></td></tr></table></figure>
-<h5 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">GOARCH="amd64"</span><br><span class="line">GOBIN=""</span><br><span class="line">GOCACHE="/Users/bitmain/Library/Caches/go-build"</span><br><span class="line">GOEXE=""</span><br><span class="line">GOFLAGS=""</span><br><span class="line">GOHOSTARCH="amd64"</span><br><span class="line">GOHOSTOS="darwin"</span><br><span class="line">GOOS="darwin"</span><br><span class="line">GOPATH="/Users/bitmain/go"</span><br><span class="line">GOPROXY=""</span><br><span class="line">GORACE=""</span><br><span class="line">GOROOT="/usr/local/go"</span><br><span class="line">GOTMPDIR=""</span><br><span class="line">GOTOOLDIR="/usr/local/go/pkg/tool/darwin_amd64"</span><br><span class="line">GCCGO="gccgo"</span><br><span class="line">CC="clang"</span><br><span class="line">CXX="clang++"</span><br><span class="line">CGO_ENABLED="1"</span><br><span class="line">GOMOD=""</span><br><span class="line">CGO_CFLAGS="-g -O2"</span><br><span class="line">CGO_CPPFLAGS=""</span><br><span class="line">CGO_CXXFLAGS="-g -O2"</span><br><span class="line">CGO_FFLAGS="-g -O2"</span><br><span class="line">CGO_LDFLAGS="-g -O2"</span><br><span class="line">PKG_CONFIG="pkg-config"</span><br><span class="line">GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/5x/6gkjj0_1581fwz9lvylk14mr0000gn/T/go-build089246083=/tmp/go-build -gno-record-gcc-switches -fno-common"</span><br></pre></td></tr></table></figure>
+<h6 id="单星号"><a href="#单星号" class="headerlink" title="单星号(*)"></a>单星号(*)</h6><ol>
+<li><p>将所有参数以<strong>元组(tuple)</strong>的形式导入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(param1, *param2)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> param1</span><br><span class="line">        <span class="keyword">print</span> param2</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo(<span class="string">'a'</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="string">'a'</span></span><br><span class="line">(<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压参数列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(param1, param2)</span>:</span></span><br><span class="line">		<span class="keyword">print</span> param1,param2</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo(*input)</span><br><span class="line"><span class="number">1</span>,<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h6 id="双引号"><a href="#双引号" class="headerlink" title="双引号(**)"></a>双引号(**)</h6><ol>
+<li><p>将参数以<strong>字典(dict)</strong>的形式导入</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a, b=<span class="number">2</span>, *args, **kwargs)</span></span></span><br><span class="line"><span class="function">		<span class="title">print</span> <span class="title">a</span></span></span><br><span class="line"><span class="function">		<span class="title">print</span> <span class="title">b</span></span></span><br><span class="line"><span class="function">		<span class="title">print</span> <span class="title">args</span></span></span><br><span class="line"><span class="function">		<span class="title">print</span> <span class="title">kwargs</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">foo</span><span class="params">(<span class="number">1</span>,<span class="number">23</span>,<span class="number">3</span>,<span class="number">4</span>,e=<span class="number">5</span>,f=<span class="number">6</span>,g=<span class="number">7</span>)</span></span></span><br><span class="line"><span class="function">1</span></span><br><span class="line"><span class="function">23</span></span><br><span class="line"><span class="function"><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span></span><br><span class="line">&#123;'e':5,'f':6,'g':7&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -547,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/05/go-buildmode-c/" rel="next" title="Go build模式之c-archive，c-shared，linkshared">
-                <i class="fa fa-chevron-left"></i> Go build模式之c-archive，c-shared，linkshared
+              <a href="/2019/04/08/go-type-cast/" rel="next" title="Go类型转换">
+                <i class="fa fa-chevron-left"></i> Go类型转换
               </a>
             
           </div>
@@ -556,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/06/mac-terminal-proxy/" rel="prev" title="Mac终端通过VPN联网">
-                Mac终端通过VPN联网 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -687,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mac"><span class="nav-number">2.</span> <span class="nav-text">Mac</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#单星号"><span class="nav-number">1.</span> <span class="nav-text">单星号(*)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#双引号"><span class="nav-number">2.</span> <span class="nav-text">双引号(**)</span></a></li></ol></div>
             
 
           </div>
