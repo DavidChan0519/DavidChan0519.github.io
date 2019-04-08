@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。">
+  <meta name="description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type  INT  intvar  a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Net-SNMP企业节点动态库编辑">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/enterprise-priv/index.html">
+<meta property="og:title" content="Go类型转换">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/go-type-cast/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。">
+<meta property="og:description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type  INT  intvar  a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T11:16:36.903Z">
+<meta property="og:updated_time" content="2019-04-08T03:18:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net-SNMP企业节点动态库编辑">
-<meta name="twitter:description" content="查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。">
+<meta name="twitter:title" content="Go类型转换">
+<meta name="twitter:description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type  INT  intvar  a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/03/29/enterprise-priv/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/08/go-type-cast/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Net-SNMP企业节点动态库编辑 | 程伟的技术笔记</title>
+  <title>Go类型转换 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/enterprise-priv/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/08/go-type-cast/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net-SNMP企业节点动态库编辑
+          <h1 class="post-title" itemprop="name headline">Go类型转换
 
               
             
@@ -413,24 +413,12 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-04-08 11:15:09 / Modified: 11:18:59" itemprop="dateCreated datePublished" datetime="2019-04-08T11:15:09+08:00">2019-04-08</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-30 19:16:36" itemprop="dateModified" datetime="2019-03-30T19:16:36+08:00">2019-03-30</time>
               
             
           </span>
@@ -471,16 +459,11 @@
       
 
       
-        <p>查阅net-snmp的相关资料，目前Net-SNMP有多种使用方式。本文只介绍snmpd + 企业私有节点动态库的方式。目前这种方式也在多数企业中得到广泛使用。使用这种方式的优点：不用修改net-snmp源码；第一次交叉编译net-snmp生成snmpd后，后面新增feature，修复bug等不需要重新编译net-snmp源码，仅仅维护企业节点动态库就可以了。</p>
-<a id="more"></a>
-<h5 id="企业节点动态库初始化函数"><a href="#企业节点动态库初始化函数" class="headerlink" title="企业节点动态库初始化函数"></a>企业节点动态库初始化函数</h5><p>在使用mib2c工具自动生成相应代码后，还需要在代码中添加一个启动函数，<strong>该启动函数是snmpd守护进程调用企业节点动态库的入口</strong>：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void init_bmserv(void)｛</span><br><span class="line">    ...</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-<p>该函数bmserv的命名应同生成的动态库名称libbmserv.so要保持一致</p>
-<h5 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h5><p>交叉编译动态库，模版makefile如下(根据实际环境进行修改适配)：</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 通用Makefile</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">CC = aarch64-linux-gnu-gcc</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 编译选项</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 宏定义选项</span></span><br><span class="line">MACRO_FLAGS	:=  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用到的库，只要写lib后的名称，不用加.so或.a</span></span><br><span class="line">LIB_FLAGS	:= curl crypto cjson</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译.c到.o文件的选项</span></span><br><span class="line">CC_FLAGS := -Wall -fPIC</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接.o文件用到的选项</span></span><br><span class="line">LINK_FLAGS := -Wall -fPIC -lpthread -shared</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 源代码目录</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">ROOT := <span class="variable">$(<span class="built_in">shell</span> pwd)</span></span><br><span class="line">SRCDIRS	:= <span class="variable">$(ROOT)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line"><span class="comment"># 头文件目录</span></span><br><span class="line"><span class="comment"># ************************************************************</span></span><br><span class="line">INCLUDE_DIRS := <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/curl-7.60.0/<span class="keyword">include</span>/</span><br><span class="line">INCLUDE_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/net-snmp/<span class="keyword">include</span>/</span><br><span class="line">INCLUDE_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/cJSON/<span class="keyword">include</span>/</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 动态库、静态库目录</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">LIB_DIRS := <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/curl-7.60.0/lib/arm64/</span><br><span class="line">LIB_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/net-snmp/lib/arm64/</span><br><span class="line">LIB_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/cJSON/lib/arm64/</span><br><span class="line">LIB_DIRS += <span class="variable">$(ROOT)</span>/../../../../prebuilt/3rdparty/openssl/lib/arm64/</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 最终生成的程序名称</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">TARGET := libbmserv.so</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 被编译的.c文件</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">SRC_C	:= <span class="variable">$(<span class="built_in">foreach</span> <span class="built_in">dir</span>, <span class="variable">$(SRCDIRS)</span>, $(<span class="built_in">wildcard</span> <span class="variable">$(dir)</span>/*.c)</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 所有的.o文件</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line">OBJ_C	:= <span class="variable">$(<span class="built_in">notdir</span> $(<span class="built_in">patsubst</span> %.c, %.o, <span class="variable">$(SRC_C)</span>)</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="comment"># 编译规则</span></span><br><span class="line"><span class="comment">#************************************************************</span></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: all cmd_init cmd_last clean</span></span><br><span class="line"><span class="section">all:cmd_init <span class="variable">$(TARGET)</span> cmd_last</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译前命令</span></span><br><span class="line"><span class="section">cmd_init:</span></span><br><span class="line">	@echo <span class="string">"SRC DIR:"</span> <span class="variable">$(SRCDIRS)</span></span><br><span class="line">	@echo cmd_init</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译后命令</span></span><br><span class="line"><span class="section">cmd_last:</span></span><br><span class="line">	@echo cmd_last</span><br><span class="line"></span><br><span class="line">VPATH	= <span class="variable">$(SRCDIRS)</span></span><br><span class="line"><span class="variable">$(TARGET)</span>:<span class="variable">$(OBJ_C)</span></span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(LINK_FLAGS)</span> $(MACRO_FLAGS:%=-D%) $(INCLUDE_DIRS:%=-I%) $(LIB_DIRS:%=-L%) -o <span class="variable">$@</span> <span class="variable">$^</span> $(LIB_FLAGS:%=-l%) </span><br><span class="line"></span><br><span class="line"><span class="variable">$(OBJ_C)</span>:%.o:%.c</span><br><span class="line">	<span class="variable">$(CC)</span> <span class="variable">$(CC_FLAGS)</span> $(MACRO_FLAGS:%=-D%) $(INCLUDE_DIRS:%=-I%) -c -o <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f *.o</span><br><span class="line">	rm -f <span class="variable">$(TARGET)</span></span><br></pre></td></tr></table></figure>
-<p>编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make</span></span><br></pre></td></tr></table></figure>
-<p>即可在当前目录下生成企业私有节点动态库libbmserv.so</p>
+        <p>Go语言<strong>不支持<u>隐式</u>类型转换</strong>，即使如下几种情况也不允许</p>
+<h6 id="同类型别名之间的转换"><a href="#同类型别名之间的转换" class="headerlink" title="同类型别名之间的转换"></a>同类型别名之间的转换</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span>  INT  <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span>  a INT = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> b <span class="keyword">int</span> = a <span class="comment">// Error: ...</span></span><br></pre></td></tr></table></figure>
+<h6 id="窄类型向宽类型转换"><a href="#窄类型向宽类型转换" class="headerlink" title="窄类型向宽类型转换"></a>窄类型向宽类型转换</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b <span class="keyword">byte</span> = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> n <span class="keyword">int</span> = b <span class="comment">//Error: ...</span></span><br></pre></td></tr></table></figure>
+<p>Go只<strong>支持<u>显示</u>类型转换</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b <span class="keyword">byte</span> = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> n <span class="keyword">int</span> = <span class="keyword">int</span>(b)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -544,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/29/net-snmp-deployment/" rel="next" title="Net-SNMP ARM部署">
-                <i class="fa fa-chevron-left"></i> Net-SNMP ARM部署
+              <a href="/2019/04/06/mac-terminal-color/" rel="next" title="Mac终端配色">
+                <i class="fa fa-chevron-left"></i> Mac终端配色
               </a>
             
           </div>
@@ -553,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/docker-port-expose/" rel="prev" title="Docker 容器端口映射方法">
-                Docker 容器端口映射方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -684,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#企业节点动态库初始化函数"><span class="nav-number">1.</span> <span class="nav-text">企业节点动态库初始化函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Makefile"><span class="nav-number">2.</span> <span class="nav-text">Makefile</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#同类型别名之间的转换"><span class="nav-number">1.</span> <span class="nav-text">同类型别名之间的转换</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#窄类型向宽类型转换"><span class="nav-number">2.</span> <span class="nav-text">窄类型向宽类型转换</span></a></li></ol></div>
             
 
           </div>
