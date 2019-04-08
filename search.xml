@@ -71,7 +71,7 @@
   <entry>
     <title><![CDATA[OpenCV源码编译安装]]></title>
     <url>%2F2019%2F04%2F02%2Fopencv-src-compile%2F</url>
-    <content type="text"><![CDATA[从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行： 进入源码目录1$cd opencv-4.0.1 创建编译目录build，使用cmake进行源码外编译 如果系统没有安装cmake工具，请先安装cmake 1$mkdir build 进入编译目录1$cd build 配置 指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python接口 1$cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=ON -D BUILD_opencv_python2=ON ../ 编译1$make -j4 安装1$sudo make install 注：如果cmake配置增加 -D BUILD_opencv_world=ON 选项编译，会将所有动态库融合为一个动态库opencv_world.so 结果：]]></content>
+    <content type="text"><![CDATA[从官网下载最新版4.0.1源码，解压缩，并按以下步骤执行： 进入源码目录1$cd opencv-4.0.1 创建编译目录build，使用cmake进行源码外编译 如果系统没有安装cmake工具，请先安装cmake 1$mkdir build 进入编译目录1$cd build 配置 指定编译后lib文件和头文件的安装路径为/usr/local，默认生成pkgconfig文件，编译python2&amp;3接口 1$cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=ON -D BUILD_opencv_python2=ON -D BUILD_opencv_python3=ON ../ 编译 j值为CPU核数 1$make -j4 安装1$sudo make install 注：如果cmake配置增加 -D BUILD_opencv_world=ON 选项编译，会将所有动态库融合为一个动态库opencv_world.so 结果：]]></content>
   </entry>
   <entry>
     <title><![CDATA[Go编程语法注意事项]]></title>
