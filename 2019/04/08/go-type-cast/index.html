@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type  INT  intvar  a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)">
+  <meta name="description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go类型转换">
 <meta property="og:url" content="http://yoursite.com/2019/04/08/go-type-cast/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type  INT  intvar  a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)">
+<meta property="og:description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-08T03:18:59.000Z">
+<meta property="og:updated_time" content="2019-04-08T03:32:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go类型转换">
-<meta name="twitter:description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许 同类型别名之间的转换123type  INT  intvar  a INT = 10var b int = a // Error: ... 窄类型向宽类型转换12var b byte = 100var n int = b //Error: ... Go只支持显示类型转换 12var b byte = 10var n int = int(b)">
+<meta name="twitter:description" content="Go语言不支持隐式类型转换，即使如下几种情况也不允许">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-08 11:15:09 / Modified: 11:18:59" itemprop="dateCreated datePublished" datetime="2019-04-08T11:15:09+08:00">2019-04-08</time>
+              <time title="Created: 2019-04-08 11:15:09 / Modified: 11:32:16" itemprop="dateCreated datePublished" datetime="2019-04-08T11:15:09+08:00">2019-04-08</time>
             
 
             
@@ -460,6 +460,7 @@
 
       
         <p>Go语言<strong>不支持<u>隐式</u>类型转换</strong>，即使如下几种情况也不允许</p>
+<a id="more"></a>
 <h6 id="同类型别名之间的转换"><a href="#同类型别名之间的转换" class="headerlink" title="同类型别名之间的转换"></a>同类型别名之间的转换</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span>  INT  <span class="keyword">int</span></span><br><span class="line"><span class="keyword">var</span>  a INT = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> b <span class="keyword">int</span> = a <span class="comment">// Error: ...</span></span><br></pre></td></tr></table></figure>
 <h6 id="窄类型向宽类型转换"><a href="#窄类型向宽类型转换" class="headerlink" title="窄类型向宽类型转换"></a>窄类型向宽类型转换</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b <span class="keyword">byte</span> = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> n <span class="keyword">int</span> = b <span class="comment">//Error: ...</span></span><br></pre></td></tr></table></figure>
 <p>Go只<strong>支持<u>显示</u>类型转换</strong></p>
