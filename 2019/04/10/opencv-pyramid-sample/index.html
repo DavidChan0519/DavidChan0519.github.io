@@ -96,17 +96,21 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="通俗点讲， 对一个图片进行金字塔操作，涉及如下两个函数； pyrDown( )函数的作用是向下采样并模糊一张图片，说白了就是缩小一张图片。 pyrUp( )函数的作用是向上采样并模糊一张图像，说白了就是放大一张图片；">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程伟的技术笔记">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python opencv图像金字塔">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/opencv-pyramid-sample/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="通俗点讲， 对一个图片进行金字塔操作，涉及如下两个函数； pyrDown( )函数的作用是向下采样并模糊一张图片，说白了就是缩小一张图片。 pyrUp( )函数的作用是向上采样并模糊一张图像，说白了就是放大一张图片；">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/pyramid-pyrdown.png">
+<meta property="og:image" content="http://yoursite.com/images/pyramid-pyrDown_pyrUp.png">
+<meta property="og:updated_time" content="2019-04-10T03:19:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程伟的技术笔记">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="python opencv图像金字塔">
+<meta name="twitter:description" content="通俗点讲， 对一个图片进行金字塔操作，涉及如下两个函数； pyrDown( )函数的作用是向下采样并模糊一张图片，说白了就是缩小一张图片。 pyrUp( )函数的作用是向上采样并模糊一张图像，说白了就是放大一张图片；">
+<meta name="twitter:image" content="http://yoursite.com/images/pyramid-pyrdown.png">
 
 
 
@@ -114,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/archives/page/2/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/10/opencv-pyramid-sample/">
 
 
 
@@ -124,7 +128,7 @@
   };
 </script>
 
-  <title>Archive | 程伟的技术笔记</title>
+  <title>python opencv图像金字塔 | 程伟的技术笔记</title>
   
 
 
@@ -172,7 +176,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/DavidChan0519" id="fork-me-custom"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,7 +282,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -307,28 +311,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -375,397 +357,223 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/10/opencv-pyramid-sample/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">python opencv图像金字塔
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-10 11:06:08 / Modified: 11:19:50" itemprop="dateCreated datePublished" datetime="2019-04-10T11:06:08+08:00">2019-04-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        Um..! 24 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/03/go-multi-assign/" itemprop="url">
             
-              <span itemprop="name">Go多变量赋值</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T23:15:44+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/03/gocv-face-detection/" itemprop="url">
-            
-              <span itemprop="name">使用GoCV进行人脸检测</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T11:37:47+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/03/gocv-introduction/" itemprop="url">
-            
-              <span itemprop="name">GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T10:18:54+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>通俗点讲，</p>
+<p>对一个图片进行金字塔操作，涉及如下两个函数；</p>
+<p>pyrDown( )函数的作用是向下采样并模糊一张图片，说白了就是缩小一张图片。</p>
+<p>pyrUp( )函数的作用是向上采样并模糊一张图像，说白了就是放大一张图片；</p>
+<a id="more"></a>
+<p>python示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pyramid</span><span class="params">()</span>:</span></span><br><span class="line">    img = cv2.imread(<span class="string">'.\obma.jpg'</span>, cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line">    lower_reso1 = cv2.pyrDown(img)</span><br><span class="line">    lower_reso2 = cv2.pyrDown(lower_reso1)</span><br><span class="line">    lower_reso3 = cv2.pyrDown(lower_reso2)</span><br><span class="line">    cv2.imshow(<span class="string">'original'</span>, img)</span><br><span class="line">    cv2.imshow(<span class="string">'pyrdown1'</span>, lower_reso1)</span><br><span class="line">    cv2.imshow(<span class="string">'pyrdown2'</span>, lower_reso2)</span><br><span class="line">    cv2.imshow(<span class="string">'pyrdown3'</span>, lower_reso3)</span><br><span class="line">    cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    pyramid()</span><br></pre></td></tr></table></figure>
+<p>每调用一次pyrDown()操作，图片的H,W就减小至原来的一半。故面积缩小至原来的四分之一;</p>
+<p>预览：</p>
+<p><img src="/images/pyramid-pyrdown.png" alt></p>
+<p>pyrUp()相反，每调用一次，图片的H,W就增大至原来的2倍。故面积增大至原来的4倍;</p>
+<p>需要注意的是，PryUp和PryDown不是互逆的，即PryUp不是降采样的逆操作。如果一张图片先调用pyrdown()一次，然后再调用pyrUp()，图片大小会恢复至原始大小，但是<strong>图像清晰度会下降</strong>。<br><img src="/images/pyramid-pyrDown_pyrUp.png" alt></p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/clion-compile-err/" itemprop="url">
-            
-              <span itemprop="name">使用clion编译c++程序报错</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T22:11:03+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/dockerfile-copy/" itemprop="url">
-            
-              <span itemprop="name">在Dockerfile中使用COPY指令</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T16:57:22+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/git-and-gerrit-guide/" itemprop="url">
-            
-              <span itemprop="name">Git for Gerrit 客户端配置指导</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T14:15:49+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/opencv-src-compile/" itemprop="url">
-            
-              <span itemprop="name">OpenCV源码编译安装</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T11:56:24+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/01/go-syntax/" itemprop="url">
-            
-              <span itemprop="name">Go编程语法注意事项</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-01T16:28:46+08:00" content="2019-04-01">
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/01/docker-priv-repo-setup/" itemprop="url">
-            
-              <span itemprop="name">上传Docker镜像到私有镜像仓储</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-01T15:34:00+08:00" content="2019-04-01">
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/01/docker-port-expose/" itemprop="url">
-            
-              <span itemprop="name">Docker 容器端口映射方法</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-01T15:13:38+08:00" content="2019-04-01">
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/09/cv2-bgr-sample/" rel="next" title="opencv python生成BGR三原色">
+                <i class="fa fa-chevron-left"></i> opencv python生成BGR三原色
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1000,6 +808,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -1015,6 +827,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '56b927009f5c31c05b79',
+    clientSecret: '45307baf23d3e44a33a0186f8675ac71a8519bfe',
+    repo: 'davidchan0519.github.io',
+    owner: 'DavidChan0519',
+    admin: ['DavidChan0519'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
