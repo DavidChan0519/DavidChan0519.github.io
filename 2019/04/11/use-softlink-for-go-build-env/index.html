@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/images/base_zeus_src.png">
 <meta property="og:image" content="http://yoursite.com/images/go_build_env.png">
 <meta property="og:image" content="http://yoursite.com/images/ln.png">
-<meta property="og:updated_time" content="2019-04-17T03:59:43.287Z">
+<meta property="og:updated_time" content="2019-04-17T04:28:23.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建go程序源码编译环境">
 <meta name="twitter:description" content="编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量.">
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-17 11:59:43" itemprop="dateModified" datetime="2019-04-17T11:59:43+08:00">2019-04-17</time>
+                <time title="Modified: 2019-04-17 12:28:23" itemprop="dateModified" datetime="2019-04-17T12:28:23+08:00">2019-04-17</time>
               
             
           </span>
@@ -485,7 +485,7 @@
 <p><img src="/images/base_zeus_src.png" alt></p>
 <h5 id="建立go编译工程目录："><a href="#建立go编译工程目录：" class="headerlink" title="建立go编译工程目录："></a>建立go编译工程目录：</h5><p>在外面任意位置新建编译目录build_go，里面分别建立src，bin，pkg等3个字目录</p>
 <p><img src="/images/go_build_env.png" alt></p>
-<h5 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接:"></a>建立软连接:</h5><p>$ln -sf /Users/bitmain/work/master/bitmain_gerrit/base_service/Zeus /Users/bitmain/work/master/bitmain_gerrit/go_build/src/Zeus</p>
+<h5 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接:"></a>建立软连接:</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>ln -sf /Users/bitmain/work/master/bitmain_gerrit/base_service/Zeus /Users/bitmain/work/master/bitmain_gerrit/go_build/src/Zeus</span><br></pre></td></tr></table></figure>
 <p><img src="/images/ln.png" alt></p>
 <h5 id="设置GOPATH环境变量"><a href="#设置GOPATH环境变量" class="headerlink" title="设置GOPATH环境变量"></a>设置GOPATH环境变量</h5><p>env.sh如下:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export GOPATH=$GOPATH:/Users/bitmain/work/master/bitmain_gerrit/go_build</span><br></pre></td></tr></table></figure>
