@@ -6,9 +6,9 @@
     <content type="text"><![CDATA[内心憧憬了很久，一直心情很平静；但是当第一眼真正看到他的时候，内心还是受到了很大的冲击，眼里泛着泪花，激动的心情良久难以平复。哈哈，我可爱的儿子，我们终于见面了。辛苦妈妈十月怀胎，爸爸特此为你开一贴，感谢妈妈，以示纪念！ 我帅气的胖儿子]]></content>
   </entry>
   <entry>
-    <title><![CDATA[use_softlink_for_go_build_env]]></title>
+    <title><![CDATA[搭建go程序源码编译环境]]></title>
     <url>%2F2019%2F04%2F11%2Fuse-softlink-for-go-build-env%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量. GOPATH最后一层目录名为src，同级的目录有bin，pkg目录，程序源码需要放在src下面。如下图所示： 但是通常我们在git代码库上提交的源码，并不一定是按照上述目录结构组织的。所以为了方便编译，而又不挪动源码，我们使用软链接的方法为需要编译的go源码搭建一个编译环境。 base_service工程中的Zeus是需要编译的go源码，在该目录中是无法直接使用go build命令进行编译的。 建立go编译工程目录：在外面任意位置新建编译目录build_go，里面分别建立src，bin，pkg等3个字目录 建立软连接:1$ln -sf /Users/bitmain/work/master/bitmain_gerrit/base_service/Zeus /Users/bitmain/work/master/bitmain_gerrit/go_build/src/Zeus 设置GOPATH环境变量env.sh如下: 1$export GOPATH=$GOPATH:/Users/bitmain/work/master/bitmain_gerrit/go_build 编译：然后在go_build目录下执行编译脚本build.sh即可完成编译： 1234#!/bin/bashpushd /Users/bitmain/work/master/bitmain_gerrit/go_build/srcgo build -o zeus entry.gopopd]]></content>
   </entry>
   <entry>
     <title><![CDATA[python opencv图像金字塔]]></title>

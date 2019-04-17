@@ -96,18 +96,23 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量.">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="use_softlink_for_go_build_env">
+<meta property="og:title" content="搭建go程序源码编译环境">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/use-softlink-for-go-build-env/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-11T08:19:14.579Z">
+<meta property="og:image" content="http://yoursite.com/images/tree.png">
+<meta property="og:image" content="http://yoursite.com/images/base_zeus_src.png">
+<meta property="og:image" content="http://yoursite.com/images/go_build_env.png">
+<meta property="og:image" content="http://yoursite.com/images/ln.png">
+<meta property="og:updated_time" content="2019-04-17T03:46:06.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="use_softlink_for_go_build_env">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="搭建go程序源码编译环境">
+<meta name="twitter:description" content="编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量.">
+<meta name="twitter:image" content="http://yoursite.com/images/tree.png">
 
 
 
@@ -125,7 +130,7 @@
   };
 </script>
 
-  <title>use_softlink_for_go_build_env | 程伟的技术笔记</title>
+  <title>搭建go程序源码编译环境 | 程伟的技术笔记</title>
   
 
 
@@ -387,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">use_softlink_for_go_build_env
+          <h1 class="post-title" itemprop="name headline">搭建go程序源码编译环境
 
               
             
@@ -416,6 +421,22 @@
               <time title="Created: 2019-04-11 16:19:14" itemprop="dateCreated datePublished" datetime="2019-04-11T16:19:14+08:00">2019-04-11</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-17 11:46:06" itemprop="dateModified" datetime="2019-04-17T11:46:06+08:00">2019-04-17</time>
+              
             
           </span>
 
@@ -455,7 +476,21 @@
       
 
       
-        
+        <p>编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量.</p>
+<a id="more"></a>
+<p>GOPATH最后一层目录名为src，同级的目录有bin，pkg目录，程序源码需要放在src下面。如下图所示：</p>
+<p><img src="/images/tree.png" alt></p>
+<p>但是通常我们在git代码库上提交的源码，并不一定是按照上述目录结构组织的。所以为了方便编译，而又不挪动源码，我们使用软链接的方法为需要编译的go源码搭建一个编译环境。</p>
+<p>base_service工程中的Zeus是需要编译的go源码，在该目录中是无法直接使用go build命令进行编译的。</p>
+<p><img src="/images/base_zeus_src.png" alt></p>
+<h5 id="建立go编译工程目录："><a href="#建立go编译工程目录：" class="headerlink" title="建立go编译工程目录："></a>建立go编译工程目录：</h5><p>在外面任意位置新建编译目录build_go，里面分别建立src，bin，pkg等3个字目录</p>
+<p><img src="/images/go_build_env.png" alt></p>
+<h5 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接:"></a>建立软连接:</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>ln -sf /Users/bitmain/work/master/bitmain_gerrit/base_service/Zeus /Users/bitmain/work/master/bitmain_gerrit/go_build/src/Zeus</span><br></pre></td></tr></table></figure>
+<h5 id><a href="#" class="headerlink" title></a><img src="/images/ln.png" alt></h5><h5 id="设置GOPATH环境变量"><a href="#设置GOPATH环境变量" class="headerlink" title="设置GOPATH环境变量"></a>设置GOPATH环境变量</h5><p>env.sh如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export GOPATH=$GOPATH:/Users/bitmain/work/master/bitmain_gerrit/go_build</span><br></pre></td></tr></table></figure>
+<h5 id="编译："><a href="#编译：" class="headerlink" title="编译："></a>编译：</h5><p>然后在go_build目录下执行编译脚本build.sh即可完成编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">pushd</span> /Users/bitmain/work/master/bitmain_gerrit/go_build/src</span><br><span class="line">go build -o zeus entry.go</span><br><span class="line"><span class="built_in">popd</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -578,8 +613,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -638,6 +682,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#建立go编译工程目录："><span class="nav-number">1.</span> <span class="nav-text">建立go编译工程目录：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#建立软连接"><span class="nav-number">2.</span> <span class="nav-text">建立软连接:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#设置GOPATH环境变量"><span class="nav-number">4.</span> <span class="nav-text">设置GOPATH环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编译："><span class="nav-number">5.</span> <span class="nav-text">编译：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
