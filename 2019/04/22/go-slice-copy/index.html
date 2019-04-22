@@ -99,16 +99,16 @@
   <meta name="description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go中切片的深拷贝">
+<meta property="og:title" content="Go中切片的浅拷贝和深拷贝">
 <meta property="og:url" content="http://yoursite.com/2019/04/22/go-slice-copy/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/slice.png">
 <meta property="og:image" content="http://yoursite.com/images/slice_struct.png">
-<meta property="og:updated_time" content="2019-04-22T04:30:38.485Z">
+<meta property="og:updated_time" content="2019-04-22T04:39:55.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go中切片的深拷贝">
+<meta name="twitter:title" content="Go中切片的浅拷贝和深拷贝">
 <meta name="twitter:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
 <meta name="twitter:image" content="http://yoursite.com/images/slice.png">
 
@@ -128,7 +128,7 @@
   };
 </script>
 
-  <title>Go中切片的深拷贝 | 程伟的技术笔记</title>
+  <title>Go中切片的浅拷贝和深拷贝 | 程伟的技术笔记</title>
   
 
 
@@ -390,7 +390,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go中切片的深拷贝
+          <h1 class="post-title" itemprop="name headline">Go中切片的浅拷贝和深拷贝
 
               
             
@@ -416,7 +416,7 @@
                 
               
 
-              <time title="Created: 2019-04-22 11:41:24 / Modified: 12:30:38" itemprop="dateCreated datePublished" datetime="2019-04-22T11:41:24+08:00">2019-04-22</time>
+              <time title="Created: 2019-04-22 11:41:24 / Modified: 12:39:55" itemprop="dateCreated datePublished" datetime="2019-04-22T11:41:24+08:00">2019-04-22</time>
             
 
             
@@ -472,9 +472,9 @@
 <p><img src="/images/slice_struct.png" alt></p>
 <p>切片的拷贝分为2种：浅拷贝和深拷贝</p>
 <h5 id="浅拷贝："><a href="#浅拷贝：" class="headerlink" title="浅拷贝："></a>浅拷贝：</h5><p>源切片和目的切片共享同一底层数组空间，源切片修改，目的切片同样被修改。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice2 := slice1</span><br><span class="line">  slice1[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">  fmt.Println(slice1) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">	fmt.Println(slice2) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice2 := slice1</span><br><span class="line">  slice1[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">  fmt.Println(slice1) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">  fmt.Println(slice2) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="深拷贝："><a href="#深拷贝：" class="headerlink" title="深拷贝："></a>深拷贝：</h5><p>源切片和目的切片各自都有彼此独立的底层数组空间，各自的修改，彼此不受影响</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line">  slice2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">	slice3 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  <span class="comment">//拷贝</span></span><br><span class="line">	fmt.Println(<span class="built_in">copy</span>(slice2, slice1))<span class="comment">//4</span></span><br><span class="line">	fmt.Println(<span class="built_in">copy</span>(slice3, slice1))<span class="comment">//5</span></span><br><span class="line">  <span class="comment">//独立修改</span></span><br><span class="line">	slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">	slice3[<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line">	fmt.Println(slice1)<span class="comment">//[9 0 0 0 0 0]</span></span><br><span class="line">	fmt.Println(slice2)<span class="comment">//[9 2 0 0]</span></span><br><span class="line">	fmt.Println(slice3)<span class="comment">//[9 3 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line">  slice2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">  slice3 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  <span class="comment">//拷贝</span></span><br><span class="line">  fmt.Println(<span class="built_in">copy</span>(slice2, slice1))<span class="comment">//4</span></span><br><span class="line">  fmt.Println(<span class="built_in">copy</span>(slice3, slice1))<span class="comment">//5</span></span><br><span class="line">  <span class="comment">//独立修改</span></span><br><span class="line">  slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">  slice3[<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line">  fmt.Println(slice1)<span class="comment">//[9 0 0 0 0 0]</span></span><br><span class="line">  fmt.Println(slice2)<span class="comment">//[9 2 0 0]</span></span><br><span class="line">  fmt.Println(slice3)<span class="comment">//[9 3 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
