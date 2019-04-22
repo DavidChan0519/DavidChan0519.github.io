@@ -96,18 +96,21 @@
 
 
 
-  <meta name="description" content="介绍几个go语言编程中常用的环境变量，都可以通过export指令修改 $GOROOT  go编译器程序的安装目录  $GOPATH  go项目工程的根目录 该目录下必须包含src，pkg，bin3个子目录  $GOBIN  go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下  $GOOS $GOARCH  目标平台的操作系统类型和芯片架构">
+  <meta name="description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go环境变量">
-<meta property="og:url" content="http://yoursite.com/2019/04/06/go-env/index.html">
+<meta property="og:title" content="Go中切片的深拷贝">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/go-slice-copy/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="介绍几个go语言编程中常用的环境变量，都可以通过export指令修改 $GOROOT  go编译器程序的安装目录  $GOPATH  go项目工程的根目录 该目录下必须包含src，pkg，bin3个子目录  $GOBIN  go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下  $GOOS $GOARCH  目标平台的操作系统类型和芯片架构">
+<meta property="og:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-06T06:09:01.764Z">
+<meta property="og:image" content="http://yoursite.com/images/slice.png">
+<meta property="og:image" content="http://yoursite.com/images/slice_struct.png">
+<meta property="og:updated_time" content="2019-04-22T04:30:38.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go环境变量">
-<meta name="twitter:description" content="介绍几个go语言编程中常用的环境变量，都可以通过export指令修改 $GOROOT  go编译器程序的安装目录  $GOPATH  go项目工程的根目录 该目录下必须包含src，pkg，bin3个子目录  $GOBIN  go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下  $GOOS $GOARCH  目标平台的操作系统类型和芯片架构">
+<meta name="twitter:title" content="Go中切片的深拷贝">
+<meta name="twitter:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
+<meta name="twitter:image" content="http://yoursite.com/images/slice.png">
 
 
 
@@ -115,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/06/go-env/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/go-slice-copy/">
 
 
 
@@ -125,7 +128,7 @@
   };
 </script>
 
-  <title>Go环境变量 | 程伟的技术笔记</title>
+  <title>Go中切片的深拷贝 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +373,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/06/go-env/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/go-slice-copy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +390,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go环境变量
+          <h1 class="post-title" itemprop="name headline">Go中切片的深拷贝
 
               
             
@@ -413,7 +416,7 @@
                 
               
 
-              <time title="Created: 2019-04-06 13:54:46 / Modified: 14:09:01" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:46+08:00">2019-04-06</time>
+              <time title="Created: 2019-04-22 11:41:24 / Modified: 12:30:38" itemprop="dateCreated datePublished" datetime="2019-04-22T11:41:24+08:00">2019-04-22</time>
             
 
             
@@ -459,31 +462,19 @@
       
 
       
-        <p>介绍几个go语言编程中常用的环境变量，都可以通过export指令修改</p>
-<p>$GOROOT</p>
-<blockquote>
-<p>go编译器程序的安装目录</p>
-</blockquote>
-<p>$GOPATH</p>
-<blockquote>
-<p>go项目工程的根目录</p>
-<p>该目录下必须包含src，pkg，bin3个子目录</p>
-</blockquote>
-<p>$GOBIN</p>
-<blockquote>
-<p>go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下</p>
-</blockquote>
-<p>$GOOS</p>
-<p>$GOARCH</p>
-<blockquote>
-<p>目标平台的操作系统类型和芯片架构类型，这两个参数主要用于交叉编译中</p>
-<p>go支持多种操作系统和芯片体系结构，故go对交叉编译也有很好的支持</p>
-</blockquote>
+        <p>我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。</p>
 <a id="more"></a>
-<p>使用如下命令可以查看当前环境中go相关的环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go env</span></span><br></pre></td></tr></table></figure>
-<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">GOARCH="amd64"</span><br><span class="line">GOBIN=""</span><br><span class="line">GOCACHE="/home/lwang/.cache/go-build"</span><br><span class="line">GOEXE=""</span><br><span class="line">GOFLAGS=""</span><br><span class="line">GOHOSTARCH="amd64"</span><br><span class="line">GOHOSTOS="linux"</span><br><span class="line">GOOS="linux"</span><br><span class="line">GOPATH="/home/lwang/go"</span><br><span class="line">GOPROXY=""</span><br><span class="line">GORACE=""</span><br><span class="line">GOROOT="/usr/local/go"</span><br><span class="line">GOTMPDIR=""</span><br><span class="line">GOTOOLDIR="/usr/local/go/pkg/tool/linux_amd64"</span><br><span class="line">GCCGO="gccgo"</span><br><span class="line">CC="gcc"</span><br><span class="line">CXX="g++"</span><br><span class="line">CGO_ENABLED="1"</span><br><span class="line">GOMOD=""</span><br><span class="line">CGO_CFLAGS="-g -O2"</span><br><span class="line">CGO_CPPFLAGS=""</span><br><span class="line">CGO_CXXFLAGS="-g -O2"</span><br><span class="line">CGO_FFLAGS="-g -O2"</span><br><span class="line">CGO_LDFLAGS="-g -O2"</span><br><span class="line">PKG_CONFIG="pkg-config"</span><br><span class="line">GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build193074853=/tmp/go-build -gno-record-gcc-switches"</span><br></pre></td></tr></table></figure>
-<h5 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">GOARCH="amd64"</span><br><span class="line">GOBIN=""</span><br><span class="line">GOCACHE="/Users/bitmain/Library/Caches/go-build"</span><br><span class="line">GOEXE=""</span><br><span class="line">GOFLAGS=""</span><br><span class="line">GOHOSTARCH="amd64"</span><br><span class="line">GOHOSTOS="darwin"</span><br><span class="line">GOOS="darwin"</span><br><span class="line">GOPATH="/Users/bitmain/go"</span><br><span class="line">GOPROXY=""</span><br><span class="line">GORACE=""</span><br><span class="line">GOROOT="/usr/local/go"</span><br><span class="line">GOTMPDIR=""</span><br><span class="line">GOTOOLDIR="/usr/local/go/pkg/tool/darwin_amd64"</span><br><span class="line">GCCGO="gccgo"</span><br><span class="line">CC="clang"</span><br><span class="line">CXX="clang++"</span><br><span class="line">CGO_ENABLED="1"</span><br><span class="line">GOMOD=""</span><br><span class="line">CGO_CFLAGS="-g -O2"</span><br><span class="line">CGO_CPPFLAGS=""</span><br><span class="line">CGO_CXXFLAGS="-g -O2"</span><br><span class="line">CGO_FFLAGS="-g -O2"</span><br><span class="line">CGO_LDFLAGS="-g -O2"</span><br><span class="line">PKG_CONFIG="pkg-config"</span><br><span class="line">GOGCCFLAGS="-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/5x/6gkjj0_1581fwz9lvylk14mr0000gn/T/go-build089246083=/tmp/go-build -gno-record-gcc-switches -fno-common"</span><br></pre></td></tr></table></figure>
+<p><img src="/images/slice.png" alt></p>
+<p>例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 [<span class="number">10</span>]<span class="keyword">int</span> <span class="comment">//数组</span></span><br><span class="line"><span class="keyword">var</span> s2 []<span class="keyword">int</span>   <span class="comment">//切片</span></span><br></pre></td></tr></table></figure>
+<p>切片属于引用类型，使用make分配内存空间和初始化成员结构。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>)  		<span class="comment">//长度为3</span></span><br><span class="line">b := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>, <span class="number">5</span>)  <span class="comment">//长度为3，容量为5</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/slice_struct.png" alt></p>
+<p>切片的拷贝分为2种：浅拷贝和深拷贝</p>
+<h5 id="浅拷贝："><a href="#浅拷贝：" class="headerlink" title="浅拷贝："></a>浅拷贝：</h5><p>源切片和目的切片共享同一底层数组空间，源切片修改，目的切片同样被修改。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice2 := slice1</span><br><span class="line">  slice1[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">  fmt.Println(slice1) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">	fmt.Println(slice2) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="深拷贝："><a href="#深拷贝：" class="headerlink" title="深拷贝："></a>深拷贝：</h5><p>源切片和目的切片各自都有彼此独立的底层数组空间，各自的修改，彼此不受影响</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line">  slice2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">	slice3 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  <span class="comment">//拷贝</span></span><br><span class="line">	fmt.Println(<span class="built_in">copy</span>(slice2, slice1))<span class="comment">//4</span></span><br><span class="line">	fmt.Println(<span class="built_in">copy</span>(slice3, slice1))<span class="comment">//5</span></span><br><span class="line">  <span class="comment">//独立修改</span></span><br><span class="line">	slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">	slice3[<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line">	fmt.Println(slice1)<span class="comment">//[9 0 0 0 0 0]</span></span><br><span class="line">	fmt.Println(slice2)<span class="comment">//[9 2 0 0]</span></span><br><span class="line">	fmt.Println(slice3)<span class="comment">//[9 3 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -547,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/05/go-buildmode-c/" rel="next" title="Go build模式之c-archive，c-shared，linkshared">
-                <i class="fa fa-chevron-left"></i> Go build模式之c-archive，c-shared，linkshared
+              <a href="/2019/04/17/new-son-new-life/" rel="next" title="升级做爸爸了，开心">
+                <i class="fa fa-chevron-left"></i> 升级做爸爸了，开心
               </a>
             
           </div>
@@ -556,10 +547,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/06/mac-terminal-proxy/" rel="prev" title="Mac终端通过VPN联网">
-                Mac终端通过VPN联网 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -687,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux"><span class="nav-number">1.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mac"><span class="nav-number">2.</span> <span class="nav-text">Mac</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#浅拷贝："><span class="nav-number">1.</span> <span class="nav-text">浅拷贝：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#深拷贝："><span class="nav-number">2.</span> <span class="nav-text">深拷贝：</span></a></li></ol></div>
             
 
           </div>

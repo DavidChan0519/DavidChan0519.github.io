@@ -485,10 +485,10 @@
 <p><img src="/images/base_zeus_src.png" alt></p>
 <h5 id="建立go编译工程目录："><a href="#建立go编译工程目录：" class="headerlink" title="建立go编译工程目录："></a>建立go编译工程目录：</h5><p>在外面任意位置新建编译目录build_go，里面分别建立src，bin，pkg等3个字目录</p>
 <p><img src="/images/go_build_env.png" alt></p>
-<h5 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接:"></a>建立软连接:</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>ln -sf /Users/bitmain/work/master/bitmain_gerrit/base_service/Zeus /Users/bitmain/work/master/bitmain_gerrit/go_build/src/Zeus</span><br></pre></td></tr></table></figure>
+<h5 id="建立软连接"><a href="#建立软连接" class="headerlink" title="建立软连接:"></a>建立软连接:</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">ln -sf /Users/bitmain/work/master/bitmain_gerrit/base_service/Zeus /Users/bitmain/work/master/bitmain_gerrit/go_build/src/Zeus</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/ln.png" alt></p>
 <h5 id="设置GOPATH环境变量"><a href="#设置GOPATH环境变量" class="headerlink" title="设置GOPATH环境变量:"></a>设置GOPATH环境变量:</h5><p>env.sh如下:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>export GOPATH=$GOPATH:/Users/bitmain/work/master/bitmain_gerrit/go_build</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">export</span> GOPATH=<span class="variable">$GOPATH</span>:/Users/bitmain/work/master/bitmain_gerrit/go_build</span></span><br></pre></td></tr></table></figure>
 <h5 id="编译："><a href="#编译：" class="headerlink" title="编译："></a>编译：</h5><p>然后在go_build目录下执行编译脚本build.sh即可完成编译：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">pushd</span> /Users/bitmain/work/master/bitmain_gerrit/go_build/src</span><br><span class="line">go build -o zeus entry.go</span><br><span class="line"><span class="built_in">popd</span></span><br></pre></td></tr></table></figure>
 
@@ -639,7 +639,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
