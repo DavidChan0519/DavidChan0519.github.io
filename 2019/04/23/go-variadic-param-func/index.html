@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="Install and config Gitinstall git1$sudo apt-get install git config git1$git config --global user.name &quot;Your Name&quot; 1$git config --global user.email &quot;your.email@gmail.com&quot;  Note：”Your Name” must be same">
+  <meta name="description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git for Gerrit 客户端配置指导">
-<meta property="og:url" content="http://yoursite.com/2019/04/02/git-and-gerrit-guide/index.html">
+<meta property="og:title" content="Go可变参数函数">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/go-variadic-param-func/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="Install and config Gitinstall git1$sudo apt-get install git config git1$git config --global user.name &quot;Your Name&quot; 1$git config --global user.email &quot;your.email@gmail.com&quot;  Note：”Your Name” must be same">
+<meta property="og:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-02T06:54:37.000Z">
+<meta property="og:image" content="http://yoursite.com/Users/bitmain/work/rsc/tech_blog/images/go_variadic_param.png">
+<meta property="og:updated_time" content="2019-04-23T10:11:07.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git for Gerrit 客户端配置指导">
-<meta name="twitter:description" content="Install and config Gitinstall git1$sudo apt-get install git config git1$git config --global user.name &quot;Your Name&quot; 1$git config --global user.email &quot;your.email@gmail.com&quot;  Note：”Your Name” must be same">
+<meta name="twitter:title" content="Go可变参数函数">
+<meta name="twitter:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+<meta name="twitter:image" content="http://yoursite.com/Users/bitmain/work/rsc/tech_blog/images/go_variadic_param.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/02/git-and-gerrit-guide/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>Git for Gerrit 客户端配置指导 | 程伟的技术笔记</title>
+  <title>Go可变参数函数 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/git-and-gerrit-guide/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git for Gerrit 客户端配置指导
+          <h1 class="post-title" itemprop="name headline">Go可变参数函数
 
               
             
@@ -413,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 14:15:49 / Modified: 14:54:37" itemprop="dateCreated datePublished" datetime="2019-04-02T14:15:49+08:00">2019-04-02</time>
+              <time title="Created: 2019-04-23 18:04:43 / Modified: 18:11:07" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
             
 
             
@@ -459,24 +461,10 @@
       
 
       
-        <h5 id="Install-and-config-Git"><a href="#Install-and-config-Git" class="headerlink" title="Install and config Git"></a>Install and config Git</h5><h6 id="install-git"><a href="#install-git" class="headerlink" title="install git"></a>install git</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo apt-get install git</span></span><br></pre></td></tr></table></figure>
-<h6 id="config-git"><a href="#config-git" class="headerlink" title="config git"></a>config git</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">git config --global user.name <span class="string">"Your Name"</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">git config --global user.email <span class="string">"your.email@gmail.com"</span></span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Note：”Your Name” must be same with your domain name, for example wei.cheng</p>
-</blockquote>
+        <p>可变参数函数即其参数数量是可变的 : 0 个或多个；</p>
+<p>声明可变参数函数的方式是在其参数类型<strong>前面</strong>带上省略符（…）前缀。</p>
 <a id="more"></a>
-<h6 id="Check-config-information"><a href="#Check-config-information" class="headerlink" title="Check config information"></a>Check config information</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">git config --list</span></span><br></pre></td></tr></table></figure>
-<h5 id="Generate-and-upload-ssh-key"><a href="#Generate-and-upload-ssh-key" class="headerlink" title="Generate and upload ssh key"></a>Generate and upload ssh key</h5><p>On Linux</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">ssh-keygen -t rsa -C <span class="string">"your.email@gmail.com"</span></span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Don’t use any passphrase</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">vim ~/.ssh/config</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">Host *</span><br><span class="line">        KexAlgorithms +diffie-hellman-group1-sha1</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">cat ~/.ssh/id_rsa.pub</span></span><br></pre></td></tr></table></figure>
-<p>Copy the whole file into clipboard<br>Open gerrit website , On website, goto “Settings -&gt; SSH Public Keys”, paste the key, press “Add”</p>
-<h5 id="Clone-projects"><a href="#Clone-projects" class="headerlink" title="Clone projects"></a>Clone projects</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">git <span class="built_in">clone</span> &lt;ssh://your.name@gerrit.ai.bmfusion.net:29418/xxx.git&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash">git submodule init</span></span><br><span class="line"><span class="meta">$</span><span class="bash">git submodule update --rebase --remote</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">git fetch origin</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash">git rebase origin/master</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Do merge <span class="keyword">if</span> needed, after solving conflict, run</span></span><br><span class="line"><span class="meta">$</span><span class="bash">git rebase --<span class="built_in">continue</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Amend the previous change <span class="keyword">if</span> needed</span></span><br><span class="line"><span class="meta">$</span><span class="bash">git commit --amend</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Push</span></span><br><span class="line"><span class="meta">$</span><span class="bash">git push origin HEAD:refs/<span class="keyword">for</span>/master</span></span><br></pre></td></tr></table></figure>
+<p><img src="/Users/bitmain/work/rsc/tech_blog/images/go_variadic_param.png" alt></p>
 
       
     </div>
@@ -540,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/02/opencv-src-compile/" rel="next" title="OpenCV源码编译安装">
-                <i class="fa fa-chevron-left"></i> OpenCV源码编译安装
+              <a href="/2019/04/22/go-slice-copy/" rel="next" title="Go中切片之间的浅拷贝和深拷贝">
+                <i class="fa fa-chevron-left"></i> Go中切片之间的浅拷贝和深拷贝
               </a>
             
           </div>
@@ -549,10 +537,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/02/dockerfile-copy/" rel="prev" title="在Dockerfile中使用COPY指令">
-                在Dockerfile中使用COPY指令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -600,17 +584,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -669,23 +644,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-and-config-Git"><span class="nav-number">1.</span> <span class="nav-text">Install and config Git</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#install-git"><span class="nav-number">1.1.</span> <span class="nav-text">install git</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#config-git"><span class="nav-number">1.2.</span> <span class="nav-text">config git</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Check-config-information"><span class="nav-number">1.3.</span> <span class="nav-text">Check config information</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Generate-and-upload-ssh-key"><span class="nav-number">2.</span> <span class="nav-text">Generate and upload ssh key</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Clone-projects"><span class="nav-number">3.</span> <span class="nav-text">Clone projects</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
