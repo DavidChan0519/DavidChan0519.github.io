@@ -105,7 +105,8 @@
 <meta property="og:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/go_variadic_param.png">
-<meta property="og:updated_time" content="2019-04-23T10:15:35.334Z">
+<meta property="og:image" content="http://yoursite.com/images/slice_variadic_func.png">
+<meta property="og:updated_time" content="2019-04-23T11:41:18.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go可变参数函数">
 <meta name="twitter:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
@@ -415,7 +416,7 @@
                 
               
 
-              <time title="Created: 2019-04-23 18:04:43 / Modified: 18:15:35" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
+              <time title="Created: 2019-04-23 18:04:43 / Modified: 19:41:18" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
             
 
             
@@ -465,7 +466,19 @@
 <p>声明可变参数函数的方式是在其参数类型<strong>前面</strong>带上省略符（…）前缀。</p>
 <a id="more"></a>
 <p><img src="/images/go_variadic_param.png" alt></p>
-
+<p>一个简单的可变参数函数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(input …<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.Join(input,<span class="string">","</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">"hello"</span>,<span class="string">"world"</span>)</span><br><span class="line">test(<span class="string">"single"</span>)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<p>可变参数函数会在其内部创建一个”新的临时切片”。事实上，可变参数是一个简化了切片类型参数传入的<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener"><em>语法糖</em></a>。</p>
+<p><img src="/images/slice_variadic_func.png" alt></p>
+<p>当不传入参数的时候，可变参数会成为一个空值切片（ <code>nil</code> )</p>
+<p>当不太确定数据类型的时候我们通常采用空接口 <strong>interface{}</strong> </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tests1(<span class="number">789</span>)</span><br><span class="line">fmt.Println(<span class="string">"-------------"</span>)</span><br><span class="line">tests1(<span class="string">"789"</span>)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tests1</span><span class="params">(arg <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"value:"</span>, arg)</span><br><span class="line">    fmt.Println(<span class="string">"type:"</span>, reflect.TypeOf(arg).Name())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: int</span><br><span class="line">-------------</span><br><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: string</span><br></pre></td></tr></table></figure>
+<p>⚠️在使用interface{}作为可变入参时，传入的参数要先做类型转换(<u>先转换为[ ]interface{}</u>)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testParams</span><span class="params">(args ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> args &#123;</span><br><span class="line">        <span class="keyword">if</span> s, ok := v.(<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            fmt.Println(<span class="string">"----"</span>, s)</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span> s, ok := v.([]<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            <span class="keyword">for</span> i, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">                fmt.Println(i, <span class="string">"[]----"</span>, v)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(i, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s := []<span class="keyword">string</span>&#123;<span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>&#125;</span><br><span class="line"><span class="keyword">var</span> d []<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">d = <span class="built_in">append</span>(d, s)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="comment">//var d []interface&#123;&#125; = []interface&#123;&#125;&#123;s[0], s[1], s[2]&#125;</span></span><br><span class="line">testParams(d...)</span><br></pre></td></tr></table></figure>
+<p>结果:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 []---- 4</span><br><span class="line">1 []---- 5</span><br><span class="line">2 []---- 6</span><br><span class="line">0 [4 5 6]</span><br></pre></td></tr></table></figure>
       
     </div>
 
