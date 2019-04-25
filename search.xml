@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[go语言中的interface类型]]></title>
+    <url>%2F2019%2F04%2F25%2Fgo-interface%2F</url>
+    <content type="text"><![CDATA[go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go可变参数函数]]></title>
     <url>%2F2019%2F04%2F23%2Fgo-variadic-param-func%2F</url>
     <content type="text"><![CDATA[可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。 一个简单的可变参数函数： 1234567func test(input …string) string &#123; return strings.Join(input,",")&#125;test("hello","world")test("single")test() 可变参数函数会在其内部创建一个”新的临时切片”。事实上，可变参数是一个简化了切片类型参数传入的语法糖。 当不传入参数的时候，可变参数会成为一个空值切片（ nil ) 当不太确定数据类型的时候我们通常采用空接口 interface{} 1234567tests1(789)fmt.Println("-------------")tests1("789")func tests1(arg interface&#123;&#125;) &#123; fmt.Println("value:", arg) fmt.Println("type:", reflect.TypeOf(arg).Name())&#125; 输出结果 12345value: 789type: int-------------value: 789type: string ⚠️在使用interface{}作为可变入参时，传入的参数要先做类型转换(先转换为[ ]interface{}) 1234567891011121314151617181920func testParams(args ...interface&#123;&#125;) &#123; for i, v := range args &#123; if s, ok := v.(string); ok &#123; fmt.Println("----", s) &#125; if s, ok := v.([]string); ok &#123; for i, v := range s &#123; fmt.Println(i, "[]----", v) &#125; &#125; fmt.Println(i, v) &#125;&#125;s := []string&#123;"4", "5", "6"&#125;var d []interface&#123;&#125;d = append(d, s)//或者//var d []interface&#123;&#125; = []interface&#123;&#125;&#123;s[0], s[1], s[2]&#125;testParams(d...) 结果: 12340 []---- 41 []---- 52 []---- 60 [4 5 6]]]></content>

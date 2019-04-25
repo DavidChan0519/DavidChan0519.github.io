@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := &quot;hello&quot;">
-<meta name="keywords" content="golang">
+  <meta name="description" content="go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景">
+<meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go简短模式声明变量之部分退化赋值">
-<meta property="og:url" content="http://yoursite.com/2019/04/04/go-short-assignment/index.html">
+<meta property="og:title" content="go语言中的interface类型">
+<meta property="og:url" content="http://yoursite.com/2019/04/25/go-interface/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := &quot;hello&quot;">
+<meta property="og:description" content="go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-04T07:08:17.000Z">
+<meta property="og:updated_time" content="2019-04-25T14:01:44.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go简短模式声明变量之部分退化赋值">
-<meta name="twitter:description" content="golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := &quot;hello&quot;">
+<meta name="twitter:title" content="go语言中的interface类型">
+<meta name="twitter:description" content="go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/04/go-short-assignment/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/25/go-interface/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Go简短模式声明变量之部分退化赋值 | 程伟的技术笔记</title>
+  <title>go语言中的interface类型 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/go-short-assignment/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/go-interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go简短模式声明变量之部分退化赋值
+          <h1 class="post-title" itemprop="name headline">go语言中的interface类型
 
               
             
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-04 12:34:29 / Modified: 15:08:17" itemprop="dateCreated datePublished" datetime="2019-04-04T12:34:29+08:00">2019-04-04</time>
+              <time title="Created: 2019-04-25 21:59:31 / Modified: 22:01:44" itemprop="dateCreated datePublished" datetime="2019-04-25T21:59:31+08:00">2019-04-25</time>
             
 
             
@@ -459,22 +459,8 @@
       
 
       
-        <p>golang <strong>函数内</strong>定义变量，推荐使用简短模式，例如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x := <span class="number">1</span></span><br><span class="line">y := <span class="string">"hello"</span></span><br></pre></td></tr></table></figure>
+        <p>go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景</p>
 <a id="more"></a>
-<p>由于作用域的关系，该模式容易定义跟全局变量同名的函数局部新变量，使用的时候要特别小心。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局变量x</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//重新定义和初始化同名的局部变量x</span></span><br><span class="line">    x := <span class="string">"abc"</span></span><br><span class="line">    fmt.Println(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br></pre></td></tr></table></figure>
-<p>但是简短模式并不总是定义新变量，在重复使用的时候可能执行的是部分退化赋值操作</p>
-<p><strong>部分退化赋值的前提条件</strong>：最少有一个新变量被定义，且必须是在同一作用域</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   x := <span class="number">100</span></span><br><span class="line">   fmt.Println(<span class="string">"x:"</span>,x, <span class="string">" &amp;x:"</span>,&amp;x)</span><br><span class="line">   fmt.Println(<span class="string">"========== seperate ========"</span>)</span><br><span class="line">   x , y := <span class="number">200</span> , <span class="string">"abc"</span></span><br><span class="line">   fmt.Println(<span class="string">"x:"</span>,x, <span class="string">" &amp;x:"</span>,&amp;x)</span><br><span class="line">   fmt.Println(<span class="string">"y:"</span>,y, <span class="string">" &amp;y:"</span>,&amp;y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x: 100  &amp;x: 0xc00006c080</span><br><span class="line">========== seperate ========</span><br><span class="line">x: 200  &amp;x: 0xc00006c080</span><br><span class="line">y: abc  &amp;y: 0xc0000581c0</span><br></pre></td></tr></table></figure>
-<p>从输出结果可以看出，前后两次打印的x地址都是同一个，故可以说明前后两次x是同一个变量，仅仅是值发生了变化。</p>
-<p>部分退化赋值这一特性可以用在处理函数错误返回值，允许重复使用err变量，非常方便</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"gocv.io/x/gocv"</span></span><br><span class="line">   <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    val1, err := func1()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    val2, err := func2()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
     </div>
 
@@ -528,12 +514,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/golang/" rel="tag"># golang</a>
-          
-        </div>
-      
 
       
       
@@ -543,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/04/go-build-mode/" rel="next" title="Go build模式">
-                <i class="fa fa-chevron-left"></i> Go build模式
+              <a href="/2019/04/23/go-variadic-param-func/" rel="next" title="Go可变参数函数">
+                <i class="fa fa-chevron-left"></i> Go可变参数函数
               </a>
             
           </div>
@@ -552,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/05/go-buildmode-c/" rel="prev" title="Go build模式之c-archive，c-shared，linkshared">
-                Go build模式之c-archive，c-shared，linkshared <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
