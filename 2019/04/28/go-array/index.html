@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+  <meta name="description" content="go中的数组不同于c/c++中的数组，是值类型，在函数参数传递的时候，会拷贝整个数组(不同于c/c++中数组名相当于指针)。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go可变参数函数">
-<meta property="og:url" content="http://yoursite.com/2019/04/23/go-variadic-param-func/index.html">
+<meta property="og:title" content="Go中的数组">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/go-array/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+<meta property="og:description" content="go中的数组不同于c/c++中的数组，是值类型，在函数参数传递的时候，会拷贝整个数组(不同于c/c++中数组名相当于指针)。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/go_variadic_param.png">
-<meta property="og:image" content="http://yoursite.com/images/slice_variadic_func.png">
-<meta property="og:updated_time" content="2019-04-23T11:41:18.631Z">
+<meta property="og:updated_time" content="2019-04-28T09:42:20.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go可变参数函数">
-<meta name="twitter:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
-<meta name="twitter:image" content="http://yoursite.com/images/go_variadic_param.png">
+<meta name="twitter:title" content="Go中的数组">
+<meta name="twitter:description" content="go中的数组不同于c/c++中的数组，是值类型，在函数参数传递的时候，会拷贝整个数组(不同于c/c++中数组名相当于指针)。">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/28/go-array/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>Go可变参数函数 | 程伟的技术笔记</title>
+  <title>Go中的数组 | 程伟的技术笔记</title>
   
 
 
@@ -373,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/go-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -390,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go可变参数函数
+          <h1 class="post-title" itemprop="name headline">Go中的数组
 
               
             
@@ -416,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-23 18:04:43 / Modified: 19:41:18" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
+              <time title="Created: 2019-04-28 17:30:06 / Modified: 17:42:20" itemprop="dateCreated datePublished" datetime="2019-04-28T17:30:06+08:00">2019-04-28</time>
             
 
             
@@ -462,23 +459,14 @@
       
 
       
-        <p>可变参数函数即其参数数量是可变的 : 0 个或多个；</p>
-<p>声明可变参数函数的方式是在其参数类型<strong>前面</strong>带上省略符（…）前缀。</p>
+        <p>go中的数组不同于c/c++中的数组，是值类型，在函数参数传递的时候，会拷贝整个数组(不同于c/c++中数组名相当于指针)。</p>
 <a id="more"></a>
-<p><img src="/images/go_variadic_param.png" alt></p>
-<p>一个简单的可变参数函数：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(input …<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.Join(input,<span class="string">","</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">"hello"</span>,<span class="string">"world"</span>)</span><br><span class="line">test(<span class="string">"single"</span>)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-<p>可变参数函数会在其内部创建一个”新的临时切片”。事实上，可变参数是一个简化了切片类型参数传入的<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener"><em>语法糖</em></a>。</p>
-<p><img src="/images/slice_variadic_func.png" alt></p>
-<p>当不传入参数的时候，可变参数会成为一个空值切片（ <code>nil</code> )</p>
-<p>当不太确定数据类型的时候我们通常采用空接口 <strong>interface{}</strong> </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tests1(<span class="number">789</span>)</span><br><span class="line">fmt.Println(<span class="string">"-------------"</span>)</span><br><span class="line">tests1(<span class="string">"789"</span>)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tests1</span><span class="params">(arg <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"value:"</span>, arg)</span><br><span class="line">    fmt.Println(<span class="string">"type:"</span>, reflect.TypeOf(arg).Name())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: int</span><br><span class="line">-------------</span><br><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: string</span><br></pre></td></tr></table></figure>
-<p>⚠️在使用interface{}作为可变入参时，传入的参数要先做类型转换(<u>先转换为[ ]interface{}</u>)</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testParams</span><span class="params">(args ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> args &#123;</span><br><span class="line">        <span class="keyword">if</span> s, ok := v.(<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            fmt.Println(<span class="string">"----"</span>, s)</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span> s, ok := v.([]<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            <span class="keyword">for</span> i, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">                fmt.Println(i, <span class="string">"[]----"</span>, v)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(i, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s := []<span class="keyword">string</span>&#123;<span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>&#125;</span><br><span class="line"><span class="keyword">var</span> d []<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">d = <span class="built_in">append</span>(d, s)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="comment">//var d []interface&#123;&#125; = []interface&#123;&#125;&#123;s[0], s[1], s[2]&#125;</span></span><br><span class="line">testParams(d...)</span><br></pre></td></tr></table></figure>
-<p>结果:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 []---- 4</span><br><span class="line">1 []---- 5</span><br><span class="line">2 []---- 6</span><br><span class="line">0 [4 5 6]</span><br></pre></td></tr></table></figure>
+<p>数组的长度为const，当不指定长度时，类型变为切片（slice）</p>
+<p>数组的几种初始化方式：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a := [<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125; <span class="comment">// 未初始化元素值为 0。</span></span><br><span class="line">b := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125; <span class="comment">// 通过初始化值确定数组⻓度。</span></span><br><span class="line">c := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">2</span>: <span class="number">100</span>, <span class="number">4</span>:<span class="number">200</span>&#125; <span class="comment">// 使⽤索引号初始化元素。</span></span><br><span class="line">d := [...]<span class="keyword">struct</span> &#123;</span><br><span class="line">  name <span class="keyword">string</span></span><br><span class="line">  age <span class="keyword">uint8</span></span><br><span class="line">&#125;&#123;</span><br><span class="line">  &#123;<span class="string">"user1"</span>, <span class="number">10</span>&#125;, <span class="comment">// 可省略元素类型。</span></span><br><span class="line">  &#123;<span class="string">"user2"</span>, <span class="number">20</span>&#125;, <span class="comment">// 别忘了最后⼀⾏的逗号。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>内置函数 len 和 cap 都返回数组⻓度 (元素数量)。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a := [<span class="number">2</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line"><span class="built_in">println</span>(<span class="built_in">len</span>(a), <span class="built_in">cap</span>(a)) <span class="comment">// 2,2</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -541,8 +529,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/go-slice-copy/" rel="next" title="Go中切片之间的浅拷贝和深拷贝">
-                <i class="fa fa-chevron-left"></i> Go中切片之间的浅拷贝和深拷贝
+              <a href="/2019/04/28/go-all-data-type/" rel="next" title="Go语言内置的所有数据类型">
+                <i class="fa fa-chevron-left"></i> Go语言内置的所有数据类型
               </a>
             
           </div>
@@ -550,10 +538,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/25/go-interface/" rel="prev" title="go语言中的interface类型">
-                go语言中的interface类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

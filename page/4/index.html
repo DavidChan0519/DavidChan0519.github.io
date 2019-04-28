@@ -96,21 +96,17 @@
 
 
 
-  <meta name="description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Go可变参数函数">
-<meta property="og:url" content="http://yoursite.com/2019/04/23/go-variadic-param-func/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="程伟的技术笔记">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/go_variadic_param.png">
-<meta property="og:image" content="http://yoursite.com/images/slice_variadic_func.png">
-<meta property="og:updated_time" content="2019-04-23T11:41:18.631Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go可变参数函数">
-<meta name="twitter:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
-<meta name="twitter:image" content="http://yoursite.com/images/go_variadic_param.png">
+<meta name="twitter:title" content="程伟的技术笔记">
+<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 
 
 
@@ -118,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
+  <link rel="canonical" href="http://yoursite.com/page/4/">
 
 
 
@@ -128,7 +124,7 @@
   };
 </script>
 
-  <title>Go可变参数函数 | 程伟的技术笔记</title>
+  <title>程伟的技术笔记</title>
   
 
 
@@ -176,7 +172,8 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right 
+  page-home">
     <div class="headband"></div>
     <a href="https://github.com/DavidChan0519" id="fork-me-custom"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -356,9 +353,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -373,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -390,8 +387,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go可变参数函数
-
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/29/net-snmp/" class="post-title-link" itemprop="url">Net-SNMP的交叉编译 for ARM64</a>
               
             
           </h1>
@@ -416,12 +415,24 @@
                 
               
 
-              <time title="Created: 2019-04-23 18:04:43 / Modified: 19:41:18" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
+              <time title="Created: 2019-03-29 14:38:17" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-02 01:50:16" itemprop="dateModified" datetime="2019-04-02T01:50:16+08:00">2019-04-02</time>
               
             
           </span>
@@ -436,13 +447,6 @@
           
           
 
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             Views:  
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
           
 
           
@@ -462,23 +466,18 @@
       
 
       
-        <p>可变参数函数即其参数数量是可变的 : 0 个或多个；</p>
-<p>声明可变参数函数的方式是在其参数类型<strong>前面</strong>带上省略符（…）前缀。</p>
-<a id="more"></a>
-<p><img src="/images/go_variadic_param.png" alt></p>
-<p>一个简单的可变参数函数：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(input …<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.Join(input,<span class="string">","</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">"hello"</span>,<span class="string">"world"</span>)</span><br><span class="line">test(<span class="string">"single"</span>)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-<p>可变参数函数会在其内部创建一个”新的临时切片”。事实上，可变参数是一个简化了切片类型参数传入的<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener"><em>语法糖</em></a>。</p>
-<p><img src="/images/slice_variadic_func.png" alt></p>
-<p>当不传入参数的时候，可变参数会成为一个空值切片（ <code>nil</code> )</p>
-<p>当不太确定数据类型的时候我们通常采用空接口 <strong>interface{}</strong> </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tests1(<span class="number">789</span>)</span><br><span class="line">fmt.Println(<span class="string">"-------------"</span>)</span><br><span class="line">tests1(<span class="string">"789"</span>)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tests1</span><span class="params">(arg <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"value:"</span>, arg)</span><br><span class="line">    fmt.Println(<span class="string">"type:"</span>, reflect.TypeOf(arg).Name())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: int</span><br><span class="line">-------------</span><br><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: string</span><br></pre></td></tr></table></figure>
-<p>⚠️在使用interface{}作为可变入参时，传入的参数要先做类型转换(<u>先转换为[ ]interface{}</u>)</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testParams</span><span class="params">(args ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> args &#123;</span><br><span class="line">        <span class="keyword">if</span> s, ok := v.(<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            fmt.Println(<span class="string">"----"</span>, s)</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span> s, ok := v.([]<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            <span class="keyword">for</span> i, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">                fmt.Println(i, <span class="string">"[]----"</span>, v)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(i, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s := []<span class="keyword">string</span>&#123;<span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>&#125;</span><br><span class="line"><span class="keyword">var</span> d []<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">d = <span class="built_in">append</span>(d, s)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="comment">//var d []interface&#123;&#125; = []interface&#123;&#125;&#123;s[0], s[1], s[2]&#125;</span></span><br><span class="line">testParams(d...)</span><br></pre></td></tr></table></figure>
-<p>结果:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 []---- 4</span><br><span class="line">1 []---- 5</span><br><span class="line">2 []---- 6</span><br><span class="line">0 [4 5 6]</span><br></pre></td></tr></table></figure>
+        
+          <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">去官网下载</a>openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/29/net-snmp/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
       
     </div>
 
@@ -494,39 +493,6 @@
       
     
     
-      <div>
-        <div id="reward-container">
-  <div>您的鼓励是我持之以恒的动力</div>
-  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-
-    
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
-        <p>WeChat Pay</p>
-      </div>
-    
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
-        <p>Alipay</p>
-      </div>
-    
-
-  </div>
-</div>
-
-      </div>
-    
 
     
 
@@ -534,32 +500,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/04/22/go-slice-copy/" rel="next" title="Go中切片之间的浅拷贝和深拷贝">
-                <i class="fa fa-chevron-left"></i> Go中切片之间的浅拷贝和深拷贝
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/25/go-interface/" rel="prev" title="go语言中的interface类型">
-                go语言中的interface类型 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -569,19 +515,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-    <div class="comments" id="gitalk-container">
-    </div>
-
-  
-
-
 
         </div>
         
@@ -816,10 +761,6 @@
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
 
   
 
@@ -835,37 +776,6 @@
 
   
 
-
-  
-    
-
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-
-
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-
-<script>
-  var gitalk = new Gitalk({
-    clientID: '56b927009f5c31c05b79',
-    clientSecret: '45307baf23d3e44a33a0186f8675ac71a8519bfe',
-    repo: 'davidchan0519.github.io',
-    owner: 'DavidChan0519',
-    admin: ['DavidChan0519'],
-    id: md5(location.pathname),
-    
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
-</script>
-
-  
 
 
   
