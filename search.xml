@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Go语言内置的所有数据类型]]></title>
     <url>%2F2019%2F04%2F28%2Fgo-all-data-type%2F</url>
-    <content type="text"><![CDATA[列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等 如果想获取任何类型变量的存储地址，使用&amp;（取地址符） 12str := "you are my sunshine"fmt.Printf("addr:%p\n", &amp;str) 输出： 1addr:0xc0000621c0]]></content>
+    <content type="text"><![CDATA[列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等 如果想获取任何类型变量的存储地址，使用&amp;（取地址符） 12str := "you are my sunshine"fmt.Printf("addr:%p\n", &amp;str) 输出： 1addr:0xc0000621c0 字符串一旦创建不可修改，所以如果要修改字符串，可先将其转换成 []rune 或 []byte，完成后再转换为 string。⽆论哪种转换，都会重新分配内存，并复制字节数组（本质上，修改后的字符串已不是原始的字符串，他们彼此占用了独立的内存空间）。 123456s := "abcd"b := []byte(s)b[0]='A'fmt.Printf("b:%s\n",b)fmt.Printf("s addr:%p\n",&amp;s)fmt.Printf("b addr:%p\n",&amp;b) 输出： 123b:Abcds addr:0xc000094010b addr:0xc000096000]]></content>
   </entry>
   <entry>
     <title><![CDATA[go语言中的interface类型]]></title>
