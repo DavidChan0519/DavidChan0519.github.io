@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Go语言内置的所有数据类型]]></title>
     <url>%2F2019%2F04%2F28%2Fgo-all-data-type%2F</url>
-    <content type="text"><![CDATA[列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等]]></content>
+    <content type="text"><![CDATA[列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等 如果想获取任何类型变量的存储地址，使用&amp;（取地址符） 12str := "you are my sunshine"fmt.Printf("addr:%p\n", &amp;str) 输出： 1addr:0xc0000621c0]]></content>
   </entry>
   <entry>
     <title><![CDATA[go语言中的interface类型]]></title>

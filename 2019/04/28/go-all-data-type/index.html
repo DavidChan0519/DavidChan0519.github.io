@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
+  <meta name="description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言内置的所有数据类型">
 <meta property="og:url" content="http://yoursite.com/2019/04/28/go-all-data-type/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
+<meta property="og:description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/go_data_type.png">
-<meta property="og:updated_time" content="2019-04-28T04:45:47.018Z">
+<meta property="og:updated_time" content="2019-04-28T05:04:35.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言内置的所有数据类型">
-<meta name="twitter:description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
+<meta name="twitter:description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
 <meta name="twitter:image" content="http://yoursite.com/images/go_data_type.png">
 
 
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-28 12:40:03 / Modified: 12:45:47" itemprop="dateCreated datePublished" datetime="2019-04-28T12:40:03+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 12:40:03 / Modified: 13:04:35" itemprop="dateCreated datePublished" datetime="2019-04-28T12:40:03+08:00">2019-04-28</time>
             
 
             
@@ -461,9 +461,13 @@
       
 
       
-        <p>列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等</p>
+        <p>列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，rune，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等</p>
 <a id="more"></a>
 <p><img src="/images/go_data_type.png" alt></p>
+<p>如果想获取任何类型变量的存储地址，使用&amp;（取地址符）</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str := <span class="string">"you are my sunshine"</span></span><br><span class="line">fmt.Printf(<span class="string">"addr:%p\n"</span>, &amp;str)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addr:0xc0000621c0</span><br></pre></td></tr></table></figure>
 
       
     </div>
