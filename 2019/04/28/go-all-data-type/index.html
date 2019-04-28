@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式：">
+  <meta name="description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go build模式">
-<meta property="og:url" content="http://yoursite.com/2019/04/04/go-build-mode/index.html">
+<meta property="og:title" content="Go语言内置的所有数据类型">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/go-all-data-type/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式：">
+<meta property="og:description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-04T07:02:30.000Z">
+<meta property="og:image" content="http://yoursite.com/images/go_data_type.png">
+<meta property="og:updated_time" content="2019-04-28T04:45:47.018Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go build模式">
-<meta name="twitter:description" content="build mode: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。 1$go build -buildmode=default goroutine_select.go 在编译go程序时，go编译器支持如下几种模式：">
+<meta name="twitter:title" content="Go语言内置的所有数据类型">
+<meta name="twitter:description" content="列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等">
+<meta name="twitter:image" content="http://yoursite.com/images/go_data_type.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/04/go-build-mode/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/28/go-all-data-type/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>Go build模式 | 程伟的技术笔记</title>
+  <title>Go语言内置的所有数据类型 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/04/go-build-mode/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/go-all-data-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go build模式
+          <h1 class="post-title" itemprop="name headline">Go语言内置的所有数据类型
 
               
             
@@ -413,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-04-04 12:13:20 / Modified: 15:02:30" itemprop="dateCreated datePublished" datetime="2019-04-04T12:13:20+08:00">2019-04-04</time>
+              <time title="Created: 2019-04-28 12:40:03 / Modified: 12:45:47" itemprop="dateCreated datePublished" datetime="2019-04-28T12:40:03+08:00">2019-04-28</time>
             
 
             
@@ -459,13 +461,10 @@
       
 
       
-        <p><code>build mode</code>: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build -buildmode=default goroutine_select.go</span></span><br></pre></td></tr></table></figure>
-<p>在编译go程序时，go编译器支持如下几种模式：</p>
+        <p>列表为go内置的所有数据类型，包括基本数据类型，例如int，byte，string；也有引用数据类型，例如slice，map，channel等；还有interface，函数等</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">-buildmode=archive</span><br><span class="line">	Build the listed non-main packages into .a files. Packages named</span><br><span class="line">	main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=c-archive</span><br><span class="line">	Build the listed main package, plus all packages it imports,</span><br><span class="line">	into a C archive file. The only callable(可调用的) symbols will be those</span><br><span class="line">	<span class="built_in">functions</span> exported using a cgo //<span class="built_in">export</span> comment. Requires</span><br><span class="line">	exactly one main package to be listed.</span><br><span class="line"></span><br><span class="line">-buildmode=c-shared</span><br><span class="line">	Build the listed main package, plus all packages it imports,</span><br><span class="line">	into a C shared library. The only callable symbols will</span><br><span class="line">	be those <span class="built_in">functions</span> exported using a cgo //<span class="built_in">export</span> comment.</span><br><span class="line">	Requires exactly one main package to be listed.</span><br><span class="line"></span><br><span class="line">-buildmode=default</span><br><span class="line">	Listed main packages are built into executables and listed</span><br><span class="line">	non-main packages are built into .a files (the default</span><br><span class="line">	behavior).</span><br><span class="line"></span><br><span class="line">-buildmode=shared</span><br><span class="line">	Combine all the listed non-main packages into a single shared</span><br><span class="line">	library that will be used when building with the -linkshared</span><br><span class="line">	option. Packages named main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=exe</span><br><span class="line">	Build the listed main packages and everything they import into</span><br><span class="line">	executables. Packages not named main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=pie</span><br><span class="line">	Build the listed main packages and everything they import into</span><br><span class="line">	position independent executables (PIE). Packages not named</span><br><span class="line">	main are ignored.</span><br><span class="line"></span><br><span class="line">-buildmode=plugin</span><br><span class="line">	Build the listed main packages, plus all packages that they</span><br><span class="line">	import, into a Go plugin. Packages not named main are ignored.</span><br></pre></td></tr></table></figure>
-<p>解释：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">exe:        静态编译</span><br><span class="line">exe:        动态链接 libc</span><br><span class="line">exe:        动态链接 libc 和非 Go 代码</span><br><span class="line">pie:        地址无关的可执行文件(安全特性)</span><br><span class="line">c-archive:  C 的静态链接库</span><br><span class="line">c-shared:   C 的动态链接库</span><br><span class="line">shared:     Go 的动态链接库</span><br><span class="line">plugin:     Go 的插件</span><br></pre></td></tr></table></figure>
+<p><img src="/images/go_data_type.png" alt></p>
+
       
     </div>
 
@@ -528,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/03/go-multi-assign/" rel="next" title="Go多变量赋值">
-                <i class="fa fa-chevron-left"></i> Go多变量赋值
+              <a href="/2019/04/25/go-interface/" rel="next" title="go语言中的interface类型">
+                <i class="fa fa-chevron-left"></i> go语言中的interface类型
               </a>
             
           </div>
@@ -537,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/04/go-short-assignment/" rel="prev" title="Go简短模式声明变量之部分退化赋值">
-                Go简短模式声明变量之部分退化赋值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
