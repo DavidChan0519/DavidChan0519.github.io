@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Go方法集和方法表达式]]></title>
+    <url>%2F2019%2F04%2F29%2Fgo-methods-expression%2F</url>
+    <content type="text"><![CDATA[直接看代码 方法集： 1234567891011121314151617type User struct &#123; id int name string&#125;func (self User) Test() &#123; fmt.Println(self)&#125;func main() &#123; u := User&#123;1,"test"&#125; mValue := u.Test //⽴即复制 receiver，因为不是指针类型，不受后续修改影响 u.id, u.name = 2, "modified" u.Test() mValue()&#125; 输出： 12&#123;2 modified&#125;&#123;1 test&#125; 修改上述代码，将Test()方法的receiver类型改为指针 123func (self *User) Test() &#123; fmt.Println(self)&#125; 重新运行上述代码，输出： 12&#123;2 modified&#125;&#123;2 modified&#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go中的数组]]></title>
     <url>%2F2019%2F04%2F28%2Fgo-array%2F</url>
     <content type="text"><![CDATA[go中的数组不同于c/c++中的数组，是值类型，在函数参数传递的时候，会拷贝整个数组(不同于c/c++中数组名相当于指针)。 数组的长度为const，当不指定长度时，类型变为切片（slice） 数组的几种初始化方式： 12345678910a := [3]int&#123;1, 2&#125; // 未初始化元素值为 0。b := [...]int&#123;1, 2, 3, 4&#125; // 通过初始化值确定数组⻓度。c := [5]int&#123;2: 100, 4:200&#125; // 使⽤索引号初始化元素。d := [...]struct &#123; name string age uint8&#125;&#123; &#123;"user1", 10&#125;, // 可省略元素类型。 &#123;"user2", 20&#125;, // 别忘了最后⼀⾏的逗号。&#125; 内置函数 len 和 cap 都返回数组⻓度 (元素数量)。 12a := [2]int&#123;&#125;println(len(a), cap(a)) // 2,2]]></content>
