@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="本文讲述一种比较少见的接口实现用法：用函数实现接口。 直接上代码：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-30T03:04:00.335Z">
+<meta property="og:updated_time" content="2019-04-30T03:07:36.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go接口的实现技巧">
 <meta name="twitter:description" content="本文讲述一种比较少见的接口实现用法：用函数实现接口。 直接上代码：">
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-30 10:49:32 / Modified: 11:04:00" itemprop="dateCreated datePublished" datetime="2019-04-30T10:49:32+08:00">2019-04-30</time>
+              <time title="Created: 2019-04-30 10:49:32 / Modified: 11:07:36" itemprop="dateCreated datePublished" datetime="2019-04-30T10:49:32+08:00">2019-04-30</time>
             
 
             
@@ -462,7 +462,7 @@
         <p>本文讲述一种比较少见的接口实现用法：用函数实现接口。</p>
 <p>直接上代码：</p>
 <a id="more"></a>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Tester接口，包含Do()方法</span></span><br><span class="line"><span class="keyword">type</span> Tester <span class="keyword">interface</span> &#123;</span><br><span class="line">	Do()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> FuncDo <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">//实现<span class="title">Do</span>方法</span></span><br><span class="line"><span class="function"><span class="title">func</span> <span class="params">(self FuncDo)</span> <span class="title">Do</span><span class="params">()</span></span> &#123; self() &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> t Tester = FuncDo(<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; <span class="built_in">println</span>(<span class="string">"Hello, World!"</span>) &#125;)</span><br><span class="line">  t.Do()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Tester接口，包含Do()方法</span></span><br><span class="line"><span class="keyword">type</span> Tester <span class="keyword">interface</span> &#123;</span><br><span class="line">	Do()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> FuncDo <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">//实现<span class="title">Do</span>方法</span></span><br><span class="line"><span class="function"><span class="title">func</span> <span class="params">(self FuncDo)</span> <span class="title">Do</span><span class="params">()</span></span> &#123; self() &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> t Tester = FuncDo(<span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; <span class="built_in">println</span>(<span class="string">"Hello, World!"</span>) &#125;)</span><br><span class="line">  t.Do()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
 <blockquote>
 <p>Hello, World!</p>

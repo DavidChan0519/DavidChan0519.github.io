@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Go接口的实现技巧]]></title>
     <url>%2F2019%2F04%2F30%2Fgo-interface-func%2F</url>
-    <content type="text"><![CDATA[本文讲述一种比较少见的接口实现用法：用函数实现接口。 直接上代码： 12345678910111213//Tester接口，包含Do()方法type Tester interface &#123; Do()&#125;type FuncDo func()//实现Do方法func (self FuncDo) Do() &#123; self() &#125;func main() &#123; var t Tester = FuncDo(func() &#123; println("Hello, World!") &#125;) t.Do()&#125; 输出： Hello, World!]]></content>
+    <content type="text"><![CDATA[本文讲述一种比较少见的接口实现用法：用函数实现接口。 直接上代码： 1234567891011121314//Tester接口，包含Do()方法type Tester interface &#123; Do()&#125;type FuncDo func()//实现Do方法func (self FuncDo) Do() &#123; self() &#125;func main() &#123; var t Tester = FuncDo(func() &#123; println("Hello, World!") &#125;) t.Do()&#125; 输出： Hello, World!]]></content>
   </entry>
   <entry>
     <title><![CDATA[Go空接口之类型转换]]></title>
