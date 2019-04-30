@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于Goroutine]]></title>
+    <url>%2F2019%2F04%2F30%2Fgoroutine-introduce%2F</url>
+    <content type="text"><![CDATA[goroutine是go语言中的一种并发机制，实现简单，在需要异步执行的函数前加上go关键字即可，该函数即会异步执行。事实上，⼊⼝函数 main 就以 goroutine 运⾏。 但是需要⚠️的是：调度器不能保证多个 goroutine 执⾏次序，且进程退出时不会等待它们结束。所以这两点都需要在程序设计时从整体逻辑来考虑 123go func() &#123; println("Hello, World!")&#125;()]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go接口的实现技巧]]></title>
     <url>%2F2019%2F04%2F30%2Fgo-interface-func%2F</url>
     <content type="text"><![CDATA[本文讲述一种比较少见的接口实现用法：用函数实现接口。 直接上代码： 1234567891011121314//Tester接口，包含Do()方法type Tester interface &#123; Do()&#125;type FuncDo func()//实现Do方法func (self FuncDo) Do() &#123; self() &#125;func main() &#123; var t Tester = FuncDo(func() &#123; println("Hello, World!") &#125;) t.Do()&#125; 输出： Hello, World! FuncDo类型实现了Do方法，所以可以将其赋值给Tester接口(该接口仅包含Do方法)。然后通过调用Tester接口类型t的方法来间接实现FuncDo函数Do方法的调用]]></content>
