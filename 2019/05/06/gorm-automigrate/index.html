@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/images/org.png">
 <meta property="og:image" content="http://yoursite.com/images/add.png">
 <meta property="og:image" content="http://yoursite.com/images/del.png">
-<meta property="og:updated_time" content="2019-05-06T03:27:31.000Z">
+<meta property="og:updated_time" content="2019-05-06T03:38:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GORM之Automigrate">
 <meta name="twitter:description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)： 第一次写入数据库的字段内容为 12345type Product struct &amp;#123;   gorm.Model   Code string">
@@ -417,7 +417,7 @@
                 
               
 
-              <time title="Created: 2019-05-06 11:09:55 / Modified: 11:27:31" itemprop="dateCreated datePublished" datetime="2019-05-06T11:09:55+08:00">2019-05-06</time>
+              <time title="Created: 2019-05-06 11:09:55 / Modified: 11:38:49" itemprop="dateCreated datePublished" datetime="2019-05-06T11:09:55+08:00">2019-05-06</time>
             
 
             
@@ -473,10 +473,10 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Product <span class="keyword">struct</span> &#123;</span><br><span class="line">   gorm.Model</span><br><span class="line">   Code <span class="keyword">string</span></span><br><span class="line">   Price <span class="keyword">string</span></span><br><span class="line">   Age   <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>调用automigrate后，</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.AutoMigrate(&amp;Product&#123;&#125;)</span><br></pre></td></tr></table></figure>
-<p>数据库会自动为之前存储的item新增age字段，内容为空（empty）</p>
+<p>数据库会自动为之前存储的item新增age字段，内容为空（NULL）</p>
 <p><img src="/images/add.png" alt></p>
 <h6 id="删除字段"><a href="#删除字段" class="headerlink" title="删除字段"></a>删除字段</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Product <span class="keyword">struct</span> &#123;</span><br><span class="line">   gorm.Model</span><br><span class="line">   Code <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用Automigrate后，数据库之前记录的item保持不变，新增item只有Code一个column，price和age保持为空（empty）</p>
+<p>调用Automigrate后，数据库之前记录的item保持不变，新增item只有Code一个column，price和age保持为空（NULL）</p>
 <p><img src="/images/del.png" alt></p>
 
       

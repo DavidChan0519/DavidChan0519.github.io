@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[GORM之Automigrate]]></title>
     <url>%2F2019%2F05%2F06%2Fgorm-automigrate%2F</url>
-    <content type="text"><![CDATA[gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)： 第一次写入数据库的字段内容为 12345type Product struct &#123; gorm.Model Code string Price string&#125; 其在数据库的存储格式如下： 新增字段如果Product新增一个Age字段如下： 123456type Product struct &#123; gorm.Model Code string Price string Age string&#125; 调用automigrate后， 1db.AutoMigrate(&amp;Product&#123;&#125;) 数据库会自动为之前存储的item新增age字段，内容为空（empty） 删除字段1234type Product struct &#123; gorm.Model Code string&#125; 调用Automigrate后，数据库之前记录的item保持不变，新增item只有Code一个column，price和age保持为空（empty）]]></content>
+    <content type="text"><![CDATA[gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)： 第一次写入数据库的字段内容为 12345type Product struct &#123; gorm.Model Code string Price string&#125; 其在数据库的存储格式如下： 新增字段如果Product新增一个Age字段如下： 123456type Product struct &#123; gorm.Model Code string Price string Age string&#125; 调用automigrate后， 1db.AutoMigrate(&amp;Product&#123;&#125;) 数据库会自动为之前存储的item新增age字段，内容为空（NULL） 删除字段1234type Product struct &#123; gorm.Model Code string&#125; 调用Automigrate后，数据库之前记录的item保持不变，新增item只有Code一个column，price和age保持为空（NULL）]]></content>
   </entry>
   <entry>
     <title><![CDATA[Golang之GORM框架的基本使用]]></title>
