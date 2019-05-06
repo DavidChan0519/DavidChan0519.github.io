@@ -96,21 +96,21 @@
 
 
 
-  <meta name="description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)： 第一次写入数据库的字段内容为 12345type Product struct &amp;#123;   gorm.Model   Code string">
+  <meta name="description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)：">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GORM之Automigrate">
 <meta property="og:url" content="http://yoursite.com/2019/05/06/gorm-automigrate/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)： 第一次写入数据库的字段内容为 12345type Product struct &amp;#123;   gorm.Model   Code string">
+<meta property="og:description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)：">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/org.png">
 <meta property="og:image" content="http://yoursite.com/images/add.png">
 <meta property="og:image" content="http://yoursite.com/images/del.png">
-<meta property="og:updated_time" content="2019-05-06T03:38:49.000Z">
+<meta property="og:updated_time" content="2019-05-06T03:40:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GORM之Automigrate">
-<meta name="twitter:description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)： 第一次写入数据库的字段内容为 12345type Product struct &amp;#123;   gorm.Model   Code string">
+<meta name="twitter:description" content="gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。 以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)：">
 <meta name="twitter:image" content="http://yoursite.com/images/org.png">
 
 
@@ -417,7 +417,7 @@
                 
               
 
-              <time title="Created: 2019-05-06 11:09:55 / Modified: 11:38:49" itemprop="dateCreated datePublished" datetime="2019-05-06T11:09:55+08:00">2019-05-06</time>
+              <time title="Created: 2019-05-06 11:09:55 / Modified: 11:40:04" itemprop="dateCreated datePublished" datetime="2019-05-06T11:09:55+08:00">2019-05-06</time>
             
 
             
@@ -465,6 +465,7 @@
       
         <p>gorm中的Automigrate()操作，其作用主要是刷新数据库中的表格，使其保持最新，即让数据库之前存储的记录的表格字段和程序中最新使用的表格字段保持一致。</p>
 <p>以sqlite数据库存储为例(数据库文件查看，可以使用sqlite browser)：</p>
+<a id="more"></a>
 <p>第一次写入数据库的字段内容为</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Product <span class="keyword">struct</span> &#123;</span><br><span class="line">   gorm.Model</span><br><span class="line">   Code <span class="keyword">string</span></span><br><span class="line">   Price <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其在数据库的存储格式如下：</p>
