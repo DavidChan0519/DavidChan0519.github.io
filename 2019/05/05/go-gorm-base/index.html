@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="ORM（对象关系映射): 把数据库映射成对象。ORM 使用对象，封装了数据库操作，因此可以不碰 SQL 语言。开发者只使用面向对象编程，与数据对象直接交互，不用关心底层数据库实现； gorm是使用go语言实现数据库访问的ORM库。使用这个库，我们可以利用面向对象的方法，更加方便的对数据库中的数据进行CRUD(数据库的基本操作有四种：create、read、update和delete，简称 CRUD">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-06T02:53:36.000Z">
+<meta property="og:updated_time" content="2019-05-07T04:30:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Golang之GORM框架的基本使用">
 <meta name="twitter:description" content="ORM（对象关系映射): 把数据库映射成对象。ORM 使用对象，封装了数据库操作，因此可以不碰 SQL 语言。开发者只使用面向对象编程，与数据对象直接交互，不用关心底层数据库实现； gorm是使用go语言实现数据库访问的ORM库。使用这个库，我们可以利用面向对象的方法，更加方便的对数据库中的数据进行CRUD(数据库的基本操作有四种：create、read、update和delete，简称 CRUD">
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-06 10:53:36" itemprop="dateModified" datetime="2019-05-06T10:53:36+08:00">2019-05-06</time>
+                <time title="Modified: 2019-05-07 12:30:10" itemprop="dateModified" datetime="2019-05-07T12:30:10+08:00">2019-05-07</time>
               
             
           </span>
@@ -474,7 +474,8 @@
         <p>ORM（对象关系映射): 把数据库映射成对象。ORM 使用对象，封装了数据库操作，因此可以不碰 SQL 语言。开发者只使用面向对象编程，与数据对象直接交互，不用关心底层数据库实现；</p>
 <p><a href="https://github.com/jinzhu/gorm" target="_blank" rel="noopener">gorm</a>是使用go语言实现数据库访问的<code>ORM</code>库。使用这个库，我们可以利用面向对象的方法，更加方便的对数据库中的数据进行<code>CRUD</code>(数据库的基本操作有四种：<code>create</code>、<code>read</code>、<code>update</code>和<code>delete</code>，简称 CRUD)，而无需关心底层数据库的具体实现以及数据库的类型(支持多种类型的数据库，例如MySQL，SQLite，PostgreSQL，MSSQL)。</p>
 <a id="more"></a>
-<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用:"></a>基本使用:</h4><h5 id="下载依赖"><a href="#下载依赖" class="headerlink" title="下载依赖"></a>下载依赖</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> get github.com/jinzhu/gorm</span><br><span class="line"><span class="variable">$go</span> get github.com/jinzhu/gorm/dialects/mysql</span><br></pre></td></tr></table></figure>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用:"></a>基本使用:</h4><p><a href="http://gorm.io/docs/index.html" target="_blank" rel="noopener">官方教程</a></p>
+<h5 id="下载依赖"><a href="#下载依赖" class="headerlink" title="下载依赖"></a>下载依赖</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> get github.com/jinzhu/gorm</span><br><span class="line"><span class="variable">$go</span> get github.com/jinzhu/gorm/dialects/mysql</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>第一个是核心库。<br>第二个是mysql数据库的驱动包，如果使用的是其他数据库，则需下载相应数据库的驱动包。</p>
 </blockquote>
