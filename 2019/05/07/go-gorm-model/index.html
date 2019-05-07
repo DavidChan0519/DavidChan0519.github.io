@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="gorm的几个默认规则如下： 1.默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs">
+  <meta name="description" content="gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs 12345678// 全局禁用表名复数db.SingularTable(true)// 如果设置为true,`Usr`的默认表名为`user`,使用`TableName">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gorm之model定义">
 <meta property="og:url" content="http://yoursite.com/2019/05/07/go-gorm-model/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="gorm的几个默认规则如下： 1.默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs">
+<meta property="og:description" content="gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs 12345678// 全局禁用表名复数db.SingularTable(true)// 如果设置为true,`Usr`的默认表名为`user`,使用`TableName">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T02:42:54.000Z">
+<meta property="og:updated_time" content="2019-05-07T02:55:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gorm之model定义">
-<meta name="twitter:description" content="gorm的几个默认规则如下： 1.默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs">
+<meta name="twitter:description" content="gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs 12345678// 全局禁用表名复数db.SingularTable(true)// 如果设置为true,`Usr`的默认表名为`user`,使用`TableName">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-05-07 10:42:13 / Modified: 10:42:54" itemprop="dateCreated datePublished" datetime="2019-05-07T10:42:13+08:00">2019-05-07</time>
+              <time title="Created: 2019-05-07 10:42:13 / Modified: 10:55:34" itemprop="dateCreated datePublished" datetime="2019-05-07T10:42:13+08:00">2019-05-07</time>
             
 
             
@@ -460,9 +460,10 @@
 
       
         <p>gorm的几个默认规则如下：</p>
-<p>1.默认的表名是定义的结构体名称小写复数形式</p>
+<p>默认的表名是定义的结构体名称小写复数形式</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Usr <span class="keyword">struct</span> &#123;</span><br><span class="line">    UsrId <span class="keyword">int</span></span><br><span class="line">    Name  <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该结构体对应的默认表名就是usrs</p>
+<p>该结构体对应的默认表名就是<strong>usrs</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局禁用表名复数</span></span><br><span class="line">db.SingularTable(<span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果设置为true,`Usr`的默认表名为`user`,使用`TableName`设置的表名不受影响</span></span><br><span class="line"><span class="comment">// 设置User的表名为`profiles`</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(User)</span> <span class="title">TableName</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"profiles"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
