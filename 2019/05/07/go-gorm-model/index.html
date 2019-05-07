@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T03:24:48.000Z">
+<meta property="og:updated_time" content="2019-05-07T03:29:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gorm之model定义">
 <meta name="twitter:description" content="gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式">
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-05-07 10:42:13 / Modified: 11:24:48" itemprop="dateCreated datePublished" datetime="2019-05-07T10:42:13+08:00">2019-05-07</time>
+              <time title="Created: 2019-05-07 10:42:13 / Modified: 11:29:19" itemprop="dateCreated datePublished" datetime="2019-05-07T10:42:13+08:00">2019-05-07</time>
             
 
             
@@ -460,11 +460,15 @@
 
       
         <p>gorm的几个默认规则如下：</p>
-<p>默认的表名是定义的结构体名称小写复数形式</p>
-<a id="more"></a>
+<h6 id="默认的表名是定义的结构体名称小写复数形式"><a href="#默认的表名是定义的结构体名称小写复数形式" class="headerlink" title="默认的表名是定义的结构体名称小写复数形式"></a>默认的表名是定义的结构体名称小写复数形式</h6><a id="more"></a>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Usr <span class="keyword">struct</span> &#123;</span><br><span class="line">    UsrId <span class="keyword">int</span></span><br><span class="line">    Name  <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>该结构体对应的默认表名就是<strong>usrs</strong></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局禁用表名复数，如果设置为true,则`Usr`的默认表名为`user`,</span></span><br><span class="line">db.SingularTable(<span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//但是如果使用TableName()显示设置了表名，则最终的表名以设置的为准</span></span><br><span class="line"><span class="comment">//如下：设置User的表名为`profiles`</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(User)</span> <span class="title">TableName</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"profiles"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="列名是字段名的蛇形小写"><a href="#列名是字段名的蛇形小写" class="headerlink" title="列名是字段名的蛇形小写"></a>列名是字段名的蛇形小写</h6><blockquote>
+<p>大小写字母之间用_间隔</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">  ID <span class="keyword">uint</span>             <span class="comment">// 列名为 `id`</span></span><br><span class="line">  Name <span class="keyword">string</span>         <span class="comment">// 列名为 `name`</span></span><br><span class="line">  Birthday time.Time  <span class="comment">// 列名为 `birthday`</span></span><br><span class="line">  CreatedAt time.Time <span class="comment">// 列名为 `created_at`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过tag重设列名</span></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">struct</span> &#123;</span><br><span class="line">    AnimalId    <span class="keyword">int64</span>     <span class="string">`gorm:"column:beast_id"`</span>         <span class="comment">// 设置列名为`beast_id`</span></span><br><span class="line">    Birthday    time.Time <span class="string">`gorm:"column:day_of_the_beast"`</span> <span class="comment">// 设置列名为`day_of_the_beast`</span></span><br><span class="line">    Age         <span class="keyword">int64</span>     <span class="string">`gorm:"column:age_of_the_beast"`</span> <span class="comment">// 设置列名为`age_of_the_beast`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="字段ID为默认主键"><a href="#字段ID为默认主键" class="headerlink" title="字段ID为默认主键"></a>字段<code>ID</code>为默认主键</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">  ID   <span class="keyword">uint</span>  <span class="comment">// 字段`ID`为默认主键</span></span><br><span class="line">  Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用tag`primary_key`用来设置主键</span></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">struct</span> &#123;</span><br><span class="line">  AnimalId <span class="keyword">int64</span> <span class="string">`gorm:"primary_key"`</span> <span class="comment">// 设置AnimalId为主键</span></span><br><span class="line">  Name     <span class="keyword">string</span></span><br><span class="line">  Age      <span class="keyword">int64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -584,8 +588,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -644,6 +657,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#默认的表名是定义的结构体名称小写复数形式"><span class="nav-number">1.</span> <span class="nav-text">默认的表名是定义的结构体名称小写复数形式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#列名是字段名的蛇形小写"><span class="nav-number">2.</span> <span class="nav-text">列名是字段名的蛇形小写</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字段ID为默认主键"><span class="nav-number">3.</span> <span class="nav-text">字段ID为默认主键</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

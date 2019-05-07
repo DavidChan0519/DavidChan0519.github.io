@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[gorm之model定义]]></title>
     <url>%2F2019%2F05%2F07%2Fgo-gorm-model%2F</url>
-    <content type="text"><![CDATA[gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &#123; UsrId int Name string&#125; 该结构体对应的默认表名就是usrs 12345678// 全局禁用表名复数，如果设置为true,则`Usr`的默认表名为`user`,db.SingularTable(true)//但是如果使用TableName()显示设置了表名，则最终的表名以设置的为准//如下：设置User的表名为`profiles`func (User) TableName() string &#123; return "profiles"&#125;]]></content>
+    <content type="text"><![CDATA[gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &#123; UsrId int Name string&#125; 该结构体对应的默认表名就是usrs 12345678// 全局禁用表名复数，如果设置为true,则`Usr`的默认表名为`user`,db.SingularTable(true)//但是如果使用TableName()显示设置了表名，则最终的表名以设置的为准//如下：设置User的表名为`profiles`func (User) TableName() string &#123; return "profiles"&#125; 列名是字段名的蛇形小写 大小写字母之间用_间隔 12345678910111213type User struct &#123; ID uint // 列名为 `id` Name string // 列名为 `name` Birthday time.Time // 列名为 `birthday` CreatedAt time.Time // 列名为 `created_at`&#125;//通过tag重设列名type Animal struct &#123; AnimalId int64 `gorm:"column:beast_id"` // 设置列名为`beast_id` Birthday time.Time `gorm:"column:day_of_the_beast"` // 设置列名为`day_of_the_beast` Age int64 `gorm:"column:age_of_the_beast"` // 设置列名为`age_of_the_beast`&#125; 字段ID为默认主键1234567891011type User struct &#123; ID uint // 字段`ID`为默认主键 Name string&#125;// 使用tag`primary_key`用来设置主键type Animal struct &#123; AnimalId int64 `gorm:"primary_key"` // 设置AnimalId为主键 Name string Age int64&#125;]]></content>
   </entry>
   <entry>
     <title><![CDATA[GORM之Automigrate]]></title>
