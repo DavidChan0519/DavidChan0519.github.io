@@ -461,17 +461,17 @@
       
 
       
-        <h6 id="COPY指令"><a href="#COPY指令" class="headerlink" title="COPY指令:"></a>COPY指令:</h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span> &lt;src&gt;  &lt;dest&gt;</span><br></pre></td></tr></table></figure>
+        <h6 id="COPY指令"><a href="#COPY指令" class="headerlink" title="COPY指令:"></a>COPY指令:</h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="bash"> &lt;src&gt;  &lt;dest&gt;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文.</p>
 <p>在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PATH 或 URL 指定的路径中的文件的集合。在镜像 build 过程中可以引用上下文中的任何文件，比如我们要介绍的 COPY 命令，就可以引用上下文中的文件。</p>
 <p>默认情况下 docker build -t custom  . 命令中的 . 表示build上下文为当前目录。</p>
 <p>当然我们可以指定一个目录作为上下文，比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>docker build -t custom /home/linaro</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker build -t custom /home/linaro</span></span><br></pre></td></tr></table></figure>
 <h6 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h6><p>在使用COPY指令时，本地的源文件要位于build上下文中。</p>
 <p><strong>如果build上下文是当前目录，则源文件要位于dockerfile所在的当前目录</strong>。</p>
 <p>例如：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span> /work</span><br><span class="line"><span class="keyword">COPY</span> snmp  .</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /work</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> snmp  .</span></span><br></pre></td></tr></table></figure>
 <p>snmp目录要位于dockerfile所在的目录中</p>
 <p>否则build过程中会报错：</p>
 <p><img src="/images/dockerfile_copy_error.png" alt></p>
@@ -623,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
