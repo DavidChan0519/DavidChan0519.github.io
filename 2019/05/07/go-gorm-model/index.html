@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="示例代码：">
+  <meta name="description" content="gorm的几个默认规则如下： 1.默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用GoCV进行人脸检测">
-<meta property="og:url" content="http://yoursite.com/2019/04/03/gocv-face-detection/index.html">
+<meta property="og:title" content="gorm之model定义">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/go-gorm-model/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="示例代码：">
+<meta property="og:description" content="gorm的几个默认规则如下： 1.默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/gocv_face_detection.png">
-<meta property="og:updated_time" content="2019-04-03T03:41:45.000Z">
+<meta property="og:updated_time" content="2019-05-07T02:42:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用GoCV进行人脸检测">
-<meta name="twitter:description" content="示例代码：">
-<meta name="twitter:image" content="http://yoursite.com/images/gocv_face_detection.png">
+<meta name="twitter:title" content="gorm之model定义">
+<meta name="twitter:description" content="gorm的几个默认规则如下： 1.默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &amp;#123;    UsrId int    Name  string&amp;#125; 该结构体对应的默认表名就是usrs">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/03/gocv-face-detection/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/07/go-gorm-model/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>使用GoCV进行人脸检测 | 程伟的技术笔记</title>
+  <title>gorm之model定义 | 程伟的技术笔记</title>
   
 
 
@@ -372,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/03/gocv-face-detection/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/go-gorm-model/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -389,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用GoCV进行人脸检测
+          <h1 class="post-title" itemprop="name headline">gorm之model定义
 
               
             
@@ -415,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-03 11:37:47 / Modified: 11:41:45" itemprop="dateCreated datePublished" datetime="2019-04-03T11:37:47+08:00">2019-04-03</time>
+              <time title="Created: 2019-05-07 10:42:13 / Modified: 10:42:54" itemprop="dateCreated datePublished" datetime="2019-05-07T10:42:13+08:00">2019-05-07</time>
             
 
             
@@ -461,14 +459,10 @@
       
 
       
-        <p>示例代码：</p>
-<a id="more"></a>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">        <span class="string">"fmt"</span></span><br><span class="line">        <span class="string">"gocv.io/x/gocv"</span></span><br><span class="line">        <span class="string">"image"</span></span><br><span class="line">        <span class="string">"image/color"</span></span><br><span class="line">        <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    webCam , err := gocv.VideoCaptureDevice(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">defer</span> webCam.Close()</span><br><span class="line"></span><br><span class="line">    window := gocv.NewWindow(<span class="string">"face"</span>)</span><br><span class="line">    <span class="keyword">defer</span> window.Close()</span><br><span class="line"></span><br><span class="line">    img := gocv.NewMat()</span><br><span class="line">    <span class="keyword">defer</span> img.Close()</span><br><span class="line"></span><br><span class="line">    classifier := gocv.NewCascadeClassifier()</span><br><span class="line">    <span class="keyword">defer</span> classifier.Close()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> !classifier.Load(<span class="string">"/data/haarcascade_frontalface_default.xml"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        log.Fatal(<span class="string">"load model failed\n"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> ok := webCam.Read(&amp;img); !ok &#123;</span><br><span class="line">                    log.Fatalln(<span class="string">"read img from webcam failed"</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> img.Empty() &#123;</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            rects := classifier.DetectMultiScale(img)</span><br><span class="line">            fmt.Printf(<span class="string">"found %d face\n"</span>,<span class="built_in">len</span>(rects))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> _ , ret := <span class="keyword">range</span> rects &#123;</span><br><span class="line">                   color := color.RGBA&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">225</span>,<span class="number">0</span>&#125;</span><br><span class="line">                    gocv.Rectangle(&amp;img, ret, color,<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">                    size := gocv.GetTextSize(<span class="string">"human"</span>,gocv.FontHersheyPlain, <span class="number">1.2</span>, <span class="number">2</span>)</span><br><span class="line">                    pt := image.Pt(ret.Min.X+(ret.Min.X/<span class="number">2</span>)-(size.X/<span class="number">2</span>), ret.Min.Y<span class="number">-2</span>)</span><br><span class="line">                    gocv.PutText(&amp;img, <span class="string">"Human"</span>, pt, gocv.FontHersheyPlain, <span class="number">1.2</span>, color, <span class="number">2</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            window.IMShow(img)</span><br><span class="line">            <span class="keyword">if</span> window.WaitKey(<span class="number">1</span>) &amp; <span class="number">0xff</span> == <span class="keyword">int</span>(<span class="string">'q'</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build test_face_detection.go</span></span><br></pre></td></tr></table></figure>
-<p>执行结果：</p>
-<p><img src="/images/gocv_face_detection.png" alt></p>
-<p>按q键，退出</p>
+        <p>gorm的几个默认规则如下：</p>
+<p>1.默认的表名是定义的结构体名称小写复数形式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Usr <span class="keyword">struct</span> &#123;</span><br><span class="line">    UsrId <span class="keyword">int</span></span><br><span class="line">    Name  <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该结构体对应的默认表名就是usrs</p>
 
       
     </div>
@@ -532,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/03/gocv-introduction/" rel="next" title="GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程">
-                <i class="fa fa-chevron-left"></i> GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程
+              <a href="/2019/05/06/gorm-automigrate/" rel="next" title="GORM之Automigrate">
+                <i class="fa fa-chevron-left"></i> GORM之Automigrate
               </a>
             
           </div>
@@ -541,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/03/go-multi-assign/" rel="prev" title="Go多变量赋值">
-                Go多变量赋值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
