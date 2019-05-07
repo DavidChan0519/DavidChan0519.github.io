@@ -96,24 +96,18 @@
 
 
 
-  <meta name="description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
+  <meta name="description" content="给出一段示例代码，主要演示如何判断某struct类型是否实现了某接口">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go中切片之间的浅拷贝和深拷贝">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/go-slice-copy/index.html">
+<meta property="og:title" content="Go之判断struct类型是否实现某接口">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/go-interface-implement/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
+<meta property="og:description" content="给出一段示例代码，主要演示如何判断某struct类型是否实现了某接口">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/slice.png">
-<meta property="og:image" content="http://yoursite.com/images/slice_struct.png">
-<meta property="og:image" content="http://yoursite.com/images/make_slice.png">
-<meta property="og:image" content="http://yoursite.com/images/slice_init.png">
-<meta property="og:image" content="http://yoursite.com/images/slice_trunk.png">
-<meta property="og:updated_time" content="2019-04-22T05:54:25.371Z">
+<meta property="og:updated_time" content="2019-05-07T09:52:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go中切片之间的浅拷贝和深拷贝">
-<meta name="twitter:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
-<meta name="twitter:image" content="http://yoursite.com/images/slice.png">
+<meta name="twitter:title" content="Go之判断struct类型是否实现某接口">
+<meta name="twitter:description" content="给出一段示例代码，主要演示如何判断某struct类型是否实现了某接口">
 
 
 
@@ -121,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/22/go-slice-copy/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/07/go-interface-implement/">
 
 
 
@@ -131,7 +125,7 @@
   };
 </script>
 
-  <title>Go中切片之间的浅拷贝和深拷贝 | 程伟的技术笔记</title>
+  <title>Go之判断struct类型是否实现某接口 | 程伟的技术笔记</title>
   
 
 
@@ -376,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/go-slice-copy/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/07/go-interface-implement/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -393,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go中切片之间的浅拷贝和深拷贝
+          <h1 class="post-title" itemprop="name headline">Go之判断struct类型是否实现某接口
 
               
             
@@ -419,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-22 11:41:24 / Modified: 13:54:25" itemprop="dateCreated datePublished" datetime="2019-04-22T11:41:24+08:00">2019-04-22</time>
+              <time title="Created: 2019-05-07 17:33:07 / Modified: 17:52:09" itemprop="dateCreated datePublished" datetime="2019-05-07T17:33:07+08:00">2019-05-07</time>
             
 
             
@@ -465,24 +459,19 @@
       
 
       
-        <p>我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。</p>
+        <p>给出一段示例代码，主要演示如何判断某struct类型是否实现了某接口</p>
 <a id="more"></a>
-<p><img src="/images/slice.png" alt></p>
-<p>例如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 [<span class="number">10</span>]<span class="keyword">int</span> <span class="comment">//数组</span></span><br><span class="line"><span class="keyword">var</span> s2 []<span class="keyword">int</span>   <span class="comment">//切片</span></span><br></pre></td></tr></table></figure>
-<p>切片属于引用类型，使用make分配内存空间和初始化成员结构。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>)  		<span class="comment">//长度为3</span></span><br><span class="line">b := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>, <span class="number">5</span>)  <span class="comment">//长度为3，容量为5</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/slice_struct.png" alt></p>
-<p><img src="/images/make_slice.png" alt></p>
-<p>切片字面量初始化：</p>
-<p><img src="/images/slice_init.png" alt></p>
-<p>数组到切片的拷贝(共享底层数组空间)</p>
-<p><img src="/images/slice_trunk.png" alt></p>
-<p>切片之间的拷贝分为2种：浅拷贝和深拷贝</p>
-<h5 id="浅拷贝："><a href="#浅拷贝：" class="headerlink" title="浅拷贝："></a>浅拷贝：</h5><p>源切片和目的切片共享同一底层数组空间，源切片修改，目的切片同样被修改。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice2 := slice1</span><br><span class="line">  slice1[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">  fmt.Println(slice1) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">  fmt.Println(slice2) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="深拷贝："><a href="#深拷贝：" class="headerlink" title="深拷贝："></a>深拷贝：</h5><p>源切片和目的切片各自都有彼此独立的底层数组空间，各自的修改，彼此不受影响</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line">  slice2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">  slice3 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  <span class="comment">//拷贝</span></span><br><span class="line">  fmt.Println(<span class="built_in">copy</span>(slice2, slice1))<span class="comment">//4</span></span><br><span class="line">  fmt.Println(<span class="built_in">copy</span>(slice3, slice1))<span class="comment">//5</span></span><br><span class="line">  <span class="comment">//独立修改</span></span><br><span class="line">  slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">  slice3[<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line">  fmt.Println(slice1)<span class="comment">//[9 0 0 0 0 0]</span></span><br><span class="line">  fmt.Println(slice2)<span class="comment">//[9 2 0 0]</span></span><br><span class="line">  fmt.Println(slice3)<span class="comment">//[9 3 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"fmt"</span></span><br><span class="line">   <span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tester <span class="keyword">interface</span> &#123;</span><br><span class="line">	Do() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">   Name <span class="keyword">string</span></span><br><span class="line">   Age  <span class="keyword">int</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self User)</span> <span class="title">Do</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">"do it"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> u User</span><br><span class="line"></span><br><span class="line">	t := reflect.TypeOf(u)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将nil转成Tester接口指针，然后再通过反射,Elem()方法获取指针对应的接口类型</span></span><br><span class="line">	fmt.Println(reflect.TypeOf((*Tester)(<span class="literal">nil</span>)).Elem().String())</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span> t.Implements(reflect.TypeOf((*Tester)(<span class="literal">nil</span>)).Elem()) &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Support !!!"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.Tester</span><br><span class="line">Support !!!</span><br></pre></td></tr></table></figure>
+<p>本文中比较难理解的一个点就是需要将nil转换成接口指针类型(接口也是go中的一个数据类型，和其他类型一样，也是存在对应的指针类型的)，然后通过反射获取该接口指针类型的类型，最后通过Element()方法获取指针对应的接口类型。<strong>之所以要这么做的原因是，无法直接获取接口的类型</strong>.</p>
+<p>尝试如下操作，获取Tester接口的类型：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> intf Tester  <span class="comment">//nil接口</span></span><br><span class="line">reflect.Typeof(intf)</span><br></pre></td></tr></table></figure>
+<p>也尝试过直接将nil转成Tester接口，然后通过反射获取类型</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reflect.TypeOf((Tester)(<span class="literal">nil</span>))</span><br></pre></td></tr></table></figure>
+<p>将上述结果作为参数传递给Implement()，都会报如下错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">panic: reflect: nil <span class="built_in">type</span> passed to Type.Implements</span><br></pre></td></tr></table></figure>
+<p>这是因为上述两种方法通过反射获取的类型都为nil</p>
 
       
     </div>
@@ -546,8 +535,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/17/new-son-new-life/" rel="next" title="升级做爸爸了，开心">
-                <i class="fa fa-chevron-left"></i> 升级做爸爸了，开心
+              <a href="/2019/05/07/go-reflect-example/" rel="next" title="Go示例-通过reflect遍历struct的所有方法">
+                <i class="fa fa-chevron-left"></i> Go示例-通过reflect遍历struct的所有方法
               </a>
             
           </div>
@@ -555,10 +544,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/23/go-variadic-param-func/" rel="prev" title="Go可变参数函数">
-                Go可变参数函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -606,17 +591,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -675,23 +651,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#浅拷贝："><span class="nav-number">1.</span> <span class="nav-text">浅拷贝：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#深拷贝："><span class="nav-number">2.</span> <span class="nav-text">深拷贝：</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
