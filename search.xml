@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[gorm之model定义]]></title>
     <url>%2F2019%2F05%2F07%2Fgo-gorm-model%2F</url>
-    <content type="text"><![CDATA[gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &#123; UsrId int Name string&#125; 该结构体对应的默认表名就是usrs 12345678// 全局禁用表名复数db.SingularTable(true)// 如果设置为true,`Usr`的默认表名为`user`,使用`TableName`设置的表名不受影响// 设置User的表名为`profiles`func (User) TableName() string &#123; return "profiles"&#125;]]></content>
+    <content type="text"><![CDATA[gorm的几个默认规则如下： 默认的表名是定义的结构体名称小写复数形式 1234type Usr struct &#123; UsrId int Name string&#125; 该结构体对应的默认表名就是usrs 1234567// 全局禁用表名复数，如果设置为true,`Usr`的默认表名为`user`,使用`TableName`设置的表名不受影响db.SingularTable(true)// 设置User的表名为`profiles`func (User) TableName() string &#123; return "profiles"&#125;]]></content>
   </entry>
   <entry>
     <title><![CDATA[GORM之Automigrate]]></title>
