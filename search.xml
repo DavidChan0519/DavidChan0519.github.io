@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu显示屏幕旋转]]></title>
+    <url>%2F2019%2F05%2F08%2Fubuntu-display-rotate%2F</url>
+    <content type="text"><![CDATA[为了方便竖屏显示，可以执行如下命令进行屏幕旋转 1234$ xrandr -o left 向左旋转90度$ xrandr -o right 向右旋转90度$ xrandr -o inverted 上下翻转$ xrandr -o normal 回到正常角度 通常情况下，从默认横屏显示转换到竖屏显示，只需要执行第一个命令即可]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go之判断struct类型是否实现某接口]]></title>
     <url>%2F2019%2F05%2F07%2Fgo-interface-implement%2F</url>
     <content type="text"><![CDATA[给出一段示例代码，主要演示如何判断某struct类型是否实现了某接口 1234567891011121314151617181920212223242526272829303132package mainimport ( "fmt" "reflect")type Tester interface &#123; Do() string&#125;type User struct &#123; Name string Age int &#125;func (self User) Do() string &#123; return "do it"&#125;func main() &#123; var u User t := reflect.TypeOf(u) //将nil转成Tester接口指针，然后再通过反射,Elem()方法获取指针对应的接口类型 fmt.Println(reflect.TypeOf((*Tester)(nil)).Elem().String()) if t.Implements(reflect.TypeOf((*Tester)(nil)).Elem()) &#123; fmt.Println("Support !!!") &#125;&#125; 输出： 12main.TesterSupport !!! 本文中比较难理解的一个点就是需要将nil转换成接口指针类型 (接口也是go中的一个数据类型，和其他类型int，string一样，也是存在对应的指针类型的)，然后通过反射获取该接口指针类型的类型，最后通过Element()方法获取指针对应的接口类型。之所以要这么做的原因是，无法直接获取接口的类型。 尝试如下操作，获取Tester接口的类型： 12var intf Tester //nil接口reflect.Typeof(intf) 也尝试过直接将nil转成Tester接口，然后通过反射获取类型 1reflect.TypeOf(Tester(nil)) 将上述结果作为参数传递给Implement()，都会报如下错误： 1panic: reflect: nil type passed to Type.Implements 这是因为上述两种方法通过反射获取的类型都为nil]]></content>

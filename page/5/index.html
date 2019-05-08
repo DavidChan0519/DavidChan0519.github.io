@@ -96,18 +96,17 @@
 
 
 
-  <meta name="description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
+  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Net-SNMP ARM部署">
-<meta property="og:url" content="http://yoursite.com/2019/03/29/net-snmp-deployment/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="程伟的技术笔记">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
+<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-31T14:04:26.159Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net-SNMP ARM部署">
-<meta name="twitter:description" content="交叉编译 net-snmp交叉编译，生成snmpd 交叉编译企业私有节点动态库 libbmserv.so">
+<meta name="twitter:title" content="程伟的技术笔记">
+<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 
 
 
@@ -115,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/03/29/net-snmp-deployment/">
+  <link rel="canonical" href="http://yoursite.com/page/5/">
 
 
 
@@ -125,7 +124,7 @@
   };
 </script>
 
-  <title>Net-SNMP ARM部署 | 程伟的技术笔记</title>
+  <title>程伟的技术笔记</title>
   
 
 
@@ -173,7 +172,8 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right 
+  page-home">
     <div class="headband"></div>
     <a href="https://github.com/DavidChan0519" id="fork-me-custom"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -353,9 +353,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp-deployment/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/net-snmp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,8 +387,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net-SNMP ARM部署
-
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/29/net-snmp/" class="post-title-link" itemprop="url">Net-SNMP的交叉编译 for ARM64</a>
               
             
           </h1>
@@ -413,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:40:03" itemprop="dateCreated datePublished" datetime="2019-03-29T16:40:03+08:00">2019-03-29</time>
+              <time title="Created: 2019-03-29 14:38:17" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
             
 
             
@@ -430,7 +432,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-31 22:04:26" itemprop="dateModified" datetime="2019-03-31T22:04:26+08:00">2019-03-31</time>
+                <time title="Modified: 2019-04-02 01:50:16" itemprop="dateModified" datetime="2019-04-02T01:50:16+08:00">2019-04-02</time>
               
             
           </span>
@@ -445,13 +447,6 @@
           
           
 
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             Views:  
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
           
 
           
@@ -471,114 +466,18 @@
       
 
       
-        <h5 id="交叉编译"><a href="#交叉编译" class="headerlink" title="交叉编译"></a>交叉编译</h5><ol>
-<li>net-snmp交叉编译，生成snmpd</li>
-<li>交叉编译企业私有节点动态库 libbmserv.so</li>
-</ol>
-<a id="more"></a>
-<h5 id="简单版配置文件snmpd-conf"><a href="#简单版配置文件snmpd-conf" class="headerlink" title="简单版配置文件snmpd.conf"></a>简单版配置文件snmpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">###########################################################################</span><br><span class="line"># snmpd.conf</span><br><span class="line">###########################################################################</span><br><span class="line">dlmod bmserv /usr/lib/libbmserv.so</span><br><span class="line"></span><br><span class="line">#v1/v2c</span><br><span class="line">rocommunity rrrrr</span><br><span class="line">rwcommunity wwww</span><br><span class="line"></span><br><span class="line">#v1 trap</span><br><span class="line">trapsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c trap</span><br><span class="line">trap2sink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v2c inform</span><br><span class="line">informsink  10.30.33.2 rrrrr</span><br><span class="line"></span><br><span class="line">#v3</span><br><span class="line">engineIDType 3</span><br><span class="line"></span><br><span class="line">rouser rouser priv</span><br><span class="line">createUser rouser MD5 11111111 DES 22222222</span><br><span class="line"></span><br><span class="line">rwuser rwuser priv</span><br><span class="line">createUser rwuser MD5 33333333 DES 44444444</span><br><span class="line"></span><br><span class="line"># v3 trap</span><br><span class="line">trapsess -v 3 -u rouser -a MD5 -A 11111111 -x DES -X 22222222 -l priv 192.168.1.111</span><br></pre></td></tr></table></figure>
-<p>engineType.  1|2|3 :  SNMP v3的安全配置，engine id的产生依赖于此选项自动生成；</p>
-<p>配置了该选项，就不需要在trapsess选项中通过-e参数来手动指定engine id，否则就需要.</p>
-<p>specifies that the engineID should be built from the <strong>IPv4 address (1),</strong> <strong>IPv6 address (2)</strong> or <strong>MAC address (3)</strong>. <u>Note that changing the IP address (or switching the network interface card) may cause problems.</u></p>
-<h5 id="ARM部署"><a href="#ARM部署" class="headerlink" title="ARM部署"></a>ARM部署</h5><p>将snmpd，libbmserv.so，snmpd.conf及相关的net-snmp库文件打包，然后放到arm开发环境。</p>
-<p>snmpd一般放在/bin目录下，snmpd.conf一般放在/etc/snmp/config目录下(没有的话，可自己建立相应的目录)</p>
-<p>libbmserv.so及net-snmp的动态库文件都可以放在/usr/local/lib下，私有mib文件及公共mib文件都放在/usr/share/mibs下，通过MIBS环境变量指定路径</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"><span class="built_in">export</span> MIBS=/home/lwang/work/chengw/github/net-snmp-x86/MIB/Bitmain.mib</span></span><br></pre></td></tr></table></figure>
-<h6 id="手动启动"><a href="#手动启动" class="headerlink" title="手动启动"></a>手动启动</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">snmpd -f -c /etc/snmp/config/snmpd.conf</span></span><br></pre></td></tr></table></figure>
-<p>全部可选参数如下：</p>
-<p>OPTIONS</p>
-<ul>
-<li><p>-a</p>
-<p>Log the source addresses of incoming requests.</p>
-</li>
-<li><p>-A</p>
-<p>Append to the log file rather than truncating it.</p>
-<p>默认每次重新启动snmpd，snmpd.log会被清理掉以便重新记录日志，之前旧的日志会被丢弃; 添加-A选项后，旧日志被保留，新的日志追加在旧的日志尾部</p>
-</li>
-<li><p>-c <em>FILE</em></p>
-<p>Read <em>FILE</em> as a configuration file (or a comma-separated list of configuration files). Note that the loaded file will only understand snmpd.conf tokens, unless the configuration type is specified in the file as described in the snmp_config man page under SWITCHING CONFIGURATION TYPES IN MID-FILE.</p>
-</li>
-<li><p>-C</p>
-<p>Do not read any configuration files except the ones optionally specified by the -c option. Note that this behaviour also covers the persistent configuration files. This may result in dynamically-assigned values being reset following an agent restart, unless the relevant persistent config files are explicitly loaded using the -c option.</p>
-</li>
-<li><p>-d</p>
-<p>Dump (in hexadecimal) the sent and received SNMP packets.</p>
-</li>
-<li><p>-D<em>[TOKEN[,…]]</em></p>
-<p>Turn on debugging output for the given <em>TOKEN</em>(s). Without any tokens specified, it defaults to printing all the tokens (which is equivalent to the keyword “ALL”). You might want to try<em>ALL</em> for extremely verbose output. Note: You can not put a space between the -D flag and the listed TOKENs.</p>
-</li>
-<li><p>-f</p>
-<p>Do not fork() from the calling shell.</p>
-</li>
-<li><p>-g <em>GID</em></p>
-<p>Change to the numerical group ID <em>GID</em> after opening listening sockets.</p>
-</li>
-<li><p>-h, –help</p>
-<p>Display a brief usage message and then exit.</p>
-</li>
-<li><p>-H</p>
-<p>Display a list of configuration file directives understood by the agent and then exit.</p>
-</li>
-<li><p>-I <em>[-]INITLIST</em></p>
-<p>Specifies which modules should (or should not) be initialized when the agent starts up. If the comma-separated <em>INITLIST</em> is preceded with a ‘-‘, it is the list of modules that should <em>not</em>be started. Otherwise this is the list of the <em>only</em> modules that should be started.To get a list of compiled modules, run the agent with the arguments <em>-Dmib_init -H</em> (assuming debugging support has been compiled in).</p>
-</li>
-<li><p>-L[efos]</p>
-<p>Specify where logging output should be directed (standard error or output, to a file or via syslog). See LOGGING OPTIONS in <a href="http://www.net-snmp.org/docs/man/snmpcmd.html" target="_blank" rel="noopener">snmpcmd</a>(5) for details.</p>
-</li>
-<li><p>-m <em>MIBLIST</em></p>
-<p>Specifies a colon separated list of MIB modules to load for this application. This overrides the environment variable MIBS. See <em>snmpcmd(1)</em> for details.</p>
-</li>
-<li><p>-M <em>DIRLIST</em></p>
-<p>Specifies a colon separated list of directories to search for MIBs. This overrides the environment variable MIBDIRS. See <em>snmpcmd(1)</em> for details.</p>
-</li>
-<li><p>-n <em>NAME</em></p>
-<p>Set an alternative application name (which will affect the configuration files loaded). By default this will be <em>snmpd</em>, regardless of the name of the actual binary.</p>
-</li>
-<li><p>-p <em>FILE</em></p>
-<p>Save the process ID of the daemon in <em>FILE</em>.</p>
-</li>
-<li><p>-q</p>
-<p>Print simpler output for easier automated parsing.</p>
-</li>
-<li><p>-r</p>
-<p>Do not require root access to run the daemon. Specifically, do not exit if files only accessible to root (such as /dev/kmem etc.) cannot be opened.</p>
-</li>
-<li><p>-u <em>UID</em></p>
-<p>Change to the user ID <em>UID</em> (which can be given in numerical or textual form) after opening listening sockets.</p>
-</li>
-<li><p>-U</p>
-<p>Instructs the agent to not remove its pid file (see the -p option) on shutdown. Overrides the leave_pidfile token in the snmpd.conf file, see snmpd.conf(5).</p>
-</li>
-<li><p>-v, –version</p>
-<p>Print version information for the agent and then exit.</p>
-</li>
-<li><p>-V</p>
-<p>Symbolically dump SNMP transactions.</p>
-</li>
-<li><p>-x <em>ADDRESS</em></p>
-<p>Listens for AgentX connections on the specified address rather than the default “/var/agentx/master”. The address can either be a Unix domain socket path, or the address of a network interface. The format is the same as the format of listening addresses described below.</p>
-</li>
-<li><p>-X</p>
-<p>Run as an AgentX subagent rather than as an SNMP master agent.</p>
-</li>
-<li><p>–<em>name=value</em></p>
-<p>Allows to specify any token (“name”) supported in the snmpd.conf file and sets its value to “value”. Overrides the corresponding token in the snmpd.conf file. See snmpd.conf(5) for the full list of tokens.</p>
-</li>
-</ul>
-<h6 id="SNMP服务自启动"><a href="#SNMP服务自启动" class="headerlink" title="SNMP服务自启动"></a>SNMP服务自启动</h6><p>利用debian的systemd机制，编写snmpd.service文件(xxx.service是snmp依赖的服务,根据实际情况修改)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Simple Network Management Protocol (SNMP) Daemon</span><br><span class="line">After=syslog.target network.target xxx.service</span><br><span class="line">Requires=xxx.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Environment=LD_LIBRARY_PATH=/usr/lib</span><br><span class="line">Environment=MIBDIRS=/usr/share/snmp/mibs</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/var/run/snmpd.pid</span><br><span class="line">ExecStart=/bin/snmpd -f -c /etc/snmp/config/snmpd.conf -p /var/run/snmpd.pid</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=3</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-<p>执行enable命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">systemctl <span class="built_in">enable</span> snmpd</span></span><br></pre></td></tr></table></figure>
-<p>系统下电重启，则SNMP服务会自动重新启动</p>
-<h6 id="其他控制操作"><a href="#其他控制操作" class="headerlink" title="其他控制操作"></a>其他控制操作</h6><p>1.启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">systemctl start snmpd</span></span><br></pre></td></tr></table></figure>
-<p>2.停止</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">systemctl stop snmpd</span></span><br></pre></td></tr></table></figure>
-<p>3.重启</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">systemctl restart snmpd</span></span><br></pre></td></tr></table></figure>
-<p>4.查询</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">systemctl status snmpd</span></span><br></pre></td></tr></table></figure>
-
+        
+          <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">去官网下载</a>openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/29/net-snmp/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
       
     </div>
 
@@ -594,39 +493,6 @@
       
     
     
-      <div>
-        <div id="reward-container">
-  <div>您的鼓励是我持之以恒的动力</div>
-  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-
-    
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
-        <p>WeChat Pay</p>
-      </div>
-    
-      
-      
-        
-      
-      <div style="display: inline-block">
-        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
-        <p>Alipay</p>
-      </div>
-    
-
-  </div>
-</div>
-
-      </div>
-    
 
     
 
@@ -634,32 +500,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/03/29/enterprise-priv/" rel="next" title="Net-SNMP企业节点动态库编辑">
-                <i class="fa fa-chevron-left"></i> Net-SNMP企业节点动态库编辑
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/docker-port-expose/" rel="prev" title="Docker 容器端口映射方法">
-                Docker 容器端口映射方法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -669,19 +515,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-    <div class="comments" id="gitalk-container">
-    </div>
-
-  
-
-
 
         </div>
         
@@ -701,17 +546,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -770,23 +606,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#交叉编译"><span class="nav-number">1.</span> <span class="nav-text">交叉编译</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简单版配置文件snmpd-conf"><span class="nav-number">2.</span> <span class="nav-text">简单版配置文件snmpd.conf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARM部署"><span class="nav-number">3.</span> <span class="nav-text">ARM部署</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#手动启动"><span class="nav-number">3.1.</span> <span class="nav-text">手动启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SNMP服务自启动"><span class="nav-number">3.2.</span> <span class="nav-text">SNMP服务自启动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他控制操作"><span class="nav-number">3.3.</span> <span class="nav-text">其他控制操作</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
@@ -942,10 +761,6 @@
 
 
   
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
 
   
 
@@ -961,37 +776,6 @@
 
   
 
-
-  
-    
-
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-
-
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-
-<script>
-  var gitalk = new Gitalk({
-    clientID: '56b927009f5c31c05b79',
-    clientSecret: '45307baf23d3e44a33a0186f8675ac71a8519bfe',
-    repo: 'davidchan0519.github.io',
-    owner: 'DavidChan0519',
-    admin: ['DavidChan0519'],
-    id: md5(location.pathname),
-    
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
-</script>
-
-  
 
 
   
