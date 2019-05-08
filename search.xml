@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Go权限控制]]></title>
+    <url>%2F2019%2F05%2F08%2Fgo-rights-control%2F</url>
+    <content type="text"><![CDATA[Go是以首字母大小写来区分是公有还是私有，但都是针对包级别的。无论首字母大写还是小写，在包内所有的都能访问。该规则适用于变量，常量，方法，结构体成员。 方法绑定本身只能绑定包内的类型，所以方法可以访问接收者所有成员。如果是包外调用某类型的方法，则需要看方法名首字母是大写还是小写，首字母大写能被包外访问，小写则只能被包内访问。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Ubuntu显示屏幕旋转]]></title>
     <url>%2F2019%2F05%2F08%2Fubuntu-display-rotate%2F</url>
     <content type="text"><![CDATA[为了方便竖屏显示，可以执行如下命令进行屏幕旋转 1234$ xrandr -o left 向左旋转90度$ xrandr -o right 向右旋转90度$ xrandr -o inverted 上下翻转$ xrandr -o normal 回到正常角度 通常情况下，从默认横屏显示转换到竖屏显示，只需要执行第一个命令即可]]></content>

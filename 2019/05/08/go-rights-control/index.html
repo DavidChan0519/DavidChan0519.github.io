@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
+  <meta name="description" content="Go是以首字母大小写来区分是公有还是私有，但都是针对包级别的。无论首字母大写还是小写，在包内所有的都能访问。该规则适用于变量，常量，方法，结构体成员。 方法绑定本身只能绑定包内的类型，所以方法可以访问接收者所有成员。如果是包外调用某类型的方法，则需要看方法名首字母是大写还是小写，首字母大写能被包外访问，小写则只能被包内访问。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="上传Docker镜像到私有镜像仓储">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/docker-priv-repo-setup/index.html">
+<meta property="og:title" content="Go权限控制">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/go-rights-control/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
+<meta property="og:description" content="Go是以首字母大小写来区分是公有还是私有，但都是针对包级别的。无论首字母大写还是小写，在包内所有的都能访问。该规则适用于变量，常量，方法，结构体成员。 方法绑定本身只能绑定包内的类型，所以方法可以访问接收者所有成员。如果是包外调用某类型的方法，则需要看方法名首字母是大写还是小写，首字母大写能被包外访问，小写则只能被包内访问。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/docker_tag.png">
-<meta property="og:updated_time" content="2019-04-01T16:44:33.447Z">
+<meta property="og:updated_time" content="2019-05-08T03:48:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="上传Docker镜像到私有镜像仓储">
-<meta name="twitter:description" content="出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储">
-<meta name="twitter:image" content="http://yoursite.com/images/docker_tag.png">
+<meta name="twitter:title" content="Go权限控制">
+<meta name="twitter:description" content="Go是以首字母大小写来区分是公有还是私有，但都是针对包级别的。无论首字母大写还是小写，在包内所有的都能访问。该规则适用于变量，常量，方法，结构体成员。 方法绑定本身只能绑定包内的类型，所以方法可以访问接收者所有成员。如果是包外调用某类型的方法，则需要看方法名首字母是大写还是小写，首字母大写能被包外访问，小写则只能被包内访问。">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/01/docker-priv-repo-setup/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/08/go-rights-control/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>上传Docker镜像到私有镜像仓储 | 程伟的技术笔记</title>
+  <title>Go权限控制 | 程伟的技术笔记</title>
   
 
 
@@ -372,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/docker-priv-repo-setup/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/go-rights-control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -389,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">上传Docker镜像到私有镜像仓储
+          <h1 class="post-title" itemprop="name headline">Go权限控制
 
               
             
@@ -415,24 +413,12 @@
                 
               
 
-              <time title="Created: 2019-04-01 15:34:00" itemprop="dateCreated datePublished" datetime="2019-04-01T15:34:00+08:00">2019-04-01</time>
+              <time title="Created: 2019-05-08 11:47:50 / Modified: 11:48:03" itemprop="dateCreated datePublished" datetime="2019-05-08T11:47:50+08:00">2019-05-08</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-02 00:44:33" itemprop="dateModified" datetime="2019-04-02T00:44:33+08:00">2019-04-02</time>
               
             
           </span>
@@ -473,21 +459,8 @@
       
 
       
-        <p>出于信息安全，版本控制等因素考虑，自己搭建docker镜像仓储（搭建教程本文不介绍），可以方便有效的管理大量本地的docker镜像。本文主要介绍如何上传本地的docker镜像到自己搭建的私有镜像仓储</p>
-<a id="more"></a>
-<h6 id="配置本地docker"><a href="#配置本地docker" class="headerlink" title="配置本地docker"></a>配置本地docker</h6><p>在 /etc/docker/daemon.json（如果没有该文件，则可创建一个） 填入如下字段:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"insecure-registries"</span>:[</span><br><span class="line">        <span class="string">"10.30.37.149:6000"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>10.30.37.149为自己搭建的docker镜像仓储服务器IP，6000为服务器开放的端口</p>
-<p>然后执行以下命令重新启动docker</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo systemctl reload docker</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><em>如果不做以上配置，push镜像的时候会报以下错误：http: server gave HTTP response to HTTPS client</em>  </p>
-</blockquote>
-<h6 id="给需要上传的镜像打tag"><a href="#给需要上传的镜像打tag" class="headerlink" title="给需要上传的镜像打tag"></a>给需要上传的镜像打tag</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo docker tag 3dbe0975429e  10.30.37.149:6000 /bm1682_debian:1.1.1</span></span><br></pre></td></tr></table></figure>
-<p>3dbe0975429e 为本地需要上传的镜像的IMAGE ID， tag格式：私有镜像仓储服务器IP:端口/镜像名称:版本号</p>
-<p><img src="/images/docker_tag.png" alt></p>
-<h6 id="上传镜像到私有仓储"><a href="#上传镜像到私有仓储" class="headerlink" title="上传镜像到私有仓储"></a>上传镜像到私有仓储</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo docker push 10.30.37.149:6000/bm1682_debian:1.1.1</span></span><br></pre></td></tr></table></figure>
-<h6 id="下载私有仓储的镜像到本地"><a href="#下载私有仓储的镜像到本地" class="headerlink" title="下载私有仓储的镜像到本地"></a>下载私有仓储的镜像到本地</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull 10.30.37.149:6000/bm1682_debian:1.1.1</span><br></pre></td></tr></table></figure>
+        <p>Go是以首字母大小写来区分是公有还是私有，但都是针对<strong>包级别</strong>的。无论首字母大写还是小写，在包内所有的都能访问。该规则适用于变量，常量，方法，结构体成员。</p>
+<p>方法绑定本身只能绑定包内的类型，所以方法可以访问接收者所有成员。如果是包外调用某类型的方法，则需要看方法名首字母是大写还是小写，首字母大写能被包外访问，小写则只能被包内访问。</p>
 
       
     </div>
@@ -551,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/01/docker-port-expose/" rel="next" title="Docker 容器端口映射方法">
-                <i class="fa fa-chevron-left"></i> Docker 容器端口映射方法
+              <a href="/2019/05/08/ubuntu-display-rotate/" rel="next" title="Ubuntu显示屏幕旋转">
+                <i class="fa fa-chevron-left"></i> Ubuntu显示屏幕旋转
               </a>
             
           </div>
@@ -560,10 +533,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/01/go-syntax/" rel="prev" title="Go编程语法注意事项">
-                Go编程语法注意事项 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -611,17 +580,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -680,23 +640,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#配置本地docker"><span class="nav-number">1.</span> <span class="nav-text">配置本地docker</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#给需要上传的镜像打tag"><span class="nav-number">2.</span> <span class="nav-text">给需要上传的镜像打tag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#上传镜像到私有仓储"><span class="nav-number">3.</span> <span class="nav-text">上传镜像到私有仓储</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#下载私有仓储的镜像到本地"><span class="nav-number">4.</span> <span class="nav-text">下载私有仓储的镜像到本地</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
