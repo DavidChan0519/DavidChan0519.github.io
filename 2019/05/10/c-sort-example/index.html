@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+  <meta name="description" content="话不多说，直接上c++代码：">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go可变参数函数">
-<meta property="og:url" content="http://yoursite.com/2019/04/23/go-variadic-param-func/index.html">
+<meta property="og:title" content="C++ vector排序实例">
+<meta property="og:url" content="http://yoursite.com/2019/05/10/c-sort-example/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+<meta property="og:description" content="话不多说，直接上c++代码：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/go_variadic_param.png">
-<meta property="og:image" content="http://yoursite.com/images/slice_variadic_func.png">
-<meta property="og:updated_time" content="2019-04-23T11:41:18.631Z">
+<meta property="og:updated_time" content="2019-05-09T16:13:54.494Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go可变参数函数">
-<meta name="twitter:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
-<meta name="twitter:image" content="http://yoursite.com/images/go_variadic_param.png">
+<meta name="twitter:title" content="C++ vector排序实例">
+<meta name="twitter:description" content="话不多说，直接上c++代码：">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/10/c-sort-example/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>Go可变参数函数 | 程伟的技术笔记</title>
+  <title>C++ vector排序实例 | 程伟的技术笔记</title>
   
 
 
@@ -373,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/go-variadic-param-func/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/10/c-sort-example/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -390,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go可变参数函数
+          <h1 class="post-title" itemprop="name headline">C++ vector排序实例
 
               
             
@@ -416,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-23 18:04:43 / Modified: 19:41:18" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
+              <time title="Created: 2019-05-10 00:10:38 / Modified: 00:13:54" itemprop="dateCreated datePublished" datetime="2019-05-10T00:10:38+08:00">2019-05-10</time>
             
 
             
@@ -462,23 +459,12 @@
       
 
       
-        <p>可变参数函数即其参数数量是可变的 : 0 个或多个；</p>
-<p>声明可变参数函数的方式是在其参数类型<strong>前面</strong>带上省略符（…）前缀。</p>
+        <p>话不多说，直接上c++代码：</p>
 <a id="more"></a>
-<p><img src="/images/go_variadic_param.png" alt></p>
-<p>一个简单的可变参数函数：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(input …<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.Join(input,<span class="string">","</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">"hello"</span>,<span class="string">"world"</span>)</span><br><span class="line">test(<span class="string">"single"</span>)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-<p>可变参数函数会在其内部创建一个”新的临时切片”。事实上，可变参数是一个简化了切片类型参数传入的<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener"><em>语法糖</em></a>。</p>
-<p><img src="/images/slice_variadic_func.png" alt></p>
-<p>当不传入参数的时候，可变参数会成为一个空值切片（ <code>nil</code> )</p>
-<p>当不太确定数据类型的时候我们通常采用空接口 <strong>interface{}</strong> </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tests1(<span class="number">789</span>)</span><br><span class="line">fmt.Println(<span class="string">"-------------"</span>)</span><br><span class="line">tests1(<span class="string">"789"</span>)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tests1</span><span class="params">(arg <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"value:"</span>, arg)</span><br><span class="line">    fmt.Println(<span class="string">"type:"</span>, reflect.TypeOf(arg).Name())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: int</span><br><span class="line">-------------</span><br><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: string</span><br></pre></td></tr></table></figure>
-<p>⚠️在使用interface{}作为可变入参时，传入的参数要先做类型转换(<u>先转换为[ ]interface{}</u>)</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testParams</span><span class="params">(args ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> args &#123;</span><br><span class="line">        <span class="keyword">if</span> s, ok := v.(<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            fmt.Println(<span class="string">"----"</span>, s)</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span> s, ok := v.([]<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            <span class="keyword">for</span> i, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">                fmt.Println(i, <span class="string">"[]----"</span>, v)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(i, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s := []<span class="keyword">string</span>&#123;<span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>&#125;</span><br><span class="line"><span class="keyword">var</span> d []<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">d = <span class="built_in">append</span>(d, s)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="comment">//var d []interface&#123;&#125; = []interface&#123;&#125;&#123;s[0], s[1], s[2]&#125;</span></span><br><span class="line">testParams(d...)</span><br></pre></td></tr></table></figure>
-<p>结果:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 []---- 4</span><br><span class="line">1 []---- 5</span><br><span class="line">2 []---- 6</span><br><span class="line">0 [4 5 6]</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by chengw on 2019-05-09.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> &#123;</span></span><br><span class="line">    <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">More</span><span class="params">(<span class="keyword">const</span> student &amp;a, <span class="keyword">const</span> student &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.score &gt; b.score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Less</span><span class="params">(<span class="keyword">const</span> student &amp;a, <span class="keyword">const</span> student &amp;b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.score &lt; b.score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,type;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Please input nums and order:(1-increase;0-decrease)"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; N &gt;&gt; type)&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;student&gt; s(N);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"name:"</span> &lt;&lt; <span class="string">" score:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; s[i].name &gt;&gt; s[i].score;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"after sort:"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">if</span>(type == <span class="number">0</span>)</span><br><span class="line">            stable_sort(s.begin(), s.end(), More);   <span class="comment">//稳定排序</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            stable_sort(s.begin(), s.end(), Less);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i ++)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; s[i].name &lt;&lt; <span class="string">" "</span> &lt;&lt; s[i].score &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后，执行输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Please input nums and order:(0-increase;1-decrease)</span><br><span class="line">5 1</span><br><span class="line">name: score:</span><br><span class="line">a 98</span><br><span class="line">b 78</span><br><span class="line">c 99</span><br><span class="line">d 100</span><br><span class="line">e 67</span><br><span class="line"></span><br><span class="line">after sort:</span><br><span class="line">e 67</span><br><span class="line">b 78</span><br><span class="line">a 98</span><br><span class="line">c 99</span><br><span class="line">d 100</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -541,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/go-slice-copy/" rel="next" title="Go中切片之间的浅拷贝和深拷贝">
-                <i class="fa fa-chevron-left"></i> Go中切片之间的浅拷贝和深拷贝
+              <a href="/2019/05/08/go-rights-control/" rel="next" title="Go权限控制">
+                <i class="fa fa-chevron-left"></i> Go权限控制
               </a>
             
           </div>
@@ -550,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/25/go-interface/" rel="prev" title="go语言中的interface类型">
-                go语言中的interface类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

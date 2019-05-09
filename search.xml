@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++ vector排序实例]]></title>
+    <url>%2F2019%2F05%2F10%2Fc-sort-example%2F</url>
+    <content type="text"><![CDATA[话不多说，直接上c++代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344//// Created by chengw on 2019-05-09.//#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;#include &lt;string&gt;using namespace std;struct student &#123; string name; int score;&#125;;bool More(const student &amp;a, const student &amp;b)&#123; return a.score &gt; b.score;&#125;bool Less(const student &amp;a, const student &amp;b)&#123; return a.score &lt; b.score;&#125;int main()&#123; int N,type; cout &lt;&lt; "Please input nums and order:(1-increase;0-decrease)" &lt;&lt; endl; while (cin &gt;&gt; N &gt;&gt; type)&#123; vector&lt;student&gt; s(N); cout &lt;&lt; "name:" &lt;&lt; " score:" &lt;&lt; endl; for(int i=0; i &lt; N; i++)&#123; cin &gt;&gt; s[i].name &gt;&gt; s[i].score; &#125; cout &lt;&lt; "after sort:" &lt;&lt; endl; if(type == 0) stable_sort(s.begin(), s.end(), More); //稳定排序 else stable_sort(s.begin(), s.end(), Less); for(int i = 0; i &lt; N; i ++)&#123; cout &lt;&lt; s[i].name &lt;&lt; " " &lt;&lt; s[i].score &lt;&lt; endl; &#125; &#125; return 0;&#125; 编译后，执行输出： 123456789101112131415Please input nums and order:(0-increase;1-decrease)5 1name: score:a 98b 78c 99d 100e 67after sort:e 67b 78a 98c 99d 100]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go权限控制]]></title>
     <url>%2F2019%2F05%2F08%2Fgo-rights-control%2F</url>
     <content type="text"><![CDATA[Go是以首字母大小写来区分是公有还是私有，但都是针对包级别的。无论首字母大写还是小写，在包内所有的都能访问。该规则适用于变量，常量，方法，结构体成员。 方法绑定本身只能绑定包内的类型，所以方法可以访问接收者所有成员。如果是包外调用某类型的方法，则需要看方法名首字母是大写还是小写，首字母大写能被包外访问，小写则只能被包内访问。]]></content>
