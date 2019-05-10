@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
+  <meta name="description" content="google-site-verification: google858dca9693adbb2f.html">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go test之httptest">
-<meta property="og:url" content="http://yoursite.com/2019/05/10/go-test-httptest/index.html">
+<meta property="og:title" content="程伟的技术笔记">
+<meta property="og:url" content="http://yoursite.com/2019/05/10/google858dca9693adbb2f/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
+<meta property="og:description" content="google-site-verification: google858dca9693adbb2f.html">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/05/10/go-test-httptest/images/go_test_dir.png">
-<meta property="og:updated_time" content="2019-05-10T05:03:56.000Z">
+<meta property="og:updated_time" content="2019-05-10T14:27:05.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go test之httptest">
-<meta name="twitter:description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
-<meta name="twitter:image" content="http://yoursite.com/2019/05/10/go-test-httptest/images/go_test_dir.png">
+<meta name="twitter:title" content="程伟的技术笔记">
+<meta name="twitter:description" content="google-site-verification: google858dca9693adbb2f.html">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/10/go-test-httptest/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/10/google858dca9693adbb2f/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>go test之httptest | 程伟的技术笔记</title>
+  <title> | 程伟的技术笔记</title>
   
 
 
@@ -372,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/10/go-test-httptest/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/10/google858dca9693adbb2f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -389,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">go test之httptest
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -415,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-05-10 11:51:22 / Modified: 13:03:56" itemprop="dateCreated datePublished" datetime="2019-05-10T11:51:22+08:00">2019-05-10</time>
+              <time title="Created: 2019-05-10 22:28:30 / Modified: 22:27:05" itemprop="dateCreated datePublished" datetime="2019-05-10T22:28:30+08:00">2019-05-10</time>
             
 
             
@@ -461,22 +459,7 @@
       
 
       
-        <p>在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> <span class="built_in">test</span> -v</span><br></pre></td></tr></table></figure>
-<p>但是当被测试函数依赖于环境(读取硬件路由表)或者server端实现(发送http请求给server端)，本地运行go test执行单元测试就会出现问题。这就需要我们在本地测试代码中将待测试函数中依赖外部的实现部分进行打桩（返回构造的假结果）。</p>
-<p>本文以http请求为例，使用httptest包代替server端，构造http返回结果。</p>
-<p>目录结构：</p>
-<p><img src="images/go_test_dir.png" alt></p>
-<p>peron.go文件，待测函数GetInfo( )</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> person</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"encoding/json"</span></span><br><span class="line">   <span class="string">"fmt"</span></span><br><span class="line">   <span class="string">"io/ioutil"</span></span><br><span class="line">   <span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">   Name <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">   Address <span class="keyword">string</span> <span class="string">`json:"address"`</span></span><br><span class="line">   Age <span class="keyword">int</span> <span class="string">`json:"age"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetInfo</span><span class="params">(api <span class="keyword">string</span>, addr <span class="keyword">string</span>)</span> <span class="params">([]Person, error)</span></span> &#123;</span><br><span class="line">   url := fmt.Sprintf(<span class="string">"%s/person?addr=%s"</span>, api, addr)</span><br><span class="line">   resp, err := http.Get(url)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> []Person&#123;&#125;, err</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> resp.StatusCode != http.StatusOK &#123;</span><br><span class="line">      <span class="keyword">return</span> []Person&#123;&#125;, fmt.Errorf(<span class="string">"get info didn’t respond 200 OK: %s"</span>, resp.Status)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"read response failed"</span>)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   p := <span class="built_in">make</span>([]Person,<span class="number">0</span>)</span><br><span class="line">   err = json.Unmarshal(body,&amp;p)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"unmarshal response failed"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> p, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>peron_test.go文件：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> person</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"net/http/httptest"</span></span><br><span class="line">	<span class="string">"testing"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> personResponse = []Person&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		Name : <span class="string">"wahaha"</span>,</span><br><span class="line">		Address : <span class="string">"shanghai"</span>,</span><br><span class="line">		Age : <span class="number">20</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		Name : <span class="string">"lebaishi"</span>,</span><br><span class="line">		Address : <span class="string">"shanghai"</span>,</span><br><span class="line">		Age : <span class="number">10</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> personResponseBytes, _ = json.Marshal(personResponse)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestPublishWrongResponseStatus</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	ts := httptest.NewServer(http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		w.WriteHeader(http.StatusOK)</span><br><span class="line">		w.Write(personResponseBytes)</span><br><span class="line">		<span class="keyword">if</span> r.Method != <span class="string">"GET"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected 'GET' request, got '%s'"</span>, r.Method)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> r.URL.EscapedPath() != <span class="string">"/person"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to '/person', got '%s'"</span>, r.URL.EscapedPath())</span><br><span class="line">		&#125;</span><br><span class="line">		r.ParseForm()</span><br><span class="line">		topic := r.Form.Get(<span class="string">"addr"</span>)</span><br><span class="line">		<span class="keyword">if</span> topic != <span class="string">"shanghai"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to have 'addr=shanghai', got: '%s'"</span>, topic)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;))</span><br><span class="line">	<span class="keyword">defer</span> ts.Close()</span><br><span class="line"></span><br><span class="line">	api := ts.URL</span><br><span class="line">	fmt.Println(<span class="string">"url:"</span>, api)</span><br><span class="line">	resp, err := GetInfo(api, <span class="string">"shanghai"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"ERROR:"</span>, err.Error())</span><br><span class="line">		t.Error(err)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Rsp:"</span>, resp)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestPublishWrongResponseStatusWithFailed</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	ts := httptest.NewServer(http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		w.WriteHeader(http.StatusBadRequest)</span><br><span class="line">		w.Write(personResponseBytes)</span><br><span class="line">		<span class="keyword">if</span> r.Method != <span class="string">"GET"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected 'GET' request, got '%s'"</span>, r.Method)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> r.URL.EscapedPath() != <span class="string">"/person"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to '/person', got '%s'"</span>, r.URL.EscapedPath())</span><br><span class="line">		&#125;</span><br><span class="line">		r.ParseForm()</span><br><span class="line">		topic := r.Form.Get(<span class="string">"addr"</span>)</span><br><span class="line">		<span class="keyword">if</span> topic != <span class="string">"shanghai"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to have 'addr=shanghai', got: '%s'"</span>, topic)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;))</span><br><span class="line">	<span class="keyword">defer</span> ts.Close()</span><br><span class="line"></span><br><span class="line">	api := ts.URL</span><br><span class="line">	fmt.Println(<span class="string">"url:"</span>, api)</span><br><span class="line">	resp, err := GetInfo(api, <span class="string">"not_shanghai"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"ERROR:"</span>, err.Error())</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Rsp:"</span>, resp)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在person目录下执行测试命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> <span class="built_in">test</span> -v</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">=== RUN   TestPublishWrongResponseStatus</span><br><span class="line">url: http://127.0.0.1:44973</span><br><span class="line">Rsp: [&#123;wahaha shanghai 20&#125; &#123;lebaishi shanghai 10&#125;]</span><br><span class="line">--- PASS: TestPublishWrongResponseStatus (0.00s)</span><br><span class="line">=== RUN   TestPublishWrongResponseStatusWithFailed</span><br><span class="line">url: http://127.0.0.1:45683</span><br><span class="line">--- FAIL: TestPublishWrongResponseStatusWithFailed (0.00s)</span><br><span class="line">    person_test.go:69: Expected request to have <span class="string">'addr=shanghai'</span>, got: <span class="string">'not_shanghai'</span></span><br><span class="line">FAIL</span><br><span class="line"><span class="built_in">exit</span> status 1</span><br><span class="line">FAIL    person  0.009s</span><br></pre></td></tr></table></figure>
-
+        google-site-verification: google858dca9693adbb2f.html
       
     </div>
 
@@ -539,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/10/c-sort-example/" rel="next" title="C++ vector排序实例">
-                <i class="fa fa-chevron-left"></i> C++ vector排序实例
+              <a href="/2019/05/10/go-test-httptest/" rel="next" title="go test之httptest">
+                <i class="fa fa-chevron-left"></i> go test之httptest
               </a>
             
           </div>
@@ -548,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/10/google858dca9693adbb2f/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
