@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="程伟的技术笔记">
 <meta property="og:description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/image/go_test_dir.png">
-<meta property="og:updated_time" content="2019-05-10T04:08:12.000Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/go-test-httptest/images/go_test_dir.png">
+<meta property="og:updated_time" content="2019-05-10T04:17:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go test之httptest">
 <meta name="twitter:description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
-<meta name="twitter:image" content="http://yoursite.com/image/go_test_dir.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/10/go-test-httptest/images/go_test_dir.png">
 
 
 
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-05-10 11:51:22 / Modified: 12:08:12" itemprop="dateCreated datePublished" datetime="2019-05-10T11:51:22+08:00">2019-05-10</time>
+              <time title="Created: 2019-05-10 11:51:22 / Modified: 12:17:34" itemprop="dateCreated datePublished" datetime="2019-05-10T11:51:22+08:00">2019-05-10</time>
             
 
             
@@ -467,7 +467,7 @@
 <p>但是当被测试函数依赖于环境(读取硬件路由表)或者server端实现(发送http请求给server端)，本地运行go test执行单元测试就会出现问题。这就需要我们在本地测试代码中将待测试函数中依赖外部的实现部分进行打桩（返回构造的假结果）。</p>
 <p>本文以http请求为例，使用httptest包代替server端，构造http返回结果。</p>
 <p>目录结构：</p>
-<p><img src="/image/go_test_dir.png" alt></p>
+<p><img src="images/go_test_dir.png" alt></p>
 <p>peron.go文件，待测函数GetInfo( )</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> person</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"encoding/json"</span></span><br><span class="line">   <span class="string">"fmt"</span></span><br><span class="line">   <span class="string">"io/ioutil"</span></span><br><span class="line">   <span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">   ADDRESS = <span class="string">"shanghai"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">   Name <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">   Address <span class="keyword">string</span> <span class="string">`json:"address"`</span></span><br><span class="line">   Age <span class="keyword">int</span> <span class="string">`json:"age"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetInfo</span><span class="params">(api <span class="keyword">string</span>)</span> <span class="params">([]Person, error)</span></span> &#123;</span><br><span class="line">   url := fmt.Sprintf(<span class="string">"%s/person?addr=%s"</span>, api, ADDRESS)</span><br><span class="line">   resp, err := http.Get(url)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> []Person&#123;&#125;, err</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> resp.StatusCode != http.StatusOK &#123;</span><br><span class="line">      <span class="keyword">return</span> []Person&#123;&#125;, fmt.Errorf(<span class="string">"get info didn’t respond 200 OK: %s"</span>, resp.Status)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"read response failed"</span>)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   p := <span class="built_in">make</span>([]Person,<span class="number">0</span>)</span><br><span class="line">   err = json.Unmarshal(body,&amp;p)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"unmarshal response failed"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> p, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>peron_test.go文件：</p>
