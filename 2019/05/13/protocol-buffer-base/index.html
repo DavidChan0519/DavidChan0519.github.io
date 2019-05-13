@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="本文通过一个示例程序，主要展示如何通过reflect来遍历一个struct的所有方法，仅供参考">
+  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go示例-通过reflect遍历struct的所有方法">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/05/07/go-reflect-example/index.html">
+<meta property="og:title" content="protocol_buffer_base">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/13/protocol-buffer-base/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="本文通过一个示例程序，主要展示如何通过reflect来遍历一个struct的所有方法，仅供参考">
+<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-07T07:31:44.000Z">
+<meta property="og:updated_time" content="2019-05-13T10:52:22.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go示例-通过reflect遍历struct的所有方法">
-<meta name="twitter:description" content="本文通过一个示例程序，主要展示如何通过reflect来遍历一个struct的所有方法，仅供参考">
+<meta name="twitter:title" content="protocol_buffer_base">
+<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/07/go-reflect-example/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/13/protocol-buffer-base/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Go示例-通过reflect遍历struct的所有方法 | 程伟的技术笔记</title>
+  <title>protocol_buffer_base | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/07/go-reflect-example/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/13/protocol-buffer-base/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go示例-通过reflect遍历struct的所有方法
+          <h1 class="post-title" itemprop="name headline">protocol_buffer_base
 
               
             
@@ -413,13 +413,9 @@
                 
               
 
-              <time title="Created: 2019-05-07 15:03:26 / Modified: 15:31:44" itemprop="dateCreated datePublished" datetime="2019-05-07T15:03:26+08:00">2019-05-07</time>
+              <time title="Created: 2019-05-13 18:52:22" itemprop="dateCreated datePublished" datetime="2019-05-13T18:52:22+08:00">2019-05-13</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -459,16 +455,7 @@
       
 
       
-        <p>本文通过一个示例程序，主要展示如何通过reflect来遍历一个struct的所有方法，仅供参考</p>
-<a id="more"></a>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"reflect"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Usr <span class="keyword">struct</span> &#123;</span><br><span class="line">	Id  <span class="keyword">int</span></span><br><span class="line">	Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(Usr)</span> <span class="title">TableName</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"value method doing ...return string"</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"selfName"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(Usr)</span> <span class="title">TableId</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"value method doing ...return int"</span>)</span><br><span class="line">	<span class="keyword">return</span> <span class="number">7</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(*Usr)</span> <span class="title">Test</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"pointer method doing ...no return"</span>)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	u := Usr&#123;Id:<span class="number">007</span>,Name:<span class="string">"James"</span>&#125;</span><br><span class="line">	<span class="comment">//循环遍历接收者为值的所有方法</span></span><br><span class="line">	<span class="keyword">for</span> i, n := <span class="number">0</span>, reflect.TypeOf(u).NumMethod(); i &lt; n; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"-------------- %d(%d) --------------\n"</span>,i,n)</span><br><span class="line">		r := Exec(u,i)</span><br><span class="line">		v := reflect.TypeOf(r).Kind()</span><br><span class="line">		<span class="keyword">switch</span> v &#123;</span><br><span class="line">		<span class="keyword">case</span> reflect.Int:</span><br><span class="line">			fmt.Println(<span class="string">"result:"</span>,r.(<span class="keyword">int</span>))</span><br><span class="line">		<span class="keyword">case</span> reflect.String:</span><br><span class="line">			fmt.Println(<span class="string">"result:"</span>,r.(<span class="keyword">string</span>))</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			fmt.Println(<span class="string">"no result return"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"\n============== seperator ============\n"</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//循环遍历接收者为指针的所有方法</span></span><br><span class="line">	<span class="keyword">for</span> i, n := <span class="number">0</span>, reflect.TypeOf(&amp;u).NumMethod(); i &lt; n; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"-------------- %d(%d)--------------\n"</span>,i,n)</span><br><span class="line">		r := Exec(&amp;u,i)</span><br><span class="line">		<span class="keyword">if</span> r != <span class="literal">nil</span> &#123;</span><br><span class="line">			v := reflect.TypeOf(r).Kind()</span><br><span class="line">			<span class="keyword">switch</span> v &#123;</span><br><span class="line">			<span class="keyword">case</span> reflect.Int:</span><br><span class="line">				fmt.Println(<span class="string">"result:"</span>,r.(<span class="keyword">int</span>))</span><br><span class="line">			<span class="keyword">case</span> reflect.String:</span><br><span class="line">				fmt.Println(<span class="string">"result:"</span>,r.(<span class="keyword">string</span>))</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				fmt.Println(<span class="string">"invalid result return"</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用receiver的所有方法(包含receiver为值和指针的所有方法)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Exec</span><span class="params">(obj <span class="keyword">interface</span>&#123;&#125;, idx <span class="keyword">int</span>)</span> <span class="title">interface</span></span>&#123;&#125; &#123;</span><br><span class="line">	t := reflect.TypeOf(obj)</span><br><span class="line"></span><br><span class="line">	r := t.Method(idx).Func.Call([]reflect.Value&#123;reflect.ValueOf(obj)&#125;)</span><br><span class="line">	valNum := <span class="built_in">len</span>(r)</span><br><span class="line">	<span class="keyword">if</span> valNum != <span class="number">0</span> &#123;</span><br><span class="line">		mid := r[<span class="number">0</span>].Interface()</span><br><span class="line">		v := reflect.TypeOf(mid)</span><br><span class="line">		<span class="keyword">switch</span> v.Kind() &#123;</span><br><span class="line">		<span class="keyword">case</span> reflect.String:</span><br><span class="line">			<span class="keyword">return</span> mid.(<span class="keyword">string</span>)</span><br><span class="line">		<span class="keyword">case</span> reflect.Int:</span><br><span class="line">			<span class="keyword">return</span> mid.(<span class="keyword">int</span>)</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<blockquote>
-<p>————– 0(2) ————–<br>value method doing …return int<br>result: 7<br>————– 1(2) ————–<br>value method doing …return string<br>result: selfName</p>
-<p>============== seperator ============</p>
-<p>————– 0(3)————–<br>value method doing …return int<br>result: 7<br>————– 1(3)————–<br>value method doing …return string<br>result: selfName<br>————– 2(3)————–<br>pointer method doing …no return</p>
-</blockquote>
-
+        
       
     </div>
 
@@ -531,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/07/go-gorm-model/" rel="next" title="gorm之model定义">
-                <i class="fa fa-chevron-left"></i> gorm之model定义
+              <a href="/2019/05/10/go-test-httptest/" rel="next" title="go test之httptest">
+                <i class="fa fa-chevron-left"></i> go test之httptest
               </a>
             
           </div>
@@ -540,10 +527,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/07/go-interface-implement/" rel="prev" title="Go之判断struct类型是否实现某接口">
-                Go之判断struct类型是否实现某接口 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
