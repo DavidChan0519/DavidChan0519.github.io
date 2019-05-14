@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://davidchan0519.github.io/2019/05/13/protocol-buffer-base/</loc>
-    <lastmod>2019-05-13</lastmod>
+    <lastmod>2019-05-14</lastmod>
+  </url>  <url>
+    <loc>https://davidchan0519.github.io/2019/05/14/protoc-gen-go/</loc>
+    <lastmod>2019-05-14</lastmod>
   </url>  <url>
     <loc>https://davidchan0519.github.io/2019/05/10/go-test-httptest/</loc>
     <lastmod>2019-05-10</lastmod>
