@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[linux_library_env_diff]]></title>
+    <title><![CDATA[Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别]]></title>
     <url>%2F2019%2F05%2F14%2Flinux-library-env-diff%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[LIBRARY_PATH环境变量：用于在程序编译期间查找动态链接库时，指定查找共享库的路径，例如，指定gcc编译需要用到的动态链接库的目录。设置方法如下（其中，LIBDIR1和LIBDIR2为两个库目录）： 1$export LIBRARY_PATH=LIBDIR1:LIBDIR2:$LIBRARY_PATH LD_LIBRARY_PATH环境变量：用于在程序加载运行期间查找动态链接库时，指定除了系统默认路径之外的其他路径，注意，LD_LIBRARY_PATH中指定的路径会在系统默认路径之前进行查找。 设置方法如下（其中，LIBDIR3和LIBDIR4为两个库目录）： 1$export LD_LIBRARY_PATH=LIBDIR3:LIBDIR4:$LD_LIBRARY_PATH 区别与使用： 编译时，设置LIBRARY_PATH，以便gcc能够找到编译时需要的动态链接库。 运行时，设置LD_LIBRARY_PATH，以便程序加载运行时能够自动找到需要的动态链接库。]]></content>
   </entry>
   <entry>
     <title><![CDATA[Ubuntu系统opencv多版本共存]]></title>
     <url>%2F2019%2F05%2F14%2Fopencv-multi-support%2F</url>
-    <content type="text"><![CDATA[背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，再不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。 4.1版本的opencv存放在~/work/github/opencv-4.1/release: 1234567release|-- bin|-- include|-- lib`-- share4 directories, 0 files 指定头文件路径：1$export CPLUS_INCLUDE_PATH=~/work/github/opencv-4.1/release/include/opencv4/:$CPLUS_INCLUDE_PATH 指定头文件路径 指定CMake库路径：1$export PKG_CONFIG_PATH=/home/chengwei/work/github/opencv-4.1/release/lib/pkgconfig:$PKG_CONFIG_PATH cmake通过find才能找到相应的库 指定链接库路径：1$export LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:$LIBRARY_PATH 此处要注意LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别，前者用于编译，后者用于运行时链接 通过设定上述环境变量，即可让项目在编译和链接时，使用4.1版本的opencv头文件和动态库]]></content>
+    <content type="text"><![CDATA[背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。 4.1版本的opencv源码编译后，安装在~/work/github/opencv-4.1/release目录,避免安装到默认路径，造成多版本混乱: 目录结构如下: 1234567release|-- bin|-- include|-- lib`-- share4 directories, 0 files 指定头文件路径：1$export CPLUS_INCLUDE_PATH=~/work/github/opencv-4.1/release/include/opencv4/:$CPLUS_INCLUDE_PATH 指定查找头文件的路径 指定CMake库路径：1$export PKG_CONFIG_PATH=/home/chengwei/work/github/opencv-4.1/release/lib/pkgconfig:$PKG_CONFIG_PATH cmake通过find_package( )才能找到相应的库 指定编译链接库路径：1$export LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:$LIBRARY_PATH 此处要注意LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别，前者用于编译，后者用于运行时链接 指定运行链接库路径：1$export LD_LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:$LD_LIBRARY_PATH 通过设定上述环境变量，即可让项目在编译和链接时，使用4.1版本的opencv头文件和动态库]]></content>
   </entry>
   <entry>
     <title><![CDATA[Go-protobuf插件安装]]></title>
