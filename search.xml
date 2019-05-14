@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Go-protobuf插件安装]]></title>
     <url>%2F2019%2F05%2F14%2Fprotoc-gen-go%2F</url>
-    <content type="text"><![CDATA[按照如下结构搭建go编译环境 1234567chengwei@ubuntu:/mnt/hgfs/win_share/test/go$ tree -L 1.|-- bin|-- pkg|-- src3 directories 首先配置GOPATH环境变量： 12$export GOPATH=/mnt/hgfs/win_share/test/go:$GOPATH$export GOBIN=/mnt/hgfs/win_share/test/go/bin 在go编译环境中执行如下命令，下载go protobuf源码 1$go get -u github.com/golang/protobuf/protoc-gen-go 执行上述命令后，在bin目录就已经安装好protoc-gen-go，该软件为protoc的插件，用于将proto生成go源码 1$protoc --go_out=. *.proto 生成的go源码都是以.pb.go结尾]]></content>
+    <content type="text"><![CDATA[按照如下结构搭建go编译环境 1234567chengwei@ubuntu:/mnt/hgfs/win_share/test/go$ tree -L 1.|-- bin|-- pkg|-- src3 directories 首先配置GOPATH环境变量： 12$export GOPATH=/mnt/hgfs/win_share/test/go:$GOPATH$export GOBIN=/mnt/hgfs/win_share/test/go/bin 在go编译环境中执行如下命令，下载go protobuf源码 1$go get -u github.com/golang/protobuf/protoc-gen-go 执行上述命令后，在bin目录就已经安装好protoc-gen-go，该软件为protoc的插件，用于将proto生成go源码($GOPATH/bin 应该被加入 PATH 环境变量，以便 protoc 能够找到 protoc-gen-go) 1$protoc --go_out=. *.proto 生成的go源码都是以.pb.go结尾]]></content>
   </entry>
   <entry>
     <title><![CDATA[Protobuf源码编译安装(C++)]]></title>
