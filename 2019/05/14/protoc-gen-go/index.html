@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="按照如下结构搭建go编译环境">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go-protobuf插件安装">
 <meta property="og:url" content="https://davidchan0519.github.io/2019/05/14/protoc-gen-go/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="按照如下结构搭建go编译环境">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T03:29:32.000Z">
+<meta property="og:updated_time" content="2019-05-14T03:54:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go-protobuf插件安装">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:description" content="按照如下结构搭建go编译环境">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-05-14 11:31:58 / Modified: 11:29:32" itemprop="dateCreated datePublished" datetime="2019-05-14T11:31:58+08:00">2019-05-14</time>
+              <time title="Created: 2019-05-14 11:31:58 / Modified: 11:54:39" itemprop="dateCreated datePublished" datetime="2019-05-14T11:31:58+08:00">2019-05-14</time>
             
 
             
@@ -459,7 +459,17 @@
       
 
       
-        
+        <p>按照如下结构搭建go编译环境</p>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">chengwei@ubuntu:/mnt/hgfs/win_share/<span class="built_in">test</span>/go$ tree -L 1</span><br><span class="line">.</span><br><span class="line">|-- bin</span><br><span class="line">|-- pkg</span><br><span class="line">|-- src</span><br><span class="line"></span><br><span class="line">3 directories</span><br></pre></td></tr></table></figure>
+<p>首先配置GOPATH环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> GOPATH=/mnt/hgfs/win_share/<span class="built_in">test</span>/go:<span class="variable">$GOPATH</span></span><br><span class="line"><span class="variable">$export</span>  GOBIN=/mnt/hgfs/win_share/<span class="built_in">test</span>/go/bin</span><br></pre></td></tr></table></figure>
+<p>在go编译环境中执行如下命令，下载go protobuf源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> get -u github.com/golang/protobuf/protoc-gen-go</span><br></pre></td></tr></table></figure>
+<p>执行上述命令后，在bin目录就已经安装好protoc-gen-go，该软件为protoc的插件，用于将proto生成go源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$protoc</span> --go_out=. *.proto</span><br></pre></td></tr></table></figure>
+<p>生成的go源码都是以.pb.go结尾</p>
+
       
     </div>
 
