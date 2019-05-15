@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := &quot;hello&quot;">
-<meta name="keywords" content="golang">
+  <meta name="description" content="在Go语言中数组是一个值类型（value type）。是真真实实的数组，而不是一个指向数组内存起始位置的指针，也不能和同类型的指针进行转化，这一点严重不同于C语言。所有的值类型变量在赋值和作为参数传递时都将产生一次复制动作。如果将数组作为函数的参数类型，则在函数调用时该参数将发生数据复制。因此，在函数体中无法修改传入的数组的内容，因为函数内操作的只是所传入数组的一个副本。">
+<meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go简短模式声明变量之部分退化赋值">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/04/04/go-short-assignment/index.html">
+<meta property="og:title" content="Go数组初始化-指定元素值">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/15/go-array-specified-elem/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := &quot;hello&quot;">
+<meta property="og:description" content="在Go语言中数组是一个值类型（value type）。是真真实实的数组，而不是一个指向数组内存起始位置的指针，也不能和同类型的指针进行转化，这一点严重不同于C语言。所有的值类型变量在赋值和作为参数传递时都将产生一次复制动作。如果将数组作为函数的参数类型，则在函数调用时该参数将发生数据复制。因此，在函数体中无法修改传入的数组的内容，因为函数内操作的只是所传入数组的一个副本。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-04T07:08:17.000Z">
+<meta property="og:updated_time" content="2019-05-15T13:53:31.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go简短模式声明变量之部分退化赋值">
-<meta name="twitter:description" content="golang 函数内定义变量，推荐使用简短模式，例如： 12x := 1y := &quot;hello&quot;">
+<meta name="twitter:title" content="Go数组初始化-指定元素值">
+<meta name="twitter:description" content="在Go语言中数组是一个值类型（value type）。是真真实实的数组，而不是一个指向数组内存起始位置的指针，也不能和同类型的指针进行转化，这一点严重不同于C语言。所有的值类型变量在赋值和作为参数传递时都将产生一次复制动作。如果将数组作为函数的参数类型，则在函数调用时该参数将发生数据复制。因此，在函数体中无法修改传入的数组的内容，因为函数内操作的只是所传入数组的一个副本。">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/04/04/go-short-assignment/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/15/go-array-specified-elem/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>Go简短模式声明变量之部分退化赋值 | 程伟的技术笔记</title>
+  <title>Go数组初始化-指定元素值 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/04/go-short-assignment/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/15/go-array-specified-elem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go简短模式声明变量之部分退化赋值
+          <h1 class="post-title" itemprop="name headline">Go数组初始化-指定元素值
 
               
             
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-04 12:34:29 / Modified: 15:08:17" itemprop="dateCreated datePublished" datetime="2019-04-04T12:34:29+08:00">2019-04-04</time>
+              <time title="Created: 2019-05-15 21:36:14 / Modified: 21:53:31" itemprop="dateCreated datePublished" datetime="2019-05-15T21:36:14+08:00">2019-05-15</time>
             
 
             
@@ -459,22 +459,15 @@
       
 
       
-        <p>golang <strong>函数内</strong>定义变量，推荐使用简短模式，例如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x := <span class="number">1</span></span><br><span class="line">y := <span class="string">"hello"</span></span><br></pre></td></tr></table></figure>
+        <p>在Go语言中数组是一个值类型（value type）。是真真实实的数组，而不是一个指向数组内存起始位置的指针，也不能和同类型的指针进行转化，这一点严重不同于C语言。所有的值类型变量在赋值和作为参数传递时都将产生一次复制动作。如果将数组作为函数的参数类型，则在函数调用时该参数将发生<strong>数据复制</strong>。因此，在函数体中无法修改传入的数组的内容，因为函数内操作的只是所传入数组的一个副本。</p>
 <a id="more"></a>
-<p>由于作用域的关系，该模式容易定义跟全局变量同名的函数局部新变量，使用的时候要特别小心。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局变量x</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//重新定义和初始化同名的局部变量x</span></span><br><span class="line">    x := <span class="string">"abc"</span></span><br><span class="line">    fmt.Println(x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义方式如下</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr [n]<span class="keyword">type</span></span><br></pre></td></tr></table></figure>
+<p>n表示数组长度，type表示数组存储类型。</p>
+<p>下面实例中列举了几种常用的数组初始化方法，尤其是需要注意省略号，冒号等使用的方式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr1 [<span class="number">5</span>]<span class="keyword">int</span></span><br><span class="line">    arr2 := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;   <span class="comment">//指定长度为5，并赋5个初始值</span></span><br><span class="line">    arr3 := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;         <span class="comment">//指定长度为5，对前3个元素进行赋值，其他2个元素为零值</span></span><br><span class="line">    arr4 := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">4</span>: <span class="number">1</span>&#125;            <span class="comment">//指定长度为5，对第5个元素(下标为4)赋值</span></span><br><span class="line">    arr5 := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125; <span class="comment">//不指定长度，对数组赋以5个值</span></span><br><span class="line">    arr6 := [...]<span class="keyword">int</span>&#123;<span class="number">8</span>: <span class="number">1</span>&#125;          <span class="comment">//不指定长度，对第9个元素（下标为8）赋值1</span></span><br><span class="line">    fmt.Println(arr1, arr2, arr3, arr4, arr5, arr6)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br></pre></td></tr></table></figure>
-<p>但是简短模式并不总是定义新变量，在重复使用的时候可能执行的是部分退化赋值操作</p>
-<p><strong>部分退化赋值的前提条件</strong>：最少有一个新变量被定义，且必须是在同一作用域</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   x := <span class="number">100</span></span><br><span class="line">   fmt.Println(<span class="string">"x:"</span>,x, <span class="string">" &amp;x:"</span>,&amp;x)</span><br><span class="line">   fmt.Println(<span class="string">"========== seperate ========"</span>)</span><br><span class="line">   x , y := <span class="number">200</span> , <span class="string">"abc"</span></span><br><span class="line">   fmt.Println(<span class="string">"x:"</span>,x, <span class="string">" &amp;x:"</span>,&amp;x)</span><br><span class="line">   fmt.Println(<span class="string">"y:"</span>,y, <span class="string">" &amp;y:"</span>,&amp;y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x: 100  &amp;x: 0xc00006c080</span><br><span class="line">========== seperate ========</span><br><span class="line">x: 200  &amp;x: 0xc00006c080</span><br><span class="line">y: abc  &amp;y: 0xc0000581c0</span><br></pre></td></tr></table></figure>
-<p>从输出结果可以看出，前后两次打印的x地址都是同一个，故可以说明前后两次x是同一个变量，仅仅是值发生了变化。</p>
-<p>部分退化赋值这一特性可以用在处理函数错误返回值，允许重复使用err变量，非常方便</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"gocv.io/x/gocv"</span></span><br><span class="line">   <span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    val1, err := func1()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    val2, err := func2()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0 0 0 0 0] [1 2 3 4 5] [1 2 3 0 0] [0 0 0 0 1] [1 2 3 4 5] [0 0 0 0 0 0 0 0 1]</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -528,12 +521,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/golang/" rel="tag"># golang</a>
-          
-        </div>
-      
 
       
       
@@ -543,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/04/go-build-mode/" rel="next" title="Go build模式">
-                <i class="fa fa-chevron-left"></i> Go build模式
+              <a href="/2019/05/15/linux-shell-history-env/" rel="next" title="linux history命令显示时间戳">
+                <i class="fa fa-chevron-left"></i> linux history命令显示时间戳
               </a>
             
           </div>
@@ -552,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/05/go-buildmode-c/" rel="prev" title="Go build模式之c-archive，c-shared，linkshared">
-                Go build模式之c-archive，c-shared，linkshared <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
