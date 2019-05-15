@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux history命令显示时间戳]]></title>
+    <url>%2F2019%2F05%2F15%2Flinux-shell-history-env%2F</url>
+    <content type="text"><![CDATA[使用 HISTTIMEFORMAT 显示时间戳 当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行： 123456# export HISTTIMEFORMAT=&apos;%F %T &apos;# history | more1 2008-08-05 19:02:39 service network restart2 2008-08-05 19:02:39 exit3 2008-08-05 19:02:39 id4 2008-08-05 19:02:39 cat /etc/redhat-release 注意：这个功能只能用在当 HISTTIMEFORMAT 这个环境变量被设置之后，之后的那些新执行的 bash 命令才会被打上正确的时间戳。在此之前的所有命令，都将会显示成设置 HISTTIMEFORMAT 变量的时间。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[vmware workstation扩展linux客户机系统磁盘空间的方法-gparted]]></title>
     <url>%2F2019%2F05%2F15%2Fvm-linux-space-extend%2F</url>
     <content type="text"><![CDATA[扩展前： 扩展后： 前后对比，可以看出，根目录/ 空间增加了100GB。使用率从扩展之前的96%降到了目前的35%，够继续使用一段时间了，后面如果空间不够，可以继续用该方法进行扩展。 操作步骤：客户机关机； 选择 VMware的虚拟机-&gt;设置-&gt;硬盘(SCSI)-&gt;磁盘实用工具-&gt;扩展磁盘容量将磁盘空间大小调整为合适的值，一定需要比原来的大，我这里调整为160GB（原来为60GB），最后确定. 启动客户机，安装磁盘分区工具 1$apt-get install gparted 从窗口启动图形化分区工具Gparted 将之前extend分区删掉，不删的话无法重置sda1主分区大小（右键swapoff -&gt; 右键delete） 调整/dev/sda1的大小为158GB，预留2GB做swap分区，再次新建一个extend分区，然后在extend分区下在建一个swap逻辑分区，点击上方绿色的对号保存即可。 至此，扩展空间就完成了。]]></content>

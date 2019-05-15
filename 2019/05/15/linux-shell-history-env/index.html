@@ -96,24 +96,18 @@
 
 
 
-  <meta name="description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
+  <meta name="description" content="使用 HISTTIMEFORMAT 显示时间戳 当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行： 123456# export HISTTIMEFORMAT=&amp;apos;%F %T &amp;apos;# history | more1  2008-08-05 19:02:39 service network restart2">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go中切片之间的浅拷贝和深拷贝">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/04/22/go-slice-copy/index.html">
+<meta property="og:title" content="linux history命令显示时间戳">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/15/linux-shell-history-env/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
+<meta property="og:description" content="使用 HISTTIMEFORMAT 显示时间戳 当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行： 123456# export HISTTIMEFORMAT=&amp;apos;%F %T &amp;apos;# history | more1  2008-08-05 19:02:39 service network restart2">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://davidchan0519.github.io/images/slice.png">
-<meta property="og:image" content="https://davidchan0519.github.io/images/slice_struct.png">
-<meta property="og:image" content="https://davidchan0519.github.io/images/make_slice.png">
-<meta property="og:image" content="https://davidchan0519.github.io/images/slice_init.png">
-<meta property="og:image" content="https://davidchan0519.github.io/images/slice_trunk.png">
-<meta property="og:updated_time" content="2019-04-22T05:54:25.371Z">
+<meta property="og:updated_time" content="2019-05-15T06:17:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go中切片之间的浅拷贝和深拷贝">
-<meta name="twitter:description" content="我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。">
-<meta name="twitter:image" content="https://davidchan0519.github.io/images/slice.png">
+<meta name="twitter:title" content="linux history命令显示时间戳">
+<meta name="twitter:description" content="使用 HISTTIMEFORMAT 显示时间戳 当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行： 123456# export HISTTIMEFORMAT=&amp;apos;%F %T &amp;apos;# history | more1  2008-08-05 19:02:39 service network restart2">
 
 
 
@@ -121,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/04/22/go-slice-copy/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/15/linux-shell-history-env/">
 
 
 
@@ -131,7 +125,7 @@
   };
 </script>
 
-  <title>Go中切片之间的浅拷贝和深拷贝 | 程伟的技术笔记</title>
+  <title>linux history命令显示时间戳 | 程伟的技术笔记</title>
   
 
 
@@ -376,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/22/go-slice-copy/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/15/linux-shell-history-env/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -393,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go中切片之间的浅拷贝和深拷贝
+          <h1 class="post-title" itemprop="name headline">linux history命令显示时间戳
 
               
             
@@ -419,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-22 11:41:24 / Modified: 13:54:25" itemprop="dateCreated datePublished" datetime="2019-04-22T11:41:24+08:00">2019-04-22</time>
+              <time title="Created: 2019-05-15 14:18:46 / Modified: 14:17:01" itemprop="dateCreated datePublished" datetime="2019-05-15T14:18:46+08:00">2019-05-15</time>
             
 
             
@@ -465,24 +459,10 @@
       
 
       
-        <p>我们知道，go语言中切片类型是从数组类型基础上发展出来的新类型，当声明一个数组时，不指定该数组长度，则该类型为切片(“动态数组”)，切片有自己独立的内部结构字段(len, cap, array pointer)，并共用底层数组空间。</p>
-<a id="more"></a>
-<p><img src="/images/slice.png" alt></p>
-<p>例如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 [<span class="number">10</span>]<span class="keyword">int</span> <span class="comment">//数组</span></span><br><span class="line"><span class="keyword">var</span> s2 []<span class="keyword">int</span>   <span class="comment">//切片</span></span><br></pre></td></tr></table></figure>
-<p>切片属于引用类型，使用make分配内存空间和初始化成员结构。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>)  		<span class="comment">//长度为3</span></span><br><span class="line">b := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">3</span>, <span class="number">5</span>)  <span class="comment">//长度为3，容量为5</span></span><br></pre></td></tr></table></figure>
-<p><img src="/images/slice_struct.png" alt></p>
-<p><img src="/images/make_slice.png" alt></p>
-<p>切片字面量初始化：</p>
-<p><img src="/images/slice_init.png" alt></p>
-<p>数组到切片的拷贝(共享底层数组空间)</p>
-<p><img src="/images/slice_trunk.png" alt></p>
-<p>切片之间的拷贝分为2种：浅拷贝和深拷贝</p>
-<h5 id="浅拷贝："><a href="#浅拷贝：" class="headerlink" title="浅拷贝："></a>浅拷贝：</h5><p>源切片和目的切片共享同一底层数组空间，源切片修改，目的切片同样被修改。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice2 := slice1</span><br><span class="line">  slice1[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">  fmt.Println(slice1) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">  fmt.Println(slice2) <span class="comment">//[0 1 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="深拷贝："><a href="#深拷贝：" class="headerlink" title="深拷贝："></a>深拷贝：</h5><p>源切片和目的切片各自都有彼此独立的底层数组空间，各自的修改，彼此不受影响</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  slice1 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  slice1[<span class="number">0</span>]=<span class="number">9</span></span><br><span class="line">  slice2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">  slice3 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line">  <span class="comment">//拷贝</span></span><br><span class="line">  fmt.Println(<span class="built_in">copy</span>(slice2, slice1))<span class="comment">//4</span></span><br><span class="line">  fmt.Println(<span class="built_in">copy</span>(slice3, slice1))<span class="comment">//5</span></span><br><span class="line">  <span class="comment">//独立修改</span></span><br><span class="line">  slice2[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">  slice3[<span class="number">1</span>] = <span class="number">3</span></span><br><span class="line">  fmt.Println(slice1)<span class="comment">//[9 0 0 0 0 0]</span></span><br><span class="line">  fmt.Println(slice2)<span class="comment">//[9 2 0 0]</span></span><br><span class="line">  fmt.Println(slice3)<span class="comment">//[9 3 0 0 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p><strong>使用 HISTTIMEFORMAT 显示时间戳</strong></p>
+<p>当你从命令行执行 history 命令后，通常只会显示已执行命令的序号和命令本身。如果你想要查看命令历史的时间戳，那么可以执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># export HISTTIMEFORMAT=&apos;%F %T &apos;</span><br><span class="line"># history | more</span><br><span class="line">1  2008-08-05 19:02:39 service network restart</span><br><span class="line">2  2008-08-05 19:02:39 exit</span><br><span class="line">3  2008-08-05 19:02:39 id</span><br><span class="line">4  2008-08-05 19:02:39 cat /etc/redhat-release</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：这个功能只能用在当 HISTTIMEFORMAT 这个环境变量被设置之后，之后的那些新执行的 bash 命令才会被打上正确的时间戳。在此之前的所有命令，都将会显示成设置 HISTTIMEFORMAT 变量的时间。</p>
 
       
     </div>
@@ -546,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/17/new-son-new-life/" rel="next" title="升级做爸爸了，开心">
-                <i class="fa fa-chevron-left"></i> 升级做爸爸了，开心
+              <a href="/2019/05/15/vm-linux-space-extend/" rel="next" title="vmware workstation扩展linux客户机系统磁盘空间的方法-gparted">
+                <i class="fa fa-chevron-left"></i> vmware workstation扩展linux客户机系统磁盘空间的方法-gparted
               </a>
             
           </div>
@@ -555,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/23/go-variadic-param-func/" rel="prev" title="Go可变参数函数">
-                Go可变参数函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -606,17 +582,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -675,23 +642,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#浅拷贝："><span class="nav-number">1.</span> <span class="nav-text">浅拷贝：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#深拷贝："><span class="nav-number">2.</span> <span class="nav-text">深拷贝：</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
