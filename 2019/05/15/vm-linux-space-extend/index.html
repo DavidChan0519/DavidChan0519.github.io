@@ -96,20 +96,25 @@
 
 
 
-  <meta name="description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
+  <meta name="description" content="扩展前：  扩展后：  前后对比，可以看出，根目录/ 空间增加了100GB。使用率从扩展之前的96%降到了目前的35%，够继续使用一段时间了，后面如果空间不够，可以继续用该方法进行扩展。 操作步骤：客户机关机； 选择 VMware的虚拟机-&amp;gt;设置-&amp;gt;硬盘(SCSI)-&amp;gt;磁盘实用工具-&amp;gt;扩展磁盘容量将磁盘空间大小调整为合适的值，一定需要比原来的大，我这里调整为160GB（原">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于我">
-<meta property="og:url" content="https://davidchan0519.github.io/about/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vmware workstation扩展linux客户机系统磁盘空间的方法-gparted">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/15/vm-linux-space-extend/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
+<meta property="og:description" content="扩展前：  扩展后：  前后对比，可以看出，根目录/ 空间增加了100GB。使用率从扩展之前的96%降到了目前的35%，够继续使用一段时间了，后面如果空间不够，可以继续用该方法进行扩展。 操作步骤：客户机关机； 选择 VMware的虚拟机-&amp;gt;设置-&amp;gt;硬盘(SCSI)-&amp;gt;磁盘实用工具-&amp;gt;扩展磁盘容量将磁盘空间大小调整为合适的值，一定需要比原来的大，我这里调整为160GB（原">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://davidchan0519.github.io/images/me.jpeg">
-<meta property="og:updated_time" content="2019-04-01T07:52:20.000Z">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1557887211706.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1557887133307.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/20190515104706.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1557887620720.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1557887724954.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1557888047795.png">
+<meta property="og:updated_time" content="2019-05-15T02:48:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于我">
-<meta name="twitter:description" content="IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作. Email : chengwei0519@gmail.com">
-<meta name="twitter:image" content="https://davidchan0519.github.io/images/me.jpeg">
+<meta name="twitter:title" content="vmware workstation扩展linux客户机系统磁盘空间的方法-gparted">
+<meta name="twitter:description" content="扩展前：  扩展后：  前后对比，可以看出，根目录/ 空间增加了100GB。使用率从扩展之前的96%降到了目前的35%，够继续使用一段时间了，后面如果空间不够，可以继续用该方法进行扩展。 操作步骤：客户机关机； 选择 VMware的虚拟机-&amp;gt;设置-&amp;gt;硬盘(SCSI)-&amp;gt;磁盘实用工具-&amp;gt;扩展磁盘容量将磁盘空间大小调整为合适的值，一定需要比原来的大，我这里调整为160GB（原">
+<meta name="twitter:image" content="https://davidchan0519.github.io/images/1557887211706.png">
 
 
 
@@ -117,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/about/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/15/vm-linux-space-extend/">
 
 
 
@@ -127,7 +132,7 @@
   };
 </script>
 
-  <title>关于我 | 程伟的技术笔记</title>
+  <title>vmware workstation扩展linux客户机系统磁盘空间的方法-gparted | 程伟的技术笔记</title>
   
 
 
@@ -230,7 +235,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -311,28 +316,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -380,48 +363,214 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/15/vm-linux-space-extend/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">关于我
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>IT软件工程师一枚，研发行业里摸爬滚打，从业近10年。当前聚焦基于深度学习方向的计算机视觉应用开发，擅长开发语言C/C++，Golang，Python。曾多年深耕于X86/ARM服务器后台C/C++，Linux嵌入式软件，Linux Kernel存储驱动开发。此前在HW存储工作6年，现就职于Bitmain，从事AI芯片软件开发相关工作.</p>
-<p>Email : <a href="mailto:chengwei0519@gmail.com" target="_blank" rel="noopener">chengwei0519@gmail.com</a></p>
-<p><img src="/images/me.jpeg" alt></p>
+          <h1 class="post-title" itemprop="name headline">vmware workstation扩展linux客户机系统磁盘空间的方法-gparted
 
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-15 10:24:22 / Modified: 10:48:06" itemprop="dateCreated datePublished" datetime="2019-05-15T10:24:22+08:00">2019-05-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <a id="more"></a>
+<p>扩展前：</p>
+<p><img src="/images/1557887211706.png" alt></p>
+<p>扩展后：</p>
+<p><img src="/images/1557887133307.png" alt></p>
+<p>前后对比，可以看出，根目录/ 空间增加了100GB。使用率从扩展之前的96%降到了目前的35%，够继续使用一段时间了，后面如果空间不够，可以继续用该方法进行扩展。</p>
+<h6 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h6><p>客户机关机；</p>
+<p>选择 VMware的虚拟机-&gt;设置-&gt;硬盘(SCSI)-&gt;磁盘实用工具-&gt;扩展磁盘容量<br>将磁盘空间大小调整为合适的值，一定需要比原来的大，我这里调整为160GB（原来为60GB），最后确定.</p>
+<p><img src="/images/20190515104706.png" alt></p>
+<p>启动客户机，安装磁盘分区工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$apt</span>-get install gparted</span><br></pre></td></tr></table></figure>
+<p>从窗口启动图形化分区工具Gparted</p>
+<p><img src="/images/1557887620720.png" alt></p>
+<p>将之前extend分区删掉，不删的话无法重置sda1主分区大小（右键swapoff -&gt; 右键delete）</p>
+<p><img src="/images/1557887724954.png" alt></p>
+<p>调整<strong>/dev/sda1</strong>的大小为158GB，预留2GB做swap分区，再次新建一个extend分区，然后在extend分区下在建一个swap<strong>逻辑</strong>分区，点击上方绿色的对号保存即可。</p>
+<p>至此，扩展空间就完成了。</p>
+<p><img src="/images/1557888047795.png" alt></p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/14/linux-library-env-diff/" rel="next" title="Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别">
+                <i class="fa fa-chevron-left"></i> Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -454,8 +603,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,6 +672,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#操作步骤："><span class="nav-number">1.</span> <span class="nav-text">操作步骤：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
