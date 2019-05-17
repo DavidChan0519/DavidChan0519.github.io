@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="在linux下，我们习惯使用scp命令来远程拷贝文件，非常方便，但是这个命令在拷贝过程中存在一个问题，即如果目录中存在软链接，使用scp拷贝就会导致软链接失效（解决办法：将需要拷贝的目录先打包，使用scp拷贝到目标机器后，在目标机器上解包）。而使用rsync命令拷贝，则可以规避这一问题。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程伟的技术笔记">
-<meta property="og:url" content="https://davidchan0519.github.io/page/6/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="远程拷贝命令-rsync">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/17/rsync-cmd/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="在linux下，我们习惯使用scp命令来远程拷贝文件，非常方便，但是这个命令在拷贝过程中存在一个问题，即如果目录中存在软链接，使用scp拷贝就会导致软链接失效（解决办法：将需要拷贝的目录先打包，使用scp拷贝到目标机器后，在目标机器上解包）。而使用rsync命令拷贝，则可以规避这一问题。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-17T10:35:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程伟的技术笔记">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="远程拷贝命令-rsync">
+<meta name="twitter:description" content="在linux下，我们习惯使用scp命令来远程拷贝文件，非常方便，但是这个命令在拷贝过程中存在一个问题，即如果目录中存在软链接，使用scp拷贝就会导致软链接失效（解决办法：将需要拷贝的目录先打包，使用scp拷贝到目标机器后，在目标机器上解包）。而使用rsync命令拷贝，则可以规避这一问题。">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/page/6/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/17/rsync-cmd/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>程伟的技术笔记</title>
+  <title>远程拷贝命令-rsync | 程伟的技术笔记</title>
   
 
 
@@ -172,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/DavidChan0519" id="fork-me-custom"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -353,9 +353,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/03/29/mib2c/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/17/rsync-cmd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,10 +387,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/mib2c/" class="post-title-link" itemprop="url">mib2c代码自动生成</a>
+          <h1 class="post-title" itemprop="name headline">远程拷贝命令-rsync
+
               
             
           </h1>
@@ -415,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-03-29 16:17:14 / Modified: 19:06:48" itemprop="dateCreated datePublished" datetime="2019-03-29T16:17:14+08:00">2019-03-29</time>
+              <time title="Created: 2019-05-17 18:25:59 / Modified: 18:35:41" itemprop="dateCreated datePublished" datetime="2019-05-17T18:25:59+08:00">2019-05-17</time>
             
 
             
@@ -436,166 +434,12 @@
           
 
           
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>要使用mib2c工具自动生成Net-SNMP企业私有库代码，首先必须在开发环境中部署mib2c工具。该工具是net-snmp源码自带的，直接编译net-snmp源码后就可以使用了。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/29/mib2c/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/03/29/net-snmp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/29/net-snmp/" class="post-title-link" itemprop="url">Net-SNMP的交叉编译 for ARM64</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-03-29 14:38:17" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-02 01:50:16" itemprop="dateModified" datetime="2019-04-02T01:50:16+08:00">2019-04-02</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -615,18 +459,13 @@
       
 
       
-        
-          <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">去官网下载</a>openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/29/net-snmp/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+        <p>在linux下，我们习惯使用scp命令来远程拷贝文件，非常方便，但是这个命令在拷贝过程中存在一个问题，即如果目录中存在软链接，使用scp拷贝就会导致软链接失效（<strong>解决办法：将需要拷贝的目录先打包，使用scp拷贝到目标机器后，在目标机器上解包</strong>）。而使用rsync命令拷贝，则可以规避这一问题。</p>
+<a id="more"></a>
+<h6 id="Rsync命令常用参数："><a href="#Rsync命令常用参数：" class="headerlink" title="Rsync命令常用参数："></a>Rsync命令常用参数：</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD``-``v``, --verbose 详细模式输出``-p, --perms 保持文件权限``-g, --group 保持文件属组信息``-o, --owner 保持文件属主信息``-r, --recursive 对子目录以递归模式处理。同步目录的时候要加上这个参数``-l, --links 保留软链结，加上这个参数，同步过来的文件会保持之前的软链接属性不变``-H, --hard-links 保留硬链结``-e, --rsh=COMMAND 指定使用rsh、``ssh``方式进行数据同步``-z, --compress 对备份的文件在传输时进行压缩处理``--stats 给出某些文件的传输状态``--progress 打印同步的过程``--timeout=TIME 同步过程中，IP超时时间，单位为秒``--delete 删除那些目标目录中有而源目录中没有的多余文件。这个是``rsync``做增量方式的全备份的最佳选择方案！！！！！！``--delete-before 接受者在输出之前进行删除操作。即先将目标目录中文件全部删除，再将源目录文件拷贝过去。这是``rsync``保持目标目录跟源目录一致的方案！！！``--delete-after 在同步操作之后做比较，删除那些目标目录中有而源目录中没有的多余文件``--delete-excluded 删除目标目录中那些被该选项指定排除的文件``--ignore-errors 即使出现IO错误也进行删除，忽略错误``--exclude 指定同步时需要过滤掉的文件或子目录(即不需要同步过去的)，后面直接跟不需要同步的单个文件名或子目录(不需要跟路径) ，过滤多个文件或子目录，就使用多个--exclude``--exclude-from 指定同步时需要过滤掉的文件或子目录，后面跟文件(比如``/root/exclue``.txt)，然后将不需要同步的文件和子目录放到``/root/exclue``.txt下。``--version 打印版本信息``--port=PORT 指定其他的``rsync``服务端口``--log-``format``=formAT 指定日志文件格式``--password-``file``=FILE 从FILE中得到密码``--bwlimit=KBPS 限制I``/O``带宽，KBytes per second`</span><br></pre></td></tr></table></figure>
+<p>从命令参数中可以看到，使用参数-l可以保持软链接不失效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>rsync -l -r --progress  bm_prebuilt_toolchains lwang@10.31.33.41:/home/lwang/work/project/</span><br></pre></td></tr></table></figure>
+<p>同时，rsync命令对于增量拷贝，也是非常有效，减少拷贝时间</p>
+
       
     </div>
 
@@ -642,6 +481,39 @@
       
     
     
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -649,12 +521,28 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/15/go-array-specified-elem/" rel="next" title="Go数组初始化-指定元素值">
+                <i class="fa fa-chevron-left"></i> Go数组初始化-指定元素值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -664,18 +552,19 @@
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -695,8 +584,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -755,6 +653,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#Rsync命令常用参数："><span class="nav-number">1.</span> <span class="nav-text">Rsync命令常用参数：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -910,6 +825,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -925,6 +844,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '56b927009f5c31c05b79',
+    clientSecret: '45307baf23d3e44a33a0186f8675ac71a8519bfe',
+    repo: 'davidchan0519.github.io',
+    owner: 'DavidChan0519',
+    admin: ['DavidChan0519'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
