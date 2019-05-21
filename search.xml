@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Mac开启sshd服务]]></title>
+    <url>%2F2019%2F05%2F21%2Fmac-sshd-service%2F</url>
+    <content type="text"><![CDATA[默认情况，mac自身的sshd服务是没有开启的，需要手动开启。 开启该服务后，则可远程ssh到mac，进行相关的操作。 操作步骤：启动sshd服务：1$sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist 停止sshd服务：1$sudo launchctl unload -w /System/Library/LaunchDaemons/ssh.plist 查看状态：1$sudo launchctl list | grep ssh 如果看到下面的输出表示成功启动了： －－－－－－－－－－－－－－ - 0 com.openssh.sshd ssh连接1$ssh localhost 输入用户名和密码，则可连接成功]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[远程拷贝命令-rsync]]></title>
     <url>%2F2019%2F05%2F17%2Frsync-cmd%2F</url>
     <content type="text"><![CDATA[在linux下，我们习惯使用scp命令来远程拷贝文件，非常方便，但是这个命令在拷贝过程中存在一个问题，即如果目录中存在软链接，使用scp拷贝就会导致软链接失效（解决办法：将需要拷贝的目录先打包，使用scp拷贝到目标机器后，在目标机器上解包）。而使用rsync命令拷贝，则可以规避这一问题。 Rsync命令常用参数：1`-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD``-``v``, --verbose 详细模式输出``-p, --perms 保持文件权限``-g, --group 保持文件属组信息``-o, --owner 保持文件属主信息``-r, --recursive 对子目录以递归模式处理。同步目录的时候要加上这个参数``-l, --links 保留软链结，加上这个参数，同步过来的文件会保持之前的软链接属性不变``-H, --hard-links 保留硬链结``-e, --rsh=COMMAND 指定使用rsh、``ssh``方式进行数据同步``-z, --compress 对备份的文件在传输时进行压缩处理``--stats 给出某些文件的传输状态``--progress 打印同步的过程``--timeout=TIME 同步过程中，IP超时时间，单位为秒``--delete 删除那些目标目录中有而源目录中没有的多余文件。这个是``rsync``做增量方式的全备份的最佳选择方案！！！！！！``--delete-before 接受者在输出之前进行删除操作。即先将目标目录中文件全部删除，再将源目录文件拷贝过去。这是``rsync``保持目标目录跟源目录一致的方案！！！``--delete-after 在同步操作之后做比较，删除那些目标目录中有而源目录中没有的多余文件``--delete-excluded 删除目标目录中那些被该选项指定排除的文件``--ignore-errors 即使出现IO错误也进行删除，忽略错误``--exclude 指定同步时需要过滤掉的文件或子目录(即不需要同步过去的)，后面直接跟不需要同步的单个文件名或子目录(不需要跟路径) ，过滤多个文件或子目录，就使用多个--exclude``--exclude-from 指定同步时需要过滤掉的文件或子目录，后面跟文件(比如``/root/exclue``.txt)，然后将不需要同步的文件和子目录放到``/root/exclue``.txt下。``--version 打印版本信息``--port=PORT 指定其他的``rsync``服务端口``--log-``format``=formAT 指定日志文件格式``--password-``file``=FILE 从FILE中得到密码``--bwlimit=KBPS 限制I``/O``带宽，KBytes per second` 从命令参数中可以看到，使用参数-l可以保持软链接不失效 1$rsync -l -r --progress bm_prebuilt_toolchains lwang@10.31.33.41:/home/lwang/work/project/ 同时，rsync命令对于增量拷贝，也是非常有效，减少拷贝时间]]></content>

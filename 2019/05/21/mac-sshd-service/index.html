@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+  <meta name="description" content="默认情况，mac自身的sshd服务是没有开启的，需要手动开启。 开启该服务后，则可远程ssh到mac，进行相关的操作。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Net-SNMP的交叉编译 for ARM64">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/03/29/net-snmp/index.html">
+<meta property="og:title" content="Mac开启sshd服务">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/21/mac-sshd-service/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+<meta property="og:description" content="默认情况，mac自身的sshd服务是没有开启的，需要手动开启。 开启该服务后，则可远程ssh到mac，进行相关的操作。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T17:50:16.799Z">
+<meta property="og:image" content="https://davidchan0519.github.io/images/termius.png">
+<meta property="og:updated_time" content="2019-05-21T15:22:00.490Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Net-SNMP的交叉编译 for ARM64">
-<meta name="twitter:description" content="1.交叉编译openssl去官网下载openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作">
+<meta name="twitter:title" content="Mac开启sshd服务">
+<meta name="twitter:description" content="默认情况，mac自身的sshd服务是没有开启的，需要手动开启。 开启该服务后，则可远程ssh到mac，进行相关的操作。">
+<meta name="twitter:image" content="https://davidchan0519.github.io/images/termius.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/03/29/net-snmp/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/21/mac-sshd-service/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>Net-SNMP的交叉编译 for ARM64 | 程伟的技术笔记</title>
+  <title>Mac开启sshd服务 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/03/29/net-snmp/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/21/mac-sshd-service/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Net-SNMP的交叉编译 for ARM64
+          <h1 class="post-title" itemprop="name headline">Mac开启sshd服务
 
               
             
@@ -413,24 +415,12 @@
                 
               
 
-              <time title="Created: 2019-03-29 14:38:17" itemprop="dateCreated datePublished" datetime="2019-03-29T14:38:17+08:00">2019-03-29</time>
+              <time title="Created: 2019-05-21 22:23:26 / Modified: 23:22:00" itemprop="dateCreated datePublished" datetime="2019-05-21T22:23:26+08:00">2019-05-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-02 01:50:16" itemprop="dateModified" datetime="2019-04-02T01:50:16+08:00">2019-04-02</time>
               
             
           </span>
@@ -471,25 +461,20 @@
       
 
       
-        <h5 id="1-交叉编译openssl"><a href="#1-交叉编译openssl" class="headerlink" title="1.交叉编译openssl"></a>1.交叉编译openssl</h5><p><a href="https://www.openssl.org/source/" target="_blank" rel="noopener">去官网下载</a>openssl-1.0.2q.tar.gz，解压缩到目录/home/lwang/work/chengw/github/下，然后进入openssl目录按照如下步骤操作</p>
+        <p>默认情况，mac自身的sshd服务是没有开启的，需要手动开启。</p>
+<p>开启该服务后，则可远程ssh到mac，进行相关的操作。</p>
 <a id="more"></a>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">./config no-asm shared --cross-compile-prefix=aarch64-linux-gnu-  --prefix=/home/lwang/work/chengw/github/openssl-1.1.1a/release</span></span><br></pre></td></tr></table></figure>
-<p>其中参数的含义为：<br>no-asm：在交叉编译过程中不使用汇编代码代码加速编译过程；<br>shared：生成动态链接库；<br>–prefix：指定生成lib、include、bin三个核心目录的路径，不修改此项则默认为OPENSSLDIR目录。</p>
-<p>2) 修改生成的Makefile，去掉-m64选项，否则会编译报错<br>3) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
-<p>4) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make install</span></span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<h5 id="2-交叉编译net-snmp"><a href="#2-交叉编译net-snmp" class="headerlink" title="2.交叉编译net-snmp"></a>2.交叉编译net-snmp</h5><p><a href="http://www.net-snmp.org/download.html" target="_blank" rel="noopener">在官网下载</a>net-snmp-5.7.3.tar.gz，解压缩到/home/lwang/work/chengw/github/目录，然后进入net-snmp目录,并按照如下步骤操作</p>
-<p>1) 配置编译选项</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">./configure --host=arm-linux --target=arm-linux --build=i686-linux --with-cc=aarch64-linux-gnu-gcc  --with-ar=aarch64-linux-gnu-ar  --prefix=/home/lwang/work/chengw/github/net-snmp-5.7.3/release  --with-endianness=little --<span class="built_in">disable</span>-manuals --<span class="built_in">disable</span>-embedded-perl  --<span class="built_in">disable</span>-perl-cc-checks --without-perl-modules --<span class="built_in">disable</span>-scripts  --<span class="built_in">disable</span>-applications  --with-openssl=/home/lwang/work/chengw/github/openssl-1.0.2q/release</span></span><br></pre></td></tr></table></figure>
-<p>2) 编译</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make -j4</span></span><br></pre></td></tr></table></figure>
-<p>3) 安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">make install</span></span><br></pre></td></tr></table></figure>
-<p>最终编译生成的头文件和lib文件都位于当前release目录下</p>
-<p>注意：实际测试发现，net-snmp 5.7.3只能搭配openssl-1.0.2q版本使用，更新的版本会编译报错.</p>
+<h4 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h4><h5 id="启动sshd服务："><a href="#启动sshd服务：" class="headerlink" title="启动sshd服务："></a>启动sshd服务：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> launchctl load -w /System/Library/LaunchDaemons/ssh.plist</span><br></pre></td></tr></table></figure>
+<h5 id="停止sshd服务："><a href="#停止sshd服务：" class="headerlink" title="停止sshd服务："></a>停止sshd服务：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> launchctl unload -w /System/Library/LaunchDaemons/ssh.plist</span><br></pre></td></tr></table></figure>
+<h5 id="查看状态："><a href="#查看状态：" class="headerlink" title="查看状态："></a>查看状态：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> launchctl list | grep ssh</span><br></pre></td></tr></table></figure>
+<p>如果看到下面的输出表示成功启动了：</p>
+<blockquote>
+<p>－－－－－－－－－－－－－－</p>
+<p>- 0 com.openssh.sshd</p>
+</blockquote>
+<h5 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ssh</span> localhost</span><br></pre></td></tr></table></figure>
+<p>输入用户名和密码，则可连接成功</p>
+<p><img src="/images/termius.png" alt></p>
 
       
     </div>
@@ -553,15 +538,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/05/17/rsync-cmd/" rel="next" title="远程拷贝命令-rsync">
+                <i class="fa fa-chevron-left"></i> 远程拷贝命令-rsync
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/29/mib2c/" rel="prev" title="mib2c代码自动生成">
-                mib2c代码自动生成 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -689,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉编译openssl"><span class="nav-number">1.</span> <span class="nav-text">1.交叉编译openssl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-交叉编译net-snmp"><span class="nav-number">2.</span> <span class="nav-text">2.交叉编译net-snmp</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作步骤："><span class="nav-number">1.</span> <span class="nav-text">操作步骤：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#启动sshd服务："><span class="nav-number">1.1.</span> <span class="nav-text">启动sshd服务：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#停止sshd服务："><span class="nav-number">1.2.</span> <span class="nav-text">停止sshd服务：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看状态："><span class="nav-number">1.3.</span> <span class="nav-text">查看状态：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ssh连接"><span class="nav-number">1.4.</span> <span class="nav-text">ssh连接</span></a></li></ol></li></ol></div>
             
 
           </div>

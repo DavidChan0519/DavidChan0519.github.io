@@ -463,7 +463,7 @@
 <a id="more"></a>
 <h6 id="Rsync命令常用参数："><a href="#Rsync命令常用参数：" class="headerlink" title="Rsync命令常用参数："></a>Rsync命令常用参数：</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于-rlptgoD``-``v``, --verbose 详细模式输出``-p, --perms 保持文件权限``-g, --group 保持文件属组信息``-o, --owner 保持文件属主信息``-r, --recursive 对子目录以递归模式处理。同步目录的时候要加上这个参数``-l, --links 保留软链结，加上这个参数，同步过来的文件会保持之前的软链接属性不变``-H, --hard-links 保留硬链结``-e, --rsh=COMMAND 指定使用rsh、``ssh``方式进行数据同步``-z, --compress 对备份的文件在传输时进行压缩处理``--stats 给出某些文件的传输状态``--progress 打印同步的过程``--timeout=TIME 同步过程中，IP超时时间，单位为秒``--delete 删除那些目标目录中有而源目录中没有的多余文件。这个是``rsync``做增量方式的全备份的最佳选择方案！！！！！！``--delete-before 接受者在输出之前进行删除操作。即先将目标目录中文件全部删除，再将源目录文件拷贝过去。这是``rsync``保持目标目录跟源目录一致的方案！！！``--delete-after 在同步操作之后做比较，删除那些目标目录中有而源目录中没有的多余文件``--delete-excluded 删除目标目录中那些被该选项指定排除的文件``--ignore-errors 即使出现IO错误也进行删除，忽略错误``--exclude 指定同步时需要过滤掉的文件或子目录(即不需要同步过去的)，后面直接跟不需要同步的单个文件名或子目录(不需要跟路径) ，过滤多个文件或子目录，就使用多个--exclude``--exclude-from 指定同步时需要过滤掉的文件或子目录，后面跟文件(比如``/root/exclue``.txt)，然后将不需要同步的文件和子目录放到``/root/exclue``.txt下。``--version 打印版本信息``--port=PORT 指定其他的``rsync``服务端口``--log-``format``=formAT 指定日志文件格式``--password-``file``=FILE 从FILE中得到密码``--bwlimit=KBPS 限制I``/O``带宽，KBytes per second`</span><br></pre></td></tr></table></figure>
 <p>从命令参数中可以看到，使用参数-l可以保持软链接不失效</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>rsync -l -r --progress  bm_prebuilt_toolchains lwang@10.31.33.41:/home/lwang/work/project/</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">rsync -l -r --progress  bm_prebuilt_toolchains lwang@10.31.33.41:/home/lwang/work/project/</span></span><br></pre></td></tr></table></figure>
 <p>同时，rsync命令对于增量拷贝，也是非常有效，减少拷贝时间</p>
 
       
@@ -538,6 +538,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/21/mac-sshd-service/" rel="prev" title="Mac开启sshd服务">
+                Mac开启sshd服务 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -609,7 +613,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
