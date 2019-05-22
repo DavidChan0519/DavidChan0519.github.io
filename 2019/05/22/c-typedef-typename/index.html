@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+  <meta name="description" content="c++的一个语法：">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go可变参数函数">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/04/23/go-variadic-param-func/index.html">
+<meta property="og:title" content="C++ typedef typename的作用">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/22/c-typedef-typename/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
+<meta property="og:description" content="c++的一个语法：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://davidchan0519.github.io/images/go_variadic_param.png">
-<meta property="og:image" content="https://davidchan0519.github.io/images/slice_variadic_func.png">
-<meta property="og:updated_time" content="2019-04-23T11:41:18.631Z">
+<meta property="og:updated_time" content="2019-05-22T07:23:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go可变参数函数">
-<meta name="twitter:description" content="可变参数函数即其参数数量是可变的 : 0 个或多个； 声明可变参数函数的方式是在其参数类型前面带上省略符（…）前缀。">
-<meta name="twitter:image" content="https://davidchan0519.github.io/images/go_variadic_param.png">
+<meta name="twitter:title" content="C++ typedef typename的作用">
+<meta name="twitter:description" content="c++的一个语法：">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/04/23/go-variadic-param-func/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/22/c-typedef-typename/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>Go可变参数函数 | 程伟的技术笔记</title>
+  <title>C++ typedef typename的作用 | 程伟的技术笔记</title>
   
 
 
@@ -373,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/23/go-variadic-param-func/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/22/c-typedef-typename/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -390,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Go可变参数函数
+          <h1 class="post-title" itemprop="name headline">C++ typedef typename的作用
 
               
             
@@ -416,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-23 18:04:43 / Modified: 19:41:18" itemprop="dateCreated datePublished" datetime="2019-04-23T18:04:43+08:00">2019-04-23</time>
+              <time title="Created: 2019-05-22 15:16:50 / Modified: 15:23:52" itemprop="dateCreated datePublished" datetime="2019-05-22T15:16:50+08:00">2019-05-22</time>
             
 
             
@@ -462,23 +459,22 @@
       
 
       
-        <p>可变参数函数即其参数数量是可变的 : 0 个或多个；</p>
-<p>声明可变参数函数的方式是在其参数类型<strong>前面</strong>带上省略符（…）前缀。</p>
+        <p>c++的一个语法：</p>
 <a id="more"></a>
-<p><img src="/images/go_variadic_param.png" alt></p>
-<p>一个简单的可变参数函数：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(input …<span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> strings.Join(input,<span class="string">","</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">"hello"</span>,<span class="string">"world"</span>)</span><br><span class="line">test(<span class="string">"single"</span>)</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-<p>可变参数函数会在其内部创建一个”新的临时切片”。事实上，可变参数是一个简化了切片类型参数传入的<a href="https://en.wikipedia.org/wiki/Syntactic_sugar" target="_blank" rel="noopener"><em>语法糖</em></a>。</p>
-<p><img src="/images/slice_variadic_func.png" alt></p>
-<p>当不传入参数的时候，可变参数会成为一个空值切片（ <code>nil</code> )</p>
-<p>当不太确定数据类型的时候我们通常采用空接口 <strong>interface{}</strong> </p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tests1(<span class="number">789</span>)</span><br><span class="line">fmt.Println(<span class="string">"-------------"</span>)</span><br><span class="line">tests1(<span class="string">"789"</span>)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tests1</span><span class="params">(arg <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"value:"</span>, arg)</span><br><span class="line">    fmt.Println(<span class="string">"type:"</span>, reflect.TypeOf(arg).Name())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: int</span><br><span class="line">-------------</span><br><span class="line">value: 789</span><br><span class="line"><span class="built_in">type</span>: string</span><br></pre></td></tr></table></figure>
-<p>⚠️在使用interface{}作为可变入参时，传入的参数要先做类型转换(<u>先转换为[ ]interface{}</u>)</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testParams</span><span class="params">(args ...<span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i, v := <span class="keyword">range</span> args &#123;</span><br><span class="line">        <span class="keyword">if</span> s, ok := v.(<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            fmt.Println(<span class="string">"----"</span>, s)</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">if</span> s, ok := v.([]<span class="keyword">string</span>); ok &#123;</span><br><span class="line">            <span class="keyword">for</span> i, v := <span class="keyword">range</span> s &#123;</span><br><span class="line">                fmt.Println(i, <span class="string">"[]----"</span>, v)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(i, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">s := []<span class="keyword">string</span>&#123;<span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>&#125;</span><br><span class="line"><span class="keyword">var</span> d []<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">d = <span class="built_in">append</span>(d, s)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="comment">//var d []interface&#123;&#125; = []interface&#123;&#125;&#123;s[0], s[1], s[2]&#125;</span></span><br><span class="line">testParams(d...)</span><br></pre></td></tr></table></figure>
-<p>结果:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0 []---- 4</span><br><span class="line">1 []---- 5</span><br><span class="line">2 []---- 6</span><br><span class="line">0 [4 5 6]</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">typename</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt;::size_type size_type;</span><br></pre></td></tr></table></figure>
+<p>将typedef和typename关键字联用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>,<span class="title">class</span> <span class="title">Alloc</span>=<span class="title">alloc</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">vector</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">size_t</span> size_type;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>从vector的类定义可以看出，<code>vector::size_type</code>是<code>vector</code>嵌套类型定义，其实际等价于 <code>size_t</code>类型。 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::size_type ssize;</span><br><span class="line"><span class="comment">//就等价于</span></span><br><span class="line"><span class="keyword">size_t</span> ssize;</span><br></pre></td></tr></table></figure>
+<p>为什么要在typedef后面加上typename关键字？</p>
+<p>原因：</p>
+<p>实际上，模板类型在实例化之前，编译器并不知道<code>vector&lt;T&gt;::size_type</code>是什么东西，事实上一共有三种可能：</p>
+<blockquote>
+<p>静态数据成员<br>静态成员函数<br>嵌套类型</p>
+</blockquote>
+<p>那么此时<code>typename</code>的作用就在此时体现出来了——定义就不再模棱两可。</p>
+<p><code>typedef</code>创建了存在类型的别名，而<code>typename</code>告诉编译器<code>std::vector&lt;T&gt;::size_type</code>是一个类型而不是一个成员。</p>
+
       
     </div>
 
@@ -541,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/22/go-slice-copy/" rel="next" title="Go中切片之间的浅拷贝和深拷贝">
-                <i class="fa fa-chevron-left"></i> Go中切片之间的浅拷贝和深拷贝
+              <a href="/2019/05/21/mac-sshd-service/" rel="next" title="Mac开启sshd服务">
+                <i class="fa fa-chevron-left"></i> Mac开启sshd服务
               </a>
             
           </div>
@@ -550,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/25/go-interface/" rel="prev" title="go语言中的interface类型">
-                go语言中的interface类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
