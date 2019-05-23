@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++作用域限定符“::”]]></title>
+    <url>%2F2019%2F05%2F23%2Fcplus-scope-qualifier%2F</url>
+    <content type="text"><![CDATA[“ :: “是作用域限定符(field qualifier)或称作用域运算符，用它声明函数是属于哪个类的. 如果在作用域运算符“::”的前面没有类名，或者函数名前面既无类名又无作用域运算符“::”，如 12::display( )display( ) 则表示display函数不属于任何类，这个函数不是成员函数，而是全局函数，即非成员函数的一般普通函数。作用在于区分同名的全局变量（或函数）和局部变量（或函数） 123456789101112131415161718192021#include&lt;iostream&gt;using namespace std;int sum=0;int main()&#123; int n,a[N],sum=0; cin&gt;&gt;n; for(int i=0;i&lt;n;i++)&#123; cin&gt;&gt;a[i]; &#125; for(int i=0;i&lt;n;i++)&#123; if(i%2==0) sum+=a[i]; ::sum+=a[i]; &#125; cout&lt;&lt;"all="&lt;&lt;::sum&lt;&lt;' '&lt;&lt;"odd="&lt;&lt;sum; return 0;&#125; 全局变量sum用来求数组的全部和，局部变量sum用来求奇数小标元素的和。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[C++ typedef typename的作用]]></title>
     <url>%2F2019%2F05%2F22%2Fc-typedef-typename%2F</url>
     <content type="text"><![CDATA[c++的一个语法： 1typedef typename std::vector&lt;T&gt;::size_type size_type; 将typedef和typename关键字联用。 1234567template &lt;class T,class Alloc=alloc&gt;class vector&#123;public://...typedef size_t size_type;//...&#125;; 从vector的类定义可以看出，vector::size_type是vector嵌套类型定义，其实际等价于 size_t类型。 123vector&lt;int&gt;::size_type ssize;//就等价于size_t ssize; 为什么要在typedef后面加上typename关键字？ 原因： 实际上，模板类型在实例化之前，编译器并不知道vector&lt;T&gt;::size_type是什么东西，事实上一共有三种可能： 静态数据成员静态成员函数嵌套类型 那么此时typename的作用就在此时体现出来了——定义就不再模棱两可。 typedef创建了存在类型的别名，而typename告诉编译器std::vector&lt;T&gt;::size_type是一个类型而不是一个成员。]]></content>
