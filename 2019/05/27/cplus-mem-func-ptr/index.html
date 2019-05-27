@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
+  <meta name="description" content="类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定类)具有给定的形参列表与返回值类型的成员函数的访问信息。 要注意两点： ①函数指针赋值要使用 &amp;amp; ②使用.*(实例对象)或者-&amp;gt;*（实例对象指针）调用类成员函数指针所指向的函数">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go test之httptest">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/05/10/go-test-httptest/index.html">
+<meta property="og:title" content="C++成员函数指针">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/27/cplus-mem-func-ptr/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
+<meta property="og:description" content="类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定类)具有给定的形参列表与返回值类型的成员函数的访问信息。 要注意两点： ①函数指针赋值要使用 &amp;amp; ②使用.*(实例对象)或者-&amp;gt;*（实例对象指针）调用类成员函数指针所指向的函数">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://davidchan0519.github.io/2019/05/10/go-test-httptest/images/go_test_dir.png">
-<meta property="og:updated_time" content="2019-05-10T05:03:56.000Z">
+<meta property="og:updated_time" content="2019-05-27T15:00:23.251Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go test之httptest">
-<meta name="twitter:description" content="在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。">
-<meta name="twitter:image" content="https://davidchan0519.github.io/2019/05/10/go-test-httptest/images/go_test_dir.png">
+<meta name="twitter:title" content="C++成员函数指针">
+<meta name="twitter:description" content="类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定类)具有给定的形参列表与返回值类型的成员函数的访问信息。 要注意两点： ①函数指针赋值要使用 &amp;amp; ②使用.*(实例对象)或者-&amp;gt;*（实例对象指针）调用类成员函数指针所指向的函数">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/10/go-test-httptest/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/27/cplus-mem-func-ptr/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>go test之httptest | 程伟的技术笔记</title>
+  <title>C++成员函数指针 | 程伟的技术笔记</title>
   
 
 
@@ -372,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/10/go-test-httptest/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/27/cplus-mem-func-ptr/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -389,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">go test之httptest
+          <h1 class="post-title" itemprop="name headline">C++成员函数指针
 
               
             
@@ -415,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-05-10 11:51:22 / Modified: 13:03:56" itemprop="dateCreated datePublished" datetime="2019-05-10T11:51:22+08:00">2019-05-10</time>
+              <time title="Created: 2019-05-27 22:37:38 / Modified: 23:00:23" itemprop="dateCreated datePublished" datetime="2019-05-27T22:37:38+08:00">2019-05-27</time>
             
 
             
@@ -461,21 +459,14 @@
       
 
       
-        <p>在使用go语言进行编程的时候，go test命令方便的让我们进行函数单元测试。</p>
+        <p>类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定<a href="http://zh.wikipedia.org/wiki/类_(计算机科学" target="_blank" rel="noopener">类</a>)具有给定的形参列表与返回值类型的成员函数的访问信息。</p>
+<p>要注意两点：</p>
+<p>①函数指针赋值要使用 &amp;</p>
+<p>②使用<strong>.*</strong>(实例对象)或者-&gt;<strong>*</strong>（实例对象指针）调用类成员函数指针所指向的函数</p>
 <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> <span class="built_in">test</span> -v</span><br></pre></td></tr></table></figure>
-<p>但是当被测试函数依赖于环境(读取硬件路由表)或者server端实现(发送http请求给server端)，本地运行go test执行单元测试就会出现问题。这就需要我们在本地测试代码中将待测试函数中依赖外部的实现部分进行打桩（返回构造的假结果）。</p>
-<p>本文以http请求为例，使用httptest包代替server端，构造http返回结果。</p>
-<p>目录结构：</p>
-<p><img src="images/go_test_dir.png" alt></p>
-<p>peron.go文件，待测函数GetInfo( )</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> person</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"encoding/json"</span></span><br><span class="line">   <span class="string">"fmt"</span></span><br><span class="line">   <span class="string">"io/ioutil"</span></span><br><span class="line">   <span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">   Name <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">   Address <span class="keyword">string</span> <span class="string">`json:"address"`</span></span><br><span class="line">   Age <span class="keyword">int</span> <span class="string">`json:"age"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetInfo</span><span class="params">(api <span class="keyword">string</span>, addr <span class="keyword">string</span>)</span> <span class="params">([]Person, error)</span></span> &#123;</span><br><span class="line">   url := fmt.Sprintf(<span class="string">"%s/person?addr=%s"</span>, api, addr)</span><br><span class="line">   resp, err := http.Get(url)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> []Person&#123;&#125;, err</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> resp.StatusCode != http.StatusOK &#123;</span><br><span class="line">      <span class="keyword">return</span> []Person&#123;&#125;, fmt.Errorf(<span class="string">"get info didn’t respond 200 OK: %s"</span>, resp.Status)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"read response failed"</span>)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   p := <span class="built_in">make</span>([]Person,<span class="number">0</span>)</span><br><span class="line">   err = json.Unmarshal(body,&amp;p)</span><br><span class="line">   <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">"unmarshal response failed"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> p, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>peron_test.go文件：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> person</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">	<span class="string">"net/http/httptest"</span></span><br><span class="line">	<span class="string">"testing"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> personResponse = []Person&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		Name : <span class="string">"wahaha"</span>,</span><br><span class="line">		Address : <span class="string">"shanghai"</span>,</span><br><span class="line">		Age : <span class="number">20</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		Name : <span class="string">"lebaishi"</span>,</span><br><span class="line">		Address : <span class="string">"shanghai"</span>,</span><br><span class="line">		Age : <span class="number">10</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> personResponseBytes, _ = json.Marshal(personResponse)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestPublishWrongResponseStatus</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	ts := httptest.NewServer(http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		w.WriteHeader(http.StatusOK)</span><br><span class="line">		w.Write(personResponseBytes)</span><br><span class="line">		<span class="keyword">if</span> r.Method != <span class="string">"GET"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected 'GET' request, got '%s'"</span>, r.Method)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> r.URL.EscapedPath() != <span class="string">"/person"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to '/person', got '%s'"</span>, r.URL.EscapedPath())</span><br><span class="line">		&#125;</span><br><span class="line">		r.ParseForm()</span><br><span class="line">		topic := r.Form.Get(<span class="string">"addr"</span>)</span><br><span class="line">		<span class="keyword">if</span> topic != <span class="string">"shanghai"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to have 'addr=shanghai', got: '%s'"</span>, topic)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;))</span><br><span class="line">	<span class="keyword">defer</span> ts.Close()</span><br><span class="line"></span><br><span class="line">	api := ts.URL</span><br><span class="line">	fmt.Println(<span class="string">"url:"</span>, api)</span><br><span class="line">	resp, err := GetInfo(api, <span class="string">"shanghai"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"ERROR:"</span>, err.Error())</span><br><span class="line">		t.Error(err)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Rsp:"</span>, resp)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestPublishWrongResponseStatusWithFailed</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	ts := httptest.NewServer(http.HandlerFunc(<span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">		w.WriteHeader(http.StatusBadRequest)</span><br><span class="line">		w.Write(personResponseBytes)</span><br><span class="line">		<span class="keyword">if</span> r.Method != <span class="string">"GET"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected 'GET' request, got '%s'"</span>, r.Method)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> r.URL.EscapedPath() != <span class="string">"/person"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to '/person', got '%s'"</span>, r.URL.EscapedPath())</span><br><span class="line">		&#125;</span><br><span class="line">		r.ParseForm()</span><br><span class="line">		topic := r.Form.Get(<span class="string">"addr"</span>)</span><br><span class="line">		<span class="keyword">if</span> topic != <span class="string">"shanghai"</span> &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Expected request to have 'addr=shanghai', got: '%s'"</span>, topic)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;))</span><br><span class="line">	<span class="keyword">defer</span> ts.Close()</span><br><span class="line"></span><br><span class="line">	api := ts.URL</span><br><span class="line">	fmt.Println(<span class="string">"url:"</span>, api)</span><br><span class="line">	resp, err := GetInfo(api, <span class="string">"not_shanghai"</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"ERROR:"</span>, err.Error())</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Rsp:"</span>, resp)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在person目录下执行测试命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$go</span> <span class="built_in">test</span> -v</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">=== RUN   TestPublishWrongResponseStatus</span><br><span class="line">url: http://127.0.0.1:44973</span><br><span class="line">Rsp: [&#123;wahaha shanghai 20&#125; &#123;lebaishi shanghai 10&#125;]</span><br><span class="line">--- PASS: TestPublishWrongResponseStatus (0.00s)</span><br><span class="line">=== RUN   TestPublishWrongResponseStatusWithFailed</span><br><span class="line">url: http://127.0.0.1:45683</span><br><span class="line">--- FAIL: TestPublishWrongResponseStatusWithFailed (0.00s)</span><br><span class="line">    person_test.go:69: Expected request to have <span class="string">'addr=shanghai'</span>, got: <span class="string">'not_shanghai'</span></span><br><span class="line">FAIL</span><br><span class="line"><span class="built_in">exit</span> status 1</span><br><span class="line">FAIL    person  0.009s</span><br></pre></td></tr></table></figure>
+<h5 id="非静态的成员方法函数指针语法："><a href="#非静态的成员方法函数指针语法：" class="headerlink" title="非静态的成员方法函数指针语法："></a>非静态的成员方法函数指针语法：</h5><p>void (*ptrStaticFun)() = &amp;ClassName::staticFun;</p>
+<h5 id="成员方法函数指针语法："><a href="#成员方法函数指针语法：" class="headerlink" title="成员方法函数指针语法："></a>成员方法函数指针语法：</h5><p>void (ClassName::*ptrNonStaticFun)() = &amp;ClassName::nonStaticFun;<br>注意调用类中非静态成员函数的时候，使用的是 类名::函数名，而不是 实例名::函数名。</p>
+<h5 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">FunA</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"call FunA"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">FunB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"call FunB"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">FunC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"call FunC"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">pFun1</span><span class="params">(<span class="keyword">int</span> (*p)(<span class="keyword">int</span>, <span class="keyword">int</span>), <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (*p)(a, b);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">pFun2</span><span class="params">(<span class="keyword">void</span> (MyClass::*nonstatic)())</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">this</span>-&gt;*nonstatic)();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass m;</span><br><span class="line">    MyClass* obj = <span class="keyword">new</span> MyClass;</span><br><span class="line">    <span class="comment">// 静态函数指针的使用</span></span><br><span class="line">    <span class="keyword">int</span> (*pFunA)(<span class="keyword">int</span>, <span class="keyword">int</span>) = &amp;MyClass::FunA;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; pFunA(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 成员函数指针的使用</span></span><br><span class="line">    <span class="keyword">void</span> (MyClass::*pFunB)() = &amp;MyClass::FunB;</span><br><span class="line">    (obj-&gt;*pFunB)();</span><br><span class="line">  </span><br><span class="line">    m.*pFunB();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过 pFun1 只能调用静态方法</span></span><br><span class="line">    obj-&gt;pFun1(&amp;MyClass::FunA, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过 pFun2 就是调用成员方法</span></span><br><span class="line">    obj-&gt;pFun2(&amp;MyClass::FunB);</span><br><span class="line">    obj-&gt;pFun2(&amp;MyClass::FunC);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> obj;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -539,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/10/c-sort-example/" rel="next" title="C++ vector排序实例">
-                <i class="fa fa-chevron-left"></i> C++ vector排序实例
+              <a href="/2019/05/23/cplus-scope-qualifier/" rel="next" title="C++作用域限定符“::”">
+                <i class="fa fa-chevron-left"></i> C++作用域限定符“::”
               </a>
             
           </div>
@@ -548,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/13/protocol-buffer-base/" rel="prev" title="Protobuf源码编译安装(C++)">
-                Protobuf源码编译安装(C++) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,6 +657,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#非静态的成员方法函数指针语法："><span class="nav-number">1.</span> <span class="nav-text">非静态的成员方法函数指针语法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#成员方法函数指针语法："><span class="nav-number">2.</span> <span class="nav-text">成员方法函数指针语法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#示例代码："><span class="nav-number">3.</span> <span class="nav-text">示例代码：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
