@@ -370,6 +370,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/06/go-env/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/wei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/06/go-env/" class="post-title-link" itemprop="url">Go环境变量</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-06 13:54:46 / Modified: 14:09:01" itemprop="dateCreated datePublished" datetime="2019-04-06T13:54:46+08:00">2019-04-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>介绍几个go语言编程中常用的环境变量，都可以通过export指令修改</p>
+<p>$GOROOT</p>
+<blockquote>
+<p>go编译器程序的安装目录</p>
+</blockquote>
+<p>$GOPATH</p>
+<blockquote>
+<p>go项目工程的根目录</p>
+<p>该目录下必须包含src，pkg，bin3个子目录</p>
+</blockquote>
+<p>$GOBIN</p>
+<blockquote>
+<p>go程序编译完成后生成的可执行binary，使用go install命令时，自动安装到$GOPATH/bin下</p>
+</blockquote>
+<p>$GOOS</p>
+<p>$GOARCH</p>
+<blockquote>
+<p>目标平台的操作系统类型和芯片架构类型，这两个参数主要用于交叉编译中</p>
+<p>go支持多种操作系统和芯片体系结构，故go对交叉编译也有很好的支持</p>
+</blockquote>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/06/go-env/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/05/go-buildmode-c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1720,167 +1888,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/02/opencv-src-compile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/wei.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/02/opencv-src-compile/" class="post-title-link" itemprop="url">OpenCV源码编译安装</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-02 11:56:24" itemprop="dateCreated datePublished" datetime="2019-04-02T11:56:24+08:00">2019-04-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-08 14:42:00" itemprop="dateModified" datetime="2019-04-08T14:42:00+08:00">2019-04-08</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>从<a href="https://opencv.org/releases.html" target="_blank" rel="noopener">官网</a>下载最新版4.0.1源码，解压缩，并按以下步骤执行：</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/02/opencv-src-compile/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1929,7 +1936,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
