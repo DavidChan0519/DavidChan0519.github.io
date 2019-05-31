@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="linux后台运行程序的两种方式： $command &amp;amp; ： 后台运行，你关掉终端会停止运行；  $nohup command &amp;amp; ： 后台运行，你关掉终端也会继续运行；">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程伟的技术笔记">
-<meta property="og:url" content="https://davidchan0519.github.io/tags/golang/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nohup-后台运行命令">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/05/31/nohup-introduction/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="linux后台运行程序的两种方式： $command &amp;amp; ： 后台运行，你关掉终端会停止运行；  $nohup command &amp;amp; ： 后台运行，你关掉终端也会继续运行；">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-31T03:26:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程伟的技术笔记">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="nohup-后台运行命令">
+<meta name="twitter:description" content="linux后台运行程序的两种方式： $command &amp;amp; ： 后台运行，你关掉终端会停止运行；  $nohup command &amp;amp; ： 后台运行，你关掉终端也会继续运行；">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/tags/golang/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/31/nohup-introduction/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: golang | 程伟的技术笔记</title>
+  <title>nohup-后台运行命令 | 程伟的技术笔记</title>
   
 
 
@@ -172,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/DavidChan0519" id="fork-me-custom"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,7 +245,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -308,28 +309,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -375,57 +354,233 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>golang<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/31/nohup-introduction/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/wei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/04/go-short-assignment/" itemprop="url">
-            
-              <span itemprop="name">Go简短模式声明变量之部分退化赋值</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">nohup-后台运行命令
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-04T12:34:29+08:00" content="2019-04-04">
-          04-04
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-31 11:09:46 / Modified: 11:26:37" itemprop="dateCreated datePublished" datetime="2019-05-31T11:09:46+08:00">2019-05-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h6 id="linux后台运行程序的两种方式："><a href="#linux后台运行程序的两种方式：" class="headerlink" title="linux后台运行程序的两种方式："></a>linux后台运行程序的两种方式：</h6><ol>
+<li><p>$command &amp; ： 后台运行，你关掉终端会停止运行；</p>
+</li>
+<li><p>$nohup command &amp; ： 后台运行，你关掉终端也会继续运行；</p>
+<a id="more"></a>
+</li>
+</ol>
+<h5 id="nohup-命令介绍"><a href="#nohup-命令介绍" class="headerlink" title="nohup 命令介绍 :"></a>nohup 命令介绍 :</h5><p>用途：<a href="http://lib.csdn.net/base/linux" target="_blank" rel="noopener">Linux</a>命令用法，不挂断地运行命令。</p>
+<p>语法：nohup Command [ Arg … ] [　&amp; ] </p>
+<p>描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的 nohup 命令，添加 &amp; （ 表示“and”的符号）到命令的尾部。 </p>
+<p>如果不将 nohup 命令的输出重定向，输出将附加到当前目录的 nohup.out 文件中。如果当前目录的 nohup.out 文件不可写，输出重定向到 $HOME/nohup.out 文件中。如果没有文件能创建或打开以用于追加，那么 Command 参数指定的命令不可调用。如果标准错误是一个终端，那么把指定的命令写给标准错误的所有输出作为标准输出重定向到相同的文件描述符。 </p>
+<p>退出状态：<br>126 : 可以查找但不能调用 Command 参数指定的命令。<br>127 : nohup 命令发生错误或不能查找由 Command 参数指定的命令。 否则，nohup 命令的退出状态是 Command 参数指定命令的退出状态。 </p>
+<p>该命令的一般形式为：nohup command &amp; </p>
+<p>如果使用nohup命令提交作业，在缺省情况下该作业的所有输出都被重定向到当前目录一个名为nohup.out的文件中，除非另外指定了输出文件，例如下面这个命令： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$nohup</span> <span class="built_in">command</span> &gt; log.file 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>该命令输出被重定向到log.file文件中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$nohup</span> python yourscript.py &amp;</span><br></pre></td></tr></table></figure>
+<p>该命令可以让你的python程序在后台运行，控制台输出导向到nohup.out文件</p>
+<h5 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h5><h6 id="关于nohup启动python程序输出缓存问题："><a href="#关于nohup启动python程序输出缓存问题：" class="headerlink" title="关于nohup启动python程序输出缓存问题："></a>关于nohup启动python程序输出缓存问题：</h6><p>python的输出有缓冲，导致nohup.out并不能够马上看到输出。</p>
+<p>添加-u 参数，使得python不启用缓冲。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$nohup</span> python -u flush.py  &amp;</span><br></pre></td></tr></table></figure>
+<h6 id="关于退出问题："><a href="#关于退出问题：" class="headerlink" title="关于退出问题："></a>关于退出问题：</h6><p>在nohup执行成功后直接点击关闭程序按钮关闭终端，会断掉该命令对应的session，导致nohup对应的进程被通知一起shutdown。所以在使用nohup命令后台运行命令之后，需要使用exit正常退出当前账户，而不能直接关闭终端，这样才能保证命令一直在后台运行</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/cplus-mem-func-ptr/" rel="next" title="C++成员函数指针">
+                <i class="fa fa-chevron-left"></i> C++成员函数指针
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -445,8 +600,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,6 +671,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#linux后台运行程序的两种方式："><span class="nav-number">1.</span> <span class="nav-text">linux后台运行程序的两种方式：</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#nohup-命令介绍"><span class="nav-number"></span> <span class="nav-text">nohup 命令介绍 :</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意事项："><span class="nav-number"></span> <span class="nav-text">注意事项：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#关于nohup启动python程序输出缓存问题："><span class="nav-number">1.</span> <span class="nav-text">关于nohup启动python程序输出缓存问题：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#关于退出问题："><span class="nav-number">2.</span> <span class="nav-text">关于退出问题：</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -662,6 +843,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -677,6 +862,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '56b927009f5c31c05b79',
+    clientSecret: '45307baf23d3e44a33a0186f8675ac71a8519bfe',
+    repo: 'davidchan0519.github.io',
+    owner: 'DavidChan0519',
+    admin: ['DavidChan0519'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
