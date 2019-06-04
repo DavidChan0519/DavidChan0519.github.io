@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[beyondCompare4注册失效解决办法]]></title>
+    <url>%2F2019%2F06%2F04%2Fbeyondcompare4-crack%2F</url>
+    <content type="text"><![CDATA[BCompare报Revoked错误不能打开的解决方法 Beyond Compare报Revoked错误不能打开的解决方法 Beyond Compare报Revoked错误不能打开的解决方法 启动Beyond Compare4，弹出Revoked错误提示。 解决办法：把C:\Users[用户名]\AppData\Roaming\Scooter Software\Beyond Compare 4文件夹下的全部文件删除，重新启动即可 注意： 如果找不到AppData文件， 可能是文件夹被隐藏了，按照下面的顺序打开即可请查看工具—&gt;文件夹选项—&gt;查看—&gt;高级设置—&gt;显示隐藏的文件即可。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[SCP传输文件免输入密码]]></title>
     <url>%2F2019%2F05%2F31%2Fscp-no-password%2F</url>
     <content type="text"><![CDATA[通常我们会使用scp命令在多个服务器之间互相传输文件。使用过程中，需要正确输入目标机器的密码，否则传输失败。频繁的输入密码会带来工作效率的低下，尤其是当密码很复杂的时候，会令人抓狂。 scp命令格式： 1$scp [可选参数] file1 [file2] [file3] usrname@xx.xx.xx.xx:/pwd 在需要经常互相拷贝文件的机器上预设密码，可以免去每次操作都要输入密码的苦恼。 下面通过示例，从A机器拷贝文件到B机器，来介绍使用方式： 步骤1：在A机器上，执行以下命令 12$cd ~/.ssh/$ssh-keygen -t rsa 生成id_rsa和id_rsa.pub这两个文件，如果此前这两个已经存在，则不需要执行上述命令。 将id_rsa.pub拷贝到名为authorized_keys的文件中 1$cat id_rsa.pub &gt; authorized_keys 步骤2：将authorized_keys拷贝到B机器的~/.ssh目录，此时scp还是需要输入密码的 1$scp authorized_keys lwang@10.31.33.41:/home/lwang/.ssh 拷贝成功后，后面再使用scp命令从A拷贝文件到B机器，就无需输入密码了。该方式同样对ssh登陆有效，以后从A机器ssh登陆B机器，也无需输入密码。]]></content>
