@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用  (反引号) 包裹">
+  <meta name="description" content="golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 (反引号) 包裹">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go声明多行的字符串变量">
 <meta property="og:url" content="https://davidchan0519.github.io/2019/06/14/golang-multilie-string/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用  (反引号) 包裹">
+<meta property="og:description" content="golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 (反引号) 包裹">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-14T14:53:13.144Z">
+<meta property="og:updated_time" content="2019-06-14T14:56:20.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go声明多行的字符串变量">
-<meta name="twitter:description" content="golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用  (反引号) 包裹">
+<meta name="twitter:description" content="golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 (反引号) 包裹">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-06-14 22:33:41 / Modified: 22:53:13" itemprop="dateCreated datePublished" datetime="2019-06-14T22:33:41+08:00">2019-06-14</time>
+              <time title="Created: 2019-06-14 22:33:41 / Modified: 22:56:20" itemprop="dateCreated datePublished" datetime="2019-06-14T22:33:41+08:00">2019-06-14</time>
             
 
             
@@ -459,7 +459,7 @@
       
 
       
-        <p>golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 <strong><code></code></strong> (反引号) 包裹</p>
+        <p>golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 <code></code>(反引号) 包裹</p>
 <a id="more"></a>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    str := <span class="string">`hello</span></span><br><span class="line"><span class="string">            world</span></span><br><span class="line"><span class="string">            v1.0`</span></span><br><span class="line">    fmt.Println(str)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
