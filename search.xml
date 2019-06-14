@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Go声明多行的字符串变量]]></title>
     <url>%2F2019%2F06%2F14%2Fgolang-multilie-string%2F</url>
-    <content type="text"><![CDATA[golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 (反引号) 包裹 12345678910package mainimport "fmt"func main() &#123; str := `hello world v1.0` fmt.Println(str)&#125; 运行结果： hello world v2.0]]></content>
+    <content type="text"><![CDATA[golang中字符串类型为string，但是当该字符串内容位于多行时，需要使用 (反引号) 包裹 12345678910package mainimport "fmt"func main() &#123; str := `hello world v1.0` fmt.Println(str)&#125; 运行结果： hello world v1.0]]></content>
   </entry>
   <entry>
     <title><![CDATA[Jetbrains全家桶激活码]]></title>
