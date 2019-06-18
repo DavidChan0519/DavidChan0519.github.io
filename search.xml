@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++虚函数的使用示例]]></title>
+    <url>%2F2019%2F06%2F18%2Fcplus-virtual-demo%2F</url>
+    <content type="text"><![CDATA[本文通过一段简短的示例程序，展示在c++中virtual函数的使用方式 示例程序： 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;memory&gt;class A &#123;public: void Setup()&#123; std::cout &lt;&lt; "setup in A" &lt;&lt; std::endl; layerSetup(); reshape(); &#125; virtual void layerSetup() &#123; std::cout &lt;&lt;"virtual layerSetup in A" &lt;&lt;std::endl; &#125;; virtual void reshape()&#123; std::cout &lt;&lt;"virtual reshape in A" &lt;&lt;std::endl; &#125;;&#125;;class B:public A&#123; void layerSetup()&#123; std::cout &lt;&lt; "layerSetup in B" &lt;&lt; std::endl; &#125; void reshape()&#123; std::cout &lt;&lt; "reshape in B" &lt;&lt; std::endl; &#125;&#125;;int main()&#123; std::shared_ptr&lt;B&gt; ptr(new B); ptr-&gt;Setup(); std::shared_ptr&lt;A&gt; pc(new A); pc-&gt;Setup(); B insb; insb.Setup(); A insa; insa.Setup(); return 0;&#125; 输出： setup in AlayerSetup in Breshape in B setup in Avirtual layerSetup in Avirtual reshape in A setup in AlayerSetup in Breshape in B setup in Avirtual layerSetup in Avirtual reshape in A]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[比特小鹿-云挖矿 BTC,BCH]]></title>
     <url>%2F2019%2F06%2F18%2Fbitdeer-mining%2F</url>
     <content type="text"><![CDATA[比特小鹿：比特大陆旗下云挖矿平台。使用世界领先的蚂蚁系列矿机，市场份额最大的BTC矿池，助您轻松挖取数字世界的财富。 注册链接：点击 想体验云挖矿的朋友，可以点击上述链接注册，开启云挖矿之旅。 Enjoy your mining trip !]]></content>

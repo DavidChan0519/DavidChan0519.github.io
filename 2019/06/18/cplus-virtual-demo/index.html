@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定类)具有给定的形参列表与返回值类型的成员函数的访问信息。 要注意两点： ①函数指针赋值要使用 &amp;amp; ②使用.*(实例对象)或者-&amp;gt;*（实例对象指针）调用类成员函数指针所指向的函数">
+  <meta name="description" content="本文通过一段简短的示例程序，展示在c++中virtual函数的使用方式">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++成员函数指针">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/05/27/cplus-mem-func-ptr/index.html">
+<meta property="og:title" content="C++虚函数的使用示例">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/06/18/cplus-virtual-demo/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定类)具有给定的形参列表与返回值类型的成员函数的访问信息。 要注意两点： ①函数指针赋值要使用 &amp;amp; ②使用.*(实例对象)或者-&amp;gt;*（实例对象指针）调用类成员函数指针所指向的函数">
+<meta property="og:description" content="本文通过一段简短的示例程序，展示在c++中virtual函数的使用方式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-27T15:00:23.251Z">
+<meta property="og:updated_time" content="2019-06-18T02:33:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++成员函数指针">
-<meta name="twitter:description" content="类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定类)具有给定的形参列表与返回值类型的成员函数的访问信息。 要注意两点： ①函数指针赋值要使用 &amp;amp; ②使用.*(实例对象)或者-&amp;gt;*（实例对象指针）调用类成员函数指针所指向的函数">
+<meta name="twitter:title" content="C++虚函数的使用示例">
+<meta name="twitter:description" content="本文通过一段简短的示例程序，展示在c++中virtual函数的使用方式">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/27/cplus-mem-func-ptr/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/06/18/cplus-virtual-demo/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>C++成员函数指针 | 程伟的技术笔记</title>
+  <title>C++虚函数的使用示例 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/27/cplus-mem-func-ptr/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/06/18/cplus-virtual-demo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++成员函数指针
+          <h1 class="post-title" itemprop="name headline">C++虚函数的使用示例
 
               
             
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-05-27 22:37:38 / Modified: 23:00:23" itemprop="dateCreated datePublished" datetime="2019-05-27T22:37:38+08:00">2019-05-27</time>
+              <time title="Created: 2019-06-18 10:28:48 / Modified: 10:33:47" itemprop="dateCreated datePublished" datetime="2019-06-18T10:28:48+08:00">2019-06-18</time>
             
 
             
@@ -459,14 +459,17 @@
       
 
       
-        <p>类成员函数指针（member function pointer），是C++语言的一类指针数据类型，用于存储一个指定<a href="http://zh.wikipedia.org/wiki/类_(计算机科学" target="_blank" rel="noopener">类</a>)具有给定的形参列表与返回值类型的成员函数的访问信息。</p>
-<p>要注意两点：</p>
-<p>①函数指针赋值要使用 &amp;</p>
-<p>②使用<strong>.*</strong>(实例对象)或者-&gt;<strong>*</strong>（实例对象指针）调用类成员函数指针所指向的函数</p>
+        <p>本文通过一段简短的示例程序，展示在c++中virtual函数的使用方式</p>
 <a id="more"></a>
-<h5 id="非静态的成员方法函数指针语法："><a href="#非静态的成员方法函数指针语法：" class="headerlink" title="非静态的成员方法函数指针语法："></a>非静态的成员方法函数指针语法：</h5><p>void (*ptrStaticFun)() = &amp;ClassName::staticFun;</p>
-<h5 id="成员方法函数指针语法："><a href="#成员方法函数指针语法：" class="headerlink" title="成员方法函数指针语法："></a>成员方法函数指针语法：</h5><p>void (ClassName::*ptrNonStaticFun)() = &amp;ClassName::nonStaticFun;<br>注意调用类中非静态成员函数的时候，使用的是 类名::函数名，而不是 实例名::函数名。</p>
-<h5 id="示例代码："><a href="#示例代码：" class="headerlink" title="示例代码："></a>示例代码：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">FunA</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"call FunA"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">FunB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"call FunB"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">FunC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"call FunC"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">pFun1</span><span class="params">(<span class="keyword">int</span> (*p)(<span class="keyword">int</span>, <span class="keyword">int</span>), <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (*p)(a, b);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">pFun2</span><span class="params">(<span class="keyword">void</span> (MyClass::*nonstatic)())</span> </span>&#123;</span><br><span class="line">    (<span class="keyword">this</span>-&gt;*nonstatic)();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass m;</span><br><span class="line">    MyClass* obj = <span class="keyword">new</span> MyClass;</span><br><span class="line">    <span class="comment">// 静态函数指针的使用</span></span><br><span class="line">    <span class="keyword">int</span> (*pFunA)(<span class="keyword">int</span>, <span class="keyword">int</span>) = &amp;MyClass::FunA;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; pFunA(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 成员函数指针的使用</span></span><br><span class="line">    <span class="keyword">void</span> (MyClass::*pFunB)() = &amp;MyClass::FunB;</span><br><span class="line">    (obj-&gt;*pFunB)();</span><br><span class="line">  </span><br><span class="line">    m.*pFunB();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过 pFun1 只能调用静态方法</span></span><br><span class="line">    obj-&gt;pFun1(&amp;MyClass::FunA, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过 pFun2 就是调用成员方法</span></span><br><span class="line">    obj-&gt;pFun2(&amp;MyClass::FunB);</span><br><span class="line">    obj-&gt;pFun2(&amp;MyClass::FunC);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> obj;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Setup</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"setup in A"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        layerSetup();</span><br><span class="line">        reshape();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">layerSetup</span><span class="params">()</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt;<span class="string">"virtual layerSetup in A"</span> &lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">reshape</span><span class="params">()</span></span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt;<span class="string">"virtual reshape in A"</span> &lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span><span class="keyword">public</span> A&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">layerSetup</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"layerSetup in B"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reshape</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"reshape in B"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;B&gt; ptr(<span class="keyword">new</span> B);</span><br><span class="line">    ptr-&gt;Setup();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;A&gt; pc(<span class="keyword">new</span> A);</span><br><span class="line">    pc-&gt;Setup();</span><br><span class="line">    </span><br><span class="line">    B insb;</span><br><span class="line">    insb.Setup();</span><br><span class="line"></span><br><span class="line">    A insa;</span><br><span class="line">    insa.Setup();</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<blockquote>
+<p>setup in A<br>layerSetup in B<br>reshape in B</p>
+<p>setup in A<br>virtual layerSetup in A<br>virtual reshape in A</p>
+<p>setup in A<br>layerSetup in B<br>reshape in B</p>
+<p>setup in A<br>virtual layerSetup in A<br>virtual reshape in A</p>
+</blockquote>
 
       
     </div>
@@ -530,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/23/cplus-scope-qualifier/" rel="next" title="C++作用域限定符“::”">
-                <i class="fa fa-chevron-left"></i> C++作用域限定符“::”
+              <a href="/2019/06/18/bitdeer-mining/" rel="next" title="比特小鹿-云挖矿 BTC,BCH">
+                <i class="fa fa-chevron-left"></i> 比特小鹿-云挖矿 BTC,BCH
               </a>
             
           </div>
@@ -539,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/31/nohup-introduction/" rel="prev" title="nohup-后台运行命令">
-                nohup-后台运行命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,17 +589,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,23 +651,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#非静态的成员方法函数指针语法："><span class="nav-number">1.</span> <span class="nav-text">非静态的成员方法函数指针语法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#成员方法函数指针语法："><span class="nav-number">2.</span> <span class="nav-text">成员方法函数指针语法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#示例代码："><span class="nav-number">3.</span> <span class="nav-text">示例代码：</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
