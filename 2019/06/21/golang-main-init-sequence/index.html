@@ -105,7 +105,7 @@
 <meta property="og:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://davidchan0519.github.io/images/ch1-11-init.ditaa.png">
-<meta property="og:updated_time" content="2019-06-21T06:49:17.000Z">
+<meta property="og:updated_time" content="2019-06-21T07:01:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言程序的初始化和执行顺序">
 <meta name="twitter:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。">
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-06-21 14:35:32 / Modified: 14:49:17" itemprop="dateCreated datePublished" datetime="2019-06-21T14:35:32+08:00">2019-06-21</time>
+              <time title="Created: 2019-06-21 14:35:32 / Modified: 15:01:37" itemprop="dateCreated datePublished" datetime="2019-06-21T14:35:32+08:00">2019-06-21</time>
             
 
             
@@ -470,6 +470,17 @@
 <p>下图是Go程序函数启动顺序的示意图：</p>
 <p><img src="/images/ch1-11-init.ditaa.png" alt></p>
 <p>由图可以看出，包的全局常量，全局变量的初始化时间早于init()函数。导入包的init函数的执行时间早于main.main()函数.</p>
+<blockquote>
+<p>要注意的是，在<code>main.main</code>函数执行之前所有代码都运行在同一个goroutine，也就是程序的主系统线程中。因此，如果某个<code>init</code>函数内部用go关键字启动了新的goroutine的话，新的goroutine只有在进入<code>main.main</code>函数之后才可能被执行到。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> test = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">   fmt.Println(<span class="string">"enter into init"</span>)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">      test = <span class="number">2</span></span><br><span class="line">      fmt.Println(<span class="string">"hello world in goroute"</span>)</span><br><span class="line">   &#125;()</span><br><span class="line"></span><br><span class="line">   fmt.Println(<span class="string">"exit from init"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"1st test:"</span>,test)</span><br><span class="line">	time.Sleep(<span class="number">1</span>)</span><br><span class="line">	fmt.Println(<span class="string">"2nd test:"</span>,test)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<blockquote>
+<p>enter into init<br>exit from init<br>1st test: 1<br>hello world in goroute</p>
+<p>2nd test: 2</p>
+</blockquote>
+<p>通过test的值可以看出，进入main.main后，test值并未更新为2，说明init中的goroutine并未执行。等待一段时间后，goroutine执行完毕，这个时候test的值就被更新了。</p>
 
       
     </div>
