@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="c++的一个语法：">
+  <meta name="description" content="Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ typedef typename的作用">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/05/22/c-typedef-typename/index.html">
+<meta property="og:title" content="Go语言程序的初始化和执行顺序">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/06/21/golang-main-init-sequence/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="c++的一个语法：">
+<meta property="og:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-22T07:23:52.000Z">
+<meta property="og:image" content="https://davidchan0519.github.io/images/ch1-11-init.ditaa.png">
+<meta property="og:updated_time" content="2019-06-21T06:47:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ typedef typename的作用">
-<meta name="twitter:description" content="c++的一个语法：">
+<meta name="twitter:title" content="Go语言程序的初始化和执行顺序">
+<meta name="twitter:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包">
+<meta name="twitter:image" content="https://davidchan0519.github.io/images/ch1-11-init.ditaa.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/22/c-typedef-typename/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/06/21/golang-main-init-sequence/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>C++ typedef typename的作用 | 程伟的技术笔记</title>
+  <title>Go语言程序的初始化和执行顺序 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/22/c-typedef-typename/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/06/21/golang-main-init-sequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++ typedef typename的作用
+          <h1 class="post-title" itemprop="name headline">Go语言程序的初始化和执行顺序
 
               
             
@@ -413,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-05-22 15:16:50 / Modified: 15:23:52" itemprop="dateCreated datePublished" datetime="2019-05-22T15:16:50+08:00">2019-05-22</time>
+              <time title="Created: 2019-06-21 14:35:32 / Modified: 14:47:03" itemprop="dateCreated datePublished" datetime="2019-06-21T14:35:32+08:00">2019-06-21</time>
             
 
             
@@ -459,21 +461,13 @@
       
 
       
-        <p>c++的一个语法：</p>
-<a id="more"></a>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">typename</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt;::size_type size_type;</span><br></pre></td></tr></table></figure>
-<p>将typedef和typename关键字联用。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>,<span class="title">class</span> <span class="title">Alloc</span>=<span class="title">alloc</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">vector</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">size_t</span> size_type;</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>从vector的类定义可以看出，<code>vector::size_type</code>是<code>vector</code>嵌套类型定义，其实际等价于 <code>size_t</code>类型。 </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::size_type ssize;</span><br><span class="line"><span class="comment">//就等价于</span></span><br><span class="line"><span class="keyword">size_t</span> ssize;</span><br></pre></td></tr></table></figure>
-<p>为什么要在typedef后面加上typename关键字？</p>
-<p>原因：</p>
-<p>实际上，模板类型在实例化之前，编译器并不知道<code>vector&lt;T&gt;::size_type</code>是什么东西，事实上一共有三种可能：</p>
+        <p>Go语言程序的初始化和执行总是从<code>main.main</code>函数开始的。但是如果<code>main</code>包导入了其它的包，则会按照顺序将它们包含进<code>main</code>包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的<code>init</code>函数，如果一个包有多个<code>init</code>函数的话，调用顺序未定义(实现可能是以文件名的顺序调用)，同一个文件内的多个<code>init</code>则是以出现的顺序依次调用（<code>init</code>不是普通函数，可以定义有多个，所以也不能被其它函数调用）。最后，当<code>main</code>包的所有包级常量、变量被创建和初始化完成，并且<code>init</code>函数被执行后，才会进入<code>main.main</code>函数，程序开始正常执行。</p>
 <blockquote>
-<p>静态数据成员<br>静态成员函数<br>嵌套类型</p>
+<p>值得注意的是，需要避免循环导入包，防止形成死锁</p>
 </blockquote>
-<p>那么此时<code>typename</code>的作用就在此时体现出来了——定义就不再模棱两可。</p>
-<p><code>typedef</code>创建了存在类型的别名，而<code>typename</code>告诉编译器<code>std::vector&lt;T&gt;::size_type</code>是一个类型而不是一个成员。</p>
+<p>下图是Go程序函数启动顺序的示意图：</p>
+<p><img src="/images/ch1-11-init.ditaa.png" alt></p>
+<p>由图可以看出，包的全局常量，全局变量的初始化时间早于init()函数。导入包的init函数的执行时间早于main.main()函数.</p>
 
       
     </div>
@@ -537,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/mac-sshd-service/" rel="next" title="Mac开启sshd服务">
-                <i class="fa fa-chevron-left"></i> Mac开启sshd服务
+              <a href="/2019/06/18/cplus-virtual-demo/" rel="next" title="C++虚函数的使用示例">
+                <i class="fa fa-chevron-left"></i> C++虚函数的使用示例
               </a>
             
           </div>
@@ -546,10 +540,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/23/cplus-scope-qualifier/" rel="prev" title="C++作用域限定符“::”">
-                C++作用域限定符“::” <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

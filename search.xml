@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Go语言程序的初始化和执行顺序]]></title>
+    <url>%2F2019%2F06%2F21%2Fgolang-main-init-sequence%2F</url>
+    <content type="text"><![CDATA[Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包有多个init函数的话，调用顺序未定义(实现可能是以文件名的顺序调用)，同一个文件内的多个init则是以出现的顺序依次调用（init不是普通函数，可以定义有多个，所以也不能被其它函数调用）。最后，当main包的所有包级常量、变量被创建和初始化完成，并且init函数被执行后，才会进入main.main函数，程序开始正常执行。 值得注意的是，需要避免循环导入包，防止形成死锁 下图是Go程序函数启动顺序的示意图： 由图可以看出，包的全局常量，全局变量的初始化时间早于init()函数。导入包的init函数的执行时间早于main.main()函数.]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[C++虚函数的使用示例]]></title>
     <url>%2F2019%2F06%2F18%2Fcplus-virtual-demo%2F</url>
     <content type="text"><![CDATA[本文通过一段简短的示例程序，展示在c++中virtual函数的使用方式 示例程序： 1234567891011121314151617181920212223242526272829303132333435363738394041#include &lt;iostream&gt;#include &lt;memory&gt;class A &#123;public: void Setup()&#123; std::cout &lt;&lt; "setup in A" &lt;&lt; std::endl; layerSetup(); reshape(); &#125; virtual void layerSetup() &#123; std::cout &lt;&lt;"virtual layerSetup in A" &lt;&lt;std::endl; &#125;; virtual void reshape()&#123; std::cout &lt;&lt;"virtual reshape in A" &lt;&lt;std::endl; &#125;;&#125;;class B:public A&#123; void layerSetup()&#123; std::cout &lt;&lt; "layerSetup in B" &lt;&lt; std::endl; &#125; void reshape()&#123; std::cout &lt;&lt; "reshape in B" &lt;&lt; std::endl; &#125;&#125;;int main()&#123; std::shared_ptr&lt;B&gt; ptr(new B); ptr-&gt;Setup(); std::shared_ptr&lt;A&gt; pc(new A); pc-&gt;Setup(); B insb; insb.Setup(); A insa; insa.Setup(); return 0;&#125; 输出： setup in AlayerSetup in Breshape in B setup in Avirtual layerSetup in Avirtual reshape in A setup in AlayerSetup in Breshape in B setup in Avirtual layerSetup in Avirtual reshape in A]]></content>
