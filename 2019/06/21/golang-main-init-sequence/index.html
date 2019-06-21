@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包">
+  <meta name="description" content="Go语言程序的初始化和执行总是从main.main函数开始的。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go语言程序的初始化和执行顺序">
 <meta property="og:url" content="https://davidchan0519.github.io/2019/06/21/golang-main-init-sequence/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包">
+<meta property="og:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://davidchan0519.github.io/images/ch1-11-init.ditaa.png">
-<meta property="og:updated_time" content="2019-06-21T06:47:03.000Z">
+<meta property="og:updated_time" content="2019-06-21T06:49:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go语言程序的初始化和执行顺序">
-<meta name="twitter:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。但是如果main包导入了其它的包，则会按照顺序将它们包含进main包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的init函数，如果一个包">
+<meta name="twitter:description" content="Go语言程序的初始化和执行总是从main.main函数开始的。">
 <meta name="twitter:image" content="https://davidchan0519.github.io/images/ch1-11-init.ditaa.png">
 
 
@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-06-21 14:35:32 / Modified: 14:47:03" itemprop="dateCreated datePublished" datetime="2019-06-21T14:35:32+08:00">2019-06-21</time>
+              <time title="Created: 2019-06-21 14:35:32 / Modified: 14:49:17" itemprop="dateCreated datePublished" datetime="2019-06-21T14:35:32+08:00">2019-06-21</time>
             
 
             
@@ -461,7 +461,9 @@
       
 
       
-        <p>Go语言程序的初始化和执行总是从<code>main.main</code>函数开始的。但是如果<code>main</code>包导入了其它的包，则会按照顺序将它们包含进<code>main</code>包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的<code>init</code>函数，如果一个包有多个<code>init</code>函数的话，调用顺序未定义(实现可能是以文件名的顺序调用)，同一个文件内的多个<code>init</code>则是以出现的顺序依次调用（<code>init</code>不是普通函数，可以定义有多个，所以也不能被其它函数调用）。最后，当<code>main</code>包的所有包级常量、变量被创建和初始化完成，并且<code>init</code>函数被执行后，才会进入<code>main.main</code>函数，程序开始正常执行。</p>
+        <p>Go语言程序的初始化和执行总是从<code>main.main</code>函数开始的。</p>
+<a id="more"></a>
+<p>但是如果<code>main</code>包导入了其它的包，则会按照顺序将它们包含进<code>main</code>包里（这里的导入顺序依赖具体实现，一般可能是以文件名或包路径名的字符串顺序导入）。如果某个包被多次导入的话，在执行的时候只会导入一次。当一个包被导入时，如果它还导入了其它的包，则先将其它的包包含进来，然后创建和初始化这个包的常量和变量,再调用包里的<code>init</code>函数，如果一个包有多个<code>init</code>函数的话，调用顺序未定义(实现可能是以文件名的顺序调用)，同一个文件内的多个<code>init</code>则是以出现的顺序依次调用（<code>init</code>不是普通函数，可以定义有多个，所以也不能被其它函数调用）。最后，当<code>main</code>包的所有包级常量、变量被创建和初始化完成，并且<code>init</code>函数被执行后，才会进入<code>main.main</code>函数，程序开始正常执行。</p>
 <blockquote>
 <p>值得注意的是，需要避免循环导入包，防止形成死锁</p>
 </blockquote>
