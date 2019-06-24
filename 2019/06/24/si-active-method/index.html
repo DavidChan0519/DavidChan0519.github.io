@@ -96,18 +96,22 @@
 
 
 
-  <meta name="description" content="背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。">
+  <meta name="description" content="2019.6.20 source insight4发布了更新4.0097。阅读release notes，该更新修复了一些解析c++类的一些bug，对于c++程序员是个福音。之前4.0.0096的版本个人感觉用的还可以，是否升级各人决定。 由于4.0.0096没有办法直接升级到该更新，参考了看雪论坛一位网友的激活方法（链接），成功完成了4.0097的激活，特将方法分享给大家。4.0096的激活，大">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu系统opencv多版本共存">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/05/14/opencv-multi-support/index.html">
+<meta property="og:title" content="source insight 4.0.0097激活">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/06/24/si-active-method/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。">
+<meta property="og:description" content="2019.6.20 source insight4发布了更新4.0097。阅读release notes，该更新修复了一些解析c++类的一些bug，对于c++程序员是个福音。之前4.0.0096的版本个人感觉用的还可以，是否升级各人决定。 由于4.0.0096没有办法直接升级到该更新，参考了看雪论坛一位网友的激活方法（链接），成功完成了4.0097的激活，特将方法分享给大家。4.0096的激活，大">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T15:24:27.549Z">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1561344829720.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1561344878907.png">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1561344977369.png">
+<meta property="og:updated_time" content="2019-06-24T03:01:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu系统opencv多版本共存">
-<meta name="twitter:description" content="背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。">
+<meta name="twitter:title" content="source insight 4.0.0097激活">
+<meta name="twitter:description" content="2019.6.20 source insight4发布了更新4.0097。阅读release notes，该更新修复了一些解析c++类的一些bug，对于c++程序员是个福音。之前4.0.0096的版本个人感觉用的还可以，是否升级各人决定。 由于4.0.0096没有办法直接升级到该更新，参考了看雪论坛一位网友的激活方法（链接），成功完成了4.0097的激活，特将方法分享给大家。4.0096的激活，大">
+<meta name="twitter:image" content="https://davidchan0519.github.io/images/1561344829720.png">
 
 
 
@@ -115,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/14/opencv-multi-support/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/06/24/si-active-method/">
 
 
 
@@ -125,7 +129,7 @@
   };
 </script>
 
-  <title>Ubuntu系统opencv多版本共存 | 程伟的技术笔记</title>
+  <title>source insight 4.0.0097激活 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/14/opencv-multi-support/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/06/24/si-active-method/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +391,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu系统opencv多版本共存
+          <h1 class="post-title" itemprop="name headline">source insight 4.0.0097激活
 
               
             
@@ -413,7 +417,7 @@
                 
               
 
-              <time title="Created: 2019-05-14 20:55:02 / Modified: 23:24:27" itemprop="dateCreated datePublished" datetime="2019-05-14T20:55:02+08:00">2019-05-14</time>
+              <time title="Created: 2019-06-24 10:44:19 / Modified: 11:01:12" itemprop="dateCreated datePublished" datetime="2019-06-24T10:44:19+08:00">2019-06-24</time>
             
 
             
@@ -459,22 +463,17 @@
       
 
       
-        <p>背景：</p>
-<p>假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。</p>
+        <p>2019.6.20 source insight4发布了更新4.0097。阅读release notes，该更新修复了一些解析c++类的一些bug，对于c++程序员是个福音。之前4.0.0096的版本个人感觉用的还可以，是否升级各人决定。</p>
+<p>由于4.0.0096没有办法直接升级到该更新，参考了看雪论坛一位网友的激活方法（<a href="https://bbs.pediy.com/thread-216044.htm" target="_blank" rel="noopener">链接</a>），成功完成了4.0097的激活，特将方法分享给大家。4.0096的激活，大家可以直接去看雪论坛去搜索，里面有现成的破解教程，亲测可用。</p>
 <a id="more"></a>
-<p>4.1版本的opencv源码编译后，安装在~/work/github/opencv-4.1/release目录,避免安装到默认路径，造成多版本混乱:</p>
-<p>目录结构如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">release</span><br><span class="line">|-- bin</span><br><span class="line">|-- include</span><br><span class="line">|-- lib</span><br><span class="line">`-- share</span><br><span class="line"></span><br><span class="line">4 directories, 0 files</span><br></pre></td></tr></table></figure>
-<h6 id="指定头文件路径："><a href="#指定头文件路径：" class="headerlink" title="指定头文件路径："></a>指定头文件路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> CPLUS_INCLUDE_PATH=~/work/github/opencv-4.1/release/include/opencv4/:<span class="variable">$CPLUS_INCLUDE_PATH</span></span><br></pre></td></tr></table></figure>
-<p>指定查找头文件的路径</p>
-<h6 id="指定CMake库路径："><a href="#指定CMake库路径：" class="headerlink" title="指定CMake库路径："></a>指定CMake库路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> PKG_CONFIG_PATH=/home/chengwei/work/github/opencv-4.1/release/lib/pkgconfig:<span class="variable">$PKG_CONFIG_PATH</span></span><br></pre></td></tr></table></figure>
-<p>cmake通过find_package( )才能找到相应的库</p>
-<h6 id="指定编译链接库路径："><a href="#指定编译链接库路径：" class="headerlink" title="指定编译链接库路径："></a>指定编译链接库路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:<span class="variable">$LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
+<h6 id="下载最新版source-insight，并覆盖安装"><a href="#下载最新版source-insight，并覆盖安装" class="headerlink" title="下载最新版source insight，并覆盖安装"></a>下载最新版source insight，并覆盖安装</h6><h6 id="将msimg32-dll文件放置source-insight安装目录"><a href="#将msimg32-dll文件放置source-insight安装目录" class="headerlink" title="将msimg32.dll文件放置source insight安装目录"></a>将msimg32.dll文件放置source insight安装目录</h6><p><img src="/images/1561344829720.png" alt></p>
+<h6 id="替换原激活文件si4-pediy-lic中的序列号"><a href="#替换原激活文件si4-pediy-lic中的序列号" class="headerlink" title="替换原激活文件si4.pediy.lic中的序列号"></a>替换原激活文件si4.pediy.lic中的序列号</h6><p><img src="/images/1561344878907.png" alt></p>
+<p>备选序列号：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">S4SV-UFWS-T1LD-Z6NF</span><br><span class="line">S4SV-UFWS-UBCN-DJ4G</span><br><span class="line">S4SV-UFWS-ED7V-MKZD</span><br><span class="line">S4SV-UFWS-DU9E-SGRS</span><br><span class="line">S4SV-UFWS-336A-N6GH</span><br><span class="line">S4SV-UFWS-YP56-FVGD</span><br><span class="line">S4SV-UFWS-0XCA-97YS</span><br><span class="line">S4SV-UFWS-3PB4-UQHK</span><br><span class="line">S4SV-UFWS-WQT3-5VGK</span><br><span class="line">S4SV-UFWS-D8D7-TVUR</span><br><span class="line">S4SV-UFWS-N5J1-WPMS</span><br><span class="line">S4SV-UFWS-JM1X-VZYP</span><br><span class="line">S4SV-UFWS-DM0L-JNP6</span><br><span class="line">S4SV-UFWS-PPVB-36R5</span><br><span class="line">S4SV-UFWS-S8KA-VNFD</span><br><span class="line">S4SV-UFWS-RL8H-937X</span><br><span class="line">S4SV-UFWS-H50D-4NMG</span><br><span class="line">S4SV-UFWS-JC1O-WSZF</span><br><span class="line">S4SV-UFWS-Z149-V9FM</span><br><span class="line">S4SV-UFWS-7ZA6-DYT4</span><br><span class="line">S4SV-UFWS-08P8-GKHN</span><br><span class="line">S4SV-UFWS-SJKI-MYWU</span><br><span class="line">S4SV-UFWS-FB8X-CRHY</span><br><span class="line">S4SV-UFWS-CLC6-K5FK</span><br><span class="line">S4SV-UFWS-OYHB-R354</span><br><span class="line">S4SV-UFWS-X317-J5CN</span><br><span class="line">S4SV-UFWS-OT18-57CT</span><br><span class="line">S4SV-UFWS-ZPDO-7XFZ</span><br><span class="line">S4SV-UFWS-L6D0-MN75</span><br><span class="line">S4SV-UFWS-2GHM-CMC6</span><br></pre></td></tr></table></figure>
+<h6 id="打开source-insight，导入激活文件，激活成功。"><a href="#打开source-insight，导入激活文件，激活成功。" class="headerlink" title="打开source insight，导入激活文件，激活成功。"></a>打开source insight，导入激活文件，激活成功。</h6><p><img src="/images/1561344977369.png" alt></p>
 <blockquote>
-<p>此处要注意<strong>LIBRARY_PATH</strong>和LD_LIBRARY_PATH环境变量的区别，前者用于编译，后者用于运行时链接</p>
+<p>注意：本文中所有需要的附件可前往文中链接下载。</p>
 </blockquote>
-<h6 id="指定运行链接库路径："><a href="#指定运行链接库路径：" class="headerlink" title="指定运行链接库路径："></a>指定运行链接库路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> LD_LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
-<p>通过设定上述环境变量，即可让项目在编译和链接时，使用4.1版本的opencv头文件和动态库</p>
 
       
     </div>
@@ -538,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/14/protoc-gen-go/" rel="next" title="Go-protobuf插件安装">
-                <i class="fa fa-chevron-left"></i> Go-protobuf插件安装
+              <a href="/2019/06/21/golang-main-init-sequence/" rel="next" title="Go语言程序的初始化和执行顺序">
+                <i class="fa fa-chevron-left"></i> Go语言程序的初始化和执行顺序
               </a>
             
           </div>
@@ -547,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/14/linux-library-env-diff/" rel="prev" title="Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别">
-                Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -680,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#指定头文件路径："><span class="nav-number">1.</span> <span class="nav-text">指定头文件路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定CMake库路径："><span class="nav-number">2.</span> <span class="nav-text">指定CMake库路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定编译链接库路径："><span class="nav-number">3.</span> <span class="nav-text">指定编译链接库路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定运行链接库路径："><span class="nav-number">4.</span> <span class="nav-text">指定运行链接库路径：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#下载最新版source-insight，并覆盖安装"><span class="nav-number">1.</span> <span class="nav-text">下载最新版source insight，并覆盖安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#将msimg32-dll文件放置source-insight安装目录"><span class="nav-number">2.</span> <span class="nav-text">将msimg32.dll文件放置source insight安装目录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#替换原激活文件si4-pediy-lic中的序列号"><span class="nav-number">3.</span> <span class="nav-text">替换原激活文件si4.pediy.lic中的序列号</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#打开source-insight，导入激活文件，激活成功。"><span class="nav-number">4.</span> <span class="nav-text">打开source insight，导入激活文件，激活成功。</span></a></li></ol></div>
             
 
           </div>
