@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。">
+  <meta name="description" content="我们通常接触到一个新的网络模型，首先需要了解其网络结构（拓扑），这样才能帮我们进一步了解该网络的构成。针对caffe框架训练的模型，我们可以通过在线网站Netscope可视化其结构。不过该网站仅支持prototxt格式描述的神经网络结构。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu系统opencv多版本共存">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/05/14/opencv-multi-support/index.html">
+<meta property="og:title" content="神经网络模型的可视化">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/07/03/neuron-model-visualization/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。">
+<meta property="og:description" content="我们通常接触到一个新的网络模型，首先需要了解其网络结构（拓扑），这样才能帮我们进一步了解该网络的构成。针对caffe框架训练的模型，我们可以通过在线网站Netscope可视化其结构。不过该网站仅支持prototxt格式描述的神经网络结构。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-14T15:24:27.549Z">
+<meta property="og:image" content="https://davidchan0519.github.io/images/1562122128351.png">
+<meta property="og:updated_time" content="2019-07-03T02:50:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu系统opencv多版本共存">
-<meta name="twitter:description" content="背景： 假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。">
+<meta name="twitter:title" content="神经网络模型的可视化">
+<meta name="twitter:description" content="我们通常接触到一个新的网络模型，首先需要了解其网络结构（拓扑），这样才能帮我们进一步了解该网络的构成。针对caffe框架训练的模型，我们可以通过在线网站Netscope可视化其结构。不过该网站仅支持prototxt格式描述的神经网络结构。">
+<meta name="twitter:image" content="https://davidchan0519.github.io/images/1562122128351.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/05/14/opencv-multi-support/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/07/03/neuron-model-visualization/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>Ubuntu系统opencv多版本共存 | 程伟的技术笔记</title>
+  <title>神经网络模型的可视化 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +372,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/05/14/opencv-multi-support/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/07/03/neuron-model-visualization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +389,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu系统opencv多版本共存
+          <h1 class="post-title" itemprop="name headline">神经网络模型的可视化
 
               
             
@@ -413,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-05-14 20:55:02 / Modified: 23:24:27" itemprop="dateCreated datePublished" datetime="2019-05-14T20:55:02+08:00">2019-05-14</time>
+              <time title="Created: 2019-07-03 10:35:27 / Modified: 10:50:26" itemprop="dateCreated datePublished" datetime="2019-07-03T10:35:27+08:00">2019-07-03</time>
             
 
             
@@ -459,22 +461,10 @@
       
 
       
-        <p>背景：</p>
-<p>假如ubuntu系统中之前已经安装好2.4.13版本的opencv，但是项目需要使用4.1版本的opencv，在不影响已经安装的opencv版本的前提下，按照如下方法设定环境变量，即可解决两个版本在同一个系统中共存的问题。</p>
+        <p>我们通常接触到一个新的网络模型，首先需要了解其网络结构（拓扑），这样才能帮我们进一步了解该网络的构成。针对caffe框架训练的模型，我们可以通过在线网站<a href="http://ethereon.github.io/netscope/quickstart.html" target="_blank" rel="noopener">Netscope</a>可视化其结构。不过该网站仅支持prototxt格式描述的神经网络结构。</p>
 <a id="more"></a>
-<p>4.1版本的opencv源码编译后，安装在~/work/github/opencv-4.1/release目录,避免安装到默认路径，造成多版本混乱:</p>
-<p>目录结构如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">release</span><br><span class="line">|-- bin</span><br><span class="line">|-- include</span><br><span class="line">|-- lib</span><br><span class="line">`-- share</span><br><span class="line"></span><br><span class="line">4 directories, 0 files</span><br></pre></td></tr></table></figure>
-<h6 id="指定头文件路径："><a href="#指定头文件路径：" class="headerlink" title="指定头文件路径："></a>指定头文件路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> CPLUS_INCLUDE_PATH=~/work/github/opencv-4.1/release/include/opencv4/:<span class="variable">$CPLUS_INCLUDE_PATH</span></span><br></pre></td></tr></table></figure>
-<p>指定查找头文件的路径</p>
-<h6 id="指定CMake库路径："><a href="#指定CMake库路径：" class="headerlink" title="指定CMake库路径："></a>指定CMake库路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> PKG_CONFIG_PATH=/home/chengwei/work/github/opencv-4.1/release/lib/pkgconfig:<span class="variable">$PKG_CONFIG_PATH</span></span><br></pre></td></tr></table></figure>
-<p>cmake通过find_package( )才能找到相应的库</p>
-<h6 id="指定编译链接库路径："><a href="#指定编译链接库路径：" class="headerlink" title="指定编译链接库路径："></a>指定编译链接库路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:<span class="variable">$LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>此处要注意<strong>LIBRARY_PATH</strong>和LD_LIBRARY_PATH环境变量的区别，前者用于编译，后者用于运行时链接</p>
-</blockquote>
-<h6 id="指定运行链接库路径："><a href="#指定运行链接库路径：" class="headerlink" title="指定运行链接库路径："></a>指定运行链接库路径：</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$export</span> LD_LIBRARY_PATH=/home/chengwei/work/github/opencv-4.1/release/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
-<p>通过设定上述环境变量，即可让项目在编译和链接时，使用4.1版本的opencv头文件和动态库</p>
+<p>我再向大家推荐一个简易工具<a href="https://github.com/lutzroeder/netron/" target="_blank" rel="noopener">Netron</a>，可离线使用，支持当前主流框架训练的模型，例如Mxnet，Tensorflow，pytorch，darknet。</p>
+<p><img src="/images/1562122128351.png" alt></p>
 
       
     </div>
@@ -538,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/14/protoc-gen-go/" rel="next" title="Go-protobuf插件安装">
-                <i class="fa fa-chevron-left"></i> Go-protobuf插件安装
+              <a href="/2019/06/27/git-clone-https-passwd-saved/" rel="next" title="Git https方法之保存密码">
+                <i class="fa fa-chevron-left"></i> Git https方法之保存密码
               </a>
             
           </div>
@@ -547,10 +537,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/14/linux-library-env-diff/" rel="prev" title="Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别">
-                Linux下LIBRARY_PATH和LD_LIBRARY_PATH环境变量的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -598,17 +584,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -669,23 +646,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#指定头文件路径："><span class="nav-number">1.</span> <span class="nav-text">指定头文件路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定CMake库路径："><span class="nav-number">2.</span> <span class="nav-text">指定CMake库路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定编译链接库路径："><span class="nav-number">3.</span> <span class="nav-text">指定编译链接库路径：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#指定运行链接库路径："><span class="nav-number">4.</span> <span class="nav-text">指定运行链接库路径：</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
