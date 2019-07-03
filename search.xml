@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[tensorflow shape转换]]></title>
+    <url>%2F2019%2F07%2F03%2Ftf-shape-convert%2F</url>
+    <content type="text"><![CDATA[TensorFlow有两种数据格式NHWC和NCHW，默认的数据格式是NHWC，可以通过参数data_format指定数据格式。这个参数规定了 input Tensor 和 output Tensor 的排列方式。 设置为 “NHWC” 时，排列顺序为 [batch, height, width, channels]设置为 “NCHW” 时，排列顺序为 [batch, channels, height, width] Caffe默认的数据格式是NCHW tensorflow示例代码，shape转换 NHWC –&gt; NCHW123import tensorflow as tfx = tf.reshape(tf.range(24), [1, 3, 4, 2])out = tf.transpose(x, [0, 3, 1, 2]) NCHW –&gt; NHWC123import tensorflow as tfx = tf.reshape(tf.range(24), [1, 2, 3, 4])out = tf.transpose(x, [0, 2, 3, 1])]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[神经网络模型的可视化]]></title>
     <url>%2F2019%2F07%2F03%2Fneuron-model-visualization%2F</url>
     <content type="text"><![CDATA[我们通常接触到一个新的网络模型，首先需要了解其网络结构（拓扑），这样才能帮我们进一步了解该网络的构成。针对caffe框架训练的模型，我们可以通过在线网站Netscope可视化其结构。不过该网站仅支持prototxt格式描述的神经网络结构。 我再向大家推荐一个简易工具Netron，可离线使用，支持当前主流框架训练的模型，例如Mxnet，Tensorflow，pytorch，darknet。]]></content>
