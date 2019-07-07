@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://davidchan0519.github.io/2019/07/07/tf-top1-top5-introduction/</loc>
+    
+    <lastmod>2019-07-07T13:13:56.370Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://davidchan0519.github.io/2019/07/03/tf-shape-convert/</loc>
     
     <lastmod>2019-07-03T07:53:33.000Z</lastmod>
