@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[神经网络INT8定点化的几点准则]]></title>
+    <url>%2F2019%2F07%2F11%2Fneural-network-fixpoint-tips%2F</url>
+    <content type="text"><![CDATA[weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。 （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&lt;|max|。） 每一层的tensor 的 |T| 值都是不一样的。 什么是校准（Calibration）确定每一层的 |T|值的过程称为 校准]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[tensorflow Top-1,Top-5精度说明]]></title>
     <url>%2F2019%2F07%2F07%2Ftf-top1-top5-introduction%2F</url>
     <content type="text"><![CDATA[转发一个网友给出的比较通俗易懂的定义： top-1就是你预测的label取最后概率向量里面最大的那一个作为预测结果，如过你的预测结果中概率最大的那个分类正确，则预测正确。否则预测错误 top-5就是最后概率向量最大的前五名中，只要出现了正确概率即为预测正确。否则预测错误。 由此可以看出，top5一般比top1大]]></content>

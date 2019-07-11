@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://davidchan0519.github.io/2019/07/11/neural-network-fixpoint-tips/</loc>
+    
+    <lastmod>2019-07-11T10:50:06.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://davidchan0519.github.io/2019/07/07/tf-top1-top5-introduction/</loc>
     
     <lastmod>2019-07-07T14:28:29.403Z</lastmod>
