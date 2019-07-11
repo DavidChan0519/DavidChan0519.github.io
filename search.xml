@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[神经网络INT8定点化的几点准则]]></title>
     <url>%2F2019%2F07%2F11%2Fneural-network-fixpoint-tips%2F</url>
-    <content type="text"><![CDATA[weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。 （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&lt;|max|。） 每一层的tensor 的 |T| 值都是不一样的。 什么是校准（Calibration）确定每一层的 |T|值的过程称为 校准]]></content>
+    <content type="text"><![CDATA[采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。 weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。 （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&lt;|max|。） 每一层的tensor 的 |T| 值都是不一样的。 什么是校准（Calibration）确定每一层的 |T|值的过程称为 校准]]></content>
   </entry>
   <entry>
     <title><![CDATA[tensorflow Top-1,Top-5精度说明]]></title>

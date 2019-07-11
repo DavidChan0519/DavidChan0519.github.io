@@ -415,7 +415,7 @@
                 
               
 
-              <time title="Created: 2019-07-11 18:46:32 / Modified: 18:50:06" itemprop="dateCreated datePublished" datetime="2019-07-11T18:46:32+08:00">2019-07-11</time>
+              <time title="Created: 2019-07-11 18:46:32 / Modified: 22:54:22" itemprop="dateCreated datePublished" datetime="2019-07-11T18:46:32+08:00">2019-07-11</time>
             
 
             
@@ -455,14 +455,7 @@
 
       
         
-          
-            <p>
-              weights的量化对于weights的int8量化就使用的是不饱和的方式；
-（ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。）
-输入数据的量化对输入的int8量化使用的是饱和的量化方式。 
-（阈值 |T| ，将 ±|T| 映射为±
-              ...
-            </p>
+          <p>采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。</p>
           <!--noindex-->
           
             <div class="post-button text-center">

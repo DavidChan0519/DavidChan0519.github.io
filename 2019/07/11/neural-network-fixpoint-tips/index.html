@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。  （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&amp;lt;|max|。）  每一层的tensor 的 |T| 值都是不一样的。">
+  <meta name="description" content="采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="神经网络INT8定点化的几点准则">
 <meta property="og:url" content="https://davidchan0519.github.io/2019/07/11/neural-network-fixpoint-tips/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。  （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&amp;lt;|max|。）  每一层的tensor 的 |T| 值都是不一样的。">
+<meta property="og:description" content="采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-11T10:50:06.000Z">
+<meta property="og:updated_time" content="2019-07-11T14:54:22.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神经网络INT8定点化的几点准则">
-<meta name="twitter:description" content="weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。  （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&amp;lt;|max|。）  每一层的tensor 的 |T| 值都是不一样的。">
+<meta name="twitter:description" content="采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。">
 
 
 
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-07-11 18:46:32 / Modified: 18:50:06" itemprop="dateCreated datePublished" datetime="2019-07-11T18:46:32+08:00">2019-07-11</time>
+              <time title="Created: 2019-07-11 18:46:32 / Modified: 22:54:22" itemprop="dateCreated datePublished" datetime="2019-07-11T18:46:32+08:00">2019-07-11</time>
             
 
             
@@ -459,7 +459,9 @@
       
 
       
-        <h6 id="weights的量化"><a href="#weights的量化" class="headerlink" title="weights的量化"></a>weights的量化</h6><p>对于weights的int8量化就使用的是不饱和的方式；</p>
+        <p>采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。</p>
+<a id="more"></a>
+<h6 id="weights的量化"><a href="#weights的量化" class="headerlink" title="weights的量化"></a>weights的量化</h6><p>对于weights的int8量化就使用的是不饱和的方式；</p>
 <p>（ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。）</p>
 <h6 id="输入数据的量化"><a href="#输入数据的量化" class="headerlink" title="输入数据的量化"></a>输入数据的量化</h6><p>对输入的int8量化使用的是饱和的量化方式。 </p>
 <p>（阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&lt;|max|。）</p>
