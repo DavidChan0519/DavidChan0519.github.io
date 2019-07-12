@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景">
+  <meta name="description" content="要点： 卷积层(Convolutional Layer)，用于提取低维到高维特征，以其名称命名的网络叫CNN(Convolutional Neural Network); 全连接层(Full Connection Layer)，用于特征分类，以其名称命名的网络叫DNN(Dense Neural Network); 在caffe中 type类型为InnerProduct。 卷积层和全连接层，我们统称">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go语言中的interface类型">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/04/25/go-interface/index.html">
+<meta property="og:title" content="Caffe神经网络框架学习笔记">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/07/12/caffe-learning-memo/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景">
+<meta property="og:description" content="要点： 卷积层(Convolutional Layer)，用于提取低维到高维特征，以其名称命名的网络叫CNN(Convolutional Neural Network); 全连接层(Full Connection Layer)，用于特征分类，以其名称命名的网络叫DNN(Dense Neural Network); 在caffe中 type类型为InnerProduct。 卷积层和全连接层，我们统称">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-25T14:01:44.771Z">
+<meta property="og:updated_time" content="2019-07-12T12:47:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go语言中的interface类型">
-<meta name="twitter:description" content="go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景">
+<meta name="twitter:title" content="Caffe神经网络框架学习笔记">
+<meta name="twitter:description" content="要点： 卷积层(Convolutional Layer)，用于提取低维到高维特征，以其名称命名的网络叫CNN(Convolutional Neural Network); 全连接层(Full Connection Layer)，用于特征分类，以其名称命名的网络叫DNN(Dense Neural Network); 在caffe中 type类型为InnerProduct。 卷积层和全连接层，我们统称">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/04/25/go-interface/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/07/12/caffe-learning-memo/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>go语言中的interface类型 | 程伟的技术笔记</title>
+  <title>Caffe神经网络框架学习笔记 | 程伟的技术笔记</title>
   
 
 
@@ -370,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/25/go-interface/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/07/12/caffe-learning-memo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -387,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">go语言中的interface类型
+          <h1 class="post-title" itemprop="name headline">Caffe神经网络框架学习笔记
 
               
             
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-25 21:59:31 / Modified: 22:01:44" itemprop="dateCreated datePublished" datetime="2019-04-25T21:59:31+08:00">2019-04-25</time>
+              <time title="Created: 2019-07-12 14:38:29 / Modified: 20:47:06" itemprop="dateCreated datePublished" datetime="2019-07-12T14:38:29+08:00">2019-07-12</time>
             
 
             
@@ -459,8 +459,23 @@
       
 
       
-        <p>go语言中的interface类型，作用类似于c语言中的void指针。有着非常灵活的应用场景</p>
+        <h6 id="要点："><a href="#要点：" class="headerlink" title="要点："></a>要点：</h6><ol>
+<li>卷积层(Convolutional Layer)，用于提取低维到高维特征，以其名称命名的网络叫CNN(Convolutional Neural Network);</li>
+<li>全连接层(Full Connection Layer)，用于特征分类，以其名称命名的网络叫DNN(Dense Neural Network); 在caffe中 type类型为InnerProduct。</li>
+<li>卷积层和全连接层，我们统称为权值层，因为这两种层都具有可学习参数（权值），是网络训练的对象；</li>
+<li>Sigmoid()、 Tanh()称为饱和激活函数；</li>
+<li>Relu() 称为非饱和激活函数；</li>
+</ol>
 <a id="more"></a>
+<h6 id="Caffe数据结构："><a href="#Caffe数据结构：" class="headerlink" title="Caffe数据结构："></a>Caffe数据结构：</h6><p>在Caffe 中一个CNN 模型使用Net 表示，而Net 是由多个Layer 堆叠而成的。</p>
+<p>分享一段比较形象而生动的比喻（摘自深度学习caffe21天实战）：</p>
+<p>Caffe的万丈高楼（Net)是按照我们设计的图纸（prototxt），用Blob这些砖块筑成一层层（Layer）楼房，最后通过SGD方法（Solver）进行简装修（Train ） 、精装修（Finetune ）实现的。</p>
+<ul>
+<li>Blob:</li>
+</ul>
+<p>Blob 是Caffe 的基本存储单元，在内存中表示4 维数组，维度从低到高为（width_, height_ ,  channels ,  num）， width和height表示图像的宽和高，channel 表示颜色通道RGB, num表示第几帧，用于存储数据或权值<br>C data ）和权值增量（di忏），在进行网络计算时，每层的输入、输出都需要通过Blob 对象缓冲。</p>
+<p>在使用Blob 之前，需要先包含头文件“＃include&lt;caffe/blob.hpp＞”，再通过“usingnamespace caffe；”使用命名空间caffe。或者直接使用限定符::使用caffe命名空间的变量.</p>
+
       
     </div>
 
@@ -523,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/23/go-variadic-param-func/" rel="next" title="Go可变参数函数">
-                <i class="fa fa-chevron-left"></i> Go可变参数函数
+              <a href="/2019/07/11/neural-network-fixpoint-tips/" rel="next" title="神经网络INT8定点化的几点准则">
+                <i class="fa fa-chevron-left"></i> 神经网络INT8定点化的几点准则
               </a>
             
           </div>
@@ -532,10 +547,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/28/go-all-data-type/" rel="prev" title="Go语言内置的所有数据类型">
-                Go语言内置的所有数据类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,8 +594,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -645,6 +665,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#要点："><span class="nav-number">1.</span> <span class="nav-text">要点：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Caffe数据结构："><span class="nav-number">2.</span> <span class="nav-text">Caffe数据结构：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

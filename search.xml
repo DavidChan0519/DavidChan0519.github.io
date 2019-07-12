@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Caffe神经网络框架学习笔记]]></title>
+    <url>%2F2019%2F07%2F12%2Fcaffe-learning-memo%2F</url>
+    <content type="text"><![CDATA[要点： 卷积层(Convolutional Layer)，用于提取低维到高维特征，以其名称命名的网络叫CNN(Convolutional Neural Network); 全连接层(Full Connection Layer)，用于特征分类，以其名称命名的网络叫DNN(Dense Neural Network); 在caffe中 type类型为InnerProduct。 卷积层和全连接层，我们统称为权值层，因为这两种层都具有可学习参数（权值），是网络训练的对象； Sigmoid()、 Tanh()称为饱和激活函数； Relu() 称为非饱和激活函数； Caffe数据结构：在Caffe 中一个CNN 模型使用Net 表示，而Net 是由多个Layer 堆叠而成的。 分享一段比较形象而生动的比喻（摘自深度学习caffe21天实战）： Caffe的万丈高楼（Net)是按照我们设计的图纸（prototxt），用Blob这些砖块筑成一层层（Layer）楼房，最后通过SGD方法（Solver）进行简装修（Train ） 、精装修（Finetune ）实现的。 Blob: Blob 是Caffe 的基本存储单元，在内存中表示4 维数组，维度从低到高为（width_, height_ , channels , num）， width和height表示图像的宽和高，channel 表示颜色通道RGB, num表示第几帧，用于存储数据或权值C data ）和权值增量（di忏），在进行网络计算时，每层的输入、输出都需要通过Blob 对象缓冲。 在使用Blob 之前，需要先包含头文件“＃include&lt;caffe/blob.hpp＞”，再通过“usingnamespace caffe；”使用命名空间caffe。或者直接使用限定符::使用caffe命名空间的变量.]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[神经网络INT8定点化的几点准则]]></title>
     <url>%2F2019%2F07%2F11%2Fneural-network-fixpoint-tips%2F</url>
     <content type="text"><![CDATA[采用int8方式量化模型，在不明显损失精度的前提下，可带来数倍性能的提升，该方式非常适合于移动侧的模型部署。 weights的量化对于weights的int8量化就使用的是不饱和的方式； （ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 输入数据的量化对输入的int8量化使用的是饱和的量化方式。 （阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&lt;|max|。） 每一层的tensor 的 |T| 值都是不一样的。 什么是校准（Calibration）确定每一层的 |T|值的过程称为 校准]]></content>
