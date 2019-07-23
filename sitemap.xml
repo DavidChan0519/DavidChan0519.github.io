@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://davidchan0519.github.io/2019/07/23/cplus-template-explicit-instantiation/</loc>
+    
+    <lastmod>2019-07-23T10:34:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://davidchan0519.github.io/2019/07/12/caffe-learning-memo/</loc>
     
     <lastmod>2019-07-12T12:47:06.000Z</lastmod>
