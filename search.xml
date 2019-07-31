@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[model_int8_convert]]></title>
     <url>%2F2019%2F07%2F25%2Fmodel-int8-convert%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[遵循的几点准则： 第一：对于weights的int8量化使用的是不饱和的方式；（ -|max| 和 |max| FP32 value 映射为 -127 和 127 ，中间值按照线性关系进行映射。） 第二：对输入数据的int8量化使用的是饱和的量化方式。 （即确定阈值 |T| ，将 ±|T| 映射为±127，这里 |T|&lt;|max|。） 第三：每一层的tensor 的 |T| 值都是不一样的。 第四：确定每一层的 |T|值的过程称为 校准（Calibration ）]]></content>
   </entry>
   <entry>
     <title><![CDATA[C++函数模版实例化]]></title>
