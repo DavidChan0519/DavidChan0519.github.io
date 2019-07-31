@@ -370,6 +370,319 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/11/use-softlink-for-go-build-env/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/wei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/11/use-softlink-for-go-build-env/" class="post-title-link" itemprop="url">搭建go程序源码编译环境</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-11 16:19:14" itemprop="dateCreated datePublished" datetime="2019-04-11T16:19:14+08:00">2019-04-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-17 12:30:29" itemprop="dateModified" datetime="2019-04-17T12:30:29+08:00">2019-04-17</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>编译go语言程序，需要将源码放在特定结构和目录名称的的工程环境中，并设置GOPATH环境变量.</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/11/use-softlink-for-go-build-env/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/10/opencv-pyramid-sample/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/wei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/10/opencv-pyramid-sample/" class="post-title-link" itemprop="url">python opencv图像金字塔</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-10 11:06:08 / Modified: 11:19:50" itemprop="dateCreated datePublished" datetime="2019-04-10T11:06:08+08:00">2019-04-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>通俗点讲，</p>
+<p>对一个图片进行金字塔操作，涉及如下两个函数；</p>
+<p>pyrDown( )函数的作用是向下采样并模糊一张图片，说白了就是缩小一张图片。</p>
+<p>pyrUp( )函数的作用是向上采样并模糊一张图像，说白了就是放大一张图片；</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/04/10/opencv-pyramid-sample/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/09/cv2-bgr-sample/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1585,320 +1898,6 @@ $expor
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/04/go-build-mode/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/wei.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/04/go-build-mode/" class="post-title-link" itemprop="url">Go build模式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-04 12:13:20 / Modified: 15:02:30" itemprop="dateCreated datePublished" datetime="2019-04-04T12:13:20+08:00">2019-04-04</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>build mode</code>: 用于指导编辑器如何创建可执行的二进制文件。越多的执行方式，就意味着可以让 Go 运行在更多的地方。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">go build -buildmode=default goroutine_select.go</span></span><br></pre></td></tr></table></figure>
-<p>在编译go程序时，go编译器支持如下几种模式：</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/04/go-build-mode/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/03/go-multi-assign/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wei.cheng">
-      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
-      <meta itemprop="image" content="/images/wei.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="程伟的技术笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/03/go-multi-assign/" class="post-title-link" itemprop="url">Go多变量赋值</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-03 23:15:44" itemprop="dateCreated datePublished" datetime="2019-04-03T23:15:44+08:00">2019-04-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-04-04 15:02:12" itemprop="dateModified" datetime="2019-04-04T15:02:12+08:00">2019-04-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Go语言支持一次定义多个变量，同时也支持多个变量赋值。</p>
-<p>例如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  x , y = <span class="string">"abc"</span>, <span class="number">100</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/04/03/go-multi-assign/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1947,7 +1946,7 @@ $expor
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

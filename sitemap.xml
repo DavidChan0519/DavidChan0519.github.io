@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://davidchan0519.github.io/2019/07/31/go-ellipsis-usage/</loc>
+    
+    <lastmod>2019-07-31T09:42:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://davidchan0519.github.io/2019/07/25/model-int8-convert/</loc>
+    
+    <lastmod>2019-07-25T06:49:04.976Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://davidchan0519.github.io/2019/07/23/cplus-template-explicit-instantiation/</loc>
     
     <lastmod>2019-07-23T10:39:43.000Z</lastmod>
