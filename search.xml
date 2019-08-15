@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Go类型转换]]></title>
+    <url>%2F2019%2F08%2F15%2Fgolang-type-cast%2F</url>
+    <content type="text"><![CDATA[go语言同C/C++一样，可以在不同的类型间使用类型强制转换。 基本用法： 1234567type A int32type B int32a := A&#123;100&#125;//type castb := B(a) 上述代码，将类型为A的值a强制转换为类型为B的值b。但是这有一个前提条件：即A和B的底层类型一样。所谓的底层类型就是在声明A和B类型的时候，所指代的原始类型。两者都是int32，所以一样，故可以转换。如果底层类型不一样，则编译会报错。 读者不妨试试下面的例子： 12345678910111213141516171819package mainimport ( "fmt")type Meter struct &#123; Value int64&#125;type Centimeter struct &#123; Value int64&#125;func main() &#123; cm := Centimeter&#123; Value:100, &#125; var m Meter m = Meter(cm) //cast Centimer to Meter fmt.Println("meter:",m.Value) cm = Centimeter(m)//cast Meter to Centimer fmt.Println("centimeter:",cm.Value)&#125; 输出： meter: 100centimeter: 100 如果将centimeter的value类型变为int32，编译程序会报错 src\base\type_usage.go:21:11: cannot convert cm (type Centimeter) to type Metersrc\base\type_usage.go:24:17: cannot convert m (type Meter) to type Centimeter]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Go ...用法]]></title>
     <url>%2F2019%2F07%2F31%2Fgo-ellipsis-usage%2F</url>
     <content type="text"><![CDATA[… 其实是go的一种语法糖。 用法1：主要是用于函数有多个不定参数的情况，可以接受多个不确定数量的参数。 123456789101112131415func test(args ...string) &#123; //可以接受任意个string参数 for _, v:= range args&#123; fmt.Println(v) &#125;&#125;func main()&#123;var ss = []string&#123; "abc", "123", "efg", "hello", &#125; test(ss...) //切片被打散传入&#125; 输出： 1234abc123efghello 用法2：slice可以被打散进行传递。 1234567891011121314var s1= []string&#123; "aaa", "111", "bbb",&#125;var s2 = []string&#123; "ccc", "ddd", "222", "333",&#125;s1 = append(s1, s2...) //s2的元素被打散一个个append进s1fmt.Println(s1) 输出： 1[aaa 111 bbb ccc ddd 222 333]]]></content>
