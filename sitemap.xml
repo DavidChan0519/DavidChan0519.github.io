@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://davidchan0519.github.io/2019/08/21/linux-cmd-realpath/</loc>
+    
+    <lastmod>2019-08-21T03:57:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://davidchan0519.github.io/2019/08/15/golang-type-cast/</loc>
     
     <lastmod>2019-08-15T02:28:38.000Z</lastmod>
