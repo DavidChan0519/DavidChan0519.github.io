@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="COPY指令:1COPY &amp;lt;src&amp;gt;  &amp;lt;dest&amp;gt;">
+  <meta name="description" content="这个问题隐藏的很深，稍不注意就掉入坑中，并且定位起来耗时费力。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在Dockerfile中使用COPY指令">
-<meta property="og:url" content="https://davidchan0519.github.io/2019/04/02/dockerfile-copy/index.html">
+<meta property="og:title" content="Go之slice陷阱">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/08/23/golang-slice-misunderstanding/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="COPY指令:1COPY &amp;lt;src&amp;gt;  &amp;lt;dest&amp;gt;">
+<meta property="og:description" content="这个问题隐藏的很深，稍不注意就掉入坑中，并且定位起来耗时费力。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://davidchan0519.github.io/images/dockerfile_copy_error.png">
-<meta property="og:updated_time" content="2019-04-02T09:51:26.000Z">
+<meta property="og:updated_time" content="2019-08-23T03:51:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在Dockerfile中使用COPY指令">
-<meta name="twitter:description" content="COPY指令:1COPY &amp;lt;src&amp;gt;  &amp;lt;dest&amp;gt;">
-<meta name="twitter:image" content="https://davidchan0519.github.io/images/dockerfile_copy_error.png">
+<meta name="twitter:title" content="Go之slice陷阱">
+<meta name="twitter:description" content="这个问题隐藏的很深，稍不注意就掉入坑中，并且定位起来耗时费力。">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/2019/04/02/dockerfile-copy/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/08/23/golang-slice-misunderstanding/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>在Dockerfile中使用COPY指令 | 程伟的技术笔记</title>
+  <title>Go之slice陷阱 | 程伟的技术笔记</title>
   
 
 
@@ -372,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/04/02/dockerfile-copy/">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/08/23/golang-slice-misunderstanding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wei.cheng">
@@ -389,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">在Dockerfile中使用COPY指令
+          <h1 class="post-title" itemprop="name headline">Go之slice陷阱
 
               
             
@@ -415,7 +413,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 16:57:22 / Modified: 17:51:26" itemprop="dateCreated datePublished" datetime="2019-04-02T16:57:22+08:00">2019-04-02</time>
+              <time title="Created: 2019-08-23 11:32:52 / Modified: 11:51:45" itemprop="dateCreated datePublished" datetime="2019-08-23T11:32:52+08:00">2019-08-23</time>
             
 
             
@@ -461,20 +459,22 @@
       
 
       
-        <h6 id="COPY指令"><a href="#COPY指令" class="headerlink" title="COPY指令:"></a>COPY指令:</h6><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="bash"> &lt;src&gt;  &lt;dest&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>这个问题隐藏的很深，稍不注意就掉入坑中，并且定位起来耗时费力。</p>
 <a id="more"></a>
-<p>我们在使用dockerfile构建docker镜像时，通常会用到COPY指令。COPY指令用于将系统本地的文件拷贝至docker镜像中。但是其中有一个地方需要特别注意：即build上下文.</p>
-<p>在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PATH 或 URL 指定的路径中的文件的集合。在镜像 build 过程中可以引用上下文中的任何文件，比如我们要介绍的 COPY 命令，就可以引用上下文中的文件。</p>
-<p>默认情况下 docker build -t custom  . 命令中的 . 表示build上下文为当前目录。</p>
-<p>当然我们可以指定一个目录作为上下文，比如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">docker build -t custom /home/linaro</span></span><br></pre></td></tr></table></figure>
-<h6 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h6><p>在使用COPY指令时，本地的源文件要位于build上下文中。</p>
-<p><strong>如果build上下文是当前目录，则源文件要位于dockerfile所在的当前目录</strong>。</p>
-<p>例如：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /work</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> snmp  .</span></span><br></pre></td></tr></table></figure>
-<p>snmp目录要位于dockerfile所在的目录中</p>
-<p>否则build过程中会报错：</p>
-<p><img src="/images/dockerfile_copy_error.png" alt></p>
+<h6 id="数组-array-："><a href="#数组-array-：" class="headerlink" title="数组(array)："></a>数组(array)：</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a [...]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="切片-slice-："><a href="#切片-slice-：" class="headerlink" title="切片(slice)："></a>切片(slice)：</h6><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b [ ]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>注意上述数组和切片的不同之处。</p>
+<p>下面通过一段示例代码，我们来仔细讨论下slice的陷阱，稍有不慎，就会掉入坑中。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a := []<span class="keyword">int</span>&#123;<span class="number">0</span>&#125;     <span class="comment">/* [0]          */</span></span><br><span class="line">a = <span class="built_in">append</span>(a, <span class="number">0</span>)  <span class="comment">/* [0, 0]       */</span></span><br><span class="line">b := a[:]         <span class="comment">/* [0, 0]       */</span></span><br><span class="line">a = <span class="built_in">append</span>(a, <span class="number">2</span>)  <span class="comment">/* [0, 0, 2]    */</span></span><br><span class="line">b = <span class="built_in">append</span>(b, <span class="number">1</span>)  <span class="comment">/* [0, 0, 1]    */</span></span><br><span class="line">fmt.Println(<span class="string">"[2]:"</span>,a[<span class="number">2</span>]) <span class="comment">/* 2 &lt;- 对的     */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 一样的代码，只是以一个稍大的 slice 开始, c := []int&#123;0, 0&#125;  /* [0, 0]       */</span></span><br><span class="line">c = <span class="built_in">append</span>(c, <span class="number">0</span>)  <span class="comment">/* [0, 0, 0]    */</span></span><br><span class="line">d := c[:]         <span class="comment">/* [0, 0, 0]    */</span></span><br><span class="line">c = <span class="built_in">append</span>(c, <span class="number">2</span>)  <span class="comment">/* [0, 0, 0, 2] */</span></span><br><span class="line">d = <span class="built_in">append</span>(d, <span class="number">1</span>)  <span class="comment">/* [0, 0, 0, 1] */</span></span><br><span class="line">fmt.Println(<span class="string">"[3]:"</span>,c[<span class="number">3</span>]) <span class="comment">/*  ??? ，正确答案是1    */</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>输出：</p>
+</blockquote>
+<p>为什么a<a href="2">2</a>的值为2，c<a href="1">3</a>的值为1呢？</p>
+<p>原因在与，slice的底层空间，append操作后并非永远是线性增长的，当达到一定的阀值后，slice会重新开辟新的空间（重新申请新的内存）。这样之前本来共享底层空间的两个slice，在其中一个重新开辟新的空间后，就不再共享空间了，也就不再互相影响了。</p>
+<p>例如代码中的slice a和b，a在append 2后，就开辟了新的空间，b在append 1操作后也开辟了新的空间，故b的append操作不会影响到a。</p>
+<p>但是c和d则不一样，c在进行append 2后，仍然在使用原来的底层空间，d在append 1后也在使用原来的底层空间，故c的操作会被d的append操作覆盖掉。</p>
+<p> 什么时候slice会开辟新的空间，这是由go的底层算法决定的。没有办法人为控制。</p>
+<p>怎么避免这类问题呢？避免slice共享同一块底层空间，尤其是当slice不断增长的情况下。否则你会遇到很多莫名其妙的问题。</p>
 
       
     </div>
@@ -538,8 +538,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/02/git-and-gerrit-guide/" rel="next" title="Git for Gerrit 客户端配置指导">
-                <i class="fa fa-chevron-left"></i> Git for Gerrit 客户端配置指导
+              <a href="/2019/08/21/linux-cmd-realpath/" rel="next" title="linux命令-realpath">
+                <i class="fa fa-chevron-left"></i> linux命令-realpath
               </a>
             
           </div>
@@ -547,10 +547,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/02/clion-compile-err/" rel="prev" title="使用clion编译c++程序报错">
-                使用clion编译c++程序报错 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -680,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#COPY指令"><span class="nav-number">1.</span> <span class="nav-text">COPY指令:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注意事项："><span class="nav-number">2.</span> <span class="nav-text">注意事项：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#数组-array-："><span class="nav-number">1.</span> <span class="nav-text">数组(array)：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#切片-slice-："><span class="nav-number">2.</span> <span class="nav-text">切片(slice)：</span></a></li></ol></div>
             
 
           </div>
