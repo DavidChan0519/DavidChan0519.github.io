@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+  <meta name="description" content="如果用公式  y = f(wx+b)来表示整个运算过程的话，那么w和b就是我们需要训练的东西，w称为权值，在cnn中也可以叫做卷积核（filter），b是偏置项。f是激活函数，有sigmoid、relu等。x就是输入的数据。 数据训练完成后，保存在caffemodel里面的，实际上就是各层的w和b值。">
 <meta name="keywords" content="AI , C&#x2F;C++, Go, Python, Caffe, Linux driver, SNMP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="程伟的技术笔记">
-<meta property="og:url" content="https://davidchan0519.github.io/archives/2019/04/page/3/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe 权重介绍">
+<meta property="og:url" content="https://davidchan0519.github.io/2019/08/30/caffe-model-introduce/index.html">
 <meta property="og:site_name" content="程伟的技术笔记">
-<meta property="og:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta property="og:description" content="如果用公式  y = f(wx+b)来表示整个运算过程的话，那么w和b就是我们需要训练的东西，w称为权值，在cnn中也可以叫做卷积核（filter），b是偏置项。f是激活函数，有sigmoid、relu等。x就是输入的数据。 数据训练完成后，保存在caffemodel里面的，实际上就是各层的w和b值。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-30T06:48:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="程伟的技术笔记">
-<meta name="twitter:description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+<meta name="twitter:title" content="caffe 权重介绍">
+<meta name="twitter:description" content="如果用公式  y = f(wx+b)来表示整个运算过程的话，那么w和b就是我们需要训练的东西，w称为权值，在cnn中也可以叫做卷积核（filter），b是偏置项。f是激活函数，有sigmoid、relu等。x就是输入的数据。 数据训练完成后，保存在caffemodel里面的，实际上就是各层的w和b值。">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://davidchan0519.github.io/archives/2019/04/page/3/">
+  <link rel="canonical" href="https://davidchan0519.github.io/2019/08/30/caffe-model-introduce/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>Archive | 程伟的技术笔记</title>
+  <title>caffe 权重介绍 | 程伟的技术笔记</title>
   
 
 
@@ -172,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/DavidChan0519" id="fork-me-custom"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,7 +279,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -307,28 +308,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -375,396 +354,241 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davidchan0519.github.io/2019/08/30/caffe-model-introduce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wei.cheng">
+      <meta itemprop="description" content="软件工程师，IT行业从业数十载，聚焦计算机视觉应用，X86/ARM服务器后台，linux kernel存储驱动开发，曾在HW工作多年，现就职于Bitmain">
+      <meta itemprop="image" content="/images/wei.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程伟的技术笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">caffe 权重介绍
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-30 14:37:04 / Modified: 14:48:46" itemprop="dateCreated datePublished" datetime="2019-08-30T14:37:04+08:00">2019-08-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        Nice! 79 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/04/go-build-mode/" itemprop="url">
             
-              <span itemprop="name">Go build模式</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-04T12:13:20+08:00" content="2019-04-04">
-          04-04
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/03/go-multi-assign/" itemprop="url">
-            
-              <span itemprop="name">Go多变量赋值</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T23:15:44+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/03/gocv-face-detection/" itemprop="url">
-            
-              <span itemprop="name">使用GoCV进行人脸检测</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T11:37:47+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>如果用公式  <strong>y = f(wx+b)</strong>来表示整个运算过程的话，那么w和b就是我们需要训练的东西，w称为权值，在cnn中也可以叫做卷积核（filter），b是偏置项。f是激活函数，有sigmoid、relu等。x就是输入的数据。</p>
+<p><strong>数据训练完成后，保存在caffemodel里面的，实际上就是各层的w和b值。</strong></p>
+<a id="more"></a>
+<p>我们运行代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root = <span class="string">'/home/wei.cheng/'</span></span><br><span class="line">deploy = root + <span class="string">'deploy.prototxt'</span>                   <span class="comment">#deploy文件</span></span><br><span class="line">caffe_model = root + <span class="string">'lenet_iter_1000.caffemodel'</span>   <span class="comment">#训练好的 caffemodel</span></span><br><span class="line">net = caffe.Net(net_file,caffe_model,caffe.TEST)    <span class="comment">#加载model和network</span></span><br></pre></td></tr></table></figure>
+<p>就把所有的参数和数据都加载到一个net变量里面了，但是net是一个很复杂的object, 想直接显示出来看是不行的。其中：</p>
+<p>net.params: 保存各层的参数值（w和b)</p>
+<p>net.blobs: 保存各层的数据值;</p>
+<p>可用命令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(k,v[<span class="number">0</span>].data) <span class="keyword">for</span> k,v <span class="keyword">in</span> net.params.items()]</span><br></pre></td></tr></table></figure>
+<p>查看各层的参数值，其中k表示层的名称，<strong>v[0].data就是各层的W值，而v[1].data是各层的b值</strong>。</p>
+<p><em>注意：并不是所有的层都有参数，只有<strong>卷积层</strong>和<strong>全连接层</strong>才有。</em></p>
+<p>也可以不查看具体值，只想看一下shape,可用命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(k,v[<span class="number">0</span>].data.shape) <span class="keyword">for</span> k,v <span class="keyword">in</span> net.params.items()]</span><br></pre></td></tr></table></figure>
+<p>假设我们知道其中第一个卷积层的名字叫’Convolution1’, 则我们可以提取这个层的参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">w1=net.params[<span class="string">'Convolution1'</span>][<span class="number">0</span>].data</span><br><span class="line">b1=net.params[<span class="string">'Convolution1'</span>][<span class="number">1</span>].data</span><br></pre></td></tr></table></figure>
+<p>同理，除了查看参数，我们还可以查看数据。</p>
+<p>但是要注意的是，net里面刚开始是没有数据的，需要在运行前向计算之后才可以看到数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.forward()</span><br></pre></td></tr></table></figure>
+<p>之后才会有数据。我们可以用代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(k,v.data.shape) <span class="keyword">for</span> k,v <span class="keyword">in</span> net.blobs.items()]</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(k,v.data) <span class="keyword">for</span> k,v <span class="keyword">in</span> net.blobs.items()]</span><br></pre></td></tr></table></figure>
+<p>来查看各层的数据。注意和上面查看参数的区别，一个是net.params, 一个是net.blobs.</p>
+<p>实际上数据刚输入的时候，我们叫图片数据，卷积之后我们就叫特征了。</p>
+<p>如果要抽取第一个全连接层的特征，则可用命令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fea=net.blobs[<span class="string">'InnerProduct1'</span>].data</span><br></pre></td></tr></table></figure>
+<p>只要知道某个层的名称，就可以抽取这个层的特征。</p>
+<p>示例代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> caffe</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">execute</span><span class="params">()</span>:</span></span><br><span class="line">    root = <span class="string">'/home/lwang/work/chengw/test/python/learn_caffe/'</span></span><br><span class="line">    prototxt_file = root + <span class="string">'train_val.prototxt'</span></span><br><span class="line">    caffe_model = root + <span class="string">'bvlc_alexnet.caffemodel'</span></span><br><span class="line">    net = caffe.Net(prototxt_file, caffe_model, caffe.TEST)  <span class="comment"># 加载model和network</span></span><br><span class="line">    <span class="comment">#[(k, v[0].data.shape) for k, v in net.params.items()]   # 查看各层参数规模</span></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> net.params.items():</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'k:'</span>,k</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'data shape:'</span>,v[<span class="number">0</span>].data.shape</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'bias shape:'</span>,v[<span class="number">1</span>].data.shape</span><br><span class="line"></span><br><span class="line">    w1 = net.params[<span class="string">'conv3'</span>][<span class="number">0</span>].data  <span class="comment"># 提取参数w</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'conv3 w1 shape:'</span>,net.params[<span class="string">'conv3'</span>][<span class="number">0</span>].shape</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'conv3 w1 data:'</span>,w1</span><br><span class="line"></span><br><span class="line">    b1 = net.params[<span class="string">'conv3'</span>][<span class="number">1</span>].data  <span class="comment"># 提取参数b</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'conv3 b1 shape:'</span>,net.params[<span class="string">'conv3'</span>][<span class="number">1</span>].shape</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'conv3 b1:'</span>,b1</span><br><span class="line">    </span><br><span class="line">    net.forward()  <span class="comment"># 运行测试</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#[(k, v.data.shape) for k, v in net.blobs.items()]  # 查看各层数据规模</span></span><br><span class="line">    <span class="keyword">for</span> k, v <span class="keyword">in</span> net.blobs.items():</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'k:'</span>,k</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'data shape:'</span>,v.data.shape</span><br><span class="line"></span><br><span class="line">    fea = net.blobs[<span class="string">'fc7'</span>].data  <span class="comment"># 提取某层数据（特征）</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'fc7:'</span>,fea</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    execute()</span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/03/gocv-introduction/" itemprop="url">
-            
-              <span itemprop="name">GoCV：使用Go和OpenCV4.0.1进行计算机视觉编程</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-03T10:18:54+08:00" content="2019-04-03">
-          04-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/clion-compile-err/" itemprop="url">
-            
-              <span itemprop="name">使用clion编译c++程序报错</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T22:11:03+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/dockerfile-copy/" itemprop="url">
-            
-              <span itemprop="name">在Dockerfile中使用COPY指令</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T16:57:22+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/git-and-gerrit-guide/" itemprop="url">
-            
-              <span itemprop="name">Git for Gerrit 客户端配置指导</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T14:15:49+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/02/opencv-src-compile/" itemprop="url">
-            
-              <span itemprop="name">OpenCV源码编译安装</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-02T11:56:24+08:00" content="2019-04-02">
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/01/go-syntax/" itemprop="url">
-            
-              <span itemprop="name">Go编程语法注意事项</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-01T16:28:46+08:00" content="2019-04-01">
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/01/docker-priv-repo-setup/" itemprop="url">
-            
-              <span itemprop="name">上传Docker镜像到私有镜像仓储</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-01T15:34:00+08:00" content="2019-04-01">
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>您的鼓励是我持之以恒的动力</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="wei.cheng WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="wei.cheng Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/23/golang-slice-misunderstanding/" rel="next" title="Go之slice陷阱">
+                <i class="fa fa-chevron-left"></i> Go之slice陷阱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2019/04/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/2019/04/">1</a><a class="page-number" href="/archives/2019/04/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2019/04/page/4/">4</a><a class="extend next" rel="next" href="/archives/2019/04/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1001,6 +825,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -1016,6 +844,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '56b927009f5c31c05b79',
+    clientSecret: '45307baf23d3e44a33a0186f8675ac71a8519bfe',
+    repo: 'davidchan0519.github.io',
+    owner: 'DavidChan0519',
+    admin: ['DavidChan0519'],
+    id: md5(location.pathname),
+    
+      language: window.navigator.language || window.navigator.userLanguage,
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
